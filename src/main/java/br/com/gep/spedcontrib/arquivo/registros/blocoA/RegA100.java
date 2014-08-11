@@ -11,68 +11,70 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "A100")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "A100"),
+    @Field(at = 22, name = "fimLinha", literal = "")
 })
 public class RegA100 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String indOper;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String indEmit;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private String codPart;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private String codSit;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private String ser;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private String sub;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private String numDoc;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private String chvNfse;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Date dtDoc;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private Date dtExeServ;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private Double vlDoc;
     
-    @Field(at = 12)
+    @Field(at = 13)
     private String indPgto;
     
-    @Field(at = 13)
+    @Field(at = 14)
     private Double vlDesc;
     
-    @Field(at = 14)
+    @Field(at = 15)
     private Double vlBcPis;
     
-    @Field(at = 15)
+    @Field(at = 16)
     private Double vlPis;
     
-    @Field(at = 16)
+    @Field(at = 17)
     private Double vlBcCofins;
     
-    @Field(at = 17)
+    @Field(at = 18)
     private Double vlCofins;
     
-    @Field(at = 18)
+    @Field(at = 19)
     private Double vlPisRet;
     
-    @Field(at = 19)
+    @Field(at = 20)
     private Double vlCofinsRet;
     
-    @Field(at = 20)
+    @Field(at = 21)
     private Double vlIss;
     
     

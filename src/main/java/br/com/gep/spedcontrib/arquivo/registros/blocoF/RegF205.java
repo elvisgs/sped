@@ -11,59 +11,61 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "F205")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "F205"),
+    @Field(at = 19, name = "fimLinha", literal = "")
 })
 public class RegF205 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private Double vlCusIncAcumAnt;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private Double vlCusIncPerEsc;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private Double vlCusIncAcum;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private Double vlExcBcCusIncAcum;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private Double vlBcCusInc;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private String cstPis;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private Double aliqPis;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private Double vlCredPisAcum;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Double vlCredPisDescAnt;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private Double vlCredPisDesc;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private Double vlCredPisDescFut;
     
-    @Field(at = 12)
+    @Field(at = 13)
     private String cstCofins;
     
-    @Field(at = 13)
+    @Field(at = 14)
     private Double aliqCofins;
     
-    @Field(at = 14)
+    @Field(at = 15)
     private Double vlCredCofinsAcum;
     
-    @Field(at = 15)
+    @Field(at = 16)
     private Double vlCredCofinsDescAnt;
     
-    @Field(at = 16)
+    @Field(at = 17)
     private Double vlCredCofinsDesc;
     
-    @Field(at = 17)
+    @Field(at = 18)
     private Double vlCredCofinsDescFut;
     
     

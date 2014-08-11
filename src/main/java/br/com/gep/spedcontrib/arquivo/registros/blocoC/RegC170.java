@@ -11,116 +11,118 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "C170")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "C170"),
+    @Field(at = 38, name = "fimLinha", literal = "")
 })
 public class RegC170 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String numItem;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String codItem;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private String descrCompl;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private Double qtd;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private String unid;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private Double vlItem;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private Double vlDesc;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private String indMov;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private String cstIcms;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private String cfop;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private String codNat;
     
-    @Field(at = 12)
+    @Field(at = 13)
     private Double vlBcIcms;
     
-    @Field(at = 13)
+    @Field(at = 14)
     private Double aliqIcms;
     
-    @Field(at = 14)
+    @Field(at = 15)
     private Double vlIcms;
     
-    @Field(at = 15)
+    @Field(at = 16)
     private Double vlBcIcmsSt;
     
-    @Field(at = 16)
+    @Field(at = 17)
     private Double aliqSt;
     
-    @Field(at = 17)
+    @Field(at = 18)
     private Double vlIcmsSt;
     
-    @Field(at = 18)
+    @Field(at = 19)
     private String indApur;
     
-    @Field(at = 19)
+    @Field(at = 20)
     private String cstIpi;
     
-    @Field(at = 20)
+    @Field(at = 21)
     private String codEnq;
     
-    @Field(at = 21)
+    @Field(at = 22)
     private Double vlBcIpi;
     
-    @Field(at = 22)
+    @Field(at = 23)
     private Double aliqIpi;
     
-    @Field(at = 23)
+    @Field(at = 24)
     private Double vlIpi;
     
-    @Field(at = 24)
+    @Field(at = 25)
     private String cstPis;
     
-    @Field(at = 25)
+    @Field(at = 26)
     private Double vlBcPis;
     
-    @Field(at = 26)
+    @Field(at = 27)
     private Double aliqPis;
     
-    @Field(at = 27)
+    @Field(at = 28)
     private Double quantBcPis;
     
-    @Field(at = 28)
+    @Field(at = 29)
     private Double aliqPisQuant;
     
-    @Field(at = 29)
+    @Field(at = 30)
     private Double vlPis;
     
-    @Field(at = 30)
+    @Field(at = 31)
     private String cstCofins;
     
-    @Field(at = 31)
+    @Field(at = 32)
     private Double vlBcCofins;
     
-    @Field(at = 32)
+    @Field(at = 33)
     private Double aliqCofins;
     
-    @Field(at = 33)
+    @Field(at = 34)
     private Double quantBcCofins;
     
-    @Field(at = 34)
+    @Field(at = 35)
     private Double aliqCofinsQuant;
     
-    @Field(at = 35)
+    @Field(at = 36)
     private Double vlCofins;
     
-    @Field(at = 36)
+    @Field(at = 37)
     private String codCta;
     
     

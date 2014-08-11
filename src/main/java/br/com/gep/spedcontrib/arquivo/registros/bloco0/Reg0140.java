@@ -11,32 +11,34 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "0140")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "0140"),
+    @Field(at = 10, name = "fimLinha", literal = "")
 })
 public class Reg0140 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String codEst;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String nome;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private String cnpj;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private String uf;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private String ie;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private String codMun;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private String im;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private String suframa;
     
     

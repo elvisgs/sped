@@ -11,50 +11,52 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "M100")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "M100"),
+    @Field(at = 16, name = "fimLinha", literal = "")
 })
 public class RegM100 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String codCred;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String indCredOri;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private Double vlBcCred;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private Double aliqPis;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private Double quantBcPis;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private Double aliqPisQuant;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private Double vlCred;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private Double vlAjusAcres;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Double vlAjusReduc;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private Double vlCredDif;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private Double vlCredDisp;
     
-    @Field(at = 12)
+    @Field(at = 13)
     private String indDescCred;
     
-    @Field(at = 13)
+    @Field(at = 14)
     private Double vlCredDesc;
     
-    @Field(at = 14)
+    @Field(at = 15)
     private Double sldCred;
     
     

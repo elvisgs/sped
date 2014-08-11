@@ -11,44 +11,46 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "M210")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "M210"),
+    @Field(at = 14, name = "fimLinha", literal = "")
 })
 public class RegM210 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String codCont;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private Double vlRecBrt;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private Double vlBcCont;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private Double aliqPis;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private Double quantBcPis;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private Double aliqPisQuant;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private Double vlContApur;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private Double vlAjusAcres;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Double vlAjusReduc;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private Double vlContDifer;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private Double vlContDiferAnt;
     
-    @Field(at = 12)
+    @Field(at = 13)
     private Double vlContPer;
     
     

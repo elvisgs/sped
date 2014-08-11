@@ -11,41 +11,43 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "P100")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "P100"),
+    @Field(at = 13, name = "fimLinha", literal = "")
 })
 public class RegP100 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private Date dtIni;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private Date dtFim;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private Double vlRecTotEst;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private String codAtivEcon;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private Double vlRecAtivEstab;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private Double vlExc;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private Double vlBcCont;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private Double aliqCont;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Double vlContApu;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private String codCta;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private String infoCompl;
     
     

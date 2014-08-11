@@ -11,38 +11,40 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "F600")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "F600"),
+    @Field(at = 12, name = "fimLinha", literal = "")
 })
 public class RegF600 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String indNatRet;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private Date dtRet;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private Double vlBcRet;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private Double vlRet;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private String codRec;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private String indNatRec;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private String cnpj;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private Double vlRetPis;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Double vlRetCofins;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private String indDec;
     
     

@@ -11,62 +11,64 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "D600")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "D600"),
+    @Field(at = 20, name = "fimLinha", literal = "")
 })
 public class RegD600 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String codMod;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String codMun;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private String ser;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private String sub;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private String indRec;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private Integer qtdCons;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private Date dtDocIni;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private Date dtDocFin;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Double vlDoc;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private Double vlDesc;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private Double vlServ;
     
-    @Field(at = 12)
+    @Field(at = 13)
     private Double vlServNt;
     
-    @Field(at = 13)
+    @Field(at = 14)
     private Double vlTerc;
     
-    @Field(at = 14)
+    @Field(at = 15)
     private Double vlDa;
     
-    @Field(at = 15)
+    @Field(at = 16)
     private Double vlBcIcms;
     
-    @Field(at = 16)
+    @Field(at = 17)
     private Double vlIcms;
     
-    @Field(at = 17)
+    @Field(at = 18)
     private Double vlPis;
     
-    @Field(at = 18)
+    @Field(at = 19)
     private Double vlCofins;
     
     

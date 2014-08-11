@@ -11,23 +11,25 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "I200")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "I200"),
+    @Field(at = 7, name = "fimLinha", literal = "")
 })
 public class RegI200 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String numCampo;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String codDet;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private Double vlDet;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private String codCta;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private String infComp;
     
     

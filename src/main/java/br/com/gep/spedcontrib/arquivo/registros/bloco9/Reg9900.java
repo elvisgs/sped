@@ -11,14 +11,16 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "9900")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "9900"),
+    @Field(at = 4, name = "fimLinha", literal = "")
 })
 public class Reg9900 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String regBlc;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private Integer qtdRegBlc;
     
     

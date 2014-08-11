@@ -11,38 +11,40 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "D200")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "D200"),
+    @Field(at = 12, name = "fimLinha", literal = "")
 })
 public class RegD200 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String codMod;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String codSit;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private String ser;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private String sub;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private String numDocIni;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private String numDocFin;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private String cfop;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private Date dtRef;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Double vlDoc;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private Double vlDesc;
     
     

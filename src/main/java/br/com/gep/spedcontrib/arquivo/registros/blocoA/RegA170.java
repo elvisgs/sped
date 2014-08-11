@@ -11,59 +11,61 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "A170")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "A170"),
+    @Field(at = 19, name = "fimLinha", literal = "")
 })
 public class RegA170 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String numItem;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String codItem;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private String descrCompl;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private Double vlItem;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private Double vlDesc;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private String natBcCred;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private String indOrigCred;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private String cstPis;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Double vlBcPis;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private Double aliqPis;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private Double vlPis;
     
-    @Field(at = 12)
+    @Field(at = 13)
     private String cstCofins;
     
-    @Field(at = 13)
+    @Field(at = 14)
     private Double vlBcCofins;
     
-    @Field(at = 14)
+    @Field(at = 15)
     private Double aliqCofins;
     
-    @Field(at = 15)
+    @Field(at = 16)
     private Double vlCofins;
     
-    @Field(at = 16)
+    @Field(at = 17)
     private String codCta;
     
-    @Field(at = 17)
+    @Field(at = 18)
     private String codCcus;
     
     

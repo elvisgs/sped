@@ -11,92 +11,94 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "C100")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "C100"),
+    @Field(at = 30, name = "fimLinha", literal = "")
 })
 public class RegC100 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String indOper;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String indEmit;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private String codPart;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private String codMod;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private String codSit;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private String ser;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private String numDoc;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private String chvNfe;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Date dtDoc;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private Date dtES;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private Double vlDoc;
     
-    @Field(at = 12)
+    @Field(at = 13)
     private String indPgto;
     
-    @Field(at = 13)
+    @Field(at = 14)
     private Double vlDesc;
     
-    @Field(at = 14)
+    @Field(at = 15)
     private Double vlAbatNt;
     
-    @Field(at = 15)
+    @Field(at = 16)
     private Double vlMerc;
     
-    @Field(at = 16)
+    @Field(at = 17)
     private String indFrt;
     
-    @Field(at = 17)
+    @Field(at = 18)
     private Double vlFrt;
     
-    @Field(at = 18)
+    @Field(at = 19)
     private Double vlSeg;
     
-    @Field(at = 19)
+    @Field(at = 20)
     private Double vlOutDa;
     
-    @Field(at = 20)
+    @Field(at = 21)
     private Double vlBcIcms;
     
-    @Field(at = 21)
+    @Field(at = 22)
     private Double vlIcms;
     
-    @Field(at = 22)
+    @Field(at = 23)
     private Double vlBcIcmsSt;
     
-    @Field(at = 23)
+    @Field(at = 24)
     private Double vlIcmsSt;
     
-    @Field(at = 24)
+    @Field(at = 25)
     private Double vlIpi;
     
-    @Field(at = 25)
+    @Field(at = 26)
     private Double vlPis;
     
-    @Field(at = 26)
+    @Field(at = 27)
     private Double vlCofins;
     
-    @Field(at = 27)
+    @Field(at = 28)
     private Double vlPisSt;
     
-    @Field(at = 28)
+    @Field(at = 29)
     private Double vlCofinsSt;
     
     

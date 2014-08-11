@@ -11,17 +11,19 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "0035")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "0035"),
+    @Field(at = 5, name = "fimLinha", literal = "")
 })
 public class Reg0035 {
     
-    @Field(at = 1)
+    @Field(at = 3)
     private String codScp;
     
     @Field(at = 2)
     private String nomeScp;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private String infComp;
     
     

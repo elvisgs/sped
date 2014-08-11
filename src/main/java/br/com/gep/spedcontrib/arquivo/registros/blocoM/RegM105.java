@@ -11,35 +11,37 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "M105")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "M105"),
+    @Field(at = 11, name = "fimLinha", literal = "")
 })
 public class RegM105 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String natBcCred;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String cstPis;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private Double vlBcPisTot;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private Double vlBcPisCum;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private Double vlBcPisNc;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private Double vlBcPis;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private Double quantBcPisTot;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private Double quantBcPis;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private String descCred;
     
     

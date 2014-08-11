@@ -11,32 +11,34 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "1800")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "1800"),
+    @Field(at = 10, name = "fimLinha", literal = "")
 })
 public class Reg1800 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private String incImob;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private Double recRecebRet;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private Double recFinRet;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private Double bcRet;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private Double aliqRet;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private Double vlRecUni;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private Date dtRecUni;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private String codRec;
     
     

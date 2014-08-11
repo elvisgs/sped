@@ -11,53 +11,55 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "reg", rid = true, literal = "F550")
+    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 1, name = "reg", rid = true, literal = "F550"),
+    @Field(at = 17, name = "fimLinha", literal = "")
 })
 public class RegF550 {
     
-    @Field(at = 1)
+    @Field(at = 2)
     private Double vlRecComp;
     
-    @Field(at = 2)
+    @Field(at = 3)
     private String cstPis;
     
-    @Field(at = 3)
+    @Field(at = 4)
     private Double vlDescPis;
     
-    @Field(at = 4)
+    @Field(at = 5)
     private Double vlBcPis;
     
-    @Field(at = 5)
+    @Field(at = 6)
     private Double aliqPis;
     
-    @Field(at = 6)
+    @Field(at = 7)
     private Double vlPis;
     
-    @Field(at = 7)
+    @Field(at = 8)
     private String cstCofins;
     
-    @Field(at = 8)
+    @Field(at = 9)
     private Double vlDescCofins;
     
-    @Field(at = 9)
+    @Field(at = 10)
     private Double vlBcCofins;
     
-    @Field(at = 10)
+    @Field(at = 11)
     private Double aliqCofins;
     
-    @Field(at = 11)
+    @Field(at = 12)
     private Double vlCofins;
     
-    @Field(at = 12)
+    @Field(at = 13)
     private String codMod;
     
-    @Field(at = 13)
+    @Field(at = 14)
     private String cfop;
     
-    @Field(at = 14)
+    @Field(at = 15)
     private String codCta;
     
-    @Field(at = 15)
+    @Field(at = 16)
     private String infoCompl;
     
     
