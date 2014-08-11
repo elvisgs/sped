@@ -9,28 +9,34 @@ public class SpedContribWriter {
     private BeanWriter beanWriter;
 
     public SpedContribWriter(Writer writer) {
-        this.beanWriter = SpedContribWriterFactory.createBeanWriter(writer);
+        this.beanWriter = SpedContribWriterFactory.getInstance().createBeanWriter(writer);
     }
 
-    public SpedContribWriter(File file) throws IOException {
-        Writer fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "ISO-8859-1"));
-        this.beanWriter = SpedContribWriterFactory.createBeanWriter(fw);
+    public SpedContribWriter(File file) throws FileNotFoundException {
+        Writer fw = null;
+        try {
+            fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "ISO-8859-1"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        this.beanWriter = SpedContribWriterFactory.getInstance().createBeanWriter(fw);
     }
 
-    public void write(Object obj) throws IOException {
+    public void write(Object obj) {
         beanWriter.write(obj);
     }
 
-    public void writeAndFlush(Object obj) throws IOException {
+    public void writeAndFlush(Object obj) {
         write(obj);
         flush();
     }
 
-    public void flush() throws IOException {
+    public void flush() {
         beanWriter.flush();
     }
 
-    public void close() throws IOException {
+    public void close() {
         beanWriter.close();
     }
 }

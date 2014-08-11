@@ -25,26 +25,51 @@ import java.util.Date;
 
 public class SpedContribWriterFactory {
 
-    private static final String STREAM_NAME = "spedcontrib";
+    public static final String STREAM_NAME = "spedcontrib";
 
-    public static BeanWriter createBeanWriter(Writer writer) {
-        StreamFactory factory = StreamFactory.newInstance();
+    private static volatile SpedContribWriterFactory instance;
+    private StreamFactory streamFactory;
+
+    private SpedContribWriterFactory() {}
+
+    public static SpedContribWriterFactory getInstance() {
+        if (instance == null) {
+            synchronized (SpedContribWriterFactory.class) {
+                if (instance == null) {
+                    instance = new SpedContribWriterFactory();
+                    instance.initializeFactory();
+                }
+            }
+        }
+
+        return instance;
+    }
+
+    public StreamFactory getStreamFactory() {
+        return streamFactory;
+    }
+
+    public BeanWriter createBeanWriter(Writer writer) {
+        return streamFactory.createWriter(STREAM_NAME, writer);
+    }
+
+    private void initializeFactory() {
+        streamFactory = StreamFactory.newInstance();
 
         StreamBuilder builder = new StreamBuilder(STREAM_NAME)
+                .writeOnly()
                 .format("delimited")
                 .parser(new DelimitedParserBuilder('|'))
 
                 .addTypeHandler(Date.class, new DateTypeHandler("ddMMyyyy"))
                 .addTypeHandler(Double.class, new DoubleTypeHandler());
 
-        adicionarRegistros(builder);
+        addRecords(builder);
 
-        factory.define(builder);
-
-        return factory.createWriter(STREAM_NAME, writer);
+        streamFactory.define(builder);
     }
 
-    private static void adicionarRegistros(StreamBuilder builder) {
+    private void addRecords(StreamBuilder builder) {
         builder
                 .addRecord(Reg0000.class)
                 .addRecord(Reg0001.class)

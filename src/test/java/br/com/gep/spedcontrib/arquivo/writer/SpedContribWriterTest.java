@@ -3,7 +3,10 @@ package br.com.gep.spedcontrib.arquivo.writer;
 import br.com.gep.spedcontrib.arquivo.registros.bloco0.Reg0000;
 import br.com.gep.spedcontrib.arquivo.registros.bloco0.Reg0001;
 import br.com.gep.spedcontrib.arquivo.registros.blocoA.RegA170;
-import org.junit.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -28,7 +31,7 @@ public class SpedContribWriterTest {
     }
 
     @Test
-    public void delimitaCamposUsandoPipe() throws IOException {
+    public void delimitaCamposUsandoPipe() {
         Reg0001 reg = new Reg0001();
         reg.setIndMov("1");
 
@@ -39,7 +42,7 @@ public class SpedContribWriterTest {
     }
 
     @Test
-    public void terminaLinhaComPipe() throws IOException {
+    public void terminaLinhaComPipe() {
         Reg0001 reg = new Reg0001();
         reg.setIndMov("1");
 
@@ -61,7 +64,7 @@ public class SpedContribWriterTest {
     }
 
     @Test
-    public void usaFormatoDDMMYYYYNasDatas() throws ParseException, IOException {
+    public void usaFormatoDDMMYYYYNasDatas() throws ParseException {
         Reg0000 reg = new Reg0000();
         reg.setDtIni(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2014"));
 
@@ -72,7 +75,7 @@ public class SpedContribWriterTest {
     }
 
     @Test
-    public void formataDecimaisSemPontoEComVirgula() throws IOException {
+    public void formataDecimaisSemPontoEComVirgula() {
         RegA170 reg = new RegA170();
         reg.setVlItem(1000D);
 
@@ -83,7 +86,7 @@ public class SpedContribWriterTest {
     }
 
     @After
-    public void after() throws IOException {
+    public void after() {
         if (writer != null) {
             writer.flush();
         }
@@ -93,7 +96,7 @@ public class SpedContribWriterTest {
     }
 
     @AfterClass
-    public static void closeWriter() throws IOException {
+    public static void closeWriter() {
         if (writer != null) {
             writer.close();
         }
