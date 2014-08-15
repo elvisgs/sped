@@ -1,5 +1,6 @@
 package br.com.gep.spedcontrib.arquivo.registros.blocoA;
 
+import br.com.gep.spedcontrib.arquivo.registros.Registro;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -15,7 +16,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "A010"),
     @Field(at = 3, name = "fimLinha", literal = "")
 })
-public class RegA010 {
+public class RegA010 extends Registro {
     
     @Field(at = 2)
     private String cnpj;
