@@ -1,6 +1,7 @@
 package br.com.gep.sped.contrib.batch.common;
 
 import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
+import br.com.gep.spedcontrib.arquivo.registros.Registro;
 import org.springframework.batch.core.ItemWriteListener;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -21,7 +22,10 @@ public class StepFactory {
     private ItemWriterConfig itemWriters;
 
     @Autowired
-    protected RegCounter regCounter;
+    private RegCounter regCounter;
+
+    @Autowired
+    private RegIdHolder regIdHolder;
 
     public TaskletStep create(String name, Tasklet tasklet) {
         return stepBuilder.get(name)
@@ -30,12 +34,12 @@ public class StepFactory {
                 .build();
     }
 
-    public <T> TaskletStep create(String name, int chunk, ItemReader<T> reader) {
+    public <R extends Registro> TaskletStep create(String name, int chunk, ItemReader<R> reader) {
         TaskletStep step = stepBuilder.get(name)
-                .<T, T>chunk(chunk)
+                .<R, R>chunk(chunk)
                 .reader(reader)
-                .writer(itemWriters.<T>beanIOWriter())
-                .listener(new IncrementRegCountListener<T>())
+                .writer(itemWriters.<R>beanIOWriter())
+                .listener(new IncrementRegCountListener<R>())
                 .build();
 
         step.setAllowStartIfComplete(true);
@@ -43,19 +47,21 @@ public class StepFactory {
         return step;
     }
 
-    private class IncrementRegCountListener<T> implements ItemWriteListener<T> {
+    private class IncrementRegCountListener<R extends Registro> implements ItemWriteListener<R> {
 
         @Override
-        public void beforeWrite(List<? extends T> items) {
+        public void beforeWrite(List<? extends R> items) {
         }
 
         @Override
-        public void afterWrite(List<? extends T> items) {
-            regCounter.incrementCount(items.get(0).getClass(), items.size());
+        public void afterWrite(List<? extends R> items) {
+            Class<? extends Registro> regClass = items.get(0).getClass();
+            regIdHolder.setId(regClass, items.get(items.size() - 1).getId());
+            regCounter.incrementCount(regClass, items.size());
         }
 
         @Override
-        public void onWriteError(Exception exception, List<? extends T> items) {
+        public void onWriteError(Exception exception, List<? extends R> items) {
         }
     }
 }

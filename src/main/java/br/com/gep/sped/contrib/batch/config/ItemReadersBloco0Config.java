@@ -1,24 +1,14 @@
 package br.com.gep.sped.contrib.batch.config;
 
 import br.com.gep.sped.contrib.batch.common.ItemReaderFactory;
-import br.com.gep.sped.contrib.batch.common.Selects;
-import br.com.gep.spedcontrib.arquivo.registros.bloco0.Reg0000;
-import br.com.gep.spedcontrib.arquivo.registros.bloco0.Reg0140;
-import br.com.gep.spedcontrib.arquivo.registros.blocoA.RegA010;
-import br.com.gep.spedcontrib.arquivo.registros.blocoA.RegA100;
+import br.com.gep.sped.contrib.batch.common.KeepOpenedItemStreamReader;
+import br.com.gep.spedcontrib.arquivo.registros.bloco0.*;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.PreparedStatementSetter;
-
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
@@ -33,7 +23,100 @@ public class ItemReadersBloco0Config {
     }
 
     @Bean
-    public ItemReader<Reg0140> reg0140ItemReader() {
-        return itemReaderFactory.createJdbcCursorItemReader(Reg0140.class);
+    public ItemReader<Reg0001> reg0001ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0001.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0035> reg0035ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0035.class, Reg0001.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0100> reg0100ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0100.class, Reg0001.class);
+    }
+
+    @Bean
+    public ItemStreamReader<Reg0110> reg0110ItemReader() {
+        // TODO: verificar porque a coluna ind_reg_cum não existe
+        JdbcCursorItemReader<Reg0110> reader = itemReaderFactory
+                .createJdbcCursorItemReader(Reg0110.class, Reg0001.class);
+
+        return new KeepOpenedItemStreamReader<Reg0110>(reader);
+    }
+
+    @Bean
+    public ItemReader<Reg0111> reg0111ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0111.class, Reg0110.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0120> reg0120ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0120.class, Reg0001.class);
+    }
+
+    @Bean
+    public ItemStreamReader<Reg0140> reg0140ItemReader() {
+        JdbcCursorItemReader<Reg0140> reader = itemReaderFactory.createJdbcCursorItemReader(Reg0140.class, Reg0001.class);
+        return new KeepOpenedItemStreamReader<Reg0140>(reader);
+    }
+
+    @Bean
+    public ItemReader<Reg0145> reg0145ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0145.class, Reg0140.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0150> reg0150ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0150.class, Reg0140.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0190> reg0190ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0190.class, Reg0140.class);
+    }
+
+    @Bean
+    public ItemStreamReader<Reg0200> reg0200ItemReader() {
+        JdbcCursorItemReader<Reg0200> reader = itemReaderFactory
+                .createJdbcCursorItemReader(Reg0200.class, Reg0140.class);
+
+        return new KeepOpenedItemStreamReader<Reg0200>(reader);
+    }
+
+    @Bean
+    public ItemReader<Reg0205> reg0205ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0205.class, Reg0200.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0206> reg0206ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0206.class, Reg0200.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0208> reg0208ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0208.class, Reg0200.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0400> reg0400ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0400.class, Reg0140.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0450> reg0450ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0450.class, Reg0140.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0500> reg0500ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0500.class, Reg0001.class);
+    }
+
+    @Bean
+    public ItemReader<Reg0600> reg0600ItemReader() {
+        return itemReaderFactory.createJdbcCursorItemReader(Reg0600.class, Reg0001.class);
     }
 }

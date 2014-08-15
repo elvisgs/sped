@@ -24,13 +24,14 @@ public class RegA990Tasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-        int count = regCounter.getCount(RegA010.class);
+        int count = regCounter.getCount(RegA001.class);
+        count += regCounter.getCount(RegA010.class);
         count += regCounter.getCount(RegA100.class);
         count += regCounter.getCount(RegA110.class);
         count += regCounter.getCount(RegA111.class);
         count += regCounter.getCount(RegA120.class);
         count += regCounter.getCount(RegA170.class);
-        count += 2;
+        count += 1;
 
         RegA990 regA990 = new RegA990();
         regA990.setQtdLinA(count);
