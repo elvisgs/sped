@@ -31,7 +31,7 @@ public class JobConfig {
                 .next(stepsBloco0.stepReg0001())
                 //.next(stepsBloco0.stepReg0035()) // TODO: verificar porque tabela não existe
                 .next(stepsBloco0.stepReg0100())
-                .next(stepsBloco0.stepReg0110())
+                /*.next(stepsBloco0.stepReg0110())
                     .on(PROCESS_CHILD_REG_CODE).to(stepsBloco0.stepReg0111())
                     .from(stepsBloco0.stepReg0110())
                     .on(NO_MORE_REG_CODE).to(stepsBloco0.stepReg0120())
@@ -57,7 +57,7 @@ public class JobConfig {
                 .next(stepsBloco0.stepReg0450())
                     .on("*").to(stepsBloco0.stepReg0140())
                 .from(stepsBloco0.stepReg0500())
-                .next(stepsBloco0.stepReg0600())
+                .next(stepsBloco0.stepReg0600())*/
                 .next(stepsBloco0.stepReg0990())
 
                 // Bloco A
@@ -75,6 +75,7 @@ public class JobConfig {
                 .next(stepsBlocoA.stepRegA120())
                 .next(stepsBlocoA.stepRegA170())
                     .on("*").to(stepsBlocoA.stepRegA100())
+                .from(stepsBlocoA.stepRegA990())
 
                 .end()
                 .build();

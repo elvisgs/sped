@@ -1,13 +1,15 @@
 package br.com.gep.sped.contrib.batch.config;
 
 import br.com.gep.sped.contrib.batch.common.StepFactory;
-import br.com.gep.sped.contrib.batch.tasklets.RegA010Tasklet;
-import br.com.gep.sped.contrib.batch.tasklets.RegA100Tasklet;
-import br.com.gep.sped.contrib.batch.tasklets.RegA990Tasklet;
+import br.com.gep.sped.contrib.batch.common.TaskletFactory;
+import br.com.gep.spedcontrib.arquivo.registros.blocoA.*;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
@@ -19,13 +21,7 @@ public class StepsBlocoAConfig {
     private StepFactory stepFactory;
 
     @Autowired
-    private RegA010Tasklet regA010Tasklet;
-
-    @Autowired
-    private RegA100Tasklet regA100Tasklet;
-
-    @Autowired
-    private RegA990Tasklet regA990Tasklet;
+    private TaskletFactory taskletFactory;
 
     @Autowired
     private ItemReadersBlocoAConfig itemReaders;
@@ -37,12 +33,18 @@ public class StepsBlocoAConfig {
 
     @Bean
     public Step stepRegA010() {
-        return stepFactory.create("stepRegA010", regA010Tasklet);
+        Tasklet tasklet = taskletFactory
+                .createRegWithChildrenTasklet(RegA010.class, itemReaders.regA010ItemReader());
+
+        return stepFactory.create("stepRegA010", tasklet);
     }
 
     @Bean
     public Step stepRegA100() {
-        return stepFactory.create("stepRegA100", regA100Tasklet);
+        Tasklet tasklet = taskletFactory
+                .createRegWithChildrenTasklet(RegA100.class, itemReaders.regA100ItemReader());
+
+        return stepFactory.create("stepRegA100", tasklet);
     }
 
     @Bean
@@ -67,6 +69,10 @@ public class StepsBlocoAConfig {
 
     @Bean
     public Step stepRegA990() {
-        return stepFactory.create("stepRegA990", regA990Tasklet);
+        Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegA990.class, Arrays.asList(
+                RegA001.class, RegA010.class, RegA100.class, RegA110.class,
+                RegA111.class, RegA120.class, RegA170.class));
+
+        return stepFactory.create("stepRegA990", tasklet);
     }
 }

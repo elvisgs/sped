@@ -1,7 +1,7 @@
 package br.com.gep.sped.contrib.batch.common;
 
 import br.com.gep.sped.contrib.batch.config.DatabaseConfig;
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -22,7 +22,7 @@ public class ItemReaderFactory {
     @Autowired
     private Selects selects;
 
-    public <R extends Registro, P extends Registro> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass, Class<P> parentClass, String sql) {
+    public <R extends RegBase, P extends RegBase> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass, Class<P> parentClass, String sql) {
         JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<R>();
         reader.setDataSource(databaseConfig.dataSource());
         reader.setSql(replaceSchema(sql));
@@ -35,15 +35,15 @@ public class ItemReaderFactory {
         return reader;
     }
 
-    public <R extends Registro> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass, String sql) {
+    public <R extends RegBase> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass, String sql) {
         return createJdbcCursorItemReader(regClass, null, sql);
     }
 
-    public <R extends Registro, P extends Registro> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass, Class<P> parentClass) {
+    public <R extends RegBase, P extends RegBase> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass, Class<P> parentClass) {
         return createJdbcCursorItemReader(regClass, parentClass, selects.get(regClass));
     }
 
-    public <R extends Registro> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass) {
+    public <R extends RegBase> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass) {
         return createJdbcCursorItemReader(regClass, null, selects.get(regClass));
     }
 

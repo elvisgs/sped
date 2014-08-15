@@ -1,7 +1,7 @@
 package br.com.gep.sped.contrib.batch.common;
 
 import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.springframework.batch.core.ItemWriteListener;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -34,7 +34,7 @@ public class StepFactory {
                 .build();
     }
 
-    public <R extends Registro> TaskletStep create(String name, int chunk, ItemReader<R> reader) {
+    public <R extends RegBase> TaskletStep create(String name, int chunk, ItemReader<R> reader) {
         TaskletStep step = stepBuilder.get(name)
                 .<R, R>chunk(chunk)
                 .reader(reader)
@@ -47,7 +47,7 @@ public class StepFactory {
         return step;
     }
 
-    private class IncrementRegCountListener<R extends Registro> implements ItemWriteListener<R> {
+    private class IncrementRegCountListener<R extends RegBase> implements ItemWriteListener<R> {
 
         @Override
         public void beforeWrite(List<? extends R> items) {
@@ -55,7 +55,7 @@ public class StepFactory {
 
         @Override
         public void afterWrite(List<? extends R> items) {
-            Class<? extends Registro> regClass = items.get(0).getClass();
+            Class<? extends RegBase> regClass = items.get(0).getClass();
             regIdHolder.setId(regClass, items.get(items.size() - 1).getId());
             regCounter.incrementCount(regClass, items.size());
         }
