@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>br.com.gep.sped</groupId>
+    <artifactId>batch-sped-contrib</artifactId>
+    <version>0.1.0</version>
+
+    <properties>
+        <spring.version>4.0.6.RELEASE</spring.version>
+        <spring.batch.version>3.0.1.RELEASE</spring.batch.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>${spring.batch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-infrastructure</artifactId>
+            <version>${spring.batch.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901.jdbc3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.gep.sped</groupId>
+            <artifactId>layout-sped-contrib</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <url>http://repo.spring.io/libs-release</url>
+        </repository>
+        <repository>
+            <id>spring-s3</id>
+            <name>Spring Maven MILESTONE Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </repository>
+    </repositories>
+    
+</project>
