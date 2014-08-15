@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.sped.contrib.batch.common.ItemReaderFactory;
+import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.sped.contrib.batch.common.KeepOpenedItemStreamReader;
 import br.com.gep.spedcontrib.arquivo.registros.bloco0.*;
 import org.springframework.batch.item.ItemReader;

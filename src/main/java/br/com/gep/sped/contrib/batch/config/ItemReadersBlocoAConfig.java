@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.sped.contrib.batch.common.ItemReaderFactory;
+import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.sped.contrib.batch.common.KeepOpenedItemStreamReader;
 import br.com.gep.spedcontrib.arquivo.registros.blocoA.*;
 import org.springframework.batch.item.ItemReader;
@@ -9,7 +9,6 @@ import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration

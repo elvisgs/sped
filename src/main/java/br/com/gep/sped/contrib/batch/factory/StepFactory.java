@@ -1,5 +1,7 @@
-package br.com.gep.sped.contrib.batch.common;
+package br.com.gep.sped.contrib.batch.factory;
 
+import br.com.gep.sped.contrib.batch.common.RegCounter;
+import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
 import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.springframework.batch.core.ItemWriteListener;
