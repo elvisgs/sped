@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.bloco0;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * 0208 - Grupos por Marca Comercial - REFRI
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "0208"),
     @Field(at = 5, name = "fimLinha", literal = "")
 })
-public class Reg0208 extends Registro {
+public class Reg0208 extends RegBase {
     
     @Field(at = 2)
     private String codTab;

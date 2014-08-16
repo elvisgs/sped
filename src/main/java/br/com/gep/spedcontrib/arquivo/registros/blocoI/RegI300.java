@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.blocoI;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * I300 - Complemento das Operações - Informações Complementares de Receitas, Deduções e/ou Exclusões
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "I300"),
     @Field(at = 6, name = "fimLinha", literal = "")
 })
-public class RegI300 extends Registro {
+public class RegI300 extends RegBase {
     
     @Field(at = 2)
     private String codComp;

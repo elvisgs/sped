@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.bloco0;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Identificação de Períodos Dispensados da Escrituração Fiscal Digital das Contribuições
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "0120"),
     @Field(at = 4, name = "fimLinha", literal = "")
 })
-public class Reg0120 extends Registro {
+public class Reg0120 extends RegBase {
     
     @Field(at = 2)
     private String mesDispensa;

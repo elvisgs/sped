@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.bloco1;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Consolidação dos documentos emitidos no período por pessoa jurídica submetida ao regime de tributação com base no lucro presumido - regime de caixa ou de competência
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "1900"),
     @Field(at = 14, name = "fimLinha", literal = "")
 })
-public class Reg1900 extends Registro {
+public class Reg1900 extends RegBase {
     
     @Field(at = 2)
     private String cnpj;

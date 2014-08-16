@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.blocoI;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * I200 - Detalhamento das Receitas, Deduções e/ou Exclusões do Período
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "I200"),
     @Field(at = 7, name = "fimLinha", literal = "")
 })
-public class RegI200 extends Registro {
+public class RegI200 extends RegBase {
     
     @Field(at = 2)
     private String numCampo;

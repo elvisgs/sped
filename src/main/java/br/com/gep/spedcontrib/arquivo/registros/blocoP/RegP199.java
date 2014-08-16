@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.blocoP;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * P199 - Processo Referenciado
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "P199"),
     @Field(at = 4, name = "fimLinha", literal = "")
 })
-public class RegP199 extends Registro {
+public class RegP199 extends RegBase {
     
     @Field(at = 2)
     private String numProc;

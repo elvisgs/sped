@@ -1,6 +1,6 @@
 package br.com.gep.spedcontrib.arquivo.registros;
 
-public abstract class Registro {
+public abstract class RegBase {
 
     protected Integer id;
 

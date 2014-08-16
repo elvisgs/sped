@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.blocoM;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * M800 - Receitas Isentas ou Não Alcançadas pela Incidência da Contribuição ou Sujeitas à Alíquota Zero ou com Suspensão - COFINS
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "M800"),
     @Field(at = 6, name = "fimLinha", literal = "")
 })
-public class RegM800 extends Registro {
+public class RegM800 extends RegBase {
     
     @Field(at = 2)
     private String cstCofins;

@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.blocoA;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegEncerramentoBlocoBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Encerramento do Bloco A
@@ -16,25 +14,5 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "A990"),
     @Field(at = 3, name = "fimLinha", literal = "")
 })
-public class RegA990 extends Registro {
-    
-    @Field(at = 2)
-    private Integer qtdLinA;
-    
-    
-    /**
-     * Obtém Quantidade total de linhas do Bloco A
-     */
-    public Integer getQtdLinA() {
-        return qtdLinA;
-    }
-
-    /**
-     * Seta Quantidade total de linhas do Bloco A
-     */
-    public void setQtdLinA(Integer qtdLinA) {
-        this.qtdLinA = qtdLinA;
-    }
-    
-    
+public class RegA990 extends RegEncerramentoBlocoBase {
 }

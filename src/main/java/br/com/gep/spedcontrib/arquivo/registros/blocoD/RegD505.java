@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.blocoD;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * D505 - Complemento da Operação - COFINS
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "D505"),
     @Field(at = 9, name = "fimLinha", literal = "")
 })
-public class RegD505 extends Registro {
+public class RegD505 extends RegBase {
     
     @Field(at = 2)
     private String cstCofins;

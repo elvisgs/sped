@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.blocoM;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * M500 - Crédito de COFINS Relativo ao Período
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "M500"),
     @Field(at = 16, name = "fimLinha", literal = "")
 })
-public class RegM500 extends Registro {
+public class RegM500 extends RegBase {
     
     @Field(at = 2)
     private String codCred;

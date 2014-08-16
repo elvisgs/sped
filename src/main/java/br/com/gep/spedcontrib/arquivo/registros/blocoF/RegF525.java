@@ -1,11 +1,9 @@
 package br.com.gep.spedcontrib.arquivo.registros.blocoF;
 
-import br.com.gep.spedcontrib.arquivo.registros.Registro;
+import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * F525 - Composição da receita escriturada no período - detalhamento da receita recebida pelo regime de caixa
@@ -16,7 +14,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "F525"),
     @Field(at = 12, name = "fimLinha", literal = "")
 })
-public class RegF525 extends Registro {
+public class RegF525 extends RegBase {
     
     @Field(at = 2)
     private Double vlRec;
