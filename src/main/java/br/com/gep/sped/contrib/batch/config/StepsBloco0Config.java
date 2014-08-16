@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch.config;
 
+import br.com.gep.sped.contrib.batch.common.Constants;
 import br.com.gep.sped.contrib.batch.factory.StepFactory;
 import br.com.gep.sped.contrib.batch.factory.TaskletFactory;
 import br.com.gep.spedcontrib.arquivo.registros.bloco0.*;
@@ -14,8 +15,6 @@ import java.util.Arrays;
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 public class StepsBloco0Config {
-
-    private static final int PAGE_SIZE = 10;
 
     @Autowired
     private StepFactory stepFactory;
@@ -37,12 +36,12 @@ public class StepsBloco0Config {
     }
     @Bean
     public Step stepReg0035() {
-        return stepFactory.create("stepReg0035", PAGE_SIZE, itemReaders.reg0035ItemReader());
+        return stepFactory.create("stepReg0035", Constants.CHUNK_SIZE, itemReaders.reg0035ItemReader());
     }
 
     @Bean
     public Step stepReg0100() {
-        return stepFactory.create("stepReg0100", PAGE_SIZE, itemReaders.reg0100ItemReader());
+        return stepFactory.create("stepReg0100", Constants.CHUNK_SIZE, itemReaders.reg0100ItemReader());
     }
 
     @Bean
@@ -55,12 +54,12 @@ public class StepsBloco0Config {
 
     @Bean
     public Step stepReg0111() {
-        return stepFactory.create("stepReg0111", PAGE_SIZE, itemReaders.reg0111ItemReader());
+        return stepFactory.create("stepReg0111", Constants.CHUNK_SIZE, itemReaders.reg0111ItemReader());
     }
 
     @Bean
     public Step stepReg0120() {
-        return stepFactory.create("stepReg0120", PAGE_SIZE, itemReaders.reg0120ItemReader());
+        return stepFactory.create("stepReg0120", Constants.CHUNK_SIZE, itemReaders.reg0120ItemReader());
     }
 
     @Bean
@@ -73,17 +72,17 @@ public class StepsBloco0Config {
 
     @Bean
     public Step stepReg0145() {
-        return stepFactory.create("stepReg0145", PAGE_SIZE, itemReaders.reg0145ItemReader());
+        return stepFactory.create("stepReg0145", Constants.CHUNK_SIZE, itemReaders.reg0145ItemReader());
     }
 
     @Bean
     public Step stepReg0150() {
-        return stepFactory.create("stepReg0150", PAGE_SIZE, itemReaders.reg0150ItemReader());
+        return stepFactory.create("stepReg0150", Constants.CHUNK_SIZE, itemReaders.reg0150ItemReader());
     }
 
     @Bean
     public Step stepReg0190() {
-        return stepFactory.create("stepReg0190", PAGE_SIZE, itemReaders.reg0190ItemReader());
+        return stepFactory.create("stepReg0190", Constants.CHUNK_SIZE, itemReaders.reg0190ItemReader());
     }
 
     @Bean
@@ -96,37 +95,37 @@ public class StepsBloco0Config {
 
     @Bean
     public Step stepReg0205() {
-        return stepFactory.create("stepReg0205", PAGE_SIZE, itemReaders.reg0205ItemReader());
+        return stepFactory.create("stepReg0205", Constants.CHUNK_SIZE, itemReaders.reg0205ItemReader());
     }
 
     @Bean
     public Step stepReg0206() {
-        return stepFactory.create("stepReg0206", PAGE_SIZE, itemReaders.reg0206ItemReader());
+        return stepFactory.create("stepReg0206", Constants.CHUNK_SIZE, itemReaders.reg0206ItemReader());
     }
 
     @Bean
     public Step stepReg0208() {
-        return stepFactory.create("stepReg0208", PAGE_SIZE, itemReaders.reg0208ItemReader());
+        return stepFactory.create("stepReg0208", Constants.CHUNK_SIZE, itemReaders.reg0208ItemReader());
     }
 
     @Bean
     public Step stepReg0400() {
-        return stepFactory.create("stepReg0400", PAGE_SIZE, itemReaders.reg0400ItemReader());
+        return stepFactory.create("stepReg0400", Constants.CHUNK_SIZE, itemReaders.reg0400ItemReader());
     }
 
     @Bean
     public Step stepReg0450() {
-        return stepFactory.create("stepReg0450", PAGE_SIZE, itemReaders.reg0450ItemReader());
+        return stepFactory.create("stepReg0450", Constants.CHUNK_SIZE, itemReaders.reg0450ItemReader());
     }
 
     @Bean
     public Step stepReg0500() {
-        return stepFactory.create("stepReg0500", PAGE_SIZE, itemReaders.reg0500ItemReader());
+        return stepFactory.create("stepReg0500", Constants.CHUNK_SIZE, itemReaders.reg0500ItemReader());
     }
 
     @Bean
     public Step stepReg0600() {
-        return stepFactory.create("stepReg0600", PAGE_SIZE, itemReaders.reg0600ItemReader());
+        return stepFactory.create("stepReg0600", Constants.CHUNK_SIZE, itemReaders.reg0600ItemReader());
     }
 
     @Bean
