@@ -2,6 +2,9 @@ package br.com.gep.sped.contrib.batch.config;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.job.builder.FlowBuilder;
+import org.springframework.batch.core.job.flow.Flow;
+import org.springframework.batch.core.job.flow.support.SimpleFlow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,10 +34,19 @@ public class JobConfig {
     @Bean
     public Job spedContribJob() {
         return jobBuilder.get("spedContribJob")
-
-                // Bloco 0
                 .flow(stepsBloco0.stepReg0000())
-                .next(stepsBloco0.stepReg0001())
+                .next(flowBloco0())
+                .next(flowBlocoA())
+                .next(flowBlocoC())
+                .next(flowBlocoD())
+                .end()
+                .build();
+    }
+
+    @Bean
+    public Flow flowBloco0() {
+        return new FlowBuilder<SimpleFlow>("flowBloco0")
+                .start(stepsBloco0.stepReg0001())
                 //.next(stepsBloco0.stepReg0035()) // TODO: verificar porque tabela não existe
                 .next(stepsBloco0.stepReg0100())
                 .next(stepsBloco0.stepReg0110())
@@ -65,9 +77,13 @@ public class JobConfig {
                 .from(stepsBloco0.stepReg0500())
                 .next(stepsBloco0.stepReg0600())
                 .next(stepsBloco0.stepReg0990())
+                .end();
+    }
 
-                // Bloco A
-                .next(stepsBlocoA.stepRegA001())
+    @Bean
+    public Flow flowBlocoA() {
+        return new FlowBuilder<SimpleFlow>("flowBlocoA")
+                .start(stepsBlocoA.stepRegA001())
                 .next(stepsBlocoA.stepRegA010())
                     .on(PROCESS_CHILD_REG).to(stepsBlocoA.stepRegA100())
                     .from(stepsBlocoA.stepRegA010())
@@ -82,9 +98,13 @@ public class JobConfig {
                 .next(stepsBlocoA.stepRegA170())
                     .on("*").to(stepsBlocoA.stepRegA100())
                 .from(stepsBlocoA.stepRegA990())
+                .end();
+    }
 
-                // Bloco C
-                .next(stepsBlocoC.stepRegC001())
+    @Bean
+    public Flow flowBlocoC() {
+        return new FlowBuilder<SimpleFlow>("flowBlocoC")
+                .start(stepsBlocoC.stepRegC001())
                 .next(stepsBlocoC.stepRegC010())
                     .on(PROCESS_CHILD_REG).to(stepsBlocoC.stepRegC100())
                     .from(stepsBlocoC.stepRegC010())
@@ -167,9 +187,13 @@ public class JobConfig {
                 .next(stepsBlocoC.stepRegC609())
                     .on("*").to(stepsBlocoC.stepRegC600())
                 .from(stepsBlocoC.stepRegC990())
+                .end();
+    }
 
-                // Bloco D
-                .next(stepsBlocoD.stepRegD001())
+    @Bean
+    public Flow flowBlocoD() {
+        return new FlowBuilder<SimpleFlow>("flowBlocoD")
+                .start(stepsBlocoD.stepRegD001())
                 .next(stepsBlocoD.stepRegD010())
                     .on(PROCESS_CHILD_REG).to(stepsBlocoD.stepRegD100())
                     .from(stepsBlocoD.stepRegD010())
@@ -219,8 +243,6 @@ public class JobConfig {
                 .next(stepsBlocoD.stepRegD609())
                     .on("*").to(stepsBlocoD.stepRegD600())
                 .from(stepsBlocoD.stepRegD990())
-
-                .end()
-                .build();
+                .end();
     }
 }
