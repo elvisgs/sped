@@ -44,6 +44,9 @@ public class JobConfig {
     @Autowired
     private StepsBlocoPConfig stepsBlocoP;
 
+    @Autowired
+    private StepsBloco1Config stepsBloco1;
+
     @Bean
     public Job spedContribJob() {
         return jobBuilder.get("spedContribJob")
@@ -56,6 +59,7 @@ public class JobConfig {
                 //.next(flowBlocoI()) // TODO: adicionar tabelas do bloco I no BD
                 .next(flowBlocoM())
                 .next(flowBlocoP())
+                .next(flowBloco1())
                 .end()
                 .build();
     }
@@ -453,6 +457,23 @@ public class JobConfig {
                 .from(stepsBlocoP.stepRegP210())
                     .on("*").to(stepsBlocoP.stepRegP200())
                 .from(stepsBlocoP.stepRegP990())
+                .end();
+    }
+
+    @Bean
+    public Flow flowBloco1() {
+        // TODO: existem vários registros que não estão mapeados aqui. Ver necessidade de implementá-los
+        return new FlowBuilder<SimpleFlow>("flowBloco1")
+                .start(stepsBloco1.stepReg1001())
+                .next(stepsBloco1.stepReg1010())
+                .next(stepsBloco1.stepReg1020())
+                .next(stepsBloco1.stepReg1100())
+                .next(stepsBloco1.stepReg1300())
+                .next(stepsBloco1.stepReg1500())
+                .next(stepsBloco1.stepReg1700())
+                .next(stepsBloco1.stepReg1800())
+                //.next(stepsBloco1.stepReg1900()) // TODO: criar tabela do reg1900 no BD
+                .next(stepsBloco1.stepReg1990())
                 .end();
     }
 }
