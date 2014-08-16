@@ -41,12 +41,14 @@ public class ClosingBlocRegTasklet<C extends RegEncerramentoBlocoBase> implement
             count += regCounter.getCount(klass);
         }
 
-        C reg = closingBlocRegClass.newInstance();
-        reg.setQtdLin(count);
+        if (count > 1) {
+            C reg = closingBlocRegClass.newInstance();
+            reg.setQtdLin(count);
 
-        writer.open(chunkContext.getStepContext().getStepExecution().getExecutionContext());
-        writer.write(Arrays.asList(reg));
-        writer.close();
+            writer.open(chunkContext.getStepContext().getStepExecution().getExecutionContext());
+            writer.write(Arrays.asList(reg));
+            writer.close();
+        }
 
         return RepeatStatus.FINISHED;
     }

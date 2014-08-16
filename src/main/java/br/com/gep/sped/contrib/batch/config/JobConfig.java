@@ -41,6 +41,9 @@ public class JobConfig {
     @Autowired
     private StepsBlocoMConfig stepsBlocoM;
 
+    @Autowired
+    private StepsBlocoPConfig stepsBlocoP;
+
     @Bean
     public Job spedContribJob() {
         return jobBuilder.get("spedContribJob")
@@ -50,8 +53,9 @@ public class JobConfig {
                 .next(flowBlocoC())
                 .next(flowBlocoD())
                 .next(flowBlocoF())
-                //.next(flowBlocoI())
+                //.next(flowBlocoI()) // TODO: adicionar tabelas do bloco I no BD
                 .next(flowBlocoM())
+                .next(flowBlocoP())
                 .end()
                 .build();
     }
@@ -423,6 +427,32 @@ public class JobConfig {
                 .from(stepsBlocoM.stepRegM810())
                     .on("*").to(stepsBlocoM.stepRegM800())
                 .from(stepsBlocoM.stepRegM990())
+                .end();
+    }
+
+    @Bean
+    @Lazy
+    public Flow flowBlocoP() {
+        return new FlowBuilder<SimpleFlow>("flowBlocoP")
+                .start(stepsBlocoP.stepRegP001())
+                .next(stepsBlocoP.stepRegP010())
+                    .on(PROCESS_CHILD_REG).to(stepsBlocoP.stepRegP100())
+                    .from(stepsBlocoP.stepRegP010())
+                    .on(NO_MORE_REG).to(stepsBlocoP.stepRegP200())
+                .from(stepsBlocoP.stepRegP100())
+                    .on(PROCESS_CHILD_REG).to(stepsBlocoP.stepRegP110())
+                    .from(stepsBlocoP.stepRegP100())
+                    .on(NO_MORE_REG).to(stepsBlocoP.stepRegP010())
+                .from(stepsBlocoP.stepRegP110())
+                .next(stepsBlocoP.stepRegP199())
+                    .on("*").to(stepsBlocoP.stepRegP100())
+                .from(stepsBlocoP.stepRegP200())
+                    .on(PROCESS_CHILD_REG).to(stepsBlocoP.stepRegP210())
+                    .from(stepsBlocoP.stepRegP200())
+                    .on(NO_MORE_REG).to(stepsBlocoP.stepRegP990())
+                .from(stepsBlocoP.stepRegP210())
+                    .on("*").to(stepsBlocoP.stepRegP200())
+                .from(stepsBlocoP.stepRegP990())
                 .end();
     }
 }

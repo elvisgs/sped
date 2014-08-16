@@ -63,7 +63,8 @@ public class StepFactory {
         @Override
         public void afterWrite(List<? extends R> items) {
             Class<? extends RegBase> regClass = items.get(0).getClass();
-            regIdHolder.setId(regClass, items.get(items.size() - 1).getId());
+            R lastItem = items.get(items.size() - 1);
+            regIdHolder.setId(regClass, lastItem.getId());
             regCounter.incrementCount(regClass, items.size());
         }
 
