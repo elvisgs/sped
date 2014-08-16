@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch.factory;
 
+import br.com.gep.sped.contrib.batch.common.Constants;
 import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
@@ -36,9 +37,9 @@ public class StepFactory {
                 .build();
     }
 
-    public <R extends RegBase> TaskletStep create(String name, int chunk, ItemReader<R> reader) {
+    public <R extends RegBase> TaskletStep create(String name, ItemReader<R> reader, int chunkSize) {
         TaskletStep step = stepBuilder.get(name)
-                .<R, R>chunk(chunk)
+                .<R, R>chunk(chunkSize)
                 .reader(reader)
                 .writer(itemWriters.<R>beanIOWriter())
                 .listener(new IncrementRegCountListener<R>())
@@ -47,6 +48,10 @@ public class StepFactory {
         step.setAllowStartIfComplete(true);
 
         return step;
+    }
+
+    public <R extends RegBase> TaskletStep create(String name, ItemReader<R> reader) {
+        return create(name, reader, Constants.CHUNK_SIZE);
     }
 
     private class IncrementRegCountListener<R extends RegBase> implements ItemWriteListener<R> {

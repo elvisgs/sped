@@ -1,6 +1,5 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.sped.contrib.batch.common.Constants;
 import br.com.gep.sped.contrib.batch.factory.StepFactory;
 import br.com.gep.sped.contrib.batch.factory.TaskletFactory;
 import br.com.gep.spedcontrib.arquivo.registros.blocoI.*;
@@ -29,7 +28,7 @@ public class StepsBlocoIConfig {
     @Bean
     @Lazy
     public Step stepRegI001() {
-        return stepFactory.create("stepRegI001", Constants.CHUNK_SIZE, itemReaders.regI001ItemReader());
+        return stepFactory.create("stepRegI001", itemReaders.regI001ItemReader(), 1);
     }
 
     @Bean
@@ -71,19 +70,19 @@ public class StepsBlocoIConfig {
     @Bean
     @Lazy
     public Step stepRegI399() {
-        return stepFactory.create("stepRegI399", Constants.CHUNK_SIZE, itemReaders.regI399ItemReader());
+        return stepFactory.create("stepRegI399", itemReaders.regI399ItemReader());
     }
 
     @Bean
     @Lazy
     public Step stepRegI299() {
-        return stepFactory.create("stepRegI299", Constants.CHUNK_SIZE, itemReaders.regI299ItemReader());
+        return stepFactory.create("stepRegI299", itemReaders.regI299ItemReader());
     }
 
     @Bean
     @Lazy
     public Step stepRegI199() {
-        return stepFactory.create("stepRegI199", Constants.CHUNK_SIZE, itemReaders.regI199ItemReader());
+        return stepFactory.create("stepRegI199", itemReaders.regI199ItemReader());
     }
 
     @Bean

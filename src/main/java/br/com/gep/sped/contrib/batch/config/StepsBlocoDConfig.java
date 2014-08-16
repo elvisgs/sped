@@ -1,6 +1,5 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.sped.contrib.batch.common.Constants;
 import br.com.gep.sped.contrib.batch.factory.StepFactory;
 import br.com.gep.sped.contrib.batch.factory.TaskletFactory;
 import br.com.gep.spedcontrib.arquivo.registros.blocoD.*;
@@ -27,7 +26,7 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD001() {
-        return stepFactory.create("stepRegD001", 1, itemReaders.regD001ItemReader());
+        return stepFactory.create("stepRegD001", itemReaders.regD001ItemReader(), 1);
     }
 
     @Bean
@@ -48,17 +47,17 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD101() {
-        return stepFactory.create("stepRegD101", Constants.CHUNK_SIZE, itemReaders.regD101ItemReader());
+        return stepFactory.create("stepRegD101", itemReaders.regD101ItemReader());
     }
 
     @Bean
     public Step stepRegD105() {
-        return stepFactory.create("stepRegD105", Constants.CHUNK_SIZE, itemReaders.regD105ItemReader());
+        return stepFactory.create("stepRegD105", itemReaders.regD105ItemReader());
     }
 
     @Bean
     public Step stepRegD111() {
-        return stepFactory.create("stepRegD111", Constants.CHUNK_SIZE, itemReaders.regD111ItemReader());
+        return stepFactory.create("stepRegD111", itemReaders.regD111ItemReader());
     }
 
     @Bean
@@ -71,17 +70,17 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD201() {
-        return stepFactory.create("stepRegD201", Constants.CHUNK_SIZE, itemReaders.regD201ItemReader());
+        return stepFactory.create("stepRegD201", itemReaders.regD201ItemReader());
     }
 
     @Bean
     public Step stepRegD205() {
-        return stepFactory.create("stepRegD205", Constants.CHUNK_SIZE, itemReaders.regD205ItemReader());
+        return stepFactory.create("stepRegD205", itemReaders.regD205ItemReader());
     }
 
     @Bean
     public Step stepRegD209() {
-        return stepFactory.create("stepRegD209", Constants.CHUNK_SIZE, itemReaders.regD209ItemReader());
+        return stepFactory.create("stepRegD209", itemReaders.regD209ItemReader());
     }
 
     @Bean
@@ -94,7 +93,7 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD309() {
-        return stepFactory.create("stepRegD309", Constants.CHUNK_SIZE, itemReaders.regD309ItemReader());
+        return stepFactory.create("stepRegD309", itemReaders.regD309ItemReader());
     }
 
     @Bean
@@ -107,7 +106,7 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD359() {
-        return stepFactory.create("stepRegD359", Constants.CHUNK_SIZE, itemReaders.regD359ItemReader());
+        return stepFactory.create("stepRegD359", itemReaders.regD359ItemReader());
     }
 
     @Bean
@@ -120,17 +119,17 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD501() {
-        return stepFactory.create("stepRegD501", Constants.CHUNK_SIZE, itemReaders.regD501ItemReader());
+        return stepFactory.create("stepRegD501", itemReaders.regD501ItemReader());
     }
 
     @Bean
     public Step stepRegD505() {
-        return stepFactory.create("stepRegD505", Constants.CHUNK_SIZE, itemReaders.regD505ItemReader());
+        return stepFactory.create("stepRegD505", itemReaders.regD505ItemReader());
     }
 
     @Bean
     public Step stepRegD509() {
-        return stepFactory.create("stepRegD509", Constants.CHUNK_SIZE, itemReaders.regD509ItemReader());
+        return stepFactory.create("stepRegD509", itemReaders.regD509ItemReader());
     }
 
     @Bean
@@ -143,17 +142,17 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD601() {
-        return stepFactory.create("stepRegD601", Constants.CHUNK_SIZE, itemReaders.regD601ItemReader());
+        return stepFactory.create("stepRegD601", itemReaders.regD601ItemReader());
     }
 
     @Bean
     public Step stepRegD605() {
-        return stepFactory.create("stepRegD605", Constants.CHUNK_SIZE, itemReaders.regD605ItemReader());
+        return stepFactory.create("stepRegD605", itemReaders.regD605ItemReader());
     }
 
     @Bean
     public Step stepRegD609() {
-        return stepFactory.create("stepRegD609", Constants.CHUNK_SIZE, itemReaders.regD609ItemReader());
+        return stepFactory.create("stepRegD609", itemReaders.regD609ItemReader());
     }
 
     @Bean
