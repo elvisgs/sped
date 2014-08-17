@@ -19,14 +19,14 @@ public class ItemReadersBlocoPConfig {
     @Bean
     @Lazy
     public ItemStreamReader<RegP001> regP001ItemReader() {
-        return itemReaderFactory.createJdbcCursorItemReader(RegP001.class);
+        return itemReaderFactory.create(RegP001.class);
     }
 
     @Bean
     @Lazy
     public ItemStreamReader<RegP010> regP010ItemReader() {
         ItemStreamReader<RegP010> itemReader = itemReaderFactory
-                .createJdbcCursorItemReader(RegP010.class, RegP001.class);
+                .create(RegP010.class, RegP001.class);
 
         return new KeepOpenedItemStreamReader<RegP010>(itemReader);
     }
@@ -35,7 +35,7 @@ public class ItemReadersBlocoPConfig {
     @Lazy
     public ItemStreamReader<RegP100> regP100ItemReader() {
         ItemStreamReader<RegP100> itemReader = itemReaderFactory
-                .createJdbcCursorItemReader(RegP100.class, RegP010.class);
+                .create(RegP100.class, RegP010.class);
 
         return new KeepOpenedItemStreamReader<RegP100>(itemReader);
     }
@@ -43,20 +43,20 @@ public class ItemReadersBlocoPConfig {
     @Bean
     @Lazy
     public ItemStreamReader<RegP110> regP110ItemReader() {
-        return itemReaderFactory.createJdbcCursorItemReader(RegP110.class, RegP100.class);
+        return itemReaderFactory.create(RegP110.class, RegP100.class);
     }
 
     @Bean
     @Lazy
     public ItemStreamReader<RegP199> regP199ItemReader() {
-        return itemReaderFactory.createJdbcCursorItemReader(RegP199.class, RegP100.class);
+        return itemReaderFactory.create(RegP199.class, RegP100.class);
     }
 
     @Bean
     @Lazy
     public ItemStreamReader<RegP200> regP200ItemReader() {
         ItemStreamReader<RegP200> itemReader = itemReaderFactory
-                .createJdbcCursorItemReader(RegP200.class, RegP001.class);
+                .create(RegP200.class, RegP001.class);
 
         return new KeepOpenedItemStreamReader<RegP200>(itemReader);
     }
@@ -64,6 +64,6 @@ public class ItemReadersBlocoPConfig {
     @Bean
     @Lazy
     public ItemStreamReader<RegP210> regP210ItemReader() {
-        return itemReaderFactory.createJdbcCursorItemReader(RegP210.class, RegP200.class);
+        return itemReaderFactory.create(RegP210.class, RegP200.class);
     }
 }

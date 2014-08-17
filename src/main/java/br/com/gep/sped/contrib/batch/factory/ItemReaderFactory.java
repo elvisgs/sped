@@ -5,6 +5,7 @@ import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.common.Selects;
 import br.com.gep.sped.contrib.batch.config.DatabaseConfig;
 import br.com.gep.spedcontrib.arquivo.registros.RegBase;
+import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -25,32 +26,28 @@ public class ItemReaderFactory {
     @Autowired
     private Selects selects;
 
-    public <R extends RegBase, P extends RegBase> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass, Class<P> parentClass, String sql) {
+    public <R extends RegBase, P extends RegBase> ItemStreamReader<R> create(Class<R> regClass, Class<P> parentRegClass) {
+        return create(regClass, parentRegClass, selects.get(regClass));
+    }
+
+    public <R extends RegBase> ItemStreamReader<R> create(Class<R> regClass) {
+        return create(regClass, null, selects.get(regClass));
+    }
+
+    private <R extends RegBase, P extends RegBase> ItemStreamReader<R> create(Class<R> regClass, Class<P> parentRegClass, String sql) {
         JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<R>();
         reader.setDataSource(databaseConfig.dataSource());
         reader.setSql(replaceSchema(sql));
         reader.setRowMapper(new BeanPropertyRowMapper<R>(regClass));
 
-        if (parentClass != null) {
-            reader.setPreparedStatementSetter(new ParentIdStatementSetter(parentClass, regIdHolder));
+        if (parentRegClass != null) {
+            reader.setPreparedStatementSetter(new ParentIdStatementSetter(parentRegClass, regIdHolder));
         }
 
         return reader;
     }
 
-    public <R extends RegBase> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass, String sql) {
-        return createJdbcCursorItemReader(regClass, null, sql);
-    }
-
-    public <R extends RegBase, P extends RegBase> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass, Class<P> parentClass) {
-        return createJdbcCursorItemReader(regClass, parentClass, selects.get(regClass));
-    }
-
-    public <R extends RegBase> JdbcCursorItemReader<R> createJdbcCursorItemReader(Class<R> regClass) {
-        return createJdbcCursorItemReader(regClass, null, selects.get(regClass));
-    }
-
-    public String replaceSchema(String sql) {
+    private String replaceSchema(String sql) {
         return sql.replaceAll(SCHEMA_TOKEN, SCHEMA);
     }
 }
