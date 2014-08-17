@@ -18,13 +18,13 @@ public class ItemReadersBlocoCConfig {
     private ItemReaderFactory itemReaderFactory;
 
     @Bean
-    public ItemReader<RegC001> regC001ItemReader() {
+    public ItemStreamReader<RegC001> regC001ItemReader() {
         return itemReaderFactory.createJdbcCursorItemReader(RegC001.class);
     }
 
     @Bean
     public ItemStreamReader<RegC010> regC010ItemReader() {
-        JdbcCursorItemReader<RegC010> itemReader = itemReaderFactory
+        ItemStreamReader<RegC010> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC010.class, RegC001.class);
 
         return new KeepOpenedItemStreamReader<RegC010>(itemReader);
@@ -32,7 +32,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC100> regC100ItemReader() {
-        JdbcCursorItemReader<RegC100> itemReader = itemReaderFactory
+        ItemStreamReader<RegC100> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC100.class, RegC010.class);
 
         return new KeepOpenedItemStreamReader<RegC100>(itemReader);
@@ -60,7 +60,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC180> regC180ItemReader() {
-        JdbcCursorItemReader<RegC180> itemReader = itemReaderFactory
+        ItemStreamReader<RegC180> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC180.class, RegC010.class);
 
         return new KeepOpenedItemStreamReader<RegC180>(itemReader);
@@ -83,7 +83,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC190> regC190ItemReader() {
-        JdbcCursorItemReader<RegC190> itemReader = itemReaderFactory
+        ItemStreamReader<RegC190> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC190.class, RegC010.class);
 
         return new KeepOpenedItemStreamReader<RegC190>(itemReader);
@@ -111,7 +111,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC380> regC380ItemReader() {
-        JdbcCursorItemReader<RegC380> itemReader = itemReaderFactory
+        ItemStreamReader<RegC380> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC380.class, RegC010.class);
 
         return new KeepOpenedItemStreamReader<RegC380>(itemReader);
@@ -129,7 +129,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC395> regC395ItemReader() {
-        JdbcCursorItemReader<RegC395> itemReader = itemReaderFactory
+        ItemStreamReader<RegC395> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC395.class, RegC010.class);
 
         return new KeepOpenedItemStreamReader<RegC395>(itemReader);
@@ -142,7 +142,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC400> regC400ItemReader() {
-        JdbcCursorItemReader<RegC400> itemReader = itemReaderFactory
+        ItemStreamReader<RegC400> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC400.class, RegC010.class);
 
         return new KeepOpenedItemStreamReader<RegC400>(itemReader);
@@ -150,7 +150,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC405> regC405ItemReader() {
-        JdbcCursorItemReader<RegC405> itemReader = itemReaderFactory
+        ItemStreamReader<RegC405> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC405.class, RegC400.class);
 
         return new KeepOpenedItemStreamReader<RegC405>(itemReader);
@@ -173,7 +173,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC490> regC490ItemReader() {
-        JdbcCursorItemReader<RegC490> itemReader = itemReaderFactory
+        ItemStreamReader<RegC490> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC490.class, RegC010.class);
 
         return new KeepOpenedItemStreamReader<RegC490>(itemReader);
@@ -196,7 +196,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC500> regC500ItemReader() {
-        JdbcCursorItemReader<RegC500> itemReader = itemReaderFactory
+        ItemStreamReader<RegC500> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC500.class, RegC010.class);
 
         return new KeepOpenedItemStreamReader<RegC500>(itemReader);
@@ -219,7 +219,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC600> regC600ItemReader() {
-        JdbcCursorItemReader<RegC600> itemReader = itemReaderFactory
+        ItemStreamReader<RegC600> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegC600.class, RegC010.class);
 
         return new KeepOpenedItemStreamReader<RegC600>(itemReader);

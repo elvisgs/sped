@@ -4,7 +4,6 @@ import br.com.gep.sped.contrib.batch.common.KeepOpenedItemStreamReader;
 import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.spedcontrib.arquivo.registros.blocoD.*;
 import org.springframework.batch.item.ItemStreamReader;
-import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +22,7 @@ public class ItemReadersBlocoDConfig {
 
     @Bean
     public ItemStreamReader<RegD010> regD010ItemReader() {
-        JdbcCursorItemReader<RegD010> itemReader = itemReaderFactory
+        ItemStreamReader<RegD010> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegD010.class, RegD001.class);
 
         return new KeepOpenedItemStreamReader<RegD010>(itemReader);
@@ -31,7 +30,7 @@ public class ItemReadersBlocoDConfig {
 
     @Bean
     public ItemStreamReader<RegD100> regD100ItemReader() {
-        JdbcCursorItemReader<RegD100> itemReader = itemReaderFactory
+        ItemStreamReader<RegD100> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegD100.class, RegD010.class);
 
         return new KeepOpenedItemStreamReader<RegD100>(itemReader);
@@ -54,7 +53,7 @@ public class ItemReadersBlocoDConfig {
 
     @Bean
     public ItemStreamReader<RegD200> regD200ItemReader() {
-        JdbcCursorItemReader<RegD200> itemReader = itemReaderFactory
+        ItemStreamReader<RegD200> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegD200.class, RegD010.class);
 
         return new KeepOpenedItemStreamReader<RegD200>(itemReader);
@@ -77,7 +76,7 @@ public class ItemReadersBlocoDConfig {
 
     @Bean
     public ItemStreamReader<RegD300> regD300ItemReader() {
-        JdbcCursorItemReader<RegD300> itemReader = itemReaderFactory
+        ItemStreamReader<RegD300> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegD300.class, RegD010.class);
 
         return new KeepOpenedItemStreamReader<RegD300>(itemReader);
@@ -90,7 +89,7 @@ public class ItemReadersBlocoDConfig {
 
     @Bean
     public ItemStreamReader<RegD350> regD350ItemReader() {
-        JdbcCursorItemReader<RegD350> itemReader = itemReaderFactory
+        ItemStreamReader<RegD350> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegD350.class, RegD010.class);
 
         return new KeepOpenedItemStreamReader<RegD350>(itemReader);
@@ -103,7 +102,7 @@ public class ItemReadersBlocoDConfig {
 
     @Bean
     public ItemStreamReader<RegD500> regD500ItemReader() {
-        JdbcCursorItemReader<RegD500> itemReader = itemReaderFactory
+        ItemStreamReader<RegD500> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegD500.class, RegD010.class);
 
         return new KeepOpenedItemStreamReader<RegD500>(itemReader);
@@ -126,7 +125,7 @@ public class ItemReadersBlocoDConfig {
 
     @Bean
     public ItemStreamReader<RegD600> regD600ItemReader() {
-        JdbcCursorItemReader<RegD600> itemReader = itemReaderFactory
+        ItemStreamReader<RegD600> itemReader = itemReaderFactory
                 .createJdbcCursorItemReader(RegD600.class, RegD010.class);
 
         return new KeepOpenedItemStreamReader<RegD600>(itemReader);
