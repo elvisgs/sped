@@ -1,4 +1,4 @@
-package br.com.gep.sped.contrib.batch.config;
+package br.com.gep.sped.contrib.batch.config.steps;
 
 import br.com.gep.sped.contrib.batch.factory.StepFactory;
 import br.com.gep.sped.contrib.batch.factory.TaskletFactory;

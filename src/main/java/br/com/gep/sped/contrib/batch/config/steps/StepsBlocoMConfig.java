@@ -1,5 +1,6 @@
-package br.com.gep.sped.contrib.batch.config;
+package br.com.gep.sped.contrib.batch.config.steps;
 
+import br.com.gep.sped.contrib.batch.config.readers.ItemReadersBlocoMConfig;
 import br.com.gep.sped.contrib.batch.factory.StepFactory;
 import br.com.gep.sped.contrib.batch.factory.TaskletFactory;
 import br.com.gep.spedcontrib.arquivo.registros.blocoM.*;

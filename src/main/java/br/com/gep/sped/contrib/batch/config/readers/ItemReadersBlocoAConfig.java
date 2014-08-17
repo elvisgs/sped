@@ -1,4 +1,4 @@
-package br.com.gep.sped.contrib.batch.config;
+package br.com.gep.sped.contrib.batch.config.readers;
 
 import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.sped.contrib.batch.common.KeepOpenedItemStreamReader;
