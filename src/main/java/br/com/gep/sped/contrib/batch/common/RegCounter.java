@@ -14,6 +14,10 @@ public class RegCounter {
         counts = new HashMap<Class, Integer>();
     }
 
+    public Map<Class, Integer> getCounts() {
+        return counts;
+    }
+
     public Integer getCount(Class regClass) {
         if (counts.containsKey(regClass)) {
             return counts.get(regClass);

@@ -3,6 +3,7 @@ package br.com.gep.sped.contrib.batch.factory;
 import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
+import br.com.gep.sped.contrib.batch.tasklets.Bloco9Tasklet;
 import br.com.gep.sped.contrib.batch.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.contrib.batch.tasklets.RegWithChildrenTasklet;
 import br.com.gep.spedcontrib.arquivo.registros.RegBase;
@@ -38,6 +39,14 @@ public class TaskletFactory {
     public <T extends RegEncerramentoBlocoBase> ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<T> closingBlocRegClass, List<Class<? extends RegBase>> regClassesToCount) {
         ClosingBlocRegTasklet tasklet = new ClosingBlocRegTasklet(closingBlocRegClass, regClassesToCount);
         tasklet.setWriter(itemWriters.<T>beanIOWriter());
+        tasklet.setRegCounter(regCounter);
+
+        return tasklet;
+    }
+
+    public Bloco9Tasklet createBloc9Tasklet() {
+        Bloco9Tasklet tasklet = new Bloco9Tasklet();
+        tasklet.setWriter(itemWriters.beanIOWriter());
         tasklet.setRegCounter(regCounter);
 
         return tasklet;

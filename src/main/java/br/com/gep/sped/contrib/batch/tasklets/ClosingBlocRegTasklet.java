@@ -48,6 +48,8 @@ public class ClosingBlocRegTasklet<C extends RegEncerramentoBlocoBase> implement
             writer.open(chunkContext.getStepContext().getStepExecution().getExecutionContext());
             writer.write(Arrays.asList(reg));
             writer.close();
+
+            regCounter.incrementCount(closingBlocRegClass);
         }
 
         return RepeatStatus.FINISHED;

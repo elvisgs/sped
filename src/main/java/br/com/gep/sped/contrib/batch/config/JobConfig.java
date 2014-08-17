@@ -47,6 +47,9 @@ public class JobConfig {
     @Autowired
     private StepsBloco1Config stepsBloco1;
 
+    @Autowired
+    private StepsBloco9Config stepsBloco9;
+
     @Bean
     public Job spedContribJob() {
         return jobBuilder.get("spedContribJob")
@@ -60,6 +63,7 @@ public class JobConfig {
                 .next(flowBlocoM())
                 .next(flowBlocoP())
                 .next(flowBloco1())
+                .next(stepsBloco9.stepBloco9())
                 .end()
                 .build();
     }
