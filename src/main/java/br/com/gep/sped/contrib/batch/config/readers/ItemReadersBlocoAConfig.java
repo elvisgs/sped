@@ -24,7 +24,7 @@ public class ItemReadersBlocoAConfig {
     @Bean
     public ItemStreamReader<RegA010> regA010ItemReader() {
         ItemStreamReader<RegA010> itemReader = itemReaderFactory
-                .create(RegA010.class);
+                .create(RegA010.class, RegA001.class);
 
         return new KeepOpenedItemStreamReader<RegA010>(itemReader);
     }

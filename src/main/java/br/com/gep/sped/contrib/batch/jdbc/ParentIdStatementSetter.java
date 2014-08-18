@@ -1,5 +1,6 @@
-package br.com.gep.sped.contrib.batch.common;
+package br.com.gep.sped.contrib.batch.jdbc;
 
+import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 
 import java.sql.PreparedStatement;

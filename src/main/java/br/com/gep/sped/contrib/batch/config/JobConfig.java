@@ -51,7 +51,7 @@ public class JobConfig {
 
     @Bean
     public Job spedContribJob() {
-        return jobBuilder.get("spedContribJob")
+        return jobBuilder.get("spedContribJob").preventRestart()
                 .flow(stepsBloco0.stepReg0000())
                 .next(flowBloco0Config.flowBloco0())
                 .next(flowBlocoAConfig.flowBlocoA())
