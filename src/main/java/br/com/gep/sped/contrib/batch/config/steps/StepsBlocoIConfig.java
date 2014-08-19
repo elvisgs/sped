@@ -15,6 +15,7 @@ import java.util.Arrays;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
+@Lazy
 public class StepsBlocoIConfig {
 
     @Autowired
@@ -27,67 +28,56 @@ public class StepsBlocoIConfig {
     private ItemReadersBlocoIConfig itemReaders;
 
     @Bean
-    @Lazy
     public Step stepRegI001() {
         return stepFactory.create("stepRegI001", itemReaders.regI001ItemReader(), 1);
     }
 
     @Bean
-    @Lazy
     public Step stepRegI010() {
-        Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(RegI010.class, itemReaders.regI010ItemReader());
+        Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegI010.class);
 
         return stepFactory.create("stepRegI010", tasklet);
     }
 
     @Bean
-    @Lazy
     public Step stepRegI100() {
         Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(RegI100.class, itemReaders.regI100ItemReader());
+                .createRegTreeTasklet(RegI100.class);
 
         return stepFactory.create("stepRegI100", tasklet);
     }
 
     @Bean
-    @Lazy
     public Step stepRegI200() {
         Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(RegI200.class, itemReaders.regI200ItemReader());
+                .createRegTreeTasklet(RegI200.class);
 
         return stepFactory.create("stepRegI200", tasklet);
     }
 
     @Bean
-    @Lazy
     public Step stepRegI300() {
-        Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(RegI300.class, itemReaders.regI300ItemReader());
+        Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegI300.class);
 
         return stepFactory.create("stepRegI300", tasklet);
     }
 
     @Bean
-    @Lazy
     public Step stepRegI399() {
         return stepFactory.create("stepRegI399", itemReaders.regI399ItemReader());
     }
 
     @Bean
-    @Lazy
     public Step stepRegI299() {
         return stepFactory.create("stepRegI299", itemReaders.regI299ItemReader());
     }
 
     @Bean
-    @Lazy
     public Step stepRegI199() {
         return stepFactory.create("stepRegI199", itemReaders.regI199ItemReader());
     }
 
     @Bean
-    @Lazy
     public Step stepRegI990() {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegI990.class, Arrays.asList(
                 RegI001.class, RegI010.class, RegI100.class, RegI200.class, RegI300.class,

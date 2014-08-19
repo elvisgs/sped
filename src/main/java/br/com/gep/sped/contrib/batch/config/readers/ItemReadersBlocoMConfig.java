@@ -1,15 +1,16 @@
 package br.com.gep.sped.contrib.batch.config.readers;
 
-import br.com.gep.sped.contrib.batch.common.KeepOpenedItemStreamReader;
 import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.spedcontrib.arquivo.registros.blocoM.*;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
+@Lazy
 public class ItemReadersBlocoMConfig {
 
     @Autowired
@@ -22,10 +23,7 @@ public class ItemReadersBlocoMConfig {
 
     @Bean
     public ItemStreamReader<RegM100> regM100ItemReader() {
-        ItemStreamReader<RegM100> itemReader = itemReaderFactory
-                .create(RegM100.class, RegM001.class);
-
-        return new KeepOpenedItemStreamReader<RegM100>(itemReader);
+        return itemReaderFactory.create(RegM100.class, RegM001.class);
     }
 
     @Bean
@@ -40,10 +38,7 @@ public class ItemReadersBlocoMConfig {
 
     @Bean
     public ItemStreamReader<RegM200> regM200ItemReader() {
-        ItemStreamReader<RegM200> itemReader = itemReaderFactory
-                .create(RegM200.class, RegM001.class);
-
-        return new KeepOpenedItemStreamReader<RegM200>(itemReader);
+        return itemReaderFactory.create(RegM200.class, RegM001.class);
     }
 
     @Bean
@@ -53,10 +48,7 @@ public class ItemReadersBlocoMConfig {
 
     @Bean
     public ItemStreamReader<RegM210> regM210ItemReader() {
-        ItemStreamReader<RegM210> itemReader = itemReaderFactory
-                .create(RegM210.class, RegM200.class);
-
-        return new KeepOpenedItemStreamReader<RegM210>(itemReader);
+        return itemReaderFactory.create(RegM210.class, RegM200.class);
     }
 
     @Bean
@@ -86,10 +78,7 @@ public class ItemReadersBlocoMConfig {
 
     @Bean
     public ItemStreamReader<RegM400> regM400ItemReader() {
-        ItemStreamReader<RegM400> itemReader = itemReaderFactory
-                .create(RegM400.class, RegM001.class);
-
-        return new KeepOpenedItemStreamReader<RegM400>(itemReader);
+        return itemReaderFactory.create(RegM400.class, RegM001.class);
     }
 
     @Bean
@@ -99,10 +88,7 @@ public class ItemReadersBlocoMConfig {
 
     @Bean
     public ItemStreamReader<RegM500> regM500ItemReader() {
-        ItemStreamReader<RegM500> itemReader = itemReaderFactory
-                .create(RegM500.class, RegM001.class);
-
-        return new KeepOpenedItemStreamReader<RegM500>(itemReader);
+        return itemReaderFactory.create(RegM500.class, RegM001.class);
     }
 
     @Bean
@@ -117,10 +103,7 @@ public class ItemReadersBlocoMConfig {
 
     @Bean
     public ItemStreamReader<RegM600> regM600ItemReader() {
-        ItemStreamReader<RegM600> itemReader = itemReaderFactory
-                .create(RegM600.class, RegM001.class);
-
-        return new KeepOpenedItemStreamReader<RegM600>(itemReader);
+        return itemReaderFactory.create(RegM600.class, RegM001.class);
     }
 
     @Bean
@@ -130,10 +113,7 @@ public class ItemReadersBlocoMConfig {
 
     @Bean
     public ItemStreamReader<RegM610> regM610ItemReader() {
-        ItemStreamReader<RegM610> itemReader = itemReaderFactory
-                .create(RegM610.class, RegM600.class);
-
-        return new KeepOpenedItemStreamReader<RegM610>(itemReader);
+        return itemReaderFactory.create(RegM610.class, RegM600.class);
     }
 
     @Bean
@@ -158,10 +138,7 @@ public class ItemReadersBlocoMConfig {
 
     @Bean
     public ItemStreamReader<RegM800> regM800ItemReader() {
-        ItemStreamReader<RegM800> itemReader = itemReaderFactory
-                .create(RegM800.class, RegM001.class);
-
-        return new KeepOpenedItemStreamReader<RegM800>(itemReader);
+        return itemReaderFactory.create(RegM800.class, RegM001.class);
     }
 
     @Bean

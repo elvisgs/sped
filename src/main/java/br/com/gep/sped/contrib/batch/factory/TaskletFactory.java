@@ -2,13 +2,14 @@ package br.com.gep.sped.contrib.batch.factory;
 
 import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
+import br.com.gep.sped.contrib.batch.common.RegNode;
+import br.com.gep.sped.contrib.batch.common.SpedTree;
 import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
 import br.com.gep.sped.contrib.batch.tasklets.Bloco9Tasklet;
 import br.com.gep.sped.contrib.batch.tasklets.ClosingBlocRegTasklet;
-import br.com.gep.sped.contrib.batch.tasklets.RegWithChildrenTasklet;
+import br.com.gep.sped.contrib.batch.tasklets.RegTreeTasklet;
 import br.com.gep.spedcontrib.arquivo.registros.RegBase;
 import br.com.gep.spedcontrib.arquivo.registros.RegEncerramentoBlocoBase;
-import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,9 @@ import java.util.List;
 
 @Component
 public class TaskletFactory {
+
+    @Autowired
+    private ItemReaderFactory itemReaderFactory;
 
     @Autowired
     private ItemWriterConfig itemWriters;
@@ -26,10 +30,14 @@ public class TaskletFactory {
     @Autowired
     private RegCounter regCounter;
 
-    public <T extends RegBase> RegWithChildrenTasklet<T> createRegWithChildrenTasklet(Class<T> regClass, ItemStreamReader<T> reader) {
-        RegWithChildrenTasklet tasklet = new RegWithChildrenTasklet(regClass);
-        tasklet.setReader(reader);
-        tasklet.setWriter(itemWriters.<T>beanIOWriter());
+    @Autowired
+    private SpedTree spedTree;
+
+    public RegTreeTasklet createRegTreeTasklet(Class<? extends RegBase> regClass) {
+        RegNode rootNode = spedTree.getNode(regClass);
+        RegTreeTasklet tasklet = new RegTreeTasklet(rootNode);
+        tasklet.setItemReaderFactory(itemReaderFactory);
+        tasklet.setWriter(itemWriters.beanIOWriter());
         tasklet.setRegIdHolder(regIdHolder);
         tasklet.setRegCounter(regCounter);
 

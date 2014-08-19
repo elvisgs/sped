@@ -15,6 +15,7 @@ import java.util.Arrays;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
+@Lazy
 public class StepsBlocoPConfig {
 
     @Autowired
@@ -26,59 +27,49 @@ public class StepsBlocoPConfig {
     @Autowired
     private ItemReadersBlocoPConfig itemReaders;
 
-    @Bean
-    @Lazy
+    @Bean @Lazy(false)
     public Step stepRegP001() {
         return stepFactory.create("stepRegP001", itemReaders.regP001ItemReader(), 1);
     }
 
-    @Bean
-    @Lazy
+    @Bean @Lazy(false)
     public Step stepRegP010() {
-        Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(RegP010.class, itemReaders.regP010ItemReader());
+        Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegP010.class);
 
         return stepFactory.create("stepRegP010", tasklet);
     }
 
     @Bean
-    @Lazy
     public Step stepRegP100() {
         Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(RegP100.class, itemReaders.regP100ItemReader());
+                .createRegTreeTasklet(RegP100.class);
 
         return stepFactory.create("stepRegP100", tasklet);
     }
 
     @Bean
-    @Lazy
     public Step stepRegP110() {
         return stepFactory.create("stepRegP110", itemReaders.regP110ItemReader());
     }
 
     @Bean
-    @Lazy
     public Step stepRegP199() {
         return stepFactory.create("stepRegP199", itemReaders.regP199ItemReader());
     }
 
     @Bean
-    @Lazy
     public Step stepRegP200() {
-        Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(RegP200.class, itemReaders.regP200ItemReader());
+        Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegP200.class);
 
         return stepFactory.create("stepRegP200", tasklet);
     }
 
     @Bean
-    @Lazy
     public Step stepRegP210() {
         return stepFactory.create("stepRegP210", itemReaders.regP210ItemReader());
     }
 
-    @Bean
-    @Lazy
+    @Bean @Lazy(false)
     public Step stepRegP990() {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegP990.class, Arrays.asList(
                 RegP001.class, RegP010.class, RegP100.class, RegP110.class,

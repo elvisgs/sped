@@ -9,45 +9,47 @@ import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.Arrays;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
+@Lazy
 public class StepsBloco0Config {
 
     @Autowired
     private StepFactory stepFactory;
-
+    
     @Autowired
     private TaskletFactory taskletFactory;
-
+    
     @Autowired
     private ItemReadersBloco0Config itemReaders;
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepReg0000() {
         return stepFactory.create("stepReg0000", itemReaders.reg0000ItemReader(), 1);
     }
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepReg0001() {
         return stepFactory.create("stepReg0001", itemReaders.reg0001ItemReader(), 1);
     }
+
     @Bean
     public Step stepReg0035() {
         return stepFactory.create("stepReg0035", itemReaders.reg0035ItemReader());
     }
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepReg0100() {
         return stepFactory.create("stepReg0100", itemReaders.reg0100ItemReader());
     }
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepReg0110() {
-        Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(Reg0110.class, itemReaders.reg0110ItemReader());
+        Tasklet tasklet = taskletFactory.createRegTreeTasklet(Reg0110.class);
 
         return stepFactory.create("stepReg0110", tasklet);
     }
@@ -57,15 +59,14 @@ public class StepsBloco0Config {
         return stepFactory.create("stepReg0111", itemReaders.reg0111ItemReader());
     }
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepReg0120() {
         return stepFactory.create("stepReg0120", itemReaders.reg0120ItemReader());
     }
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepReg0140() {
-        Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(Reg0140.class, itemReaders.reg0140ItemReader());
+        Tasklet tasklet = taskletFactory.createRegTreeTasklet(Reg0140.class);
 
         return stepFactory.create("stepReg0140", tasklet);
     }
@@ -87,8 +88,7 @@ public class StepsBloco0Config {
 
     @Bean
     public Step stepReg0200() {
-        Tasklet tasklet = taskletFactory
-                .createRegWithChildrenTasklet(Reg0200.class, itemReaders.reg0200ItemReader());
+        Tasklet tasklet = taskletFactory.createRegTreeTasklet(Reg0200.class);
 
         return stepFactory.create("stepReg0200", tasklet);
     }
@@ -118,17 +118,17 @@ public class StepsBloco0Config {
         return stepFactory.create("stepReg0450", itemReaders.reg0450ItemReader());
     }
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepReg0500() {
         return stepFactory.create("stepReg0500", itemReaders.reg0500ItemReader());
     }
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepReg0600() {
         return stepFactory.create("stepReg0600", itemReaders.reg0600ItemReader());
     }
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepReg0990() {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(Reg0990.class, Arrays.asList(
                 Reg0000.class, Reg0001.class, Reg0035.class, Reg0100.class, Reg0110.class, Reg0111.class,

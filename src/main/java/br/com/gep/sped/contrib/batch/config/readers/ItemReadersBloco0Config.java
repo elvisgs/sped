@@ -1,15 +1,16 @@
 package br.com.gep.sped.contrib.batch.config.readers;
 
-import br.com.gep.sped.contrib.batch.common.KeepOpenedItemStreamReader;
 import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.spedcontrib.arquivo.registros.bloco0.*;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
+@Lazy
 public class ItemReadersBloco0Config {
 
     @Autowired
@@ -38,10 +39,7 @@ public class ItemReadersBloco0Config {
     @Bean
     public ItemStreamReader<Reg0110> reg0110ItemReader() {
         // TODO: verificar porque a coluna ind_reg_cum não existe
-        ItemStreamReader<Reg0110> reader = itemReaderFactory
-                .create(Reg0110.class, Reg0001.class);
-
-        return new KeepOpenedItemStreamReader<Reg0110>(reader);
+        return itemReaderFactory.create(Reg0110.class, Reg0001.class);
     }
 
     @Bean
@@ -56,8 +54,7 @@ public class ItemReadersBloco0Config {
 
     @Bean
     public ItemStreamReader<Reg0140> reg0140ItemReader() {
-        ItemStreamReader<Reg0140> reader = itemReaderFactory.create(Reg0140.class, Reg0001.class);
-        return new KeepOpenedItemStreamReader<Reg0140>(reader);
+        return itemReaderFactory.create(Reg0140.class, Reg0001.class);
     }
 
     @Bean
@@ -77,10 +74,7 @@ public class ItemReadersBloco0Config {
 
     @Bean
     public ItemStreamReader<Reg0200> reg0200ItemReader() {
-        ItemStreamReader<Reg0200> reader = itemReaderFactory
-                .create(Reg0200.class, Reg0140.class);
-
-        return new KeepOpenedItemStreamReader<Reg0200>(reader);
+        return itemReaderFactory.create(Reg0200.class, Reg0140.class);
     }
 
     @Bean

@@ -1,15 +1,16 @@
 package br.com.gep.sped.contrib.batch.config.readers;
 
-import br.com.gep.sped.contrib.batch.common.KeepOpenedItemStreamReader;
 import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.spedcontrib.arquivo.registros.blocoC.*;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
+@Lazy
 public class ItemReadersBlocoCConfig {
 
     @Autowired
@@ -22,18 +23,12 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC010> regC010ItemReader() {
-        ItemStreamReader<RegC010> itemReader = itemReaderFactory
-                .create(RegC010.class, RegC001.class);
-
-        return new KeepOpenedItemStreamReader<RegC010>(itemReader);
+        return itemReaderFactory.create(RegC010.class, RegC001.class);
     }
 
     @Bean
     public ItemStreamReader<RegC100> regC100ItemReader() {
-        ItemStreamReader<RegC100> itemReader = itemReaderFactory
-                .create(RegC100.class, RegC010.class);
-
-        return new KeepOpenedItemStreamReader<RegC100>(itemReader);
+        return itemReaderFactory.create(RegC100.class, RegC010.class);
     }
 
     @Bean
@@ -58,10 +53,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC180> regC180ItemReader() {
-        ItemStreamReader<RegC180> itemReader = itemReaderFactory
-                .create(RegC180.class, RegC010.class);
-
-        return new KeepOpenedItemStreamReader<RegC180>(itemReader);
+        return itemReaderFactory.create(RegC180.class, RegC010.class);
     }
 
     @Bean
@@ -81,10 +73,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC190> regC190ItemReader() {
-        ItemStreamReader<RegC190> itemReader = itemReaderFactory
-                .create(RegC190.class, RegC010.class);
-
-        return new KeepOpenedItemStreamReader<RegC190>(itemReader);
+        return itemReaderFactory.create(RegC190.class, RegC010.class);
     }
 
     @Bean
@@ -109,10 +98,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC380> regC380ItemReader() {
-        ItemStreamReader<RegC380> itemReader = itemReaderFactory
-                .create(RegC380.class, RegC010.class);
-
-        return new KeepOpenedItemStreamReader<RegC380>(itemReader);
+        return itemReaderFactory.create(RegC380.class, RegC010.class);
     }
 
     @Bean
@@ -127,10 +113,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC395> regC395ItemReader() {
-        ItemStreamReader<RegC395> itemReader = itemReaderFactory
-                .create(RegC395.class, RegC010.class);
-
-        return new KeepOpenedItemStreamReader<RegC395>(itemReader);
+        return itemReaderFactory.create(RegC395.class, RegC010.class);
     }
 
     @Bean
@@ -140,18 +123,12 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC400> regC400ItemReader() {
-        ItemStreamReader<RegC400> itemReader = itemReaderFactory
-                .create(RegC400.class, RegC010.class);
-
-        return new KeepOpenedItemStreamReader<RegC400>(itemReader);
+        return itemReaderFactory.create(RegC400.class, RegC010.class);
     }
 
     @Bean
     public ItemStreamReader<RegC405> regC405ItemReader() {
-        ItemStreamReader<RegC405> itemReader = itemReaderFactory
-                .create(RegC405.class, RegC400.class);
-
-        return new KeepOpenedItemStreamReader<RegC405>(itemReader);
+        return itemReaderFactory.create(RegC405.class, RegC400.class);
     }
 
     @Bean
@@ -171,10 +148,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC490> regC490ItemReader() {
-        ItemStreamReader<RegC490> itemReader = itemReaderFactory
-                .create(RegC490.class, RegC010.class);
-
-        return new KeepOpenedItemStreamReader<RegC490>(itemReader);
+        return itemReaderFactory.create(RegC490.class, RegC010.class);
     }
 
     @Bean
@@ -194,10 +168,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC500> regC500ItemReader() {
-        ItemStreamReader<RegC500> itemReader = itemReaderFactory
-                .create(RegC500.class, RegC010.class);
-
-        return new KeepOpenedItemStreamReader<RegC500>(itemReader);
+        return itemReaderFactory.create(RegC500.class, RegC010.class);
     }
 
     @Bean
@@ -217,10 +188,7 @@ public class ItemReadersBlocoCConfig {
 
     @Bean
     public ItemStreamReader<RegC600> regC600ItemReader() {
-        ItemStreamReader<RegC600> itemReader = itemReaderFactory
-                .create(RegC600.class, RegC010.class);
-
-        return new KeepOpenedItemStreamReader<RegC600>(itemReader);
+        return itemReaderFactory.create(RegC600.class, RegC010.class);
     }
 
     @Bean
@@ -237,5 +205,4 @@ public class ItemReadersBlocoCConfig {
     public ItemStreamReader<RegC609> regC609ItemReader() {
         return itemReaderFactory.create(RegC609.class, RegC600.class);
     }
-
 }

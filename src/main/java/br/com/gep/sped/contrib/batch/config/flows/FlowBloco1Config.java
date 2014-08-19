@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static br.com.gep.sped.contrib.batch.common.CustomExitStatus.NO_MORE_REG;
-import static br.com.gep.sped.contrib.batch.common.CustomExitStatus.PROCESS_CHILD_REG;
-
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 public class FlowBloco1Config {

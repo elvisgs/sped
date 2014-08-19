@@ -24,7 +24,7 @@ public class ItemReaderFactory {
 
     private static final Log logger = LogFactory.getLog(ItemReaderFactory.class);
 
-    public static final String SCHEMA = "sped_contrib_teste";
+    public static final String SCHEMA = "sped_contrib_teste";//"carga_15103047000158_2014_03";//
     public static final String SCHEMA_TOKEN = "@schema@";
 
     @Autowired
@@ -80,7 +80,10 @@ public class ItemReaderFactory {
         queryProviderFactory.setDataSource(dataSource);
         queryProviderFactory.setSelectClause(queryParts.getSelect());
         queryProviderFactory.setFromClause(injectSchema(queryParts.getFrom()));
-        queryProviderFactory.setWhereClause(queryParts.getWhere());
+
+        if (parentRegClass != null)
+            queryProviderFactory.setWhereClause(queryParts.getWhere());
+
         queryProviderFactory.setSortKey("id");
 
         try {
