@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import br.com.gep.sped.contrib.marshaller.writer.SpedContribWriterFactory;
 import org.beanio.spring.BeanIOFlatFileItemWriter;
 import org.springframework.batch.core.configuration.annotation.StepScope;
@@ -18,7 +18,7 @@ public class ItemWriterConfig {
 
     @Bean
     @StepScope
-    public <T extends RegBase> BeanIOFlatFileItemWriter<T> beanIOWriter(@Value("#{jobParameters['output.file.name']}") String outputFileName) {
+    public <T extends Registro> BeanIOFlatFileItemWriter<T> beanIOWriter(@Value("#{jobParameters['output.file.name']}") String outputFileName) {
         BeanIOFlatFileItemWriter<T> writer = new BeanIOFlatFileItemWriter<T>();
         writer.setStreamFactory(SpedContribWriterFactory.getInstance().getStreamFactory());
         writer.setStreamName(SpedContribWriterFactory.STREAM_NAME);
@@ -31,7 +31,7 @@ public class ItemWriterConfig {
         return writer;
     }
 
-    public <T extends RegBase> BeanIOFlatFileItemWriter<T> beanIOWriter() {
+    public <T extends Registro> BeanIOFlatFileItemWriter<T> beanIOWriter() {
         return beanIOWriter(OVERRIDDEN_BY_EXPRESSION);
     }
 }

@@ -4,7 +4,7 @@ import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.common.RegNode;
 import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -59,9 +59,9 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
     }
 
     private void processNode(RegNode node, StepExecution stepExecution) throws Exception {
-        ItemStreamReader<? extends RegBase> reader;
+        ItemStreamReader<? extends Registro> reader;
         if (node.hasParent()) {
-            Class<? extends RegBase> parentRegClass = node.getParent().getRegClass();
+            Class<? extends Registro> parentRegClass = node.getParent().getRegClass();
             reader = itemReaderFactory.create(node.getRegClass(), parentRegClass);
         }
         else {
@@ -70,7 +70,7 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
 
         reader.open(stepExecution.getExecutionContext());
 
-        RegBase reg;
+        Registro reg;
         while((reg = reader.read()) != null) {
             writer.write(Arrays.asList(reg));
 

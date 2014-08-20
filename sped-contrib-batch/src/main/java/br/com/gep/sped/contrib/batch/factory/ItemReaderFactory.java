@@ -6,7 +6,7 @@ import br.com.gep.sped.contrib.batch.jdbc.LateParentIdJdbcPagingItemReader;
 import br.com.gep.sped.contrib.batch.jdbc.ParentIdStatementSetter;
 import br.com.gep.sped.contrib.batch.jdbc.QueryParts;
 import br.com.gep.sped.contrib.batch.jdbc.QueryPartsProvider;
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.batch.item.ItemStreamReader;
@@ -36,7 +36,7 @@ public class ItemReaderFactory {
     @Autowired
     private QueryPartsProvider queryPartsProvider;
 
-    public <R extends RegBase, P extends RegBase> ItemStreamReader<R> create(Class<R> regClass, Class<P> parentRegClass) {
+    public <R extends Registro, P extends Registro> ItemStreamReader<R> create(Class<R> regClass, Class<P> parentRegClass) {
         String regName = regClass.getSimpleName();
         if (regName.endsWith("000") || regName.endsWith("001"))
             return createCursorItemReader(regClass, parentRegClass);
@@ -44,11 +44,11 @@ public class ItemReaderFactory {
         return createPagingItemReader(regClass, parentRegClass);
     }
 
-    public <R extends RegBase> ItemStreamReader<R> create(Class<R> regClass) {
+    public <R extends Registro> ItemStreamReader<R> create(Class<R> regClass) {
         return create(regClass, null);
     }
 
-    private <R extends RegBase, P extends RegBase> ItemStreamReader<R> createCursorItemReader(Class<R> regClass, Class<P> parentRegClass) {
+    private <R extends Registro, P extends Registro> ItemStreamReader<R> createCursorItemReader(Class<R> regClass, Class<P> parentRegClass) {
         JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<R>();
         reader.setDataSource(dataSource);
 
@@ -64,7 +64,7 @@ public class ItemReaderFactory {
         return reader;
     }
 
-    private <R extends RegBase, P extends RegBase> ItemStreamReader<R> createPagingItemReader(Class<R> regClass, Class<P> parentRegClass) {
+    private <R extends Registro, P extends Registro> ItemStreamReader<R> createPagingItemReader(Class<R> regClass, Class<P> parentRegClass) {
         JdbcPagingItemReader<R> reader;
         if (parentRegClass != null) {
             reader = new LateParentIdJdbcPagingItemReader(parentRegClass, regIdHolder);

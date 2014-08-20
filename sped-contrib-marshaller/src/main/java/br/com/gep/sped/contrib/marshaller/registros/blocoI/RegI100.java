@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoI;
 
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,7 +14,7 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "I100"),
     @Field(at = 13, name = "fimLinha", literal = "")
 })
-public class RegI100 extends RegBase {
+public class RegI100 extends Registro {
     
     @Field(at = 2)
     private Double vlRecFin;

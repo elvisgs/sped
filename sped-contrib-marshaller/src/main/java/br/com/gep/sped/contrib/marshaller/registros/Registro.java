@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.marshaller.registros;
 
-public abstract class RegBase {
+public abstract class Registro {
 
     protected Integer id;
 

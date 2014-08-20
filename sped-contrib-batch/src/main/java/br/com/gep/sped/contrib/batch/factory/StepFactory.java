@@ -4,7 +4,7 @@ import br.com.gep.sped.contrib.batch.common.Constants;
 import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import org.beanio.spring.BeanIOFlatFileItemWriter;
 import org.springframework.batch.core.ItemWriteListener;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -41,7 +41,7 @@ public class StepFactory {
                 .build();
     }
 
-    public <R extends RegBase, P extends RegBase> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) {
+    public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) {
         ItemStreamReader<R> reader = itemReaderFactory.create(regClass, parentRegClass);
         BeanIOFlatFileItemWriter<R> writer = itemWriters.<R>beanIOWriter();
 
@@ -54,11 +54,11 @@ public class StepFactory {
                 .build();
     }
 
-    public <R extends RegBase> TaskletStep create(String name, Class<R> regClass) {
+    public <R extends Registro> TaskletStep create(String name, Class<R> regClass) {
         return create(name, regClass, null);
     }
 
-    private class IncrementRegCountListener<R extends RegBase> implements ItemWriteListener<R> {
+    private class IncrementRegCountListener<R extends Registro> implements ItemWriteListener<R> {
 
         @Override
         public void beforeWrite(List<? extends R> items) {
@@ -66,7 +66,7 @@ public class StepFactory {
 
         @Override
         public void afterWrite(List<? extends R> items) {
-            Class<? extends RegBase> regClass = items.get(0).getClass();
+            Class<? extends Registro> regClass = items.get(0).getClass();
             R lastItem = items.get(items.size() - 1);
             regIdHolder.setId(regClass, lastItem.getId());
             regCounter.incrementCount(regClass, items.size());

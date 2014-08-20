@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.common;
 
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class RegNode {
 
-    private final Class<? extends RegBase> regClass;
+    private final Class<? extends Registro> regClass;
     private RegNode parent;
     private LinkedList<RegNode> children;
 
-    public RegNode(Class<? extends RegBase> regClass) {
+    public RegNode(Class<? extends Registro> regClass) {
         if (regClass == null)
             throw new IllegalArgumentException("regClass is null");
 
@@ -24,12 +24,12 @@ public class RegNode {
         this.children = new LinkedList<RegNode>();
     }
 
-    public RegNode(Class<? extends RegBase> regClass, RegNode parent) {
+    public RegNode(Class<? extends Registro> regClass, RegNode parent) {
         this(regClass);
         this.parent = parent;
     }
 
-    public Class<? extends RegBase> getRegClass() {
+    public Class<? extends Registro> getRegClass() {
         return regClass;
     }
 

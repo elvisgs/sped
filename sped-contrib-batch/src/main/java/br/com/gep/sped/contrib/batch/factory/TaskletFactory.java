@@ -8,8 +8,8 @@ import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
 import br.com.gep.sped.contrib.batch.tasklets.Bloco9Tasklet;
 import br.com.gep.sped.contrib.batch.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.contrib.batch.tasklets.RegTreeTasklet;
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
-import br.com.gep.sped.contrib.marshaller.registros.RegEncerramentoBlocoBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.contrib.marshaller.registros.RegistroEncerramentoBloco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +33,7 @@ public class TaskletFactory {
     @Autowired
     private SpedTree spedTree;
 
-    public RegTreeTasklet createRegTreeTasklet(Class<? extends RegBase> regClass) {
+    public RegTreeTasklet createRegTreeTasklet(Class<? extends Registro> regClass) {
         RegNode rootNode = spedTree.getNode(regClass);
         RegTreeTasklet tasklet = new RegTreeTasklet(rootNode);
         tasklet.setItemReaderFactory(itemReaderFactory);
@@ -44,7 +44,7 @@ public class TaskletFactory {
         return tasklet;
     }
 
-    public <T extends RegEncerramentoBlocoBase> ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<T> closingBlocRegClass, List<Class<? extends RegBase>> regClassesToCount) {
+    public <T extends RegistroEncerramentoBloco> ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<T> closingBlocRegClass, List<Class<? extends Registro>> regClassesToCount) {
         ClosingBlocRegTasklet tasklet = new ClosingBlocRegTasklet(closingBlocRegClass, regClassesToCount);
         tasklet.setWriter(itemWriters.<T>beanIOWriter());
         tasklet.setRegCounter(regCounter);

@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.common;
 
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.*;
 import br.com.gep.sped.contrib.marshaller.registros.bloco1.*;
 import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9001;
@@ -27,11 +27,11 @@ import java.util.Map;
 @Component
 public class SpedTree {
 
-    private Map<Class<? extends RegBase>, RegNode> nodes;
+    private Map<Class<? extends Registro>, RegNode> nodes;
 
     @PostConstruct
     private void init() {
-        nodes = new HashMap<Class<? extends RegBase>, RegNode>();
+        nodes = new HashMap<Class<? extends Registro>, RegNode>();
         addBranchesBloco0();
         addBranchesBlocoA();
         addBranchesBlocoC();
@@ -45,11 +45,11 @@ public class SpedTree {
     }
 
     // TODO: implementar busca profunda de nós
-    public RegNode getNode(Class<? extends RegBase> regClass) {
+    public RegNode getNode(Class<? extends Registro> regClass) {
         return nodes.get(regClass);
     }
 
-    public Map<Class<? extends RegBase>, RegNode> getNodes() {
+    public Map<Class<? extends Registro>, RegNode> getNodes() {
         return nodes;
     }
 

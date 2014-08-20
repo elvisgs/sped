@@ -1,8 +1,8 @@
 package br.com.gep.sped.contrib.batch.tasklets;
 
 import br.com.gep.sped.contrib.batch.common.RegCounter;
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
-import br.com.gep.sped.contrib.marshaller.registros.RegEncerramentoBlocoBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.contrib.marshaller.registros.RegistroEncerramentoBloco;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -14,14 +14,14 @@ import org.springframework.util.Assert;
 import java.util.Arrays;
 import java.util.List;
 
-public class ClosingBlocRegTasklet<C extends RegEncerramentoBlocoBase> implements Tasklet, InitializingBean {
+public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implements Tasklet, InitializingBean {
 
     private final Class<C> closingBlocRegClass;
-    private final List<Class<? extends RegBase>> regsToCount;
+    private final List<Class<? extends Registro>> regsToCount;
     private RegCounter regCounter;
     private ItemStreamWriter writer;
 
-    public ClosingBlocRegTasklet(Class<C> closingBlocRegClass, List<Class<? extends RegBase>> regClassesToCount) {
+    public ClosingBlocRegTasklet(Class<C> closingBlocRegClass, List<Class<? extends Registro>> regClassesToCount) {
         this.closingBlocRegClass = closingBlocRegClass;
         this.regsToCount = regClassesToCount;
     }

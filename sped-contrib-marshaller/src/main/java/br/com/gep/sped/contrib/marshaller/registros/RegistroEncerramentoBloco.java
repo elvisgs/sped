@@ -2,7 +2,7 @@ package br.com.gep.sped.contrib.marshaller.registros;
 
 import org.beanio.annotation.Field;
 
-public class RegEncerramentoBlocoBase extends RegBase {
+public abstract class RegistroEncerramentoBloco extends Registro {
 
     @Field(at = 2)
     private int qtdLin;

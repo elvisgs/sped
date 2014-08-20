@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.marshaller.registros.bloco9;
 
-import br.com.gep.sped.contrib.marshaller.registros.RegEncerramentoBlocoBase;
+import br.com.gep.sped.contrib.marshaller.registros.RegistroEncerramentoBloco;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,5 +14,5 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "9999"),
     @Field(at = 3, name = "fimLinha", literal = "")
 })
-public class Reg9999 extends RegEncerramentoBlocoBase {
+public class Reg9999 extends RegistroEncerramentoBloco {
 }

@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoC;
 
-import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,7 +16,7 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C190"),
     @Field(at = 9, name = "fimLinha", literal = "")
 })
-public class RegC190 extends RegBase {
+public class RegC190 extends Registro {
     
     @Field(at = 2)
     private String codMod;
