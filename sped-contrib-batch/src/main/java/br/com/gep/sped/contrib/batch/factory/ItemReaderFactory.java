@@ -6,7 +6,7 @@ import br.com.gep.sped.contrib.batch.jdbc.LateParentIdJdbcPagingItemReader;
 import br.com.gep.sped.contrib.batch.jdbc.ParentIdStatementSetter;
 import br.com.gep.sped.contrib.batch.jdbc.QueryParts;
 import br.com.gep.sped.contrib.batch.jdbc.QueryPartsProvider;
-import br.com.gep.spedcontrib.arquivo.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.RegBase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.batch.item.ItemStreamReader;

@@ -1,8 +1,8 @@
 package br.com.gep.sped.contrib.batch.tasklets;
 
 import br.com.gep.sped.contrib.batch.common.RegCounter;
-import br.com.gep.spedcontrib.arquivo.registros.RegBase;
-import br.com.gep.spedcontrib.arquivo.registros.RegEncerramentoBlocoBase;
+import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.RegEncerramentoBlocoBase;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;

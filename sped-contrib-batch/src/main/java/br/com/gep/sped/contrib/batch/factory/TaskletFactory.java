@@ -8,8 +8,8 @@ import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
 import br.com.gep.sped.contrib.batch.tasklets.Bloco9Tasklet;
 import br.com.gep.sped.contrib.batch.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.contrib.batch.tasklets.RegTreeTasklet;
-import br.com.gep.spedcontrib.arquivo.registros.RegBase;
-import br.com.gep.spedcontrib.arquivo.registros.RegEncerramentoBlocoBase;
+import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.RegEncerramentoBlocoBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

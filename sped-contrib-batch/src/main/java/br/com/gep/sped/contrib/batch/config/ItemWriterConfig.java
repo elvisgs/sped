@@ -1,7 +1,7 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.spedcontrib.arquivo.registros.RegBase;
-import br.com.gep.spedcontrib.arquivo.writer.SpedContribWriterFactory;
+import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.writer.SpedContribWriterFactory;
 import org.beanio.spring.BeanIOFlatFileItemWriter;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.beans.factory.annotation.Value;

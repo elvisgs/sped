@@ -1,19 +1,19 @@
 package br.com.gep.sped.contrib.batch.common;
 
-import br.com.gep.spedcontrib.arquivo.registros.RegBase;
-import br.com.gep.spedcontrib.arquivo.registros.bloco0.*;
-import br.com.gep.spedcontrib.arquivo.registros.bloco1.*;
-import br.com.gep.spedcontrib.arquivo.registros.bloco9.Reg9001;
-import br.com.gep.spedcontrib.arquivo.registros.bloco9.Reg9900;
-import br.com.gep.spedcontrib.arquivo.registros.bloco9.Reg9990;
-import br.com.gep.spedcontrib.arquivo.registros.bloco9.Reg9999;
-import br.com.gep.spedcontrib.arquivo.registros.blocoA.*;
-import br.com.gep.spedcontrib.arquivo.registros.blocoC.*;
-import br.com.gep.spedcontrib.arquivo.registros.blocoD.*;
-import br.com.gep.spedcontrib.arquivo.registros.blocoF.*;
-import br.com.gep.spedcontrib.arquivo.registros.blocoI.*;
-import br.com.gep.spedcontrib.arquivo.registros.blocoM.*;
-import br.com.gep.spedcontrib.arquivo.registros.blocoP.*;
+import br.com.gep.sped.contrib.marshaller.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.bloco0.*;
+import br.com.gep.sped.contrib.marshaller.registros.bloco1.*;
+import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9001;
+import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9900;
+import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9990;
+import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9999;
+import br.com.gep.sped.contrib.marshaller.registros.blocoA.*;
+import br.com.gep.sped.contrib.marshaller.registros.blocoC.*;
+import br.com.gep.sped.contrib.marshaller.registros.blocoD.*;
+import br.com.gep.sped.contrib.marshaller.registros.blocoF.*;
+import br.com.gep.sped.contrib.marshaller.registros.blocoI.*;
+import br.com.gep.sped.contrib.marshaller.registros.blocoM.*;
+import br.com.gep.sped.contrib.marshaller.registros.blocoP.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

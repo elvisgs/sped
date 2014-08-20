@@ -1,10 +1,10 @@
 package br.com.gep.sped.contrib.batch.tasklets;
 
 import br.com.gep.sped.contrib.batch.common.RegCounter;
-import br.com.gep.spedcontrib.arquivo.registros.bloco9.Reg9001;
-import br.com.gep.spedcontrib.arquivo.registros.bloco9.Reg9900;
-import br.com.gep.spedcontrib.arquivo.registros.bloco9.Reg9990;
-import br.com.gep.spedcontrib.arquivo.registros.bloco9.Reg9999;
+import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9001;
+import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9900;
+import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9990;
+import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9999;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;

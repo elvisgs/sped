@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.common;
 
-import br.com.gep.spedcontrib.arquivo.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.RegBase;
 
 import java.util.Collections;
 import java.util.LinkedList;

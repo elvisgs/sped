@@ -4,7 +4,7 @@ import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.common.RegNode;
 import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
-import br.com.gep.spedcontrib.arquivo.registros.RegBase;
+import br.com.gep.sped.contrib.marshaller.registros.RegBase;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.scope.context.ChunkContext;
