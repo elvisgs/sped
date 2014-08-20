@@ -4,9 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.com.gep.sped</groupId>
-    <artifactId>layout-sped-contrib</artifactId>
-    <version>0.1.0</version>
+    <parent>
+        <artifactId>sped-parent</artifactId>
+        <groupId>br.com.gep.sped</groupId>
+        <version>0.1.0</version>
+    </parent>
+    <artifactId>sped-contrib-marshaller</artifactId>
 
     <dependencies>
         <dependency>
@@ -14,13 +17,6 @@
             <artifactId>beanio</artifactId>
             <version>2.1.0.M2</version>
         </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-    
+
 </project>
