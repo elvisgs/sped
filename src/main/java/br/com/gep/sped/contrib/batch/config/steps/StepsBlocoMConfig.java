@@ -1,6 +1,5 @@
 package br.com.gep.sped.contrib.batch.config.steps;
 
-import br.com.gep.sped.contrib.batch.config.readers.ItemReadersBlocoMConfig;
 import br.com.gep.sped.contrib.batch.factory.StepFactory;
 import br.com.gep.sped.contrib.batch.factory.TaskletFactory;
 import br.com.gep.spedcontrib.arquivo.registros.blocoM.*;
@@ -24,12 +23,9 @@ public class StepsBlocoMConfig {
     @Autowired
     private TaskletFactory taskletFactory;
 
-    @Autowired
-    private ItemReadersBlocoMConfig itemReaders;
-
     @Bean @Lazy(false)
     public Step stepRegM001() {
-        return stepFactory.create("stepRegM001", itemReaders.regM001ItemReader(), 1);
+        return stepFactory.create("stepRegM001", RegM001.class);
     }
 
     @Bean @Lazy(false)
@@ -41,12 +37,12 @@ public class StepsBlocoMConfig {
 
     @Bean
     public Step stepRegM105() {
-        return stepFactory.create("stepRegM105", itemReaders.regM105ItemReader());
+        return stepFactory.create("stepRegM105", RegM105.class, RegM100.class);
     }
 
     @Bean
     public Step stepRegM110() {
-        return stepFactory.create("stepRegM110", itemReaders.regM110ItemReader());
+        return stepFactory.create("stepRegM110", RegM110.class, RegM100.class);
     }
 
     @Bean @Lazy(false)
@@ -58,7 +54,7 @@ public class StepsBlocoMConfig {
 
     @Bean
     public Step stepRegM205() {
-        return stepFactory.create("stepRegM205", itemReaders.regM205ItemReader());
+        return stepFactory.create("stepRegM205", RegM205.class, RegM200.class);
     }
 
     @Bean
@@ -70,27 +66,27 @@ public class StepsBlocoMConfig {
 
     @Bean
     public Step stepRegM211() {
-        return stepFactory.create("stepRegM211", itemReaders.regM211ItemReader());
+        return stepFactory.create("stepRegM211", RegM211.class, RegM210.class);
     }
 
     @Bean
     public Step stepRegM220() {
-        return stepFactory.create("stepRegM220", itemReaders.regM220ItemReader());
+        return stepFactory.create("stepRegM220", RegM220.class, RegM210.class);
     }
 
     @Bean
     public Step stepRegM230() {
-        return stepFactory.create("stepRegM230", itemReaders.regM230ItemReader());
+        return stepFactory.create("stepRegM230", RegM230.class, RegM210.class);
     }
 
     @Bean @Lazy(false)
     public Step stepRegM300() {
-        return stepFactory.create("stepRegM300", itemReaders.regM300ItemReader());
+        return stepFactory.create("stepRegM300", RegM300.class, RegM001.class);
     }
 
     @Bean
     public Step stepRegM350() {
-        return stepFactory.create("stepRegM350", itemReaders.regM350ItemReader());
+        return stepFactory.create("stepRegM350", RegM350.class, RegM001.class);
     }
 
     @Bean @Lazy(false)
@@ -102,7 +98,7 @@ public class StepsBlocoMConfig {
 
     @Bean
     public Step stepRegM410() {
-        return stepFactory.create("stepRegM410", itemReaders.regM410ItemReader());
+        return stepFactory.create("stepRegM410", RegM410.class, RegM400.class);
     }
 
     @Bean @Lazy(false)
@@ -114,12 +110,12 @@ public class StepsBlocoMConfig {
 
     @Bean
     public Step stepRegM505() {
-        return stepFactory.create("stepRegM505", itemReaders.regM505ItemReader());
+        return stepFactory.create("stepRegM505", RegM505.class, RegM500.class);
     }
 
     @Bean
     public Step stepRegM510() {
-        return stepFactory.create("stepRegM510", itemReaders.regM510ItemReader());
+        return stepFactory.create("stepRegM510", RegM510.class, RegM500.class);
     }
 
     @Bean @Lazy(false)
@@ -131,35 +127,34 @@ public class StepsBlocoMConfig {
 
     @Bean
     public Step stepRegM605() {
-        return stepFactory.create("stepRegM605", itemReaders.regM605ItemReader());
+        return stepFactory.create("stepRegM605", RegM605.class, RegM600.class);
     }
 
     @Bean
     public Step stepRegM610() {
-        Tasklet tasklet = taskletFactory
-                .createRegTreeTasklet(RegM610.class);
+        Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegM610.class);
 
         return stepFactory.create("stepRegM610", tasklet);
     }
 
     @Bean
     public Step stepRegM611() {
-        return stepFactory.create("stepRegM611", itemReaders.regM611ItemReader());
+        return stepFactory.create("stepRegM611", RegM611.class, RegM610.class);
     }
 
     @Bean
     public Step stepRegM620() {
-        return stepFactory.create("stepRegM620", itemReaders.regM620ItemReader());
+        return stepFactory.create("stepRegM620", RegM620.class, RegM610.class);
     }
 
     @Bean
     public Step stepRegM630() {
-        return stepFactory.create("stepRegM630", itemReaders.regM630ItemReader());
+        return stepFactory.create("stepRegM630", RegM630.class, RegM610.class);
     }
 
     @Bean @Lazy(false)
     public Step stepRegM700() {
-        return stepFactory.create("stepRegM700", itemReaders.regM700ItemReader());
+        return stepFactory.create("stepRegM700", RegM700.class, RegM001.class);
     }
 
     @Bean @Lazy(false)
@@ -171,10 +166,10 @@ public class StepsBlocoMConfig {
 
     @Bean
     public Step stepRegM810() {
-        return stepFactory.create("stepRegM810", itemReaders.regM810ItemReader());
+        return stepFactory.create("stepRegM810", RegM810.class, RegM800.class);
     }
 
-    @Bean
+    @Bean @Lazy(false)
     public Step stepRegM990() {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegM990.class, Arrays.asList(
                 RegM001.class, RegM100.class, RegM105.class, RegM110.class, RegM200.class,

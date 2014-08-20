@@ -1,6 +1,5 @@
 package br.com.gep.sped.contrib.batch.config.steps;
 
-import br.com.gep.sped.contrib.batch.config.readers.ItemReadersBlocoDConfig;
 import br.com.gep.sped.contrib.batch.factory.StepFactory;
 import br.com.gep.sped.contrib.batch.factory.TaskletFactory;
 import br.com.gep.spedcontrib.arquivo.registros.blocoD.*;
@@ -24,12 +23,9 @@ public class StepsBlocoDConfig {
     @Autowired
     private TaskletFactory taskletFactory;
 
-    @Autowired
-    private ItemReadersBlocoDConfig itemReaders;
-
     @Bean @Lazy(false)
     public Step stepRegD001() {
-        return stepFactory.create("stepRegD001", itemReaders.regD001ItemReader(), 1);
+        return stepFactory.create("stepRegD001", RegD001.class);
     }
 
     @Bean @Lazy(false)
@@ -48,17 +44,17 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD101() {
-        return stepFactory.create("stepRegD101", itemReaders.regD101ItemReader());
+        return stepFactory.create("stepRegD101", RegD101.class, RegD100.class);
     }
 
     @Bean
     public Step stepRegD105() {
-        return stepFactory.create("stepRegD105", itemReaders.regD105ItemReader());
+        return stepFactory.create("stepRegD105", RegD105.class, RegD100.class);
     }
 
     @Bean
     public Step stepRegD111() {
-        return stepFactory.create("stepRegD111", itemReaders.regD111ItemReader());
+        return stepFactory.create("stepRegD111", RegD111.class, RegD100.class);
     }
 
     @Bean
@@ -70,17 +66,17 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD201() {
-        return stepFactory.create("stepRegD201", itemReaders.regD201ItemReader());
+        return stepFactory.create("stepRegD201", RegD201.class, RegD200.class);
     }
 
     @Bean
     public Step stepRegD205() {
-        return stepFactory.create("stepRegD205", itemReaders.regD205ItemReader());
+        return stepFactory.create("stepRegD205", RegD205.class, RegD200.class);
     }
 
     @Bean
     public Step stepRegD209() {
-        return stepFactory.create("stepRegD209", itemReaders.regD209ItemReader());
+        return stepFactory.create("stepRegD209", RegD209.class, RegD200.class);
     }
 
     @Bean
@@ -92,7 +88,7 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD309() {
-        return stepFactory.create("stepRegD309", itemReaders.regD309ItemReader());
+        return stepFactory.create("stepRegD309", RegD309.class, RegD300.class);
     }
 
     @Bean
@@ -104,7 +100,7 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD359() {
-        return stepFactory.create("stepRegD359", itemReaders.regD359ItemReader());
+        return stepFactory.create("stepRegD359", RegD359.class, RegD350.class);
     }
 
     @Bean
@@ -116,17 +112,17 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD501() {
-        return stepFactory.create("stepRegD501", itemReaders.regD501ItemReader());
+        return stepFactory.create("stepRegD501", RegD501.class, RegD500.class);
     }
 
     @Bean
     public Step stepRegD505() {
-        return stepFactory.create("stepRegD505", itemReaders.regD505ItemReader());
+        return stepFactory.create("stepRegD505", RegD505.class, RegD500.class);
     }
 
     @Bean
     public Step stepRegD509() {
-        return stepFactory.create("stepRegD509", itemReaders.regD509ItemReader());
+        return stepFactory.create("stepRegD509", RegD509.class, RegD500.class);
     }
 
     @Bean
@@ -138,17 +134,17 @@ public class StepsBlocoDConfig {
 
     @Bean
     public Step stepRegD601() {
-        return stepFactory.create("stepRegD601", itemReaders.regD601ItemReader());
+        return stepFactory.create("stepRegD601", RegD601.class, RegD600.class);
     }
 
     @Bean
     public Step stepRegD605() {
-        return stepFactory.create("stepRegD605", itemReaders.regD605ItemReader());
+        return stepFactory.create("stepRegD605", RegD605.class, RegD600.class);
     }
 
     @Bean
     public Step stepRegD609() {
-        return stepFactory.create("stepRegD609", itemReaders.regD609ItemReader());
+        return stepFactory.create("stepRegD609", RegD609.class, RegD600.class);
     }
 
     @Bean @Lazy(false)

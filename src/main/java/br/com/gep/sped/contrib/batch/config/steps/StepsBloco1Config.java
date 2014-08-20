@@ -1,6 +1,5 @@
 package br.com.gep.sped.contrib.batch.config.steps;
 
-import br.com.gep.sped.contrib.batch.config.readers.ItemReadersBloco1Config;
 import br.com.gep.sped.contrib.batch.factory.StepFactory;
 import br.com.gep.sped.contrib.batch.factory.TaskletFactory;
 import br.com.gep.spedcontrib.arquivo.registros.bloco1.*;
@@ -22,52 +21,49 @@ public class StepsBloco1Config {
     @Autowired
     private TaskletFactory taskletFactory;
 
-    @Autowired
-    private ItemReadersBloco1Config itemReaders;
-
     @Bean
     public Step stepReg1001() {
-        return stepFactory.create("stepReg1001", itemReaders.reg1001ItemReader(), 1);
+        return stepFactory.create("stepReg1001", Reg1001.class);
     }
 
     @Bean
     public Step stepReg1010() {
-        return stepFactory.create("stepReg1010", itemReaders.reg1010ItemReader());
+        return stepFactory.create("stepReg1010", Reg1010.class, Reg1001.class);
     }
 
     @Bean
     public Step stepReg1020() {
-        return stepFactory.create("stepReg1020", itemReaders.reg1020ItemReader());
+        return stepFactory.create("stepReg1020", Reg1020.class, Reg1001.class);
     }
 
     @Bean
     public Step stepReg1100() {
-        return stepFactory.create("stepReg1100", itemReaders.reg1100ItemReader());
+        return stepFactory.create("stepReg1100", Reg1100.class, Reg1001.class);
     }
 
     @Bean
     public Step stepReg1300() {
-        return stepFactory.create("stepReg1300", itemReaders.reg1300ItemReader());
+        return stepFactory.create("stepReg1300", Reg1300.class, Reg1001.class);
     }
 
     @Bean
     public Step stepReg1500() {
-        return stepFactory.create("stepReg1500", itemReaders.reg1500ItemReader());
+        return stepFactory.create("stepReg1500", Reg1500.class, Reg1001.class);
     }
 
     @Bean
     public Step stepReg1700() {
-        return stepFactory.create("stepReg1700", itemReaders.reg1700ItemReader());
+        return stepFactory.create("stepReg1700", Reg1700.class, Reg1001.class);
     }
 
     @Bean
     public Step stepReg1800() {
-        return stepFactory.create("stepReg1800", itemReaders.reg1800ItemReader());
+        return stepFactory.create("stepReg1800", Reg1800.class, Reg1001.class);
     }
 
     @Bean
     public Step stepReg1900() {
-        return stepFactory.create("stepReg1900", itemReaders.reg1900ItemReader());
+        return stepFactory.create("stepReg1900", Reg1900.class);
     }
 
     @Bean

@@ -5,11 +5,13 @@ import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
 import br.com.gep.spedcontrib.arquivo.registros.RegBase;
+import org.beanio.spring.BeanIOFlatFileItemWriter;
 import org.springframework.batch.core.ItemWriteListener;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.core.step.tasklet.TaskletStep;
 import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +22,9 @@ public class StepFactory {
 
     @Autowired
     private StepBuilderFactory stepBuilder;
+
+    @Autowired
+    private ItemReaderFactory itemReaderFactory;
 
     @Autowired
     private ItemWriterConfig itemWriters;
@@ -37,21 +42,21 @@ public class StepFactory {
                 .build();
     }
 
-    public <R extends RegBase> TaskletStep create(String name, ItemReader<R> reader, int chunkSize) {
-        TaskletStep step = stepBuilder.get(name)
-                .<R, R>chunk(chunkSize)
+    public <R extends RegBase, P extends RegBase> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) {
+        ItemStreamReader<R> reader = itemReaderFactory.create(regClass, parentRegClass);
+        BeanIOFlatFileItemWriter<R> writer = itemWriters.<R>beanIOWriter();
+
+        return stepBuilder.get(name)
+                .<R, R>chunk(Constants.CHUNK_SIZE)
                 .reader(reader)
-                .writer(itemWriters.<R>beanIOWriter())
+                .writer(writer)
                 .listener(new IncrementRegCountListener<R>())
+                .allowStartIfComplete(true)
                 .build();
-
-        step.setAllowStartIfComplete(true);
-
-        return step;
     }
 
-    public <R extends RegBase> TaskletStep create(String name, ItemReader<R> reader) {
-        return create(name, reader, Constants.CHUNK_SIZE);
+    public <R extends RegBase> TaskletStep create(String name, Class<R> regClass) {
+        return create(name, regClass, null);
     }
 
     private class IncrementRegCountListener<R extends RegBase> implements ItemWriteListener<R> {

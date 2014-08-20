@@ -1,6 +1,5 @@
 package br.com.gep.sped.contrib.batch.config.steps;
 
-import br.com.gep.sped.contrib.batch.config.readers.ItemReadersBlocoPConfig;
 import br.com.gep.sped.contrib.batch.factory.StepFactory;
 import br.com.gep.sped.contrib.batch.factory.TaskletFactory;
 import br.com.gep.spedcontrib.arquivo.registros.blocoP.*;
@@ -24,12 +23,9 @@ public class StepsBlocoPConfig {
     @Autowired
     private TaskletFactory taskletFactory;
 
-    @Autowired
-    private ItemReadersBlocoPConfig itemReaders;
-
     @Bean @Lazy(false)
     public Step stepRegP001() {
-        return stepFactory.create("stepRegP001", itemReaders.regP001ItemReader(), 1);
+        return stepFactory.create("stepRegP001", RegP001.class);
     }
 
     @Bean @Lazy(false)
@@ -41,20 +37,19 @@ public class StepsBlocoPConfig {
 
     @Bean
     public Step stepRegP100() {
-        Tasklet tasklet = taskletFactory
-                .createRegTreeTasklet(RegP100.class);
+        Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegP100.class);
 
         return stepFactory.create("stepRegP100", tasklet);
     }
 
     @Bean
     public Step stepRegP110() {
-        return stepFactory.create("stepRegP110", itemReaders.regP110ItemReader());
+        return stepFactory.create("stepRegP110", RegP110.class, RegP100.class);
     }
 
     @Bean
     public Step stepRegP199() {
-        return stepFactory.create("stepRegP199", itemReaders.regP199ItemReader());
+        return stepFactory.create("stepRegP199", RegP199.class, RegP100.class);
     }
 
     @Bean
@@ -66,7 +61,7 @@ public class StepsBlocoPConfig {
 
     @Bean
     public Step stepRegP210() {
-        return stepFactory.create("stepRegP210", itemReaders.regP210ItemReader());
+        return stepFactory.create("stepRegP210", RegP210.class, RegP200.class);
     }
 
     @Bean @Lazy(false)
