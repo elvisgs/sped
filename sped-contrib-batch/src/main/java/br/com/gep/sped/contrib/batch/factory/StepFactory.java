@@ -3,14 +3,13 @@ package br.com.gep.sped.contrib.batch.factory;
 import br.com.gep.sped.contrib.batch.common.Constants;
 import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
-import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
 import br.com.gep.sped.contrib.marshaller.registros.Registro;
-import org.beanio.spring.BeanIOFlatFileItemWriter;
 import org.springframework.batch.core.ItemWriteListener;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.core.step.tasklet.TaskletStep;
 import org.springframework.batch.item.ItemStreamReader;
+import org.springframework.batch.item.ItemStreamWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +25,7 @@ public class StepFactory {
     private ItemReaderFactory itemReaderFactory;
 
     @Autowired
-    private ItemWriterConfig itemWriters;
+    private ItemWriterFactory itemWriterFactory;
 
     @Autowired
     private RegCounter regCounter;
@@ -43,7 +42,7 @@ public class StepFactory {
 
     public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) {
         ItemStreamReader<R> reader = itemReaderFactory.create(regClass, parentRegClass);
-        BeanIOFlatFileItemWriter<R> writer = itemWriters.<R>beanIOWriter();
+        ItemStreamWriter<R> writer = itemWriterFactory.create(regClass, parentRegClass);
 
         return stepBuilder.get(name)
                 .<R, R>chunk(Constants.CHUNK_SIZE)

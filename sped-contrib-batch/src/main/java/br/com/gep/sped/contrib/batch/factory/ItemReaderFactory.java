@@ -6,7 +6,7 @@ import org.springframework.batch.item.ItemStreamReader;
 /**
  * Strategy interface a ser implementada por qualquer classe cujo objetivo
  * seja criar {@link ItemStreamReader}'s para os
- * registros do SPED, sobrescrevendo o {@link DefaultItemReaderFactory}.
+ * registros do SPED.
  */
 public interface ItemReaderFactory {
 

@@ -4,7 +4,6 @@ import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.common.RegNode;
 import br.com.gep.sped.contrib.batch.common.SpedTree;
-import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
 import br.com.gep.sped.contrib.batch.tasklets.Bloco9Tasklet;
 import br.com.gep.sped.contrib.batch.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.contrib.batch.tasklets.RegTreeTasklet;
@@ -22,7 +21,7 @@ public class TaskletFactory {
     private ItemReaderFactory itemReaderFactory;
 
     @Autowired
-    private ItemWriterConfig itemWriters;
+    private ItemWriterFactory itemWriterFactory;
 
     @Autowired
     private RegIdHolder regIdHolder;
@@ -37,7 +36,7 @@ public class TaskletFactory {
         RegNode rootNode = spedTree.getNode(regClass);
         RegTreeTasklet tasklet = new RegTreeTasklet(rootNode);
         tasklet.setItemReaderFactory(itemReaderFactory);
-        tasklet.setWriter(itemWriters.beanIOWriter());
+        tasklet.setItemWriterFactory(itemWriterFactory);
         tasklet.setRegIdHolder(regIdHolder);
         tasklet.setRegCounter(regCounter);
 
@@ -46,7 +45,7 @@ public class TaskletFactory {
 
     public <T extends RegistroEncerramentoBloco> ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<T> closingBlocRegClass, List<Class<? extends Registro>> regClassesToCount) {
         ClosingBlocRegTasklet tasklet = new ClosingBlocRegTasklet(closingBlocRegClass, regClassesToCount);
-        tasklet.setWriter(itemWriters.<T>beanIOWriter());
+        tasklet.setWriter(itemWriterFactory.create(closingBlocRegClass));
         tasklet.setRegCounter(regCounter);
 
         return tasklet;
@@ -54,7 +53,7 @@ public class TaskletFactory {
 
     public Bloco9Tasklet createBloc9Tasklet() {
         Bloco9Tasklet tasklet = new Bloco9Tasklet();
-        tasklet.setWriter(itemWriters.beanIOWriter());
+        tasklet.setWriter(itemWriterFactory.create(Registro.class));
         tasklet.setRegCounter(regCounter);
 
         return tasklet;
