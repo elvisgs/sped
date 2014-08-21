@@ -1,34 +1,19 @@
 package br.com.gep.sped.contrib.marshaller.writer;
 
+import br.com.gep.sped.contrib.marshaller.WriterTestBase;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0000;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0001;
 import br.com.gep.sped.contrib.marshaller.registros.blocoA.RegA170;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SpedContribWriterTest {
-
-    private static SpedContribWriter writer;
-    private static ByteArrayOutputStream stream;
-    private String lineSeparator = System.getProperty("line.separator");
-
-    @BeforeClass
-    public static void initWriter() throws UnsupportedEncodingException {
-        stream = new ByteArrayOutputStream();
-        writer = new SpedContribWriter(new OutputStreamWriter(stream, "ISO-8859-1"));
-    }
+public class SpedContribWriterTest extends WriterTestBase {
 
     @Test
     public void delimitaCamposUsandoPipe() {
@@ -37,7 +22,7 @@ public class SpedContribWriterTest {
 
         writer.writeAndFlush(reg);
 
-        String[] campos = stream.toString().replaceAll("^\\||\\|$", "").split("\\|", 0);
+        String[] campos = resultStream.toString().replaceAll("^\\||\\|$", "").split("\\|", 0);
         assertThat(campos.length, is(2));
     }
 
@@ -48,7 +33,7 @@ public class SpedContribWriterTest {
 
         writer.writeAndFlush(reg);
 
-        String linha = stream.toString();
+        String linha = resultStream.toString();
         assertThat("Linha não termina com pipe", linha.endsWith("|" + lineSeparator), is(true));
     }
 
@@ -59,7 +44,7 @@ public class SpedContribWriterTest {
 
         writer.writeAndFlush(reg);
 
-        String linha = stream.toString();
+        String linha = resultStream.toString();
         assertThat("Linha não inicia com pipe", linha.startsWith("|"), is(true));
     }
 
@@ -70,7 +55,7 @@ public class SpedContribWriterTest {
 
         writer.writeAndFlush(reg);
 
-        String[] campos = stream.toString().split("\\|");
+        String[] campos = resultStream.toString().split("\\|");
         assertThat(campos[6], is("01012014"));
     }
 
@@ -81,24 +66,7 @@ public class SpedContribWriterTest {
 
         writer.writeAndFlush(reg);
 
-        String[] campos = stream.toString().split("\\|");
+        String[] campos = resultStream.toString().split("\\|");
         assertThat(campos[5], is("1000,00"));
-    }
-
-    @After
-    public void after() {
-        if (writer != null) {
-            writer.flush();
-        }
-        if (stream != null) {
-            stream.reset();
-        }
-    }
-
-    @AfterClass
-    public static void closeWriter() {
-        if (writer != null) {
-            writer.close();
-        }
     }
 }

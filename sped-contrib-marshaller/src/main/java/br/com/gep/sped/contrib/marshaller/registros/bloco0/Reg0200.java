@@ -4,6 +4,8 @@ import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
+import org.beanio.builder.Align;
+import org.beanio.types.StringTypeHandler;
 
 /**
  * 0200 - Itens (Produtos e Serviços)
@@ -34,7 +36,7 @@ public class Reg0200 extends Registro {
     @Field(at = 7)
     private String tipoItem;
     
-    @Field(at = 8)
+    @Field(at = 8, length = 8, padding = '0', align = Align.RIGHT)
     private String codNcm;
     
     @Field(at = 9)
