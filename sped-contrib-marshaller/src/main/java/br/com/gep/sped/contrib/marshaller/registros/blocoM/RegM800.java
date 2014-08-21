@@ -19,13 +19,13 @@ public class RegM800 extends Registro {
     @Field(at = 2)
     private String cstCofins;
     
-    @Field(at = 4)
+    @Field(at = 3)
     private Double vlTotRec;
     
-    @Field(at = 5)
+    @Field(at = 4)
     private String codCta;
     
-    @Field(at = 6)
+    @Field(at = 5)
     private String descCompl;
     
     
