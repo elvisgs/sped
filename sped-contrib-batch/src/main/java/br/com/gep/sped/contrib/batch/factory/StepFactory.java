@@ -48,7 +48,7 @@ public class StepFactory {
                 .<R, R>chunk(Constants.CHUNK_SIZE)
                 .reader(reader)
                 .writer(writer)
-                .listener(new IncrementRegCountListener<R>())
+                .listener(new UpdateRegInfoListener<R>())
                 .allowStartIfComplete(true)
                 .build();
     }
@@ -57,7 +57,7 @@ public class StepFactory {
         return create(name, regClass, null);
     }
 
-    private class IncrementRegCountListener<R extends Registro> implements ItemWriteListener<R> {
+    private class UpdateRegInfoListener<R extends Registro> implements ItemWriteListener<R> {
 
         @Override
         public void beforeWrite(List<? extends R> items) {
