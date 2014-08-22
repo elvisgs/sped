@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 
 @Component
-public class DefaultItemReaderFactory implements ItemReaderFactory {
-    public static final String SCHEMA = "sped_contrib_teste";//"carga_15103047000158_2014_03";//
+public class JdbcItemReaderFactory implements ItemReaderFactory {
+    public static final String SCHEMA = "public";
     public static final String SCHEMA_TOKEN = "@schema@";
 
     @Autowired
