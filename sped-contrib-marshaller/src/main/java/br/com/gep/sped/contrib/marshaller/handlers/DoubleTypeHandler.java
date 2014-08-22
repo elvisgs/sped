@@ -19,7 +19,7 @@ public class DoubleTypeHandler implements TypeHandler {
         if (value == null) return "";
 
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale("pt", "BR"));
-        return new DecimalFormat("#0.00", symbols).format(value);
+        return new DecimalFormat("#0.#####", symbols).format(value);
     }
 
     @Override

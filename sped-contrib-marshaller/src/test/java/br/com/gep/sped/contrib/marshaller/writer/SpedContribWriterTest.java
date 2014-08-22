@@ -60,13 +60,32 @@ public class SpedContribWriterTest extends WriterTestBase {
     }
 
     @Test
-    public void formataDecimaisSemPontoEComVirgula() {
+    public void formataDoubleIgnorandoCasasDecimaisZeradas() {
         RegA170 reg = new RegA170();
-        reg.setVlItem(1000D);
+        reg.setVlItem(1000.00D);
+        reg.setVlBcPis(1000.90D);
+        reg.setAliqPis(10.9000D);
 
         writer.writeAndFlush(reg);
 
         String[] campos = resultStream.toString().split("\\|");
-        assertThat(campos[5], is("1000,00"));
+        assertThat(campos[5], is("1000"));
+        assertThat(campos[10], is("1000,9"));
+        assertThat(campos[11], is("10,9"));
+    }
+
+    @Test
+    public void formataDoubleComAte5CasasDecimais() {
+        RegA170 reg = new RegA170();
+        reg.setVlItem(1000.999D);
+        reg.setVlDesc(1000.9999D);
+        reg.setAliqPis(1000.99999D);
+
+        writer.writeAndFlush(reg);
+
+        String[] campos = resultStream.toString().split("\\|");
+        assertThat(campos[5], is("1000,999"));
+        assertThat(campos[6], is("1000,9999"));
+        assertThat(campos[11], is("1000,99999"));
     }
 }
