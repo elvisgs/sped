@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch.common;
 
+import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -9,13 +10,14 @@ import java.util.Map;
  * Armazena o último id de cada registro lido
  */
 @Component
+@JobScope
 public class RegIdHolder {
 
     private Map<Class<?>, Integer> ids = new HashMap<Class<?>, Integer>();
 
     /**
      * Obtém último id do registro representado pela classe
-     * @param regClass Classe que representa o registro
+     * @param regClass Classe do registro
      * @return Id do registro
      */
     public Integer getId(Class<?> regClass) {
@@ -27,7 +29,7 @@ public class RegIdHolder {
 
     /**
      * Seta id do registro representado pela classe
-     * @param regClass Classe que representa o registro
+     * @param regClass Classe do registro
      * @param id Id a ser armazenado
      */
     public void setId(Class<?> regClass, Integer id) {
