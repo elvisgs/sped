@@ -24,55 +24,55 @@ public class StepsBlocoIConfig {
     private TaskletFactory taskletFactory;
 
     @Bean @Lazy(false)
-    public Step stepRegI001() {
+    public Step stepRegI001() throws Exception {
         return stepFactory.create("stepRegI001", RegI001.class);
     }
 
     @Bean @Lazy(false)
-    public Step stepRegI010() {
+    public Step stepRegI010() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegI010.class);
 
         return stepFactory.create("stepRegI010", tasklet);
     }
 
     @Bean
-    public Step stepRegI100() {
+    public Step stepRegI100() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegI100.class);
 
         return stepFactory.create("stepRegI100", tasklet);
     }
 
     @Bean
-    public Step stepRegI200() {
+    public Step stepRegI200() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegI200.class);
 
         return stepFactory.create("stepRegI200", tasklet);
     }
 
     @Bean
-    public Step stepRegI300() {
+    public Step stepRegI300() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegI300.class);
 
         return stepFactory.create("stepRegI300", tasklet);
     }
 
     @Bean
-    public Step stepRegI399() {
+    public Step stepRegI399() throws Exception {
         return stepFactory.create("stepRegI399", RegI399.class, RegI300.class);
     }
 
     @Bean
-    public Step stepRegI299() {
+    public Step stepRegI299() throws Exception {
         return stepFactory.create("stepRegI299", RegI299.class, RegI200.class);
     }
 
     @Bean
-    public Step stepRegI199() {
+    public Step stepRegI199() throws Exception {
         return stepFactory.create("stepRegI199", RegI199.class, RegI100.class);
     }
 
     @Bean @Lazy(false)
-    public Step stepRegI990() {
+    public Step stepRegI990() throws Exception {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegI990.class, Arrays.asList(
                 RegI001.class, RegI010.class, RegI100.class, RegI200.class, RegI300.class,
                 RegI399.class, RegI299.class, RegI199.class

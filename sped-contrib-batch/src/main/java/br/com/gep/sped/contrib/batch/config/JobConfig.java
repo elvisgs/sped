@@ -50,7 +50,7 @@ public class JobConfig {
     private StepsBloco9Config stepsBloco9;
 
     @Bean
-    public Job spedContribJob() {
+    public Job spedContribJob() throws Exception {
         return jobBuilder.get("spedContribJob")
                 .flow(stepsBloco0.stepReg0000())
                 .next(flowBloco0Config.flowBloco0())

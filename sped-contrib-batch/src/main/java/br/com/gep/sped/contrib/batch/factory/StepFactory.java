@@ -40,7 +40,7 @@ public class StepFactory {
                 .build();
     }
 
-    public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) {
+    public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) throws Exception {
         ItemStreamReader<R> reader = itemReaderFactory.create(regClass, parentRegClass);
         ItemStreamWriter<R> writer = itemWriterFactory.create(regClass, parentRegClass);
 
@@ -53,7 +53,7 @@ public class StepFactory {
                 .build();
     }
 
-    public <R extends Registro> TaskletStep create(String name, Class<R> regClass) {
+    public <R extends Registro> TaskletStep create(String name, Class<R> regClass) throws Exception {
         return create(name, regClass, null);
     }
 

@@ -16,7 +16,7 @@ public class FlowBlocoMConfig {
     private StepsBlocoMConfig stepsBlocoM;
 
     @Bean
-    public Flow flowBlocoM() {
+    public Flow flowBlocoM() throws Exception {
         return new FlowBuilder<SimpleFlow>("flowBlocoM")
                 .start(stepsBlocoM.stepRegM001())
                 .next(stepsBlocoM.stepRegM100())

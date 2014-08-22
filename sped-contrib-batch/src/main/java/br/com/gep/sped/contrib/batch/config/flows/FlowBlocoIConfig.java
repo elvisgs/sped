@@ -18,7 +18,7 @@ public class FlowBlocoIConfig {
 
     @Bean
     @Lazy
-    public Flow flowBlocoI() {
+    public Flow flowBlocoI() throws Exception {
         return new FlowBuilder<SimpleFlow>("flowBlocoI")
                 .start(stepsBlocoI.stepRegI001())
                 .next(stepsBlocoI.stepRegI010())

@@ -16,7 +16,7 @@ public class FlowBloco0Config {
     private StepsBloco0Config stepsBloco0;
 
     @Bean
-    public Flow flowBloco0() {
+    public Flow flowBloco0() throws Exception {
         return new FlowBuilder<SimpleFlow>("flowBloco0")
                 .start(stepsBloco0.stepReg0001())
                 //.next(stepsBloco0.stepReg0035()) // TODO: verificar porque tabela não existe

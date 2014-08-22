@@ -16,7 +16,7 @@ public class FlowBloco1Config {
     private StepsBloco1Config stepsBloco1;
 
     @Bean
-    public Flow flowBloco1() {
+    public Flow flowBloco1() throws Exception {
         // TODO: existem vários registros que não estão mapeados aqui. Ver necessidade de implementá-los
         return new FlowBuilder<SimpleFlow>("flowBloco1")
                 .start(stepsBloco1.stepReg1001())

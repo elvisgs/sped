@@ -24,47 +24,47 @@ public class StepsBlocoAConfig {
     private TaskletFactory taskletFactory;
 
     @Bean @Lazy(false)
-    public Step stepRegA001() {
+    public Step stepRegA001() throws Exception {
         return stepFactory.create("stepRegA001", RegA001.class);
     }
 
     @Bean @Lazy(false)
-    public Step stepRegA010() {
+    public Step stepRegA010() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegA010.class);
 
         return stepFactory.create("stepRegA010", tasklet);
     }
 
     @Bean
-    public Step stepRegA100() {
+    public Step stepRegA100() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegA100.class);
 
         return stepFactory.create("stepRegA100", tasklet);
     }
 
     @Bean
-    public Step stepRegA110() {
+    public Step stepRegA110() throws Exception {
         return stepFactory.create("stepRegA110", RegA110.class, RegA100.class);
     }
 
     @Bean
-    public Step stepRegA111() {
+    public Step stepRegA111() throws Exception {
         return stepFactory.create("stepRegA111", RegA111.class, RegA100.class);
     }
 
     @Bean
-    public Step stepRegA120() {
+    public Step stepRegA120() throws Exception {
         return stepFactory.create("stepRegA120", RegA120.class, RegA100.class);
     }
 
     @Bean
-    public Step stepRegA170() {
+    public Step stepRegA170() throws Exception {
         return stepFactory.create("stepRegA170", RegA170.class, RegA100.class);
     }
 
 
     @Bean @Lazy(false)
-    public Step stepRegA990() {
+    public Step stepRegA990() throws Exception {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegA990.class, Arrays.asList(
                 RegA001.class, RegA010.class, RegA100.class, RegA110.class,
                 RegA111.class, RegA120.class, RegA170.class));

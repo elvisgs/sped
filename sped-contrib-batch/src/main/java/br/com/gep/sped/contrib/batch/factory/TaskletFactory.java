@@ -32,7 +32,7 @@ public class TaskletFactory {
     @Autowired
     private SpedTree spedTree;
 
-    public RegTreeTasklet createRegTreeTasklet(Class<? extends Registro> regClass) {
+    public RegTreeTasklet createRegTreeTasklet(Class<? extends Registro> regClass) throws Exception {
         RegNode rootNode = spedTree.getNode(regClass);
         RegTreeTasklet tasklet = new RegTreeTasklet(rootNode);
         tasklet.setItemReaderFactory(itemReaderFactory);
@@ -40,21 +40,26 @@ public class TaskletFactory {
         tasklet.setRegIdHolder(regIdHolder);
         tasklet.setRegCounter(regCounter);
 
+        tasklet.afterPropertiesSet();
+
         return tasklet;
     }
 
-    public <T extends RegistroEncerramentoBloco> ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<T> closingBlocRegClass, List<Class<? extends Registro>> regClassesToCount) {
+    public <T extends RegistroEncerramentoBloco> ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<T> closingBlocRegClass, List<Class<? extends Registro>> regClassesToCount) throws Exception {
         ClosingBlocRegTasklet tasklet = new ClosingBlocRegTasklet(closingBlocRegClass, regClassesToCount);
         tasklet.setWriter(itemWriterFactory.create(closingBlocRegClass));
         tasklet.setRegCounter(regCounter);
 
+        tasklet.afterPropertiesSet();
+
         return tasklet;
     }
 
-    public Bloco9Tasklet createBloc9Tasklet() {
+    public Bloco9Tasklet createBloc9Tasklet() throws Exception {
         Bloco9Tasklet tasklet = new Bloco9Tasklet();
         tasklet.setWriter(itemWriterFactory.create(Registro.class));
         tasklet.setRegCounter(regCounter);
+        tasklet.afterPropertiesSet();
 
         return tasklet;
     }

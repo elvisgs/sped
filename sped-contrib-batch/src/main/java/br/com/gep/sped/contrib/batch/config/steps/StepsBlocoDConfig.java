@@ -24,131 +24,131 @@ public class StepsBlocoDConfig {
     private TaskletFactory taskletFactory;
 
     @Bean @Lazy(false)
-    public Step stepRegD001() {
+    public Step stepRegD001() throws Exception {
         return stepFactory.create("stepRegD001", RegD001.class);
     }
 
     @Bean @Lazy(false)
-    public Step stepRegD010() {
+    public Step stepRegD010() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegD010.class);
 
         return stepFactory.create("stepRegD010", tasklet);
     }
 
     @Bean
-    public Step stepRegD100() {
+    public Step stepRegD100() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegD100.class);
 
         return stepFactory.create("stepRegD100", tasklet);
     }
 
     @Bean
-    public Step stepRegD101() {
+    public Step stepRegD101() throws Exception {
         return stepFactory.create("stepRegD101", RegD101.class, RegD100.class);
     }
 
     @Bean
-    public Step stepRegD105() {
+    public Step stepRegD105() throws Exception {
         return stepFactory.create("stepRegD105", RegD105.class, RegD100.class);
     }
 
     @Bean
-    public Step stepRegD111() {
+    public Step stepRegD111() throws Exception {
         return stepFactory.create("stepRegD111", RegD111.class, RegD100.class);
     }
 
     @Bean
-    public Step stepRegD200() {
+    public Step stepRegD200() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegD200.class);
 
         return stepFactory.create("stepRegD200", tasklet);
     }
 
     @Bean
-    public Step stepRegD201() {
+    public Step stepRegD201() throws Exception {
         return stepFactory.create("stepRegD201", RegD201.class, RegD200.class);
     }
 
     @Bean
-    public Step stepRegD205() {
+    public Step stepRegD205() throws Exception {
         return stepFactory.create("stepRegD205", RegD205.class, RegD200.class);
     }
 
     @Bean
-    public Step stepRegD209() {
+    public Step stepRegD209() throws Exception {
         return stepFactory.create("stepRegD209", RegD209.class, RegD200.class);
     }
 
     @Bean
-    public Step stepRegD300() {
+    public Step stepRegD300() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegD300.class);
 
         return stepFactory.create("stepRegD300", tasklet);
     }
 
     @Bean
-    public Step stepRegD309() {
+    public Step stepRegD309() throws Exception {
         return stepFactory.create("stepRegD309", RegD309.class, RegD300.class);
     }
 
     @Bean
-    public Step stepRegD350() {
+    public Step stepRegD350() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegD350.class);
 
         return stepFactory.create("stepRegD350", tasklet);
     }
 
     @Bean
-    public Step stepRegD359() {
+    public Step stepRegD359() throws Exception {
         return stepFactory.create("stepRegD359", RegD359.class, RegD350.class);
     }
 
     @Bean
-    public Step stepRegD500() {
+    public Step stepRegD500() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegD500.class);
 
         return stepFactory.create("stepRegD500", tasklet);
     }
 
     @Bean
-    public Step stepRegD501() {
+    public Step stepRegD501() throws Exception {
         return stepFactory.create("stepRegD501", RegD501.class, RegD500.class);
     }
 
     @Bean
-    public Step stepRegD505() {
+    public Step stepRegD505() throws Exception {
         return stepFactory.create("stepRegD505", RegD505.class, RegD500.class);
     }
 
     @Bean
-    public Step stepRegD509() {
+    public Step stepRegD509() throws Exception {
         return stepFactory.create("stepRegD509", RegD509.class, RegD500.class);
     }
 
     @Bean
-    public Step stepRegD600() {
+    public Step stepRegD600() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegD600.class);
 
         return stepFactory.create("stepRegD600", tasklet);
     }
 
     @Bean
-    public Step stepRegD601() {
+    public Step stepRegD601() throws Exception {
         return stepFactory.create("stepRegD601", RegD601.class, RegD600.class);
     }
 
     @Bean
-    public Step stepRegD605() {
+    public Step stepRegD605() throws Exception {
         return stepFactory.create("stepRegD605", RegD605.class, RegD600.class);
     }
 
     @Bean
-    public Step stepRegD609() {
+    public Step stepRegD609() throws Exception {
         return stepFactory.create("stepRegD609", RegD609.class, RegD600.class);
     }
 
     @Bean @Lazy(false)
-    public Step stepRegD990() {
+    public Step stepRegD990() throws Exception {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegD990.class, Arrays.asList(
                 RegD001.class, RegD010.class, RegD100.class, RegD101.class, RegD105.class,
                 RegD111.class, RegD200.class, RegD201.class, RegD205.class, RegD209.class,

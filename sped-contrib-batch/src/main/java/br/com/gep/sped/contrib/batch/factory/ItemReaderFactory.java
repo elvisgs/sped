@@ -17,7 +17,7 @@ public interface ItemReaderFactory {
      * @return {@link ItemStreamReader} do registro
      * @throws Exception
      */
-    <R extends Registro, P extends Registro> ItemStreamReader<R> create(Class<R> regClass, Class<P> parentRegClass);
+    <R extends Registro, P extends Registro> ItemStreamReader<R> create(Class<R> regClass, Class<P> parentRegClass) throws Exception;
 
     /**
      * Cria um {@link ItemStreamReader} para um registro.
@@ -25,5 +25,5 @@ public interface ItemReaderFactory {
      * @return {@link ItemStreamReader} do registro
      * @throws Exception
      */
-    <R extends Registro> ItemStreamReader<R> create(Class<R> regClass);
+    <R extends Registro> ItemStreamReader<R> create(Class<R> regClass) throws Exception;
 }

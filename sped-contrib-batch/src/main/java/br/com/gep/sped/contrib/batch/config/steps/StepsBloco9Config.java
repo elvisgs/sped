@@ -19,7 +19,7 @@ public class StepsBloco9Config {
     private TaskletFactory taskletFactory;
 
     @Bean
-    public Step stepBloco9() {
+    public Step stepBloco9() throws Exception {
         Tasklet tasklet = taskletFactory.createBloc9Tasklet();
 
         return stepFactory.create("stepBloco9", tasklet);

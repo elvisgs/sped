@@ -16,7 +16,7 @@ public class FlowBlocoDConfig {
     private StepsBlocoDConfig stepsBlocoD;
 
     @Bean
-    public Flow flowBlocoD() {
+    public Flow flowBlocoD() throws Exception {
         return new FlowBuilder<SimpleFlow>("flowBlocoD")
                 .start(stepsBlocoD.stepRegD001())
                 .next(stepsBlocoD.stepRegD010())

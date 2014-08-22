@@ -32,7 +32,7 @@ public class DefaultItemReaderFactory implements ItemReaderFactory {
     private QueryPartsProvider queryPartsProvider;
 
     @Override
-    public <R extends Registro, P extends Registro> ItemStreamReader<R> create(Class<R> regClass, Class<P> parentRegClass) {
+    public <R extends Registro, P extends Registro> ItemStreamReader<R> create(Class<R> regClass, Class<P> parentRegClass) throws Exception {
         String regName = regClass.getSimpleName();
         if (regName.endsWith("000") || regName.endsWith("001"))
             return createCursorItemReader(regClass, parentRegClass);
@@ -41,11 +41,11 @@ public class DefaultItemReaderFactory implements ItemReaderFactory {
     }
 
     @Override
-    public <R extends Registro> ItemStreamReader<R> create(Class<R> regClass) {
+    public <R extends Registro> ItemStreamReader<R> create(Class<R> regClass) throws Exception {
         return create(regClass, null);
     }
 
-    private <R extends Registro, P extends Registro> ItemStreamReader<R> createCursorItemReader(Class<R> regClass, Class<P> parentRegClass) {
+    private <R extends Registro, P extends Registro> ItemStreamReader<R> createCursorItemReader(Class<R> regClass, Class<P> parentRegClass) throws Exception {
         JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<R>();
         reader.setDataSource(dataSource);
 
@@ -58,16 +58,12 @@ public class DefaultItemReaderFactory implements ItemReaderFactory {
             reader.setPreparedStatementSetter(new ParentIdStatementSetter(parentRegClass, regIdHolder));
         }
 
-        try {
-            reader.afterPropertiesSet();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        reader.afterPropertiesSet();
 
         return reader;
     }
 
-    private <R extends Registro, P extends Registro> ItemStreamReader<R> createPagingItemReader(Class<R> regClass, Class<P> parentRegClass) {
+    private <R extends Registro, P extends Registro> ItemStreamReader<R> createPagingItemReader(Class<R> regClass, Class<P> parentRegClass) throws Exception {
         JdbcPagingItemReader<R> reader;
         if (parentRegClass != null) {
             reader = new LateParentIdJdbcPagingItemReader(parentRegClass, regIdHolder);
@@ -89,20 +85,12 @@ public class DefaultItemReaderFactory implements ItemReaderFactory {
 
         queryProviderFactory.setSortKey("id");
 
-        try {
-            reader.setQueryProvider(queryProviderFactory.getObject());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        reader.setQueryProvider(queryProviderFactory.getObject());
 
         reader.setPageSize(Constants.CHUNK_SIZE);
         reader.setRowMapper(new BeanPropertyRowMapper<R>(regClass));
 
-        try {
-            reader.afterPropertiesSet();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        reader.afterPropertiesSet();
 
         return reader;
     }
