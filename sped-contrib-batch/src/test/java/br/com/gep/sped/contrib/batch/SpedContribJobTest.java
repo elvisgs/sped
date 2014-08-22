@@ -50,7 +50,7 @@ public class SpedContribJobTest {
     public void jobTerminaComStatusCompletedEEscreveArquivoCorretamente() throws Exception {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addString("output.file.name", CAMINHO_RESULTADO)
-                //.addString("current.schema", "foo")
+                .addString("current.schema", "sped_contrib")
                 .toJobParameters();
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
 

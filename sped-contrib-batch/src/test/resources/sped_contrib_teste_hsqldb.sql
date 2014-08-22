@@ -1,3 +1,7 @@
+CREATE SCHEMA sped_contrib AUTHORIZATION DBA;
+
+SET SCHEMA sped_contrib;
+
 CREATE TABLE pis_0000 (
   id integer NOT NULL,
   id_pai integer NOT NULL,
