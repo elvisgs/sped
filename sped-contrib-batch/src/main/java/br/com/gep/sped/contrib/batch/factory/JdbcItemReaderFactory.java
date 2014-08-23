@@ -2,6 +2,7 @@ package br.com.gep.sped.contrib.batch.factory;
 
 import br.com.gep.sped.contrib.batch.common.Constants;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
+import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
 import br.com.gep.sped.contrib.batch.jdbc.QueryParts;
 import br.com.gep.sped.contrib.batch.jdbc.QueryPartsProvider;
 import br.com.gep.sped.contrib.batch.jdbc.SchemaInjector;
@@ -30,7 +31,7 @@ import java.util.Map;
 public class JdbcItemReaderFactory implements ItemReaderFactory {
 
     @Autowired
-    private DataSource dataSource;
+    private InfrastructureConfig infraConfig;
 
     @Autowired
     private RegIdHolder regIdHolder;
@@ -77,7 +78,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
 
     private <R extends Registro, P extends Registro> ItemStreamReader<R> createCursorItemReader(Class<R> regClass, final Class<P> parentRegClass) throws Exception {
         JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<R>();
-        reader.setDataSource(dataSource);
+        reader.setDataSource(infraConfig.spedDataSource());
 
         String sql = queryPartsProvider.getQueryParts(regClass).toString();
         reader.setSql(schemaInjector.injectSchema(sql));
@@ -100,11 +101,11 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
 
     private <R extends Registro, P extends Registro> ItemStreamReader<R> createPagingItemReader(Class<R> regClass, Class<P> parentRegClass) throws Exception {
         JdbcPagingItemReader<R> reader = new JdbcPagingItemReader<R>();
-        reader.setDataSource(dataSource);
+        reader.setDataSource(infraConfig.spedDataSource());
 
         QueryParts queryParts = queryPartsProvider.getQueryParts(regClass);
         SqlPagingQueryProviderFactoryBean queryProviderFactory = new SqlPagingQueryProviderFactoryBean();
-        queryProviderFactory.setDataSource(dataSource);
+        queryProviderFactory.setDataSource(infraConfig.spedDataSource());
         queryProviderFactory.setSelectClause(queryParts.getSelect());
         String fromClause = schemaInjector.injectSchema(queryParts.getFrom());
         queryProviderFactory.setFromClause(fromClause);
