@@ -1,8 +1,8 @@
 package br.com.gep.sped.contrib.batch.factory;
 
-import br.com.gep.sped.contrib.batch.common.Constants;
 import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
+import br.com.gep.sped.contrib.batch.common.SpedProperties;
 import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import org.springframework.batch.core.ItemWriteListener;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -33,6 +33,9 @@ public class StepFactory {
     @Autowired
     private RegIdHolder regIdHolder;
 
+    @Autowired
+    private SpedProperties spedProperties;
+
     public TaskletStep create(String name, Tasklet tasklet) {
         return stepBuilder.get(name)
                 .tasklet(tasklet)
@@ -45,7 +48,7 @@ public class StepFactory {
         ItemStreamWriter<R> writer = itemWriterFactory.create(regClass, parentRegClass);
 
         return stepBuilder.get(name)
-                .<R, R>chunk(Constants.CHUNK_SIZE)
+                .<R, R>chunk(spedProperties.getChunkSize())
                 .reader(reader)
                 .writer(writer)
                 .listener(new UpdateRegInfoListener<R>())

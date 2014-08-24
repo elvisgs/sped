@@ -1,7 +1,7 @@
 package br.com.gep.sped.contrib.batch.factory;
 
-import br.com.gep.sped.contrib.batch.common.Constants;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
+import br.com.gep.sped.contrib.batch.common.SpedProperties;
 import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
 import br.com.gep.sped.contrib.batch.jdbc.QueryParts;
 import br.com.gep.sped.contrib.batch.jdbc.QueryPartsProvider;
@@ -21,7 +21,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -41,6 +40,9 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
 
     @Autowired
     private SchemaInjector schemaInjector;
+
+    @Autowired
+    private SpedProperties spedProperties;
 
     @Override
     public <R extends Registro, P extends Registro> ItemStreamReader<R> create(final Class<R> regClass, final Class<P> parentRegClass) throws Exception {
@@ -122,7 +124,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
 
         reader.setQueryProvider(queryProviderFactory.getObject());
 
-        reader.setPageSize(Constants.CHUNK_SIZE);
+        reader.setPageSize(spedProperties.getChunkSize());
         reader.setRowMapper(new BeanPropertyRowMapper<R>(regClass));
 
         reader.afterPropertiesSet();
