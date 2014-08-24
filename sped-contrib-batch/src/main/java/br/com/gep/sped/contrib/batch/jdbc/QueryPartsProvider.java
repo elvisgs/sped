@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Provê as cláusulas das consultas SQL dos registros
  */
 @Component
-@PropertySource(value = "classpath:queries.properties", ignoreResourceNotFound = true)
+@PropertySource(value = "classpath:queries.properties")
 public class QueryPartsProvider {
 
     @Autowired
