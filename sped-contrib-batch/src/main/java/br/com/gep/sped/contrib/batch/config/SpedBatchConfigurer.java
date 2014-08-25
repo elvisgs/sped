@@ -36,6 +36,7 @@ public class SpedBatchConfigurer implements BatchConfigurer {
     public JobLauncher getJobLauncher() throws Exception {
         SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
         jobLauncher.setJobRepository(getJobRepository());
+        jobLauncher.setTaskExecutor(infrastructureConfig.taskExecutor());
         jobLauncher.afterPropertiesSet();
         return jobLauncher;
     }

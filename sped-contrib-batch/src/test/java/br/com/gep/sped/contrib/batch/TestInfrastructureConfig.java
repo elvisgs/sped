@@ -4,6 +4,8 @@ import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
 import br.com.gep.sped.contrib.batch.config.StandaloneConfig;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.context.annotation.*;
+import org.springframework.core.task.SyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
@@ -37,5 +39,11 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
     @Bean
     public JobLauncherTestUtils jobLauncherTestUtils() {
         return new JobLauncherTestUtils();
+    }
+
+    @Override
+    @Bean(name = "taskExecutorTest")
+    public TaskExecutor taskExecutor() {
+        return new SyncTaskExecutor();
     }
 }

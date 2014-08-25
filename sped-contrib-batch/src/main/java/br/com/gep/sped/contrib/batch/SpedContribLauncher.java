@@ -37,6 +37,12 @@ public class SpedContribLauncher {
         this.schema = schema;
     }
 
+    /**
+     * Executa o job assincronamente
+     * @param outputFilePath Caminho do arquivo a ser gerado
+     * @return Informações de execução do job, que podem ser usadas posteriormente para consultar
+     * o status da execução por meio do JobExplorer
+     */
     public JobExecution run(String outputFilePath) throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
         Assert.hasText(outputFilePath, "outputFilePath must be not null or empty");
 
