@@ -1,26 +1,23 @@
 package br.com.gep.sped.contrib.batch;
 
-import br.com.gep.sped.contrib.batch.StandaloneConfigTest;
 import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
 import br.com.gep.sped.contrib.batch.config.StandaloneConfig;
 import org.springframework.batch.test.JobLauncherTestUtils;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.*;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import javax.sql.DataSource;
 
 @Configuration
+@Primary
 @ComponentScan(excludeFilters = @ComponentScan.Filter(
         type = FilterType.ASSIGNABLE_TYPE,
         value = {StandaloneConfig.class, StandaloneConfigTest.class}))
 public class TestInfrastructureConfig implements InfrastructureConfig {
 
     @Override
-    @Bean
+    @Bean(name = "spedDataSourceTest")
     public DataSource spedDataSource() {
         return new EmbeddedDatabaseBuilder()
                 .addScripts(
@@ -32,7 +29,7 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
     }
 
     @Override
-    @Bean
+    @Bean(name = "batchDataSourceTest")
     public DataSource batchDataSource() {
         return spedDataSource();
     }
