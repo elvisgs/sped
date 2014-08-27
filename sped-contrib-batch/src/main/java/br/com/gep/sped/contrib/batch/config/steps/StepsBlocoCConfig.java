@@ -6,15 +6,15 @@ import br.com.gep.sped.contrib.marshaller.registros.blocoC.*;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 
 import java.util.Arrays;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
-@Lazy
 public class StepsBlocoCConfig {
 
     @Autowired
@@ -23,12 +23,14 @@ public class StepsBlocoCConfig {
     @Autowired
     private TaskletFactory taskletFactory;
 
-    @Bean @Lazy(false)
+    @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC001() throws Exception {
         return stepFactory.create("stepRegC001", RegC001.class);
     }
 
-    @Bean @Lazy(false)
+    @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC010() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC010.class);
 
@@ -36,6 +38,7 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC100() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC100.class);
 
@@ -43,26 +46,31 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC110() throws Exception {
         return stepFactory.create("stepRegC110", RegC110.class, RegC100.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC111() throws Exception {
         return stepFactory.create("stepRegC111", RegC111.class, RegC100.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC120() throws Exception {
         return stepFactory.create("stepRegC120", RegC120.class, RegC100.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC170() throws Exception {
         return stepFactory.create("stepRegC170", RegC170.class, RegC100.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC180() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC180.class);
 
@@ -70,21 +78,25 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC181() throws Exception {
         return stepFactory.create("stepRegC181", RegC181.class, RegC180.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC185() throws Exception {
         return stepFactory.create("stepRegC185", RegC185.class, RegC180.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC188() throws Exception {
         return stepFactory.create("stepRegC188", RegC188.class, RegC180.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC190() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC190.class);
 
@@ -92,26 +104,31 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC191() throws Exception {
         return stepFactory.create("stepRegC191", RegC191.class, RegC190.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC195() throws Exception {
         return stepFactory.create("stepRegC195", RegC195.class, RegC190.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC198() throws Exception {
         return stepFactory.create("stepRegC198", RegC198.class, RegC190.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC199() throws Exception {
         return stepFactory.create("stepRegC199", RegC199.class, RegC190.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC380() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC380.class);
 
@@ -119,16 +136,19 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC381() throws Exception {
         return stepFactory.create("stepRegC381", RegC381.class, RegC380.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC385() throws Exception {
         return stepFactory.create("stepRegC385", RegC385.class, RegC380.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC395() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC395.class);
 
@@ -136,11 +156,13 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC396() throws Exception {
         return stepFactory.create("stepRegC396", RegC396.class, RegC395.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC400() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC400.class);
 
@@ -148,6 +170,7 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC405() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC405.class);
 
@@ -155,21 +178,25 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC481() throws Exception {
         return stepFactory.create("stepRegC481", RegC481.class, RegC405.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC485() throws Exception {
         return stepFactory.create("stepRegC485", RegC485.class, RegC405.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC489() throws Exception {
         return stepFactory.create("stepRegC489", RegC489.class, RegC400.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC490() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC490.class);
 
@@ -177,21 +204,25 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC491() throws Exception {
         return stepFactory.create("stepRegC491", RegC491.class, RegC490.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC495() throws Exception {
         return stepFactory.create("stepRegC495", RegC495.class, RegC490.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC499() throws Exception {
         return stepFactory.create("stepRegC499", RegC499.class, RegC490.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC500() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC500.class);
 
@@ -199,21 +230,25 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC501() throws Exception {
         return stepFactory.create("stepRegC501", RegC501.class, RegC500.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC505() throws Exception {
         return stepFactory.create("stepRegC505", RegC505.class, RegC500.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC509() throws Exception {
         return stepFactory.create("stepRegC509", RegC509.class, RegC500.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC600() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegC600.class);
 
@@ -221,21 +256,25 @@ public class StepsBlocoCConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC601() throws Exception {
         return stepFactory.create("stepRegC601", RegC601.class, RegC600.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC605() throws Exception {
         return stepFactory.create("stepRegC605", RegC605.class, RegC600.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC609() throws Exception {
         return stepFactory.create("stepRegC609", RegC609.class, RegC600.class);
     }
 
-    @Bean @Lazy(false)
+    @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegC990() throws Exception {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegC990.class, Arrays.asList(
                 RegC001.class, RegC010.class, RegC100.class, RegC110.class, RegC111.class,

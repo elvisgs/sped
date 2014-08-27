@@ -18,7 +18,6 @@ public class SpedContribLauncher {
 
     private ApplicationContext ctx;
     private JobLauncher jobLauncher;
-    private Job spedContribJob;
     private String schema;
     private boolean initialized = false;
 
@@ -28,7 +27,6 @@ public class SpedContribLauncher {
 
         ctx = new AnnotationConfigApplicationContext(SpedContribLauncher.class.getPackage().getName());
         jobLauncher = ctx.getBean(JobLauncher.class);
-        spedContribJob = ctx.getBean(Job.class);
 
         initialized = true;
     }
@@ -51,6 +49,8 @@ public class SpedContribLauncher {
 
         if (schema != null && !"".equals(schema))
             parametersBuilder.addString("current.schema", schema);
+
+        Job spedContribJob = ctx.getBean(Job.class);
 
         return jobLauncher.run(spedContribJob, parametersBuilder.toJobParameters());
     }

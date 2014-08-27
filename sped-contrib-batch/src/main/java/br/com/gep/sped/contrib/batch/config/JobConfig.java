@@ -7,8 +7,10 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
@@ -52,6 +54,7 @@ public class JobConfig {
     private StepsBloco9Config stepsBloco9;
 
     @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Job spedContribJob() throws Exception {
         return jobBuilder.get("spedContribJob")
                 .flow(stepsBloco0.stepReg0000())

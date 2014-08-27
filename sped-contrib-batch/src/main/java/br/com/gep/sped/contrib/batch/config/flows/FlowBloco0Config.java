@@ -5,8 +5,10 @@ import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
@@ -16,6 +18,7 @@ public class FlowBloco0Config {
     private StepsBloco0Config stepsBloco0;
 
     @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Flow flowBloco0() throws Exception {
         return new FlowBuilder<SimpleFlow>("flowBloco0")
                 .start(stepsBloco0.stepReg0001())

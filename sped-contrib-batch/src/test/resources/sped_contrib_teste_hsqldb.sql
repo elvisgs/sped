@@ -1,3 +1,5 @@
+DROP SCHEMA IF EXISTS sped_contrib CASCADE;
+
 CREATE SCHEMA sped_contrib AUTHORIZATION DBA;
 
 SET SCHEMA sped_contrib;
@@ -582,7 +584,7 @@ CREATE TABLE pis_9900 (
   id integer NOT NULL,
   id_pai integer,
   linha integer,
-  reg varchar(4) DEFAULT '`9900`',
+  reg varchar(4),
   qtd_reg_blc integer
 );
 

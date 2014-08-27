@@ -5,8 +5,10 @@ import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
@@ -16,6 +18,7 @@ public class FlowBloco1Config {
     private StepsBloco1Config stepsBloco1;
 
     @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Flow flowBloco1() throws Exception {
         // TODO: existem vários registros que não estão mapeados aqui. Ver necessidade de implementá-los
         return new FlowBuilder<SimpleFlow>("flowBloco1")

@@ -6,15 +6,15 @@ import br.com.gep.sped.contrib.marshaller.registros.blocoP.*;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 
 import java.util.Arrays;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
-@Lazy
 public class StepsBlocoPConfig {
 
     @Autowired
@@ -23,12 +23,14 @@ public class StepsBlocoPConfig {
     @Autowired
     private TaskletFactory taskletFactory;
 
-    @Bean @Lazy(false)
+    @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegP001() throws Exception {
         return stepFactory.create("stepRegP001", RegP001.class);
     }
 
-    @Bean @Lazy(false)
+    @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegP010() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegP010.class);
 
@@ -36,6 +38,7 @@ public class StepsBlocoPConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegP100() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegP100.class);
 
@@ -43,16 +46,19 @@ public class StepsBlocoPConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegP110() throws Exception {
         return stepFactory.create("stepRegP110", RegP110.class, RegP100.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegP199() throws Exception {
         return stepFactory.create("stepRegP199", RegP199.class, RegP100.class);
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegP200() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegP200.class);
 
@@ -60,11 +66,13 @@ public class StepsBlocoPConfig {
     }
 
     @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegP210() throws Exception {
         return stepFactory.create("stepRegP210", RegP210.class, RegP200.class);
     }
 
-    @Bean @Lazy(false)
+    @Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegP990() throws Exception {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegP990.class, Arrays.asList(
                 RegP001.class, RegP010.class, RegP100.class, RegP110.class,

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Component
 public class StepFactory {
 
