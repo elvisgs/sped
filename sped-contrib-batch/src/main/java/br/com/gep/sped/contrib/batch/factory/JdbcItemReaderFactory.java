@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Component
 public class JdbcItemReaderFactory implements ItemReaderFactory {
 
@@ -96,6 +97,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
             });
         }
 
+        reader.setSaveState(false);
         reader.afterPropertiesSet();
 
         return reader;
@@ -127,6 +129,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         reader.setPageSize(spedProperties.getChunkSize());
         reader.setRowMapper(new BeanPropertyRowMapper<R>(regClass));
 
+        reader.setSaveState(false);
         reader.afterPropertiesSet();
 
         return reader;

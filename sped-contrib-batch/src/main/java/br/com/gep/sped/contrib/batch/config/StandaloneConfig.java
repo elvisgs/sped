@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.sql.DataSource;
 
@@ -51,7 +51,10 @@ public class StandaloneConfig implements InfrastructureConfig {
     @Override
     @Bean
     public TaskExecutor taskExecutor() {
-        SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor();
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.setCorePoolSize(env.getProperty("batch.taskExecutor.corePoolSize", Integer.class, 4));
+        taskExecutor.setMaxPoolSize(env.getProperty("batch.taskExecutor.maxPoolSize", Integer.class, 4));
+        taskExecutor.afterPropertiesSet();
         return taskExecutor;
     }
 }

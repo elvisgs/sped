@@ -24,6 +24,7 @@ public class ItemWriterConfig {
         writer.setStreamName(SpedContribWriterFactory.STREAM_NAME);
         writer.setTransactional(false);
         writer.setAppendAllowed(true);
+        writer.setSaveState(false);
 
         File file = new File(outputFileName);
         writer.setResource(new FileSystemResource(file));
