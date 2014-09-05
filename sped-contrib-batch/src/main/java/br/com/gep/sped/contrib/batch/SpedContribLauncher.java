@@ -9,6 +9,7 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
 
@@ -16,7 +17,7 @@ import javax.annotation.PostConstruct;
 
 public class SpedContribLauncher {
 
-    private ApplicationContext ctx;
+    private ConfigurableApplicationContext ctx;
     private JobLauncher jobLauncher;
     private String schema;
     private boolean initialized = false;
@@ -26,6 +27,8 @@ public class SpedContribLauncher {
         if (initialized) return;
 
         ctx = new AnnotationConfigApplicationContext(SpedContribLauncher.class.getPackage().getName());
+        ctx.registerShutdownHook();
+
         jobLauncher = ctx.getBean(JobLauncher.class);
 
         initialized = true;
@@ -53,5 +56,9 @@ public class SpedContribLauncher {
         Job spedContribJob = ctx.getBean(Job.class);
 
         return jobLauncher.run(spedContribJob, parametersBuilder.toJobParameters());
+    }
+
+    public void shutdown() {
+        ctx.close();
     }
 }

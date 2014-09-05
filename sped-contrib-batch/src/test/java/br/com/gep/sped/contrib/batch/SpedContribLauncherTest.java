@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,10 +20,14 @@ public class SpedContribLauncherTest {
 
     public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
 
+    private SpedContribLauncher launcher;
     private Resource arquivoEsperado, arquivoResultado;
 
     @Before
     public void before() throws Exception {
+        launcher = new SpedContribLauncher();
+        launcher.initialize();
+
         arquivoEsperado = new ClassPathResource("sped_test_expected.txt");
         arquivoResultado = new FileSystemResource(CAMINHO_RESULTADO);
 
@@ -32,8 +37,6 @@ public class SpedContribLauncherTest {
 
     @Test
     public void escreveArquivoCorretamente() throws Exception {
-        SpedContribLauncher launcher = new SpedContribLauncher();
-        launcher.initialize();
         launcher.setSchema("sped_contrib");
 
         JobExecution execution = launcher.run(CAMINHO_RESULTADO);
@@ -44,9 +47,7 @@ public class SpedContribLauncherTest {
     }
 
     @Test
-    public void schemaPodeSerAlteradoAposPrimeiroExecucao() throws Exception {
-        SpedContribLauncher launcher = new SpedContribLauncher();
-        launcher.initialize();
+    public void schemaPodeSerAlteradoAposPrimeiraExecucao() throws Exception {
         launcher.setSchema("schema_inexistente");
 
         JobExecution execution = launcher.run(CAMINHO_RESULTADO);
@@ -60,5 +61,10 @@ public class SpedContribLauncherTest {
         Thread.sleep(300);
 
         assertThat(execution.getStatus(), is(BatchStatus.COMPLETED));
+    }
+
+    @After
+    public void after() {
+        launcher.shutdown();
     }
 }
