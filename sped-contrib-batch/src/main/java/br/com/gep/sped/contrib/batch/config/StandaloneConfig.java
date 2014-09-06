@@ -1,12 +1,12 @@
 package br.com.gep.sped.contrib.batch.config;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.core.task.TaskExecutor;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.sql.DataSource;
@@ -21,7 +21,7 @@ public class StandaloneConfig implements InfrastructureConfig {
     @Override
     @Bean
     public DataSource spedDataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(env.getProperty("sped.jdbc.driver"));
         dataSource.setUrl(env.getProperty("sped.jdbc.url"));
         dataSource.setUsername(env.getProperty("sped.jdbc.user"));
@@ -39,7 +39,7 @@ public class StandaloneConfig implements InfrastructureConfig {
         if ("".equals(batchJdbcUrl) || spedJdbcUrl.equals(batchJdbcUrl))
             return spedDataSource();
 
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(env.getProperty("batch.jdbc.driver"));
         dataSource.setUrl(batchJdbcUrl);
         dataSource.setUsername(env.getProperty("batch.jdbc.user"));
