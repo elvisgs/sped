@@ -16,7 +16,8 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class RegTreeTasklet implements Tasklet, InitializingBean {
 
@@ -26,6 +27,8 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
     private RegIdHolder regIdHolder;
     private RegCounter regCounter;
     private ItemStreamWriter writer;
+    private int chunkSize = 1;
+    private List chunk = new LinkedList();
 
     public RegTreeTasklet(RegNode root) {
         this.root = root;
@@ -45,6 +48,10 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
 
     public void setRegCounter(RegCounter regCounter) {
         this.regCounter = regCounter;
+    }
+
+    public void setChunkSize(int chunkSize) {
+        this.chunkSize = chunkSize;
     }
 
     @Override
@@ -77,7 +84,12 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
 
         Registro reg;
         while((reg = reader.read()) != null) {
-            writer.write(Arrays.asList(reg));
+            chunk.add(reg);
+
+            if (chunk.size() == chunkSize) {
+                writer.write(chunk);
+                chunk.clear();
+            }
 
             regIdHolder.setId(reg.getClass(), reg.getId());
             regCounter.incrementCount(reg.getClass());
@@ -87,6 +99,11 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
                     processNode(regChild, stepExecution);
                 }
             }
+        }
+
+        if (!chunk.isEmpty()) {
+            writer.write(chunk);
+            chunk.clear();
         }
 
         reader.close();
@@ -99,5 +116,6 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
         Assert.notNull(itemWriterFactory, "itemWriterFactory is null");
         Assert.notNull(regIdHolder, "regIdHolder is null");
         Assert.notNull(regCounter, "regCounter is null");
+        Assert.state(chunkSize > 0, "chunkSize must be greater than zero");
     }
 }

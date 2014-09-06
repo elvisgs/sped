@@ -1,9 +1,6 @@
 package br.com.gep.sped.contrib.batch.factory;
 
-import br.com.gep.sped.contrib.batch.common.RegCounter;
-import br.com.gep.sped.contrib.batch.common.RegIdHolder;
-import br.com.gep.sped.contrib.batch.common.RegNode;
-import br.com.gep.sped.contrib.batch.common.SpedTree;
+import br.com.gep.sped.contrib.batch.common.*;
 import br.com.gep.sped.contrib.batch.tasklets.Bloco9Tasklet;
 import br.com.gep.sped.contrib.batch.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.contrib.batch.tasklets.RegTreeTasklet;
@@ -14,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Component
 public class TaskletFactory {
 
@@ -32,6 +30,9 @@ public class TaskletFactory {
     @Autowired
     private SpedTree spedTree;
 
+    @Autowired
+    private SpedProperties spedProperties;
+
     public RegTreeTasklet createRegTreeTasklet(Class<? extends Registro> regClass) throws Exception {
         RegNode rootNode = spedTree.getNode(regClass);
         RegTreeTasklet tasklet = new RegTreeTasklet(rootNode);
@@ -39,6 +40,7 @@ public class TaskletFactory {
         tasklet.setItemWriterFactory(itemWriterFactory);
         tasklet.setRegIdHolder(regIdHolder);
         tasklet.setRegCounter(regCounter);
+        tasklet.setChunkSize(spedProperties.getChunkSize());
 
         tasklet.afterPropertiesSet();
 
