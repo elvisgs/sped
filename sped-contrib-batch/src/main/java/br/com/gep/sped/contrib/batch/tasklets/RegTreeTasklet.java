@@ -7,9 +7,9 @@ import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.sped.contrib.batch.factory.ItemWriterFactory;
 import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import org.springframework.batch.core.StepContribution;
-import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.ItemStreamWriter;
 import org.springframework.batch.repeat.RepeatStatus;
@@ -56,20 +56,20 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-        StepExecution stepExecution = chunkContext.getStepContext().getStepExecution();
+        ExecutionContext executionContext = chunkContext.getStepContext().getStepExecution().getExecutionContext();
 
         // TODO: procurar uma maneira de o writer não precisar ser statefull durante o step (não depender de job parameters?)
         writer = itemWriterFactory.create(Registro.class);
-        writer.open(stepExecution.getExecutionContext());
+        writer.open(executionContext);
 
-        processNode(root, stepExecution);
+        processNode(root, contribution, executionContext);
 
         writer.close();
 
         return RepeatStatus.FINISHED;
     }
 
-    private void processNode(RegNode node, StepExecution stepExecution) throws Exception {
+    private void processNode(RegNode node, StepContribution contribution, ExecutionContext executionContext) throws Exception {
         ItemStreamReader<? extends Registro> reader;
         Class<? extends Registro> regClass = node.getRegClass();
         Class<? extends Registro> parentRegClass = null;
@@ -80,14 +80,16 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
 
         reader = itemReaderFactory.create(regClass, parentRegClass);
 
-        reader.open(stepExecution.getExecutionContext());
+        reader.open(executionContext);
 
         Registro reg;
         while((reg = reader.read()) != null) {
             chunk.add(reg);
+            contribution.incrementReadCount();
 
             if (chunk.size() == chunkSize) {
                 writer.write(chunk);
+                contribution.incrementWriteCount(chunkSize);
                 chunk.clear();
             }
 
@@ -96,13 +98,14 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
 
             if (node.hasChildren()) {
                 for(RegNode regChild : node.getChildren()) {
-                    processNode(regChild, stepExecution);
+                    processNode(regChild, contribution, executionContext);
                 }
             }
         }
 
         if (!chunk.isEmpty()) {
             writer.write(chunk);
+            contribution.incrementWriteCount(chunk.size());
             chunk.clear();
         }
 

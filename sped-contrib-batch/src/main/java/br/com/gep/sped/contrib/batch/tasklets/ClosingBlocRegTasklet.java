@@ -49,6 +49,8 @@ public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implemen
             writer.write(Arrays.asList(reg));
             writer.close();
 
+            contribution.incrementWriteCount(1);
+
             regCounter.incrementCount(closingBlocRegClass);
         }
 

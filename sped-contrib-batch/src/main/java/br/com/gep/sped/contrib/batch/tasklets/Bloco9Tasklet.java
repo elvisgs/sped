@@ -78,6 +78,8 @@ public class Bloco9Tasklet implements Tasklet, InitializingBean {
 
         writer.close();
 
+        contribution.incrementWriteCount(reg9990.getQtdLin9());
+
         return RepeatStatus.FINISHED;
     }
 
