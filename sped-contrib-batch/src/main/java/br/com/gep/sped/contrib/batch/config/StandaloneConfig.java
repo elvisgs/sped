@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,9 +21,9 @@ public class StandaloneConfig implements InfrastructureConfig {
     @Override
     @Bean
     public DataSource spedDataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
+        HikariDataSource dataSource = new HikariDataSource();
         dataSource.setDriverClassName(env.getProperty("sped.jdbc.driver"));
-        dataSource.setUrl(env.getProperty("sped.jdbc.url"));
+        dataSource.setJdbcUrl(env.getProperty("sped.jdbc.url"));
         dataSource.setUsername(env.getProperty("sped.jdbc.user"));
         dataSource.setPassword(env.getProperty("sped.jdbc.password"));
 
@@ -39,9 +39,9 @@ public class StandaloneConfig implements InfrastructureConfig {
         if ("".equals(batchJdbcUrl) || spedJdbcUrl.equals(batchJdbcUrl))
             return spedDataSource();
 
-        BasicDataSource dataSource = new BasicDataSource();
+        HikariDataSource dataSource = new HikariDataSource();
         dataSource.setDriverClassName(env.getProperty("batch.jdbc.driver"));
-        dataSource.setUrl(batchJdbcUrl);
+        dataSource.setJdbcUrl(batchJdbcUrl);
         dataSource.setUsername(env.getProperty("batch.jdbc.user"));
         dataSource.setPassword(env.getProperty("batch.jdbc.password"));
 
