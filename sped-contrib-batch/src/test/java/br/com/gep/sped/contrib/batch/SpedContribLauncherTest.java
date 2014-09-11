@@ -1,11 +1,11 @@
 package br.com.gep.sped.contrib.batch;
 
+import br.com.gep.sped.contrib.batch.jdbc.entity.SpedExecution;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.batch.core.BatchStatus;
-import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.test.AssertFile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -19,6 +19,7 @@ import static org.junit.Assert.assertThat;
 public class SpedContribLauncherTest {
 
     public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
+    public static final String DIR_RESULTADOS = "target/generated-test-sources";
 
     private SpedContribLauncher launcher;
     private Resource arquivoEsperado, arquivoResultado;
@@ -39,28 +40,31 @@ public class SpedContribLauncherTest {
     public void escreveArquivoCorretamente() throws Exception {
         launcher.setSchema("sped_contrib");
 
-        JobExecution execution = launcher.run(CAMINHO_RESULTADO);
+        SpedExecution execution = launcher.run(CAMINHO_RESULTADO);
         Thread.sleep(3 * 1000); // espera um tempo, pois o launcher executa assincronamente
 
-        Assert.assertNotNull(execution.getJobId());
+        Assert.assertNotNull(execution);
         AssertFile.assertFileEquals(arquivoEsperado, arquivoResultado);
     }
 
     @Test
     public void schemaPodeSerAlteradoAposPrimeiraExecucao() throws Exception {
         launcher.setSchema("schema_inexistente");
+        launcher.setDestinationDir(DIR_RESULTADOS);
 
-        JobExecution execution = launcher.run(CAMINHO_RESULTADO);
-        Thread.sleep(200); // espera um tempo, pois o launcher executa assincronamente
+        try {
+            launcher.run();
 
-        // jobExecution deve falhar, pois o schema não existe
-        assertThat(execution.getStatus(), is(BatchStatus.FAILED));
+            // deve falhar, pois o schema não existe
+            Assert.fail();
+        }
+        catch (Exception ex) {}
 
         launcher.setSchema("sped_contrib");
-        execution = launcher.run(CAMINHO_RESULTADO);
+        SpedExecution execution = launcher.run();
         Thread.sleep(300);
 
-        assertThat(execution.getStatus(), is(BatchStatus.COMPLETED));
+        assertThat(execution.getJobExecution().getStatus(), is(BatchStatus.COMPLETED));
     }
 
     @After

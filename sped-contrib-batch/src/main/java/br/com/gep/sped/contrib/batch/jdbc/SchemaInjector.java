@@ -1,6 +1,7 @@
 package br.com.gep.sped.contrib.batch.jdbc;
 
 import org.springframework.batch.core.configuration.annotation.JobScope;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,16 +13,27 @@ import org.springframework.stereotype.Component;
  * Caso nenhum schema tenha sido informado, o token apenas será removido da consulta.
  */
 @Component
-@JobScope
+@StepScope
 public class SchemaInjector {
 
     public static final String SCHEMA_TOKEN = "@schema@";
 
-    @Value("#{jobParameters['current.schema']}")
     private String currentSchema;
+
+    public SchemaInjector() {
+    }
+
+    public SchemaInjector(String currentSchema) {
+        this.currentSchema = currentSchema;
+    }
 
     public String getCurrentSchema() {
         return currentSchema;
+    }
+
+    @Value("#{jobParameters['current.schema']}")
+    public void setCurrentSchema(String currentSchema) {
+        this.currentSchema = currentSchema;
     }
 
     public String injectSchema(String sql) {

@@ -8,6 +8,8 @@ import org.springframework.context.annotation.*;
 import org.springframework.core.io.Resource;
 import org.springframework.core.task.SyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
@@ -23,11 +25,17 @@ import javax.sql.DataSource;
         value = {StandaloneConfig.class, StandaloneConfigTest.class}))
 public class TestInfrastructureConfig implements InfrastructureConfig {
 
+    @Value("classpath:/schemas/schema-drop-hsqldb.sql")
+    private Resource batchSpedSchemaDrop;
+
     @Value("classpath:org/springframework/batch/core/schema-drop-hsqldb.sql")
     private Resource batchSchemaDrop;
 
     @Value("classpath:org/springframework/batch/core/schema-hsqldb.sql")
     private Resource batchSchema;
+
+    @Value("classpath:/schemas/schema-hsqldb.sql")
+    private Resource batchSpedSchema;
 
     @Value("classpath:sped_contrib_teste_hsqldb.sql")
     private Resource spedSchema;
@@ -56,7 +64,8 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
 
     private DatabasePopulator getDatabasePopulator() {
         return new ResourceDatabasePopulator(
-                batchSchemaDrop, batchSchema, spedSchema);
+                batchSpedSchemaDrop, batchSchemaDrop, batchSchema,
+                batchSpedSchema, spedSchema);
     }
 
     @Override
@@ -80,5 +89,10 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
     @Bean(name = "taskExecutorTest")
     public TaskExecutor taskExecutor() {
         return new SyncTaskExecutor();
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(batchDataSource());
     }
 }
