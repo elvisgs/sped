@@ -17,6 +17,7 @@ import static org.junit.Assert.assertThat;
 public class SpedContribLauncherTest {
 
     public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
+    public static final String CAMINHO_ZIP = "target/generated-test-sources/sped_test_result.zip";
     public static final String DIR_RESULTADOS = "target/generated-test-sources";
 
     private SpedContribLauncher launcher;
@@ -37,7 +38,6 @@ public class SpedContribLauncherTest {
         launcher.setDeleteFileAfterCompression(false);
 
         SpedExecution execution = launcher.run(CAMINHO_RESULTADO);
-        Thread.sleep(3 * 1000); // espera um tempo, pois o launcher executa assincronamente
 
         Assert.assertNotNull(execution);
         AssertFile.assertFileEquals(arquivoEsperado, arquivoResultado);
@@ -58,7 +58,6 @@ public class SpedContribLauncherTest {
 
         launcher.setSchema("sped_contrib");
         SpedExecution execution = launcher.run();
-        Thread.sleep(300);
 
         assertThat(execution.getJobExecution().getStatus(), is(BatchStatus.COMPLETED));
     }

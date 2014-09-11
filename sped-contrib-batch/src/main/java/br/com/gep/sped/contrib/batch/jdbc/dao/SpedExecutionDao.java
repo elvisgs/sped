@@ -33,6 +33,9 @@ public class SpedExecutionDao implements InitializingBean {
 
     private static final String FIND_BY_CNPJ = FIND_ALL + " WHERE CNPJ = ?";
 
+    private static final String UPDATE_FILE =
+            "UPDATE BATCH_SPED_EXECUTION SET ARQUIVO = ? WHERE JOB_EXECUTION_ID = ?";
+
     private DataSource dataSource;
     private JdbcOperations jdbcTemplate;
     private DataFieldMaxValueIncrementer incrementer;
@@ -83,6 +86,13 @@ public class SpedExecutionDao implements InitializingBean {
         Assert.hasText(cnpj, "cnpj não deve ser nulo ou vazio");
 
         return jdbcTemplate.query(FIND_BY_CNPJ, new SpedExecutionRowMapper(), cnpj);
+    }
+
+    public void updateFile(Long jobExecutionId, String file) {
+        Assert.notNull(jobExecutionId, "jobExecutionId não deve ser null");
+        Assert.hasText(file, "file não deve ser nulo ou vazio");
+
+        jdbcTemplate.update(UPDATE_FILE, file, jobExecutionId);
     }
 
     @Override

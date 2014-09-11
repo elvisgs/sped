@@ -84,6 +84,18 @@ public class SpedExecutionDaoTest {
         assertThat(spedExecutions.size(), is(2));
     }
 
+    @Test
+    public void atualizaArquivoDeUmSpedExecution() {
+        SpedExecution spedExecution1 = criarSpedExecution();
+        spedExecutionDao.create(spedExecution1);
+
+        spedExecutionDao.updateFile(jobExecution.getId(), "arquivoNovo.txt");
+
+        SpedExecution spedExecution2 = spedExecutionDao.findById(spedExecution1.getId());
+
+        assertThat(spedExecution2.getArquivo(), is("arquivoNovo.txt"));
+    }
+
     private SpedExecution criarSpedExecution() {
         return criarSpedExecution(0);
     }
