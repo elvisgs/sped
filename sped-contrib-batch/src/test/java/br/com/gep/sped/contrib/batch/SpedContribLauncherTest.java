@@ -11,8 +11,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
-import java.io.File;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -31,9 +29,6 @@ public class SpedContribLauncherTest {
 
         arquivoEsperado = new ClassPathResource("sped_test_expected.txt");
         arquivoResultado = new FileSystemResource(CAMINHO_RESULTADO);
-
-        File file = new File(CAMINHO_RESULTADO);
-        if (file.exists()) file.delete();
     }
 
     @Test

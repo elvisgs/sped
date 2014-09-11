@@ -15,11 +15,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.io.File;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -44,9 +41,6 @@ public class SpedContribJobTest {
     @Before
     public void before() throws Exception {
         jobLauncherTestUtils.setJob(jobConfig.spedContribJob());
-
-        File file = new File(CAMINHO_RESULTADO);
-        if (file.exists()) file.delete();
     }
 
     @Test

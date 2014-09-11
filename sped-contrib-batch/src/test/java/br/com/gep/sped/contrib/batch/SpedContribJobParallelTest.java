@@ -1,7 +1,6 @@
 package br.com.gep.sped.contrib.batch;
 
 import br.com.gep.sped.contrib.batch.config.JobConfig;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.BatchStatus;
@@ -9,19 +8,13 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.explore.JobExplorer;
-import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.core.io.Resource;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.io.File;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -46,15 +39,6 @@ public class SpedContribJobParallelTest {
 
     @Value("classpath:sped_test_expected.txt")
     private Resource esperado;
-
-    @Before
-    public void before() throws Exception {
-        File file1 = new File(CAMINHO_RESULTADO_1);
-        if (file1.exists()) file1.delete();
-
-        File file2 = new File(CAMINHO_RESULTADO_2);
-        if (file2.exists()) file2.delete();
-    }
 
     @Test
     public void testeExecucaoParalela() throws Exception {

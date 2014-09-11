@@ -1,6 +1,7 @@
 package br.com.gep.sped.contrib.batch.config;
 
 import br.com.gep.sped.contrib.batch.config.flows.*;
+import br.com.gep.sped.contrib.batch.config.steps.MiscStepsConfig;
 import br.com.gep.sped.contrib.batch.config.steps.StepsBloco0Config;
 import br.com.gep.sped.contrib.batch.config.steps.StepsBloco9Config;
 import org.springframework.batch.core.Job;
@@ -53,11 +54,15 @@ public class JobConfig {
     @Autowired
     private StepsBloco9Config stepsBloco9;
 
+    @Autowired
+    private MiscStepsConfig miscStepsConfig;
+
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Job spedContribJob() throws Exception {
         return jobBuilder.get("spedContribJob")
-                .flow(stepsBloco0.stepReg0000())
+                .flow(miscStepsConfig.cleanupStep())
+                .next(stepsBloco0.stepReg0000())
                 .next(flowBloco0Config.flowBloco0())
                 .next(flowBlocoAConfig.flowBlocoA())
                 .next(flowBlocoCConfig.flowBlocoC())
