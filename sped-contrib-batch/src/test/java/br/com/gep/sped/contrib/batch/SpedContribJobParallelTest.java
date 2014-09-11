@@ -45,12 +45,14 @@ public class SpedContribJobParallelTest {
         JobParameters jobParameters1 = new JobParametersBuilder()
                 .addString("output.file.name", CAMINHO_RESULTADO_1)
                 .addString("current.schema", "sped_contrib")
+                .addString("delete.file.after.compression", String.valueOf(false))
                 .addString("execution", "1")
                 .toJobParameters();
 
         JobParameters jobParameters2 = new JobParametersBuilder()
                 .addString("output.file.name", CAMINHO_RESULTADO_2)
                 .addString("current.schema", "sped_contrib")
+                .addString("delete.file.after.compression", String.valueOf(false))
                 .addString("execution", "2")
                 .toJobParameters();
 

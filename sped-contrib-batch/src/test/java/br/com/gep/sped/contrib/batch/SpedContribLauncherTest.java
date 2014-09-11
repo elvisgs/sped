@@ -34,6 +34,7 @@ public class SpedContribLauncherTest {
     @Test
     public void escreveArquivoCorretamente() throws Exception {
         launcher.setSchema("sped_contrib");
+        launcher.setDeleteFileAfterCompression(false);
 
         SpedExecution execution = launcher.run(CAMINHO_RESULTADO);
         Thread.sleep(3 * 1000); // espera um tempo, pois o launcher executa assincronamente

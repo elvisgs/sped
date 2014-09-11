@@ -19,9 +19,15 @@ public class CleanupTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-        File file = new File(outputFileName);
-        if (file.exists()) {
-            file.delete();
+        File outputFile = new File(outputFileName);
+        if (outputFile.exists()) {
+            outputFile.delete();
+        }
+
+        String zipFileName = outputFileName.replaceAll("\\..+$", "") + ".zip";
+        File zipFile = new File(zipFileName);
+        if (zipFile.exists()) {
+            zipFile.delete();
         }
 
         return RepeatStatus.FINISHED;

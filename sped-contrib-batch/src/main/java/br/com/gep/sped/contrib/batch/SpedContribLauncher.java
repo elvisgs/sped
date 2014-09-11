@@ -33,6 +33,8 @@ public class SpedContribLauncher {
     private SpedExecutionDao spedExecutionDao;
     private String schema;
     private String destinationDir = "";
+    private boolean compressFile = true;
+    private boolean deleteFileAfterCompression = true;
     private boolean initialized = false;
 
     @PostConstruct
@@ -58,6 +60,14 @@ public class SpedContribLauncher {
         this.destinationDir = destinationDir;
     }
 
+    public void setCompressFile(boolean compressFile) {
+        this.compressFile = compressFile;
+    }
+
+    public void setDeleteFileAfterCompression(boolean deleteFileAfterCompression) {
+        this.deleteFileAfterCompression = deleteFileAfterCompression;
+    }
+
     /**
      * Executa o job assincronamente
      * @param outputFilePath Caminho do arquivo a ser gerado
@@ -77,7 +87,9 @@ public class SpedContribLauncher {
         }
 
         JobParametersBuilder parametersBuilder = new JobParametersBuilder()
-                .addString("output.file.name", outputFilePath);
+                .addString("output.file.name", outputFilePath)
+                .addString("compress.file", String.valueOf(compressFile), false)
+                .addString("delete.file.after.compression", String.valueOf(deleteFileAfterCompression), false);
 
         if (schema != null && !"".equals(schema))
             parametersBuilder.addString("current.schema", schema);

@@ -73,6 +73,7 @@ public class JobConfig {
                 .next(flowBlocoPConfig.flowBlocoP())
                 .next(flowBloco1Config.flowBloco1())
                 .next(stepsBloco9.stepBloco9())
+                .next(miscStepsConfig.zipFileStep())
                 .end()
                 .build();
     }

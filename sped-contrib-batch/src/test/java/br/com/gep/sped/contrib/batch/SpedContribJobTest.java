@@ -18,16 +18,19 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestInfrastructureConfig.class)
-@DirtiesContext
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class SpedContribJobTest {
 
     public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
+    public static final String CAMINHO_ZIP = "target/generated-test-sources/sped_test_result.zip";
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
@@ -48,6 +51,7 @@ public class SpedContribJobTest {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addString("output.file.name", CAMINHO_RESULTADO)
                 .addString("current.schema", "sped_contrib")
+                .addString("delete.file.after.compression", String.valueOf(false))
                 .toJobParameters();
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
 
@@ -55,5 +59,21 @@ public class SpedContribJobTest {
 
         Resource resultado = new FileSystemResource(CAMINHO_RESULTADO);
         AssertFile.assertFileEquals(esperado, resultado);
+    }
+
+    @Test
+    public void comprimeArquivoGerado() throws Exception {
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addString("output.file.name", CAMINHO_RESULTADO)
+                .addString("current.schema", "sped_contrib")
+                .toJobParameters();
+
+        JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
+
+        assertThat(jobExecution.getStatus(), is(BatchStatus.COMPLETED));
+
+        File zip = new File(CAMINHO_ZIP);
+        assertThat(zip.exists(), is(true));
+        assertThat(zip.length() > 0, is(true));
     }
 }
