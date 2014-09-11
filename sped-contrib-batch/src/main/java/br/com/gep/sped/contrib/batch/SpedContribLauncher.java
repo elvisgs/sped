@@ -119,7 +119,7 @@ public class SpedContribLauncher {
         Calendar cal = Calendar.getInstance();
         cal.setTime(reg0000.getDtIni());
         spedExecution.setAno(cal.get(Calendar.YEAR));
-        spedExecution.setMes(cal.get(Calendar.MONTH + 1));
+        spedExecution.setMes(cal.get(Calendar.MONTH) + 1);
 
         spedExecution.setArquivo(outputFilePath);
         spedExecution.setJobExecution(jobExecution);
