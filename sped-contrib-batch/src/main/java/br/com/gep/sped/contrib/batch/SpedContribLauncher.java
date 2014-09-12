@@ -118,7 +118,7 @@ public class SpedContribLauncher {
 
     private String buildFileName(Reg0000 reg0000) {
         String outputFilePath;SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM");
-        outputFilePath = String.format("%s_%s.txt",
+        outputFilePath = String.format("%s_%s_PIS.txt",
                 reg0000.getCnpj(), sdf.format(reg0000.getDtIni()));
         return outputFilePath;
     }
