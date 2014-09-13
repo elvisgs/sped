@@ -31,7 +31,7 @@ public class SpedExecutionDao implements InitializingBean {
 
     private static final String FIND_BY_ID = FIND_ALL + " WHERE ID = ?";
 
-    private static final String FIND_BY_CNPJ = FIND_ALL + " WHERE CNPJ = ?";
+    private static final String FIND_BY_CNPJ = FIND_ALL + " WHERE CNPJ = ? ORDER BY ANO DESC, MES DESC";
 
     private static final String UPDATE_FILE =
             "UPDATE BATCH_SPED_EXECUTION SET ARQUIVO = ? WHERE JOB_EXECUTION_ID = ?";
