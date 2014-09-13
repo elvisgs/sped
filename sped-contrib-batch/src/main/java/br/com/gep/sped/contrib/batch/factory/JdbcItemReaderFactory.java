@@ -19,6 +19,7 @@ import org.springframework.batch.item.database.support.SqlPagingQueryProviderFac
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
@@ -44,6 +45,9 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
 
     @Autowired
     private SpedProperties spedProperties;
+
+    @Autowired
+    private RowMapperFactory rowMapperFactory;
 
     @Override
     public <R extends Registro, P extends Registro> ItemStreamReader<R> create(final Class<R> regClass, final Class<P> parentRegClass) throws Exception {
@@ -80,13 +84,13 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
     }
 
     private <R extends Registro, P extends Registro> ItemStreamReader<R> createCursorItemReader(Class<R> regClass, final Class<P> parentRegClass) throws Exception {
-        JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<R>();
+        JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<>();
         reader.setDataSource(infraConfig.spedDataSource());
 
         String sql = queryPartsProvider.getQueryParts(regClass).toString();
         reader.setSql(schemaInjector.injectSchema(sql));
 
-        reader.setRowMapper(new BeanPropertyRowMapper<R>(regClass));
+        reader.setRowMapper(createRowMapper(regClass));
 
         if (parentRegClass != null) {
             reader.setPreparedStatementSetter(new PreparedStatementSetter() {
@@ -104,7 +108,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
     }
 
     private <R extends Registro, P extends Registro> ItemStreamReader<R> createPagingItemReader(Class<R> regClass, Class<P> parentRegClass) throws Exception {
-        JdbcPagingItemReader<R> reader = new JdbcPagingItemReader<R>();
+        JdbcPagingItemReader<R> reader = new JdbcPagingItemReader<>();
         reader.setDataSource(infraConfig.spedDataSource());
 
         QueryParts queryParts = queryPartsProvider.getQueryParts(regClass);
@@ -117,7 +121,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         if (parentRegClass != null) {
             queryProviderFactory.setWhereClause(queryParts.getWhere());
 
-            Map<String, Object> params = new HashMap<String, Object>();
+            Map<String, Object> params = new HashMap<>();
             params.put("1", regIdHolder.getId(parentRegClass));
             reader.setParameterValues(params);
         }
@@ -127,12 +131,21 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         reader.setQueryProvider(queryProviderFactory.getObject());
 
         reader.setPageSize(spedProperties.getChunkSize());
-        reader.setRowMapper(new BeanPropertyRowMapper<R>(regClass));
+        reader.setRowMapper(createRowMapper(regClass));
 
         reader.setSaveState(false);
         reader.afterPropertiesSet();
 
         return reader;
+    }
+
+    private <R extends Registro> RowMapper<R> createRowMapper(Class<R> regClass) {
+        try {
+            return rowMapperFactory.create(regClass);
+        }
+        catch (ClassNotFoundException e) {
+            return new BeanPropertyRowMapper<>(regClass);
+        }
     }
 
     private <T> T createLazyProxy(Class<T> type, TargetSource targetSource) {

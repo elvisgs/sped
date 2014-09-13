@@ -1,0 +1,19 @@
+package br.com.gep.sped.contrib.batch.jdbc.mappers.blocoC;
+
+import br.com.gep.sped.contrib.marshaller.registros.blocoC.RegC110;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class RegC110RowMapper implements RowMapper<RegC110> {
+
+    @Override
+    public RegC110 mapRow(ResultSet rs, int rowNum) throws SQLException {
+        RegC110 reg = new RegC110();
+        reg.setId(rs.getInt("id"));
+        reg.setCodInf(rs.getString("cod_inf"));
+        reg.setTxtCompl(rs.getString("txt_compl"));
+        return reg;
+    }
+}
