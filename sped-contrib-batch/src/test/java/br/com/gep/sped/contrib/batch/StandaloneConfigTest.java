@@ -1,6 +1,6 @@
-package br.com.gep.sped.contrib.batch.config;
+package br.com.gep.sped.contrib.batch;
 
-import br.com.gep.sped.contrib.batch.TestInfrastructureConfig;
+import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
