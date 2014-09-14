@@ -10,8 +10,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class SpedContribWriterTest extends WriterTestBase {
 
@@ -23,7 +22,7 @@ public class SpedContribWriterTest extends WriterTestBase {
         writer.writeAndFlush(reg);
 
         String[] campos = resultStream.toString().replaceAll("^\\||\\|$", "").split("\\|", 0);
-        assertThat(campos.length, is(2));
+        assertThat(campos.length).isEqualTo(2);
     }
 
     @Test
@@ -34,7 +33,7 @@ public class SpedContribWriterTest extends WriterTestBase {
         writer.writeAndFlush(reg);
 
         String linha = resultStream.toString();
-        assertThat("Linha não termina com pipe", linha.endsWith("|" + lineSeparator), is(true));
+        assertThat(linha).endsWith("|" + lineSeparator);
     }
 
     @Test
@@ -45,7 +44,7 @@ public class SpedContribWriterTest extends WriterTestBase {
         writer.writeAndFlush(reg);
 
         String linha = resultStream.toString();
-        assertThat("Linha não inicia com pipe", linha.startsWith("|"), is(true));
+        assertThat(linha).startsWith("|");
     }
 
     @Test
@@ -56,7 +55,7 @@ public class SpedContribWriterTest extends WriterTestBase {
         writer.writeAndFlush(reg);
 
         String[] campos = resultStream.toString().split("\\|");
-        assertThat(campos[6], is("01012014"));
+        assertThat(campos[6]);
     }
 
     @Test
@@ -69,9 +68,9 @@ public class SpedContribWriterTest extends WriterTestBase {
         writer.writeAndFlush(reg);
 
         String[] campos = resultStream.toString().split("\\|");
-        assertThat(campos[5], is("1000"));
-        assertThat(campos[10], is("1000,9"));
-        assertThat(campos[11], is("10,9"));
+        assertThat(campos[5]).isEqualTo("1000");
+        assertThat(campos[10]).isEqualTo("1000,9");
+        assertThat(campos[11]).isEqualTo("10,9");
     }
 
     @Test
@@ -84,8 +83,8 @@ public class SpedContribWriterTest extends WriterTestBase {
         writer.writeAndFlush(reg);
 
         String[] campos = resultStream.toString().split("\\|");
-        assertThat(campos[5], is("1000,999"));
-        assertThat(campos[6], is("1000,9999"));
-        assertThat(campos[11], is("1000,99999"));
+        assertThat(campos[5]).isEqualTo("1000,999");
+        assertThat(campos[6]).isEqualTo("1000,9999");
+        assertThat(campos[11]).isEqualTo("1000,99999");
     }
 }

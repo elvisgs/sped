@@ -11,13 +11,11 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class SpedContribLauncherTest {
 
     public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
-    public static final String CAMINHO_ZIP = "target/generated-test-sources/sped_test_result.zip";
     public static final String DIR_RESULTADOS = "target/generated-test-sources";
 
     private SpedContribLauncher launcher;
@@ -50,16 +48,14 @@ public class SpedContribLauncherTest {
 
         try {
             launcher.run();
-
-            // deve falhar, pois o schema não existe
-            Assert.fail();
+            fail("Execução deveria falhar, pois schema não existe");
         }
         catch (Exception ex) {}
 
         launcher.setSchema("sped_contrib");
         SpedExecution execution = launcher.run();
 
-        assertThat(execution.getJobExecution().getStatus(), is(BatchStatus.COMPLETED));
+        assertThat(execution.getJobExecution().getStatus()).isEqualTo(BatchStatus.COMPLETED);
     }
 
     @After

@@ -21,9 +21,7 @@ import org.springframework.test.jdbc.JdbcTestUtils;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -55,7 +53,7 @@ public class SpedExecutionDaoTest {
         spedExecutionDao.create(spedExecution);
 
         int count = JdbcTestUtils.countRowsInTable(jdbcTemplate, "BATCH_SPED_EXECUTION");
-        assertThat(count, is(1));
+        assertThat(count).isEqualTo(1);
     }
 
     @Test
@@ -65,8 +63,8 @@ public class SpedExecutionDaoTest {
 
         SpedExecution spedExecution2 = spedExecutionDao.findById(spedExecution1.getId());
 
-        assertThat(spedExecution2, notNullValue());
-        assertThat(spedExecution2.getJobExecution(), notNullValue());
+        assertThat(spedExecution2).isNotNull();
+        assertThat(spedExecution2.getJobExecution()).isNotNull();
     }
 
     @Test
@@ -80,8 +78,8 @@ public class SpedExecutionDaoTest {
 
         List<SpedExecution> spedExecutions = spedExecutionDao.findByCnpj(spedExecution1.getCnpj());
 
-        assertThat(spedExecutions, notNullValue());
-        assertThat(spedExecutions.size(), is(2));
+        assertThat(spedExecutions).isNotNull();
+        assertThat(spedExecutions).hasSize(2);
     }
 
     @Test
@@ -93,7 +91,7 @@ public class SpedExecutionDaoTest {
 
         SpedExecution spedExecution2 = spedExecutionDao.findById(spedExecution1.getId());
 
-        assertThat(spedExecution2.getArquivo(), is("arquivoNovo.txt"));
+        assertThat(spedExecution2.getArquivo()).isEqualTo("arquivoNovo.txt");
     }
 
     private SpedExecution criarSpedExecution() {

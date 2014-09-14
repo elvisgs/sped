@@ -11,11 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,9 +32,8 @@ public class Reg0000DaoTest {
     public void buscaReg0000Corretamente() throws ParseException {
         Reg0000 reg = reg0000Dao.getUnique();
 
-        assertThat(reg.getCnpj(), is("99999999000191"));
-        assertThat(reg.getNome(), is("EMPRESA TESTE"));
-        Date data = new SimpleDateFormat("dd/MM/yyyy").parse("01/04/2011");
-        assertThat(reg.getDtIni().compareTo(data), is(0));
+        assertThat(reg.getCnpj()).isEqualTo("99999999000191");
+        assertThat(reg.getNome()).isEqualTo("EMPRESA TESTE");
+        assertThat(reg.getDtIni()).isEqualToIgnoringHours("2011-04-01");
     }
 }

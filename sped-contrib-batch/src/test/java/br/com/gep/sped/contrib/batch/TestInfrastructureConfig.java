@@ -2,13 +2,13 @@ package br.com.gep.sped.contrib.batch;
 
 import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
 import br.com.gep.sped.contrib.batch.config.StandaloneConfig;
+import br.com.gep.sped.contrib.batch.config.StandaloneConfigTest;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.core.io.Resource;
 import org.springframework.core.task.SyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
-import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;

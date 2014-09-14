@@ -1,6 +1,6 @@
-package br.com.gep.sped.contrib.batch;
+package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
+import br.com.gep.sped.contrib.batch.TestInfrastructureConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.sql.DataSource;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Configuration
 @ComponentScan(excludeFilters =
@@ -29,13 +28,13 @@ public class StandaloneConfigTest {
     public void criaSpedDataSourceUsandoArquivoDePropriedades() {
         DataSource dataSource = standaloneConfig.spedDataSource();
 
-        assertThat(dataSource, notNullValue());
+        assertThat(dataSource).isNotNull();
     }
 
     @Test
     public void criaBatchDataSourceUsandoArquivoDePropriedades() {
         DataSource dataSource = standaloneConfig.batchDataSource();
 
-        assertThat(dataSource, notNullValue());
+        assertThat(dataSource).isNotNull();
     }
 }

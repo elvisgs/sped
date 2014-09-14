@@ -16,8 +16,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -67,7 +66,7 @@ public class SpedContribJobParallelTest {
             Thread.sleep(300);
         }
 
-        assertThat(jobExecution1.getStatus(), is(BatchStatus.COMPLETED));
-        assertThat(jobExecution2.getStatus(), is(BatchStatus.COMPLETED));
+        assertThat(jobExecution1.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+        assertThat(jobExecution2.getStatus()).isEqualTo(BatchStatus.COMPLETED);
     }
 }

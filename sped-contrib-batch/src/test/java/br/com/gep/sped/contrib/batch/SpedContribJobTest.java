@@ -8,7 +8,6 @@ import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
-import org.springframework.batch.test.AssertFile;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,8 +19,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.File;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
+import static org.springframework.batch.test.AssertFile.assertFileEquals;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -55,10 +54,10 @@ public class SpedContribJobTest {
                 .toJobParameters();
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
 
-        assertThat(jobExecution.getStatus(), is(BatchStatus.COMPLETED));
+        assertThat(jobExecution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
 
         Resource resultado = new FileSystemResource(CAMINHO_RESULTADO);
-        AssertFile.assertFileEquals(esperado, resultado);
+        assertFileEquals(esperado, resultado);
     }
 
     @Test
@@ -70,10 +69,10 @@ public class SpedContribJobTest {
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
 
-        assertThat(jobExecution.getStatus(), is(BatchStatus.COMPLETED));
+        assertThat(jobExecution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
 
         File zip = new File(CAMINHO_ZIP);
-        assertThat(zip.exists(), is(true));
-        assertThat(zip.length() > 0, is(true));
+        assertThat(zip).exists().isFile();
+        assertThat(zip.length()).isGreaterThan(0);
     }
 }

@@ -7,8 +7,7 @@ import br.com.gep.sped.contrib.marshaller.registros.blocoC.RegC100;
 import org.junit.Test;
 import org.springframework.jdbc.core.RowMapper;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class RowMapperFactoryTest {
 
@@ -18,7 +17,7 @@ public class RowMapperFactoryTest {
 
         RowMapper<Reg0000> mapper = factory.create(Reg0000.class);
 
-        assertThat(mapper, instanceOf(Reg0000RowMapper.class));
+        assertThat(mapper).isInstanceOf(Reg0000RowMapper.class);
     }
 
     @Test
@@ -27,6 +26,6 @@ public class RowMapperFactoryTest {
 
         RowMapper<RegC100> mapper = factory.create(RegC100.class);
 
-        assertThat(mapper, instanceOf(RegC100RowMapper.class));
+        assertThat(mapper).isInstanceOf(RegC100RowMapper.class);
     }
 }
