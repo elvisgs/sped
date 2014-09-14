@@ -10,6 +10,7 @@
         <version>0.1.0</version>
     </parent>
     <artifactId>sped-contrib-batch</artifactId>
+    <name>SPED Contribuições Batch</name>
 
     <dependencies>
         <dependency>

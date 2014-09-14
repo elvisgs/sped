@@ -8,6 +8,15 @@
     <artifactId>sped-parent</artifactId>
     <version>0.1.0</version>
     <packaging>pom</packaging>
+    <name>SPED Project</name>
+    <description>
+        Marshallers e Batch Jobs para a geração dos arquivos do SPED - Sistema Público de Escrituração Digital
+    </description>
+
+    <modules>
+        <module>sped-contrib-marshaller</module>
+        <module>sped-contrib-batch</module>
+    </modules>
 
     <properties>
         <java.version>1.7</java.version>
@@ -16,10 +25,20 @@
         <spring.batch.version>3.0.1.RELEASE</spring.batch.version>
     </properties>
 
-    <modules>
-        <module>sped-contrib-marshaller</module>
-        <module>sped-contrib-batch</module>
-    </modules>
+    <developers>
+        <developer>
+            <name>Elvis Luciano Guimarães da Silva</name>
+            <email>elvis.gs@gmail.com</email>
+            <roles>
+                <role>Desenvolvedor</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <ciManagement>
+        <system>Drone.io CI</system>
+        <url>https://drone.io/bitbucket.org/gepsistemas/sped</url>
+    </ciManagement>
 
     <build>
         <plugins>
