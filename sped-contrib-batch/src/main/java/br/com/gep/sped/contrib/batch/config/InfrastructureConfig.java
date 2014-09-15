@@ -8,10 +8,7 @@ import javax.sql.DataSource;
 public interface InfrastructureConfig {
 
     @Bean
-    DataSource spedDataSource();
-
-    @Bean
-    DataSource batchDataSource();
+    DataSource dataSource();
 
     @Bean
     TaskExecutor taskExecutor();

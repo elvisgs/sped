@@ -25,7 +25,7 @@ public class DaoConfig {
     @Bean @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Reg0000Dao reg0000Dao() {
         Reg0000Dao reg0000Dao = new Reg0000Dao();
-        reg0000Dao.setDataSource(infraConfig.spedDataSource());
+        reg0000Dao.setDataSource(infraConfig.dataSource());
         reg0000Dao.setSelectQuery(queryPartsProvider.getQueryParts(Reg0000.class).toString());
         return reg0000Dao;
     }
@@ -33,7 +33,7 @@ public class DaoConfig {
     @Bean @Lazy
     public SpedExecutionDao spedExecutionDao() throws Exception {
         SpedExecutionDaoFactoryBean factory = new SpedExecutionDaoFactoryBean();
-        factory.setDataSource(infraConfig.batchDataSource());
+        factory.setDataSource(infraConfig.dataSource());
         factory.afterPropertiesSet();
 
         return factory.getObject();

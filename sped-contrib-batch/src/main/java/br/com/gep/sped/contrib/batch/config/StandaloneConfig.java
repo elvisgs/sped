@@ -20,30 +20,12 @@ public class StandaloneConfig implements InfrastructureConfig {
 
     @Override
     @Bean
-    public DataSource spedDataSource() {
+    public DataSource dataSource() {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setDriverClassName(env.getProperty("sped.jdbc.driver"));
         dataSource.setJdbcUrl(env.getProperty("sped.jdbc.url"));
         dataSource.setUsername(env.getProperty("sped.jdbc.user"));
         dataSource.setPassword(env.getProperty("sped.jdbc.password"));
-
-        return dataSource;
-    }
-
-    @Override
-    @Bean
-    public DataSource batchDataSource() {
-        String spedJdbcUrl = env.getProperty("sped.jdbc.url", "");
-        String batchJdbcUrl = env.getProperty("batch.jdbc.url", "");
-
-        if ("".equals(batchJdbcUrl) || spedJdbcUrl.equals(batchJdbcUrl))
-            return spedDataSource();
-
-        HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setDriverClassName(env.getProperty("batch.jdbc.driver"));
-        dataSource.setJdbcUrl(batchJdbcUrl);
-        dataSource.setUsername(env.getProperty("batch.jdbc.user"));
-        dataSource.setPassword(env.getProperty("batch.jdbc.password"));
 
         return dataSource;
     }

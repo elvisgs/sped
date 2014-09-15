@@ -85,7 +85,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
 
     private <R extends Registro, P extends Registro> ItemStreamReader<R> createCursorItemReader(Class<R> regClass, final Class<P> parentRegClass) throws Exception {
         JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<>();
-        reader.setDataSource(infraConfig.spedDataSource());
+        reader.setDataSource(infraConfig.dataSource());
 
         String sql = queryPartsProvider.getQueryParts(regClass).toString();
         reader.setSql(schemaInjector.injectSchema(sql));
@@ -109,11 +109,11 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
 
     private <R extends Registro, P extends Registro> ItemStreamReader<R> createPagingItemReader(Class<R> regClass, Class<P> parentRegClass) throws Exception {
         JdbcPagingItemReader<R> reader = new JdbcPagingItemReader<>();
-        reader.setDataSource(infraConfig.spedDataSource());
+        reader.setDataSource(infraConfig.dataSource());
 
         QueryParts queryParts = queryPartsProvider.getQueryParts(regClass);
         SqlPagingQueryProviderFactoryBean queryProviderFactory = new SqlPagingQueryProviderFactoryBean();
-        queryProviderFactory.setDataSource(infraConfig.spedDataSource());
+        queryProviderFactory.setDataSource(infraConfig.dataSource());
         queryProviderFactory.setSelectClause(queryParts.getSelect());
         String fromClause = schemaInjector.injectSchema(queryParts.getFrom());
         queryProviderFactory.setFromClause(fromClause);

@@ -55,7 +55,7 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
     @Bean
     public DataSourceInitializer dataSourceInitializer() {
         DataSourceInitializer initializer = new DataSourceInitializer();
-        initializer.setDataSource(spedDataSource());
+        initializer.setDataSource(dataSource());
         initializer.setDatabasePopulator(getDatabasePopulator());
         initializer.afterPropertiesSet();
         return initializer;
@@ -68,14 +68,8 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
     }
 
     @Override
-    @Bean(name = "spedDataSourceTest")
-    public DataSource spedDataSource() {
-        return dataSource;
-    }
-
-    @Override
-    @Bean(name = "batchDataSourceTest")
-    public DataSource batchDataSource() {
+    @Bean(name = "testDataSource")
+    public DataSource dataSource() {
         return dataSource;
     }
 
@@ -85,13 +79,13 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
     }
 
     @Override
-    @Bean(name = "taskExecutorTest")
+    @Bean(name = "syncTaskExecutor")
     public TaskExecutor taskExecutor() {
         return new SyncTaskExecutor();
     }
 
     @Bean
     public JdbcTemplate jdbcTemplate() {
-        return new JdbcTemplate(batchDataSource());
+        return new JdbcTemplate(dataSource());
     }
 }

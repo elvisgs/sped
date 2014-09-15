@@ -21,7 +21,7 @@ public class SpedBatchConfigurer implements BatchConfigurer {
     @Override
     public JobRepository getJobRepository() throws Exception {
         JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
-        factory.setDataSource(infrastructureConfig.batchDataSource());
+        factory.setDataSource(infrastructureConfig.dataSource());
         factory.setTransactionManager(getTransactionManager());
         factory.afterPropertiesSet();
         return  factory.getObject();
@@ -29,7 +29,7 @@ public class SpedBatchConfigurer implements BatchConfigurer {
 
     @Override
     public PlatformTransactionManager getTransactionManager() throws Exception {
-        return new DataSourceTransactionManager(infrastructureConfig.batchDataSource());
+        return new DataSourceTransactionManager(infrastructureConfig.dataSource());
     }
 
     @Override
@@ -44,7 +44,7 @@ public class SpedBatchConfigurer implements BatchConfigurer {
     @Override
     public JobExplorer getJobExplorer() throws Exception {
         JobExplorerFactoryBean factory = new JobExplorerFactoryBean();
-        factory.setDataSource(infrastructureConfig.batchDataSource());
+        factory.setDataSource(infrastructureConfig.dataSource());
         factory.afterPropertiesSet();
         return factory.getObject();
     }

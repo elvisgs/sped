@@ -26,14 +26,7 @@ public class StandaloneConfigTest {
 
     @Test
     public void criaSpedDataSourceUsandoArquivoDePropriedades() {
-        DataSource dataSource = standaloneConfig.spedDataSource();
-
-        assertThat(dataSource).isNotNull();
-    }
-
-    @Test
-    public void criaBatchDataSourceUsandoArquivoDePropriedades() {
-        DataSource dataSource = standaloneConfig.batchDataSource();
+        DataSource dataSource = standaloneConfig.dataSource();
 
         assertThat(dataSource).isNotNull();
     }
