@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch;
 
+import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
 import br.com.gep.sped.contrib.batch.jdbc.dao.Reg0000Dao;
 import br.com.gep.sped.contrib.batch.jdbc.dao.SpedExecutionDao;
 import br.com.gep.sped.contrib.batch.jdbc.entity.SpedExecution;
@@ -14,7 +15,6 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
 
@@ -27,28 +27,21 @@ public class SpedContribLauncher {
 
     private static final Log logger = LogFactory.getLog(SpedContribLauncher.class);
 
-    private ConfigurableApplicationContext ctx;
+    private AnnotationConfigApplicationContext batchCtx;
+
+    private InfrastructureConfig infrastructureConfig;
     private JobLauncher jobLauncher;
     private Reg0000Dao reg0000Dao;
     private SpedExecutionDao spedExecutionDao;
+
     private String schema;
     private String destinationDir = "";
     private boolean compressFile = true;
     private boolean deleteFileAfterCompression = true;
     private boolean initialized = false;
 
-    @PostConstruct
-    public void initialize() {
-        if (initialized) return;
-
-        ctx = new AnnotationConfigApplicationContext(SpedContribLauncher.class.getPackage().getName());
-        ctx.registerShutdownHook();
-
-        jobLauncher = ctx.getBean(JobLauncher.class);
-        reg0000Dao = ctx.getBean(Reg0000Dao.class);
-        spedExecutionDao = ctx.getBean(SpedExecutionDao.class);
-
-        initialized = true;
+    public void setInfrastructureConfig(InfrastructureConfig infrastructureConfig) {
+        this.infrastructureConfig = infrastructureConfig;
     }
 
     public void setSchema(String schema) {
@@ -56,7 +49,6 @@ public class SpedContribLauncher {
     }
 
     public void setDestinationDir(String destinationDir) {
-        Assert.notNull(destinationDir, "destinationDir não deve ser nulo");
         this.destinationDir = destinationDir;
     }
 
@@ -94,7 +86,7 @@ public class SpedContribLauncher {
         if (schema != null && !"".equals(schema))
             parametersBuilder.addString("current.schema", schema);
 
-        Job spedContribJob = ctx.getBean(Job.class);
+        Job spedContribJob = batchCtx.getBean(Job.class);
 
         JobExecution jobExecution = jobLauncher.run(spedContribJob, parametersBuilder.toJobParameters());
 
@@ -152,7 +144,27 @@ public class SpedContribLauncher {
         return run(null);
     }
 
+    @PostConstruct
+    public void initialize() {
+        if (initialized) return;
+        batchCtx = new AnnotationConfigApplicationContext();
+
+        Assert.notNull(infrastructureConfig, "infrastructureConfig não deve ser nula");
+        batchCtx.getBeanFactory()
+                .registerSingleton("infrastructureConfig", infrastructureConfig);
+
+        batchCtx.scan(SpedContribLauncher.class.getPackage().getName());
+        batchCtx.refresh();
+        batchCtx.registerShutdownHook();
+
+        jobLauncher = batchCtx.getBean(JobLauncher.class);
+        reg0000Dao = batchCtx.getBean(Reg0000Dao.class);
+        spedExecutionDao = batchCtx.getBean(SpedExecutionDao.class);
+
+        initialized = true;
+    }
+
     public void shutdown() {
-        ctx.close();
+        batchCtx.close();
     }
 }

@@ -5,18 +5,27 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.test.AssertFile;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.assertj.core.api.Assertions.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestInfrastructureConfig.class)
 public class SpedContribLauncherTest {
 
     public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
     public static final String DIR_RESULTADOS = "target/generated-test-sources";
+
+    @Autowired
+    private TestInfrastructureConfig infraConfig;
 
     private SpedContribLauncher launcher;
     private Resource arquivoEsperado, arquivoResultado;
@@ -24,6 +33,7 @@ public class SpedContribLauncherTest {
     @Before
     public void before() throws Exception {
         launcher = new SpedContribLauncher();
+        launcher.setInfrastructureConfig(infraConfig);
         launcher.initialize();
 
         arquivoEsperado = new ClassPathResource("sped_test_expected.txt");

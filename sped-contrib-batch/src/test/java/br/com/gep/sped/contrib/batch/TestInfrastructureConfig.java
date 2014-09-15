@@ -1,7 +1,7 @@
 package br.com.gep.sped.contrib.batch;
 
 import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
-import br.com.gep.sped.contrib.batch.config.StandaloneConfig;
+import br.com.gep.sped.contrib.batch.config.SimpleInfrastructureConfig;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 @Primary
 @ComponentScan(excludeFilters = @ComponentScan.Filter(
         type = FilterType.ASSIGNABLE_TYPE,
-        value = {StandaloneConfig.class, StandaloneConfigTest.class}))
+        value = {SimpleInfrastructureConfig.class, SimpleInfrastructureConfigTest.class}))
 public class TestInfrastructureConfig implements InfrastructureConfig {
 
     @Value("classpath:/schemas/schema-drop-hsqldb.sql")
@@ -55,7 +55,7 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
     @Bean
     public DataSourceInitializer dataSourceInitializer() {
         DataSourceInitializer initializer = new DataSourceInitializer();
-        initializer.setDataSource(dataSource());
+        initializer.setDataSource(getDataSource());
         initializer.setDatabasePopulator(getDatabasePopulator());
         initializer.afterPropertiesSet();
         return initializer;
@@ -69,7 +69,7 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
 
     @Override
     @Bean(name = "testDataSource")
-    public DataSource dataSource() {
+    public DataSource getDataSource() {
         return dataSource;
     }
 
@@ -80,12 +80,12 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
 
     @Override
     @Bean(name = "syncTaskExecutor")
-    public TaskExecutor taskExecutor() {
+    public TaskExecutor getTaskExecutor() {
         return new SyncTaskExecutor();
     }
 
     @Bean
     public JdbcTemplate jdbcTemplate() {
-        return new JdbcTemplate(dataSource());
+        return new JdbcTemplate(getDataSource());
     }
 }

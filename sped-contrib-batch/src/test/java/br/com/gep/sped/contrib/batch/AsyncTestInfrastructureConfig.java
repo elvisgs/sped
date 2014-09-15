@@ -9,7 +9,7 @@ public class AsyncTestInfrastructureConfig extends TestInfrastructureConfig {
 
     @Override
     @Bean(name = "threadPoolTaskExecutor")
-    public TaskExecutor taskExecutor() {
+    public TaskExecutor getTaskExecutor() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(4);
         taskExecutor.setMaxPoolSize(4);

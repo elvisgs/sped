@@ -8,8 +8,8 @@ import javax.sql.DataSource;
 public interface InfrastructureConfig {
 
     @Bean
-    DataSource dataSource();
+    DataSource getDataSource();
 
     @Bean
-    TaskExecutor taskExecutor();
+    TaskExecutor getTaskExecutor();
 }
