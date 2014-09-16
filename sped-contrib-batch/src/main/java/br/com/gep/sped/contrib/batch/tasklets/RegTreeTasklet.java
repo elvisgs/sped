@@ -5,6 +5,7 @@ import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.common.RegNode;
 import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.sped.contrib.batch.factory.ItemWriterFactory;
+import br.com.gep.sped.contrib.batch.jdbc.EmptyTableChecker;
 import br.com.gep.sped.contrib.marshaller.registros.Registro;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -16,8 +17,7 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class RegTreeTasklet implements Tasklet, InitializingBean {
 
@@ -26,9 +26,11 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
     private ItemReaderFactory itemReaderFactory;
     private RegIdHolder regIdHolder;
     private RegCounter regCounter;
+    private EmptyTableChecker emptyTableChecker;
     private ItemStreamWriter writer;
     private int chunkSize = 1;
     private List chunk = new LinkedList();
+    private Set<Class<?>> skipRegs = new HashSet<>();
 
     public RegTreeTasklet(RegNode root) {
         this.root = root;
@@ -50,6 +52,10 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
         this.regCounter = regCounter;
     }
 
+    public void setEmptyTableChecker(EmptyTableChecker emptyTableChecker) {
+        this.emptyTableChecker = emptyTableChecker;
+    }
+
     public void setChunkSize(int chunkSize) {
         this.chunkSize = chunkSize;
     }
@@ -57,6 +63,10 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         ExecutionContext executionContext = chunkContext.getStepContext().getStepExecution().getExecutionContext();
+
+        checkRegsToSkip(root);
+
+        System.out.println(skipRegs);
 
         // TODO: procurar uma maneira de o writer não precisar ser statefull durante o step (não depender de job parameters?)
         writer = itemWriterFactory.create(Registro.class);
@@ -69,7 +79,22 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
         return RepeatStatus.FINISHED;
     }
 
+    private void checkRegsToSkip(RegNode root) throws Exception {
+        for (RegNode child : root.getChildren()) {
+            boolean shouldSkip = emptyTableChecker.isEmpty(child.getRegClass());
+            if (shouldSkip) {
+                skipRegs.add(child.getRegClass());
+            }
+
+            if (!shouldSkip && child.hasChildren()) {
+                checkRegsToSkip(child);
+            }
+        }
+    }
+
     private void processNode(RegNode node, StepContribution contribution, ExecutionContext executionContext) throws Exception {
+        if (skipRegs.contains(node.getRegClass())) return;
+
         ItemStreamReader<? extends Registro> reader;
         Class<? extends Registro> regClass = node.getRegClass();
         Class<? extends Registro> parentRegClass = null;
@@ -119,6 +144,7 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
         Assert.notNull(itemWriterFactory, "itemWriterFactory is null");
         Assert.notNull(regIdHolder, "regIdHolder is null");
         Assert.notNull(regCounter, "regCounter is null");
+        Assert.notNull(emptyTableChecker, "emptyTableChecker is null");
         Assert.state(chunkSize > 0, "chunkSize must be greater than zero");
     }
 }

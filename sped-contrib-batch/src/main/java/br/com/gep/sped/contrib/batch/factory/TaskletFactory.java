@@ -1,6 +1,7 @@
 package br.com.gep.sped.contrib.batch.factory;
 
 import br.com.gep.sped.contrib.batch.common.*;
+import br.com.gep.sped.contrib.batch.jdbc.EmptyTableChecker;
 import br.com.gep.sped.contrib.batch.tasklets.Bloco9Tasklet;
 import br.com.gep.sped.contrib.batch.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.contrib.batch.tasklets.RegTreeTasklet;
@@ -33,6 +34,9 @@ public class TaskletFactory {
     @Autowired
     private SpedProperties spedProperties;
 
+    @Autowired
+    private EmptyTableChecker emptyTableChecker;
+
     public RegTreeTasklet createRegTreeTasklet(Class<? extends Registro> regClass) throws Exception {
         RegNode rootNode = spedTree.getNode(regClass);
         RegTreeTasklet tasklet = new RegTreeTasklet(rootNode);
@@ -40,6 +44,7 @@ public class TaskletFactory {
         tasklet.setItemWriterFactory(itemWriterFactory);
         tasklet.setRegIdHolder(regIdHolder);
         tasklet.setRegCounter(regCounter);
+        tasklet.setEmptyTableChecker(emptyTableChecker);
         tasklet.setChunkSize(spedProperties.getChunkSize());
 
         tasklet.afterPropertiesSet();
