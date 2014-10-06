@@ -66,8 +66,6 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
 
         checkRegsToSkip(root);
 
-        System.out.println(skipRegs);
-
         // TODO: procurar uma maneira de o writer não precisar ser statefull durante o step (não depender de job parameters?)
         writer = itemWriterFactory.create(Registro.class);
         writer.open(executionContext);
