@@ -17,6 +17,7 @@
         <module>sped-marshaller-common</module>
         <module>sped-contrib-marshaller</module>
         <module>sped-contrib-batch</module>
+        <module>sped-fiscal-marshaller</module>
     </modules>
 
     <properties>
