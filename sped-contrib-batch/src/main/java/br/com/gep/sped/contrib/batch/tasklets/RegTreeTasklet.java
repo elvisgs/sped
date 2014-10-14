@@ -6,7 +6,7 @@ import br.com.gep.sped.contrib.batch.common.RegNode;
 import br.com.gep.sped.contrib.batch.factory.ItemReaderFactory;
 import br.com.gep.sped.contrib.batch.factory.ItemWriterFactory;
 import br.com.gep.sped.contrib.batch.jdbc.EmptyTableChecker;
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.Registro;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;

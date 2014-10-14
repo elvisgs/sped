@@ -1,11 +1,10 @@
 package br.com.gep.sped.contrib.marshaller.registros.bloco0;
 
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.Registro;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
 import org.beanio.builder.Align;
-import org.beanio.types.StringTypeHandler;
 
 /**
  * 0200 - Itens (Produtos e Serviços)

@@ -1,6 +1,7 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.writer.SpedWriterFactory;
+import br.com.gep.sped.marshaller.common.Registro;
 import br.com.gep.sped.contrib.marshaller.writer.SpedContribWriterFactory;
 import org.beanio.spring.BeanIOFlatFileItemWriter;
 import org.springframework.batch.core.configuration.annotation.StepScope;
@@ -20,8 +21,9 @@ public class ItemWriterConfig {
     @StepScope
     public <T extends Registro> BeanIOFlatFileItemWriter<T> beanIOWriter(@Value("#{jobParameters['output.file.name']}") String outputFileName) {
         BeanIOFlatFileItemWriter<T> writer = new BeanIOFlatFileItemWriter<T>();
-        writer.setStreamFactory(SpedContribWriterFactory.getInstance().getStreamFactory());
-        writer.setStreamName(SpedContribWriterFactory.STREAM_NAME);
+        SpedWriterFactory factory = SpedContribWriterFactory.getInstance();
+        writer.setStreamFactory(factory.getStreamFactory());
+        writer.setStreamName(factory.getStreamName());
         writer.setTransactional(false);
         writer.setAppendAllowed(true);
         writer.setSaveState(false);

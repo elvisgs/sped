@@ -1,7 +1,7 @@
 package br.com.gep.sped.contrib.batch.jdbc;
 
 import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.Registro;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean;

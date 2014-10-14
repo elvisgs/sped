@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.marshaller.registros.bloco0;
 
-import br.com.gep.sped.contrib.marshaller.registros.RegistroEncerramentoBloco;
+import br.com.gep.sped.marshaller.common.RegistroEncerramentoBloco;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;

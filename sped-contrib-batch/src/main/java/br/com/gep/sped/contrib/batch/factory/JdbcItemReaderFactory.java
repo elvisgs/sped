@@ -6,7 +6,7 @@ import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
 import br.com.gep.sped.contrib.batch.jdbc.QueryParts;
 import br.com.gep.sped.contrib.batch.jdbc.QueryPartsProvider;
 import br.com.gep.sped.contrib.batch.jdbc.SchemaInjector;
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.Registro;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.TargetSource;

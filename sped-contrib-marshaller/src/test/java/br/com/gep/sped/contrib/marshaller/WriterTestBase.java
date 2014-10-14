@@ -1,6 +1,7 @@
 package br.com.gep.sped.contrib.marshaller;
 
 import br.com.gep.sped.contrib.marshaller.writer.SpedContribWriter;
+import br.com.gep.sped.marshaller.common.writer.SpedWriter;
 import org.junit.After;
 import org.junit.Before;
 
@@ -10,7 +11,7 @@ import java.io.UnsupportedEncodingException;
 
 public class WriterTestBase {
 
-    protected SpedContribWriter writer;
+    protected SpedWriter writer;
     protected ByteArrayOutputStream resultStream;
     protected String lineSeparator = System.getProperty("line.separator");
 

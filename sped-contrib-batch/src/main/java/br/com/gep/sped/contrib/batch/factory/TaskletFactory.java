@@ -5,8 +5,8 @@ import br.com.gep.sped.contrib.batch.jdbc.EmptyTableChecker;
 import br.com.gep.sped.contrib.batch.tasklets.Bloco9Tasklet;
 import br.com.gep.sped.contrib.batch.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.contrib.batch.tasklets.RegTreeTasklet;
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
-import br.com.gep.sped.contrib.marshaller.registros.RegistroEncerramentoBloco;
+import br.com.gep.sped.marshaller.common.Registro;
+import br.com.gep.sped.marshaller.common.RegistroEncerramentoBloco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

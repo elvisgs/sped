@@ -1,4 +1,4 @@
-package br.com.gep.sped.contrib.marshaller.handlers;
+package br.com.gep.sped.marshaller.common.handlers;
 
 import org.beanio.types.TypeConversionException;
 import org.beanio.types.TypeHandler;

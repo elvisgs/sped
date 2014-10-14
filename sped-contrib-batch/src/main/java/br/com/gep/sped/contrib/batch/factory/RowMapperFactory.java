@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.factory;
 
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.Registro;
 import org.springframework.beans.BeanUtils;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoM;
 
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.Registro;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;

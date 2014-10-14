@@ -3,7 +3,7 @@ package br.com.gep.sped.contrib.batch.factory;
 import br.com.gep.sped.contrib.batch.common.RegCounter;
 import br.com.gep.sped.contrib.batch.common.RegIdHolder;
 import br.com.gep.sped.contrib.batch.common.SpedProperties;
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.Registro;
 import org.springframework.batch.core.ItemWriteListener;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.step.tasklet.Tasklet;

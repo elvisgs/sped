@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.common;
 
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.Registro;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.*;
 import br.com.gep.sped.contrib.marshaller.registros.bloco1.*;
 import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9001;

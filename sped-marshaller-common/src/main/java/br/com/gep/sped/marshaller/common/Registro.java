@@ -1,4 +1,4 @@
-package br.com.gep.sped.contrib.marshaller.registros;
+package br.com.gep.sped.marshaller.common;
 
 public abstract class Registro {
 

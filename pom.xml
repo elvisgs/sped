@@ -14,6 +14,7 @@
     </description>
 
     <modules>
+        <module>sped-marshaller-common</module>
         <module>sped-contrib-marshaller</module>
         <module>sped-contrib-batch</module>
     </modules>
@@ -87,6 +88,16 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.beanio</groupId>
+                <artifactId>beanio</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <repositories>
         <repository>

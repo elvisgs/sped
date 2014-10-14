@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.factory;
 
-import br.com.gep.sped.contrib.marshaller.registros.Registro;
+import br.com.gep.sped.marshaller.common.Registro;
 import org.springframework.batch.item.ItemStreamReader;
 
 /**

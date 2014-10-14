@@ -14,9 +14,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>sped-marshaller-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.beanio</groupId>
             <artifactId>beanio</artifactId>
-            <version>2.1.0</version>
         </dependency>
     </dependencies>
 

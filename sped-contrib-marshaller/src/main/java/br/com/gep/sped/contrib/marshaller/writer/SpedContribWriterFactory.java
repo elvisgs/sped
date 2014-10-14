@@ -1,6 +1,5 @@
 package br.com.gep.sped.contrib.marshaller.writer;
 
-import br.com.gep.sped.contrib.marshaller.handlers.DoubleTypeHandler;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.*;
 import br.com.gep.sped.contrib.marshaller.registros.bloco1.*;
 import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9001;
@@ -14,30 +13,23 @@ import br.com.gep.sped.contrib.marshaller.registros.blocoF.*;
 import br.com.gep.sped.contrib.marshaller.registros.blocoI.*;
 import br.com.gep.sped.contrib.marshaller.registros.blocoM.*;
 import br.com.gep.sped.contrib.marshaller.registros.blocoP.*;
-import org.beanio.BeanWriter;
-import org.beanio.StreamFactory;
-import org.beanio.builder.DelimitedParserBuilder;
+import br.com.gep.sped.marshaller.common.writer.SpedWriterFactory;
 import org.beanio.builder.StreamBuilder;
-import org.beanio.types.DateTypeHandler;
 
-import java.io.Writer;
-import java.util.Date;
+public class SpedContribWriterFactory extends SpedWriterFactory {
 
-public class SpedContribWriterFactory {
+    private static volatile SpedWriterFactory instance;
 
-    public static final String STREAM_NAME = "spedcontrib";
+    private SpedContribWriterFactory() {
+        super("spedcontrib");
+    }
 
-    private static volatile SpedContribWriterFactory instance;
-    private StreamFactory streamFactory;
-
-    private SpedContribWriterFactory() {}
-
-    public static SpedContribWriterFactory getInstance() {
+    public static SpedWriterFactory getInstance() {
         if (instance == null) {
             synchronized (SpedContribWriterFactory.class) {
                 if (instance == null) {
-                    instance = new SpedContribWriterFactory();
-                    instance.initializeFactory();
+                    instance = new SpedContribWriterFactory()
+                            .initializeFactory();
                 }
             }
         }
@@ -45,31 +37,8 @@ public class SpedContribWriterFactory {
         return instance;
     }
 
-    public StreamFactory getStreamFactory() {
-        return streamFactory;
-    }
-
-    public BeanWriter createBeanWriter(Writer writer) {
-        return streamFactory.createWriter(STREAM_NAME, writer);
-    }
-
-    private void initializeFactory() {
-        streamFactory = StreamFactory.newInstance();
-
-        StreamBuilder builder = new StreamBuilder(STREAM_NAME)
-                .writeOnly()
-                .format("delimited")
-                .parser(new DelimitedParserBuilder('|'))
-
-                .addTypeHandler(Date.class, new DateTypeHandler("ddMMyyyy"))
-                .addTypeHandler(Double.class, new DoubleTypeHandler());
-
-        addRecords(builder);
-
-        streamFactory.define(builder);
-    }
-
-    private void addRecords(StreamBuilder builder) {
+    @Override
+    protected void addRecords(StreamBuilder builder) {
         builder
                 .addRecord(Reg0000.class)
                 .addRecord(Reg0001.class)
