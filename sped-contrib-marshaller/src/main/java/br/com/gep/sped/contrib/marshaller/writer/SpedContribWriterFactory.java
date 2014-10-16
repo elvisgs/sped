@@ -2,10 +2,10 @@ package br.com.gep.sped.contrib.marshaller.writer;
 
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.*;
 import br.com.gep.sped.contrib.marshaller.registros.bloco1.*;
-import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9001;
-import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9900;
-import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9990;
-import br.com.gep.sped.contrib.marshaller.registros.bloco9.Reg9999;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9001;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9900;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9990;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
 import br.com.gep.sped.contrib.marshaller.registros.blocoA.*;
 import br.com.gep.sped.contrib.marshaller.registros.blocoC.*;
 import br.com.gep.sped.contrib.marshaller.registros.blocoD.*;

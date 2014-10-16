@@ -1,10 +1,13 @@
 package br.com.gep.sped.contrib.batch;
 
-import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
-import br.com.gep.sped.contrib.batch.config.SimpleInfrastructureConfig;
+import br.com.gep.sped.batch.common.RegCounter;
+import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.task.SyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
@@ -19,9 +22,8 @@ import javax.sql.DataSource;
 
 @Configuration
 @Primary
-@ComponentScan(excludeFilters = @ComponentScan.Filter(
-        type = FilterType.ASSIGNABLE_TYPE,
-        value = {SimpleInfrastructureConfig.class, SimpleInfrastructureConfigTest.class}))
+@ComponentScan(
+        basePackageClasses = {TestInfrastructureConfig.class, RegCounter.class})
 public class TestInfrastructureConfig implements InfrastructureConfig {
 
     @Value("classpath:/schemas/schema-drop-hsqldb.sql")

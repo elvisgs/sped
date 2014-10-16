@@ -1,9 +1,10 @@
 package br.com.gep.sped.contrib.batch;
 
-import br.com.gep.sped.contrib.batch.config.InfrastructureConfig;
+import br.com.gep.sped.batch.common.RegCounter;
+import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import br.com.gep.sped.contrib.batch.jdbc.dao.Reg0000Dao;
-import br.com.gep.sped.contrib.batch.jdbc.dao.SpedExecutionDao;
-import br.com.gep.sped.contrib.batch.jdbc.entity.SpedExecution;
+import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
+import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0000;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -153,7 +154,9 @@ public class SpedContribLauncher {
         batchCtx.getBeanFactory()
                 .registerSingleton("infrastructureConfig", infrastructureConfig);
 
-        batchCtx.scan(SpedContribLauncher.class.getPackage().getName());
+        batchCtx.scan(
+                SpedContribLauncher.class.getPackage().getName(),
+                RegCounter.class.getPackage().getName());
         batchCtx.refresh();
         batchCtx.registerShutdownHook();
 

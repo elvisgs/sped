@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch.jdbc.dao;
 
-import br.com.gep.sped.contrib.batch.jdbc.SchemaInjector;
+import br.com.gep.sped.batch.common.jdbc.SchemaInjector;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0000;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

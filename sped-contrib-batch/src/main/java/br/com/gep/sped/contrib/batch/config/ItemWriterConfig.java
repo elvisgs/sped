@@ -20,7 +20,7 @@ public class ItemWriterConfig {
     @Bean
     @StepScope
     public <T extends Registro> BeanIOFlatFileItemWriter<T> beanIOWriter(@Value("#{jobParameters['output.file.name']}") String outputFileName) {
-        BeanIOFlatFileItemWriter<T> writer = new BeanIOFlatFileItemWriter<T>();
+        BeanIOFlatFileItemWriter<T> writer = new BeanIOFlatFileItemWriter<>();
         SpedWriterFactory factory = SpedContribWriterFactory.getInstance();
         writer.setStreamFactory(factory.getStreamFactory());
         writer.setStreamName(factory.getStreamName());

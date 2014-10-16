@@ -2,15 +2,15 @@ package br.com.gep.sped.fiscal.marshaller.writer;
 
 import br.com.gep.sped.fiscal.marshaller.registros.bloco0.*;
 import br.com.gep.sped.fiscal.marshaller.registros.bloco1.*;
-import br.com.gep.sped.fiscal.marshaller.registros.bloco9.Reg9001;
-import br.com.gep.sped.fiscal.marshaller.registros.bloco9.Reg9900;
-import br.com.gep.sped.fiscal.marshaller.registros.bloco9.Reg9990;
-import br.com.gep.sped.fiscal.marshaller.registros.bloco9.Reg9999;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoC.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoD.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoE.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoG.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoH.*;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9001;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9900;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9990;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
 import br.com.gep.sped.marshaller.common.writer.SpedWriterFactory;
 import org.beanio.builder.StreamBuilder;
 

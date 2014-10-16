@@ -1,13 +1,16 @@
 package br.com.gep.sped.contrib.batch.factory;
 
+import br.com.gep.sped.batch.common.factory.IRowMapperFactory;
 import br.com.gep.sped.marshaller.common.Registro;
 import org.springframework.beans.BeanUtils;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RowMapperFactory {
+public class RowMapperFactory implements IRowMapperFactory {
 
+    @SuppressWarnings("unchecked")
+    @Override
     public <T extends Registro> RowMapper<T> create(Class<T> regClass) throws ClassNotFoundException {
         char bloc = regClass.getSimpleName().replace("Reg", "").charAt(0);
 

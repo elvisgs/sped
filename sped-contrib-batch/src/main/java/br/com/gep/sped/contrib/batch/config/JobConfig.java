@@ -1,7 +1,7 @@
 package br.com.gep.sped.contrib.batch.config;
 
 import br.com.gep.sped.contrib.batch.config.flows.*;
-import br.com.gep.sped.contrib.batch.config.steps.MiscStepsConfig;
+import br.com.gep.sped.batch.common.config.MiscStepsConfig;
 import br.com.gep.sped.contrib.batch.config.steps.StepsBloco0Config;
 import br.com.gep.sped.contrib.batch.config.steps.StepsBloco9Config;
 import org.springframework.batch.core.Job;

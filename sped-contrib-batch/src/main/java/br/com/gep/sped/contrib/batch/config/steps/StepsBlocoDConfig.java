@@ -1,7 +1,7 @@
 package br.com.gep.sped.contrib.batch.config.steps;
 
-import br.com.gep.sped.contrib.batch.factory.StepFactory;
-import br.com.gep.sped.contrib.batch.factory.TaskletFactory;
+import br.com.gep.sped.batch.common.factory.StepFactory;
+import br.com.gep.sped.batch.common.factory.TaskletFactory;
 import br.com.gep.sped.contrib.marshaller.registros.blocoD.*;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.step.tasklet.Tasklet;

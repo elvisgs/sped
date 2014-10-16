@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch.factory;
 
+import br.com.gep.sped.batch.common.factory.IRowMapperFactory;
 import br.com.gep.sped.contrib.batch.jdbc.mappers.bloco0.Reg0000RowMapper;
 import br.com.gep.sped.contrib.batch.jdbc.mappers.blocoC.RegC100RowMapper;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0000;
@@ -13,7 +14,7 @@ public class RowMapperFactoryTest {
 
     @Test
     public void criaMapperParaClasseReg0000() throws ClassNotFoundException {
-        RowMapperFactory factory = new RowMapperFactory();
+        IRowMapperFactory factory = new RowMapperFactory();
 
         RowMapper<Reg0000> mapper = factory.create(Reg0000.class);
 
@@ -22,7 +23,7 @@ public class RowMapperFactoryTest {
 
     @Test
     public void criaMapperParaClasseRegC100() throws ClassNotFoundException {
-        RowMapperFactory factory = new RowMapperFactory();
+        IRowMapperFactory factory = new RowMapperFactory();
 
         RowMapper<RegC100> mapper = factory.create(RegC100.class);
 

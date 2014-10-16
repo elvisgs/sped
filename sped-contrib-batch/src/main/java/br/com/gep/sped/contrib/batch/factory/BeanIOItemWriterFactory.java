@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch.factory;
 
+import br.com.gep.sped.batch.common.factory.ItemWriterFactory;
 import br.com.gep.sped.contrib.batch.config.ItemWriterConfig;
 import br.com.gep.sped.marshaller.common.Registro;
 import org.springframework.batch.item.ItemStreamWriter;

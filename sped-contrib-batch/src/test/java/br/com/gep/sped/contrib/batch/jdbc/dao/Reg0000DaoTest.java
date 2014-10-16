@@ -1,6 +1,7 @@
 package br.com.gep.sped.contrib.batch.jdbc.dao;
 
 import br.com.gep.sped.contrib.batch.TestInfrastructureConfig;
+import br.com.gep.sped.contrib.batch.jdbc.dao.Reg0000Dao;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0000;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,9 +1,10 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.sped.contrib.batch.jdbc.QueryPartsProvider;
+import br.com.gep.sped.batch.common.config.InfrastructureConfig;
+import br.com.gep.sped.batch.common.jdbc.QueryPartsProvider;
 import br.com.gep.sped.contrib.batch.jdbc.dao.Reg0000Dao;
-import br.com.gep.sped.contrib.batch.jdbc.dao.SpedExecutionDao;
-import br.com.gep.sped.contrib.batch.jdbc.support.SpedExecutionDaoFactoryBean;
+import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
+import br.com.gep.sped.batch.common.jdbc.support.SpedExecutionDaoFactoryBean;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0000;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;

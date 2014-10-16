@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch;
 
-import br.com.gep.sped.contrib.batch.jdbc.entity.SpedExecution;
+import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
