@@ -1,0 +1,19 @@
+package br.com.gep.sped.fiscal.batch.jdbc.mappers.blocoC;
+
+import br.com.gep.sped.fiscal.marshaller.registros.blocoC.RegC171;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class RegC171RowMapper implements RowMapper<RegC171> {
+
+    @Override
+    public RegC171 mapRow(ResultSet rs, int rowNum) throws SQLException {
+        RegC171 reg = new RegC171();
+        reg.setId(rs.getInt("id"));
+        reg.setNumTanque(rs.getString("num_tanque"));
+        reg.setQtde(rs.getObject("qtde") == null ? null : rs.getDouble("qtde"));
+        return reg;
+    }
+}
