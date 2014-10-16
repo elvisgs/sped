@@ -39,8 +39,8 @@
     </developers>
 
     <ciManagement>
-        <system>Drone.io CI</system>
-        <url>https://drone.io/bitbucket.org/gepsistemas/sped</url>
+        <system>Codeship CI</system>
+        <url>https://codeship.io/projects/37401</url>
     </ciManagement>
 
     <build>
