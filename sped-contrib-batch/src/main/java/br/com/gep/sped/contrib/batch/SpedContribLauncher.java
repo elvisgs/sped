@@ -1,16 +1,16 @@
 package br.com.gep.sped.contrib.batch;
 
 import br.com.gep.sped.batch.common.RegCounter;
+import br.com.gep.sped.batch.common.SpedJobParameterBuilder;
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
-import br.com.gep.sped.contrib.batch.jdbc.dao.Reg0000Dao;
 import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
+import br.com.gep.sped.contrib.batch.jdbc.dao.Reg0000Dao;
 import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0000;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
-import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
@@ -79,13 +79,13 @@ public class SpedContribLauncher {
             outputFilePath = buildOutputFilePath(reg0000);
         }
 
-        JobParametersBuilder parametersBuilder = new JobParametersBuilder()
-                .addString("output.file.name", outputFilePath)
-                .addString("compress.file", String.valueOf(compressFile), false)
-                .addString("delete.file.after.compression", String.valueOf(deleteFileAfterCompression), false);
+        SpedJobParameterBuilder parametersBuilder = new SpedJobParameterBuilder()
+                .setOutputFileName(outputFilePath)
+                .setCompressFile(compressFile)
+                .setDeleteFileAfterCompression(deleteFileAfterCompression);
 
         if (schema != null && !"".equals(schema))
-            parametersBuilder.addString("current.schema", schema);
+            parametersBuilder.setCurrentSchema(schema);
 
         Job spedContribJob = batchCtx.getBean(Job.class);
 

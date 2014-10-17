@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch;
 
+import br.com.gep.sped.batch.common.SpedJobParameterBuilder;
 import br.com.gep.sped.contrib.batch.config.JobConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,18 +42,16 @@ public class SpedContribJobParallelTest {
 
     @Test
     public void testeExecucaoParalela() throws Exception {
-        JobParameters jobParameters1 = new JobParametersBuilder()
-                .addString("output.file.name", CAMINHO_RESULTADO_1)
-                .addString("current.schema", "sped_contrib")
-                .addString("delete.file.after.compression", String.valueOf(false))
-                .addString("execution", "1")
+        JobParameters jobParameters1 = new SpedJobParameterBuilder()
+                .setOutputFileName(CAMINHO_RESULTADO_1)
+                .setCurrentSchema("sped_contrib")
+                .setDeleteFileAfterCompression(false)
                 .toJobParameters();
 
-        JobParameters jobParameters2 = new JobParametersBuilder()
-                .addString("output.file.name", CAMINHO_RESULTADO_2)
-                .addString("current.schema", "sped_contrib")
-                .addString("delete.file.after.compression", String.valueOf(false))
-                .addString("execution", "2")
+        JobParameters jobParameters2 = new SpedJobParameterBuilder()
+                .setOutputFileName(CAMINHO_RESULTADO_2)
+                .setCurrentSchema("sped_contrib")
+                .setDeleteFileAfterCompression(false)
                 .toJobParameters();
 
         jobLauncherTestUtils.setJob(jobConfig.spedContribJob());

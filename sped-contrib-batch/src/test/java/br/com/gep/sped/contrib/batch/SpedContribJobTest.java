@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch;
 
+import br.com.gep.sped.batch.common.SpedJobParameterBuilder;
 import br.com.gep.sped.contrib.batch.config.JobConfig;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
-import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,10 +47,10 @@ public class SpedContribJobTest {
 
     @Test
     public void jobTerminaComStatusCompletedEEscreveArquivoCorretamente() throws Exception {
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("output.file.name", CAMINHO_RESULTADO)
-                .addString("current.schema", "sped_contrib")
-                .addString("delete.file.after.compression", String.valueOf(false))
+        JobParameters jobParameters = new SpedJobParameterBuilder()
+                .setOutputFileName(CAMINHO_RESULTADO)
+                .setCurrentSchema("sped_contrib")
+                .setDeleteFileAfterCompression(false)
                 .toJobParameters();
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
 
@@ -62,9 +62,9 @@ public class SpedContribJobTest {
 
     @Test
     public void comprimeArquivoGerado() throws Exception {
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("output.file.name", CAMINHO_RESULTADO)
-                .addString("current.schema", "sped_contrib")
+        JobParameters jobParameters = new SpedJobParameterBuilder()
+                .setOutputFileName(CAMINHO_RESULTADO)
+                .setCurrentSchema("sped_contrib")
                 .toJobParameters();
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);

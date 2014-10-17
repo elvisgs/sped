@@ -10,11 +10,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 
+import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.OUTPUT_FILE_NAME_EL;
+
 @Component
 @StepScope
 public class CleanupTasklet implements Tasklet {
 
-    @Value("#{jobParameters['output.file.name']}")
+    @Value(OUTPUT_FILE_NAME_EL)
     private String outputFileName;
 
     @Override

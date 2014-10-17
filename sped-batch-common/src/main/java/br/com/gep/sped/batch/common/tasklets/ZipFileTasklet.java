@@ -15,19 +15,21 @@ import org.zeroturnaround.zip.ZipUtil;
 
 import java.io.File;
 
+import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.*;
+
 @Component
 @StepScope
 public class ZipFileTasklet implements Tasklet {
 
     private static final Log logger = LogFactory.getLog(ZipFileTasklet.class);
 
-    @Value("#{jobParameters['output.file.name']}")
+    @Value(OUTPUT_FILE_NAME_EL)
     private String outputFileName;
 
-    @Value("#{jobParameters['compress.file']}")
+    @Value(COMPRESS_FILE_EL)
     private Boolean compressFile = true;
 
-    @Value("#{jobParameters['delete.file.after.compression']}")
+    @Value(DELETE_FILE_AFTER_COMPRESSION_EL)
     private Boolean deleteFileAfterCompression = true;
 
     @SuppressWarnings("SpringJavaAutowiringInspection")

@@ -12,6 +12,8 @@ import org.springframework.core.io.FileSystemResource;
 
 import java.io.File;
 
+import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.OUTPUT_FILE_NAME_EL;
+
 @Configuration
 public class ItemWriterConfig {
 
@@ -19,7 +21,7 @@ public class ItemWriterConfig {
 
     @Bean
     @StepScope
-    public <T extends Registro> BeanIOFlatFileItemWriter<T> beanIOWriter(@Value("#{jobParameters['output.file.name']}") String outputFileName) {
+    public <T extends Registro> BeanIOFlatFileItemWriter<T> beanIOWriter(@Value(OUTPUT_FILE_NAME_EL) String outputFileName) {
         BeanIOFlatFileItemWriter<T> writer = new BeanIOFlatFileItemWriter<>();
         SpedWriterFactory factory = SpedFiscalWriterFactory.getInstance();
         writer.setStreamFactory(factory.getStreamFactory());

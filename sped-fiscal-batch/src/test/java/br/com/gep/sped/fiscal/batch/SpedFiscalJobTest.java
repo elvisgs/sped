@@ -1,5 +1,6 @@
 package br.com.gep.sped.fiscal.batch;
 
+import br.com.gep.sped.batch.common.SpedJobParameterBuilder;
 import br.com.gep.sped.fiscal.batch.config.JobConfig;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
-import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,10 +44,10 @@ public class SpedFiscalJobTest {
 
     @Test
     public void jobTerminaComStatusCompletedEEscreveArquivoCorretamente() throws Exception {
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("output.file.name", CAMINHO_RESULTADO)
-                .addString("current.schema", "sped_fiscal")
-                .addString("compress.file", String.valueOf(false))
+        JobParameters jobParameters = new SpedJobParameterBuilder()
+                .setOutputFileName(CAMINHO_RESULTADO)
+                .setCurrentSchema("sped_fiscal")
+                .setCompressFile(false)
                 .toJobParameters();
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
 

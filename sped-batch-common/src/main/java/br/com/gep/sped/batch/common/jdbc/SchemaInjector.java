@@ -1,9 +1,10 @@
 package br.com.gep.sped.batch.common.jdbc;
 
-import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.CURRENT_SCHEMA_EL;
 
 /**
  * Esta classe destina-se a injetar o schema informado como job parameter (caso exista)
@@ -31,7 +32,7 @@ public class SchemaInjector {
         return currentSchema;
     }
 
-    @Value("#{jobParameters['current.schema']}")
+    @Value(CURRENT_SCHEMA_EL)
     public void setCurrentSchema(String currentSchema) {
         this.currentSchema = currentSchema;
     }
