@@ -5,8 +5,8 @@ import br.com.gep.sped.batch.common.SpedJobParameterBuilder;
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
-import br.com.gep.sped.contrib.batch.jdbc.dao.Reg0000Dao;
-import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0000;
+import br.com.gep.sped.batch.common.jdbc.dao.EstabelecimentoDao;
+import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.batch.core.Job;
@@ -32,7 +32,7 @@ public class SpedContribLauncher {
 
     private InfrastructureConfig infrastructureConfig;
     private JobLauncher jobLauncher;
-    private Reg0000Dao reg0000Dao;
+    private EstabelecimentoDao estabelecimentoDao;
     private SpedExecutionDao spedExecutionDao;
 
     private String schema;
@@ -70,13 +70,13 @@ public class SpedContribLauncher {
     public SpedExecution run(String outputFilePath)
             throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
             JobRestartException, JobInstanceAlreadyCompleteException {
-        reg0000Dao.setSchema(schema);
-        Reg0000 reg0000 = reg0000Dao.getUnique();
+        estabelecimentoDao.setSchema(schema);
+        Estabelecimento estabelecimento = estabelecimentoDao.getPrimeiro();
 
         validateDestinationDir();
 
         if (outputFilePath == null || "".equals(outputFilePath.trim())) {
-            outputFilePath = buildOutputFilePath(reg0000);
+            outputFilePath = buildOutputFilePath(estabelecimento);
         }
 
         SpedJobParameterBuilder parametersBuilder = new SpedJobParameterBuilder()
@@ -91,7 +91,7 @@ public class SpedContribLauncher {
 
         JobExecution jobExecution = jobLauncher.run(spedContribJob, parametersBuilder.toJobParameters());
 
-        return createSpedExecution(outputFilePath, reg0000, jobExecution);
+        return createSpedExecution(outputFilePath, estabelecimento, jobExecution);
     }
 
     private void validateDestinationDir() {
@@ -101,28 +101,28 @@ public class SpedContribLauncher {
         }
     }
 
-    private String buildOutputFilePath(Reg0000 reg0000) {
+    private String buildOutputFilePath(Estabelecimento estabelecimento) {
         String outputFilePath;
-        String fileName = buildFileName(reg0000);
+        String fileName = buildFileName(estabelecimento);
         outputFilePath = new File(destinationDir, fileName).getAbsolutePath();
         logger.info("Caminho do arquivo de saida gerado automaticamente [" + outputFilePath + "].");
         return outputFilePath;
     }
 
-    private String buildFileName(Reg0000 reg0000) {
-        String outputFilePath;SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM");
-        outputFilePath = String.format("%s_%s_PIS.txt",
-                reg0000.getCnpj(), sdf.format(reg0000.getDtIni()));
+    private String buildFileName(Estabelecimento estabelecimento) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM");
+        String outputFilePath = String.format("%s_%s_PIS.txt",
+                estabelecimento.getCnpj(), sdf.format(estabelecimento.getDtIni()));
         return outputFilePath;
     }
 
-    private SpedExecution createSpedExecution(String outputFilePath, Reg0000 reg0000, JobExecution jobExecution) {
+    private SpedExecution createSpedExecution(String outputFilePath, Estabelecimento estabelecimento, JobExecution jobExecution) {
         SpedExecution spedExecution = new SpedExecution();
-        spedExecution.setCnpj(reg0000.getCnpj());
-        spedExecution.setNome(reg0000.getNome());
+        spedExecution.setCnpj(estabelecimento.getCnpj());
+        spedExecution.setNome(estabelecimento.getNome());
 
         Calendar cal = Calendar.getInstance();
-        cal.setTime(reg0000.getDtIni());
+        cal.setTime(estabelecimento.getDtIni());
         spedExecution.setAno(cal.get(Calendar.YEAR));
         spedExecution.setMes(cal.get(Calendar.MONTH) + 1);
 
@@ -161,7 +161,7 @@ public class SpedContribLauncher {
         batchCtx.registerShutdownHook();
 
         jobLauncher = batchCtx.getBean(JobLauncher.class);
-        reg0000Dao = batchCtx.getBean(Reg0000Dao.class);
+        estabelecimentoDao = batchCtx.getBean(EstabelecimentoDao.class);
         spedExecutionDao = batchCtx.getBean(SpedExecutionDao.class);
 
         initialized = true;

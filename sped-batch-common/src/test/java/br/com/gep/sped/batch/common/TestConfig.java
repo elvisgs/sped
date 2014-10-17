@@ -1,9 +1,12 @@
 package br.com.gep.sped.batch.common;
 
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
+import br.com.gep.sped.batch.common.jdbc.QueryPartsProvider;
+import br.com.gep.sped.batch.common.jdbc.dao.EstabelecimentoDao;
 import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
 import br.com.gep.sped.batch.common.jdbc.support.SpedExecutionDaoFactoryBean;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -39,6 +42,9 @@ public class TestConfig implements InfrastructureConfig {
 
     @Value("classpath:common-tests.sql")
     private Resource commonSchema;
+
+    @Autowired
+    private QueryPartsProvider queryPartsProvider;
 
     private DataSource dataSource;
 
@@ -92,5 +98,13 @@ public class TestConfig implements InfrastructureConfig {
         factory.afterPropertiesSet();
 
         return factory.getObject();
+    }
+
+    @Bean
+    public EstabelecimentoDao estabelecimentoDao() {
+        EstabelecimentoDao estabelecimentoDao = new EstabelecimentoDao();
+        estabelecimentoDao.setDataSource(getDataSource());
+        estabelecimentoDao.setSelectQuery(queryPartsProvider.getQueryParts("Reg0000").toString());
+        return estabelecimentoDao;
     }
 }

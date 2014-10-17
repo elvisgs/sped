@@ -15,8 +15,8 @@ public class QueryPartsProvider {
     @Autowired
     Environment env;
 
-    public QueryParts getQueryParts(Class<?> regClass) {
-        String prefix = buildPrefix(regClass);
+    public QueryParts getQueryParts(String regName) {
+        String prefix = buildPrefix(regName);
         String select = env.getProperty(prefix + ".select");
         String from = env.getProperty(prefix + ".from");
         String where = env.getProperty(prefix + ".where");
@@ -24,9 +24,17 @@ public class QueryPartsProvider {
         return new QueryParts(select, from, where);
     }
 
-    private String buildPrefix(Class<?> regClass) {
-        String regName = regClass.getSimpleName().replaceAll("Reg", "");
+    public QueryParts getQueryParts(Class<?> regClass) {
+        return getQueryParts(regClass.getSimpleName());
+    }
+
+    private String buildPrefix(String regName) {
+        regName = regName.replaceAll("Reg", "");
         char bloc = regName.charAt(0);
         return String.format("bloco%s.%s", bloc, regName.toLowerCase());
+    }
+
+    private String buildPrefix(Class<?> regClass) {
+        return buildPrefix(regClass.getSimpleName());
     }
 }

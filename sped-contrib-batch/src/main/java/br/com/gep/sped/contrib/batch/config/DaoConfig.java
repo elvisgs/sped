@@ -2,10 +2,9 @@ package br.com.gep.sped.contrib.batch.config;
 
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import br.com.gep.sped.batch.common.jdbc.QueryPartsProvider;
-import br.com.gep.sped.contrib.batch.jdbc.dao.Reg0000Dao;
 import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
 import br.com.gep.sped.batch.common.jdbc.support.SpedExecutionDaoFactoryBean;
-import br.com.gep.sped.contrib.marshaller.registros.bloco0.Reg0000;
+import br.com.gep.sped.batch.common.jdbc.dao.EstabelecimentoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
@@ -24,11 +23,11 @@ public class DaoConfig {
     private QueryPartsProvider queryPartsProvider;
 
     @Bean @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public Reg0000Dao reg0000Dao() {
-        Reg0000Dao reg0000Dao = new Reg0000Dao();
-        reg0000Dao.setDataSource(infraConfig.getDataSource());
-        reg0000Dao.setSelectQuery(queryPartsProvider.getQueryParts(Reg0000.class).toString());
-        return reg0000Dao;
+    public EstabelecimentoDao estabelecimentoDao() {
+        EstabelecimentoDao estabelecimentoDao = new EstabelecimentoDao();
+        estabelecimentoDao.setDataSource(infraConfig.getDataSource());
+        estabelecimentoDao.setSelectQuery(queryPartsProvider.getQueryParts("Reg0000").toString());
+        return estabelecimentoDao;
     }
 
     @Bean @Lazy
