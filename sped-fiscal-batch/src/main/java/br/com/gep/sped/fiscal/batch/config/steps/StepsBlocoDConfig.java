@@ -2,6 +2,7 @@ package br.com.gep.sped.fiscal.batch.config.steps;
 
 import br.com.gep.sped.batch.common.factory.StepFactory;
 import br.com.gep.sped.batch.common.factory.TaskletFactory;
+import br.com.gep.sped.fiscal.marshaller.registros.bloco0.Reg0000;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoD.*;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -26,7 +27,7 @@ public class StepsBlocoDConfig {
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegD001() throws Exception {
-        return stepFactory.create("stepRegD001", RegD001.class);
+        return stepFactory.create("stepRegD001", RegD001.class, Reg0000.class);
     }
     
     @Bean
