@@ -16,6 +16,11 @@ public abstract class SpedTree {
 
     protected abstract void addBranches();
 
+    protected SpedTree addNode(RegNode node) {
+        nodes.put(node.getRegClass(), node);
+        return this;
+    }
+
     // TODO: implementar busca profunda de nós
     public RegNode getNode(Class<? extends Registro> regClass) {
         return nodes.get(regClass);

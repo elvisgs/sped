@@ -29,6 +29,10 @@ public class RegNode {
         this.parent = parent;
     }
 
+    public RegNode(Class<? extends Registro> regClass, Class<? extends Registro> regParent) {
+        this(regClass, new RegNode(regParent));
+    }
+
     public Class<? extends Registro> getRegClass() {
         return regClass;
     }
