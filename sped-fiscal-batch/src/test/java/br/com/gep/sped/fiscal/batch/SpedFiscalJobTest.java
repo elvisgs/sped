@@ -17,6 +17,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.File;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.springframework.batch.test.AssertFile.assertFileEquals;
 
@@ -27,6 +29,7 @@ import static org.springframework.batch.test.AssertFile.assertFileEquals;
 public class SpedFiscalJobTest {
 
     public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
+    public static final String CAMINHO_ZIP = "target/generated-test-sources/sped_test_result.zip";
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
@@ -55,5 +58,22 @@ public class SpedFiscalJobTest {
 
         Resource resultado = new FileSystemResource(CAMINHO_RESULTADO);
         assertFileEquals(esperado, resultado);
+    }
+
+    @Test
+    public void comprimeArquivoGerado() throws Exception {
+        JobParameters jobParameters = new SpedJobParameterBuilder()
+                .setOutputFileName(CAMINHO_RESULTADO)
+                .setCurrentSchema("sped_fiscal")
+                .setCompressFile(true)
+                .toJobParameters();
+
+        JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
+
+        assertThat(jobExecution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+
+        File zip = new File(CAMINHO_ZIP);
+        assertThat(zip).exists().isFile();
+        assertThat(zip.length()).isGreaterThan(0);
     }
 }

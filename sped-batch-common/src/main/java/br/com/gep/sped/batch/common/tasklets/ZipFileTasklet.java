@@ -50,8 +50,13 @@ public class ZipFileTasklet implements Tasklet {
                 outputFile.delete();
             }
 
-            Long jobExecutionId = chunkContext.getStepContext().getStepExecution().getJobExecutionId();
-            spedExecutionDao.updateFile(jobExecutionId, zipFileName);
+            if (spedExecutionDao != null) {
+                Long jobExecutionId = chunkContext.getStepContext().getStepExecution().getJobExecutionId();
+                spedExecutionDao.updateFile(jobExecutionId, zipFileName);
+            }
+            else {
+                logger.warn("SpedExecutionDao nao foi setado. SpedExecution nao sera atualizado.");
+            }
         }
 
         return RepeatStatus.FINISHED;
