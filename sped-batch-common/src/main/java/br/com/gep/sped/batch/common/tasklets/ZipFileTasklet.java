@@ -31,7 +31,7 @@ public class ZipFileTasklet implements Tasklet {
     private Boolean deleteFileAfterCompression = true;
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
-    @Autowired
+    @Autowired(required = false)
     private SpedExecutionDao spedExecutionDao;
 
     @Override

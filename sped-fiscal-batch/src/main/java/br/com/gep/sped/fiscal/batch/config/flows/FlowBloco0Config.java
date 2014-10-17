@@ -34,6 +34,7 @@ public class FlowBloco0Config {
                 .next(stepsBloco0.stepReg0460())
                 .next(stepsBloco0.stepReg0500())
                 .next(stepsBloco0.stepReg0600())
+                .next(stepsBloco0.stepReg0990())
                 .end();
     }
 }
