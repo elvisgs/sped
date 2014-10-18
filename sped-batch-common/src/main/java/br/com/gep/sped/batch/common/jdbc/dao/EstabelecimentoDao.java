@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.Assert;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 public class EstabelecimentoDao implements InitializingBean {
 
@@ -28,11 +29,38 @@ public class EstabelecimentoDao implements InitializingBean {
         this.schema = schema;
     }
 
-    public Estabelecimento getPrimeiro() {
+    public Estabelecimento obterUnico() {
         String sql = new SchemaInjector(schema).injectSchema(selectQuery);
+        sql = removerClausulaWhere(sql);
 
         return jdbcTemplate.queryForObject(sql,
                 BeanPropertyRowMapper.newInstance(Estabelecimento.class));
+    }
+
+    public Estabelecimento obterUnico(String cnpj) {
+        Assert.hasText(cnpj, "cnpj não deve ser nulo ou vazio");
+
+        String sql = new SchemaInjector(schema).injectSchema(selectQuery);
+
+        return jdbcTemplate.queryForObject(sql,
+                BeanPropertyRowMapper.newInstance(Estabelecimento.class),
+                cnpj);
+    }
+
+    public List<Estabelecimento> obterTodos() {
+        String sql = new SchemaInjector(schema).injectSchema(selectQuery);
+        sql = removerClausulaWhere(sql);
+
+        return jdbcTemplate.query(sql,
+                BeanPropertyRowMapper.newInstance(Estabelecimento.class));
+    }
+
+    private String removerClausulaWhere(String sql) {
+        int index = sql.toUpperCase().indexOf("WHERE");
+        if (index != -1)
+            return sql.substring(0, index + 1);
+
+        return sql;
     }
 
     @Override

@@ -26,6 +26,8 @@ public class SpedFiscalJobParallelTest {
 
     public static final String CAMINHO_RESULTADO_1 = "target/generated-test-sources/sped_test_result_1.txt";
     public static final String CAMINHO_RESULTADO_2 = "target/generated-test-sources/sped_test_result_2.txt";
+    public static final String CNPJ_ESTABELECIMENTO = "10848620000139";
+    public static final String SPED_FISCAL = "sped_fiscal";
 
     @Autowired
     private JobConfig jobConfig;
@@ -42,15 +44,17 @@ public class SpedFiscalJobParallelTest {
     @Test
     public void testeExecucaoParalela() throws Exception {
         JobParameters jobParameters1 = new SpedJobParameterBuilder()
+                .setCnpjEstabelecimento(CNPJ_ESTABELECIMENTO)
                 .setOutputFileName(CAMINHO_RESULTADO_1)
-                .setCurrentSchema("sped_fiscal")
+                .setCurrentSchema(SPED_FISCAL)
                 .setCompressFile(true)
                 .setDeleteFileAfterCompression(false)
                 .toJobParameters();
 
         JobParameters jobParameters2 = new SpedJobParameterBuilder()
+                .setCnpjEstabelecimento(CNPJ_ESTABELECIMENTO)
                 .setOutputFileName(CAMINHO_RESULTADO_2)
-                .setCurrentSchema("sped_fiscal")
+                .setCurrentSchema(SPED_FISCAL)
                 .setCompressFile(true)
                 .setDeleteFileAfterCompression(false)
                 .toJobParameters();

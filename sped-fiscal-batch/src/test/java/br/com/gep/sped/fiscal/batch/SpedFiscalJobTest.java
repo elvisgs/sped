@@ -30,6 +30,8 @@ public class SpedFiscalJobTest {
 
     public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
     public static final String CAMINHO_ZIP = "target/generated-test-sources/sped_test_result.zip";
+    public static final String CNPJ_ESTABELECIMENTO = "10848620000139";
+    public static final String SCHEMA = "sped_fiscal";
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
@@ -48,8 +50,9 @@ public class SpedFiscalJobTest {
     @Test
     public void jobTerminaComStatusCompletedEEscreveArquivoCorretamente() throws Exception {
         JobParameters jobParameters = new SpedJobParameterBuilder()
+                .setCnpjEstabelecimento(CNPJ_ESTABELECIMENTO)
                 .setOutputFileName(CAMINHO_RESULTADO)
-                .setCurrentSchema("sped_fiscal")
+                .setCurrentSchema(SCHEMA)
                 .setCompressFile(false)
                 .toJobParameters();
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
@@ -63,8 +66,9 @@ public class SpedFiscalJobTest {
     @Test
     public void comprimeArquivoGerado() throws Exception {
         JobParameters jobParameters = new SpedJobParameterBuilder()
+                .setCnpjEstabelecimento(CNPJ_ESTABELECIMENTO)
                 .setOutputFileName(CAMINHO_RESULTADO)
-                .setCurrentSchema("sped_fiscal")
+                .setCurrentSchema(SCHEMA)
                 .setCompressFile(true)
                 .toJobParameters();
 

@@ -1,10 +1,14 @@
 package br.com.gep.sped.fiscal.batch.config.steps;
 
+import br.com.gep.sped.batch.common.factory.ItemWriterFactory;
 import br.com.gep.sped.batch.common.factory.StepFactory;
 import br.com.gep.sped.batch.common.factory.TaskletFactory;
+import br.com.gep.sped.fiscal.batch.config.ItemReadersConfig;
 import br.com.gep.sped.fiscal.marshaller.registros.bloco0.*;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.item.ItemStreamReader;
+import org.springframework.batch.item.ItemStreamWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
@@ -22,11 +26,20 @@ public class StepsBloco0Config {
 
     @Autowired
     private TaskletFactory taskletFactory;
+
+    @Autowired
+    private ItemReadersConfig itemReaders;
+
+    @Autowired
+    private ItemWriterFactory itemWriterFactory;
     
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepReg0000() throws Exception {
-        return stepFactory.create("stepReg0000", Reg0000.class);
+        ItemStreamReader<Reg0000> reader = itemReaders.reg0000ItemReader();
+        ItemStreamWriter<Reg0000> writer = itemWriterFactory.create(Reg0000.class);
+
+        return stepFactory.create("stepReg0000", reader, writer);
     }
     
     @Bean

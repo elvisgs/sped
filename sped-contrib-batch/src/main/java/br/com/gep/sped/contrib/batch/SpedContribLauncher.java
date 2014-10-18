@@ -21,7 +21,7 @@ public class SpedContribLauncher extends SpedLauncher {
             throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
             JobRestartException, JobInstanceAlreadyCompleteException {
         estabelecimentoDao.setSchema(schema);
-        Estabelecimento estabelecimento = estabelecimentoDao.getPrimeiro();
+        Estabelecimento estabelecimento = estabelecimentoDao.obterUnico();
 
         if (outputFilePath == null || "".equals(outputFilePath.trim())) {
             outputFilePath = buildOutputFilePath(estabelecimento, "PIS");

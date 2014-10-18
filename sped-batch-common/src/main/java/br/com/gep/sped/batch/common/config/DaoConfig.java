@@ -1,4 +1,4 @@
-package br.com.gep.sped.contrib.batch.config;
+package br.com.gep.sped.batch.common.config;
 
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import br.com.gep.sped.batch.common.jdbc.QueryPartsProvider;

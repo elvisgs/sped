@@ -25,11 +25,17 @@ import javax.sql.DataSource;
 @ComponentScan(basePackageClasses = {TestConfig.class, RegCounter.class})
 public class TestConfig implements InfrastructureConfig {
 
+    @Value("classpath:/schemas/schema-drop-hsqldb.sql")
+    private Resource batchSpedSchemaDrop;
+
     @Value("classpath:org/springframework/batch/core/schema-drop-hsqldb.sql")
     private Resource batchSchemaDrop;
 
     @Value("classpath:org/springframework/batch/core/schema-hsqldb.sql")
     private Resource batchSchema;
+
+    @Value("classpath:/schemas/schema-hsqldb.sql")
+    private Resource batchSpedSchema;
 
     @Value("classpath:sped_fiscal_test_schema.sql")
     private Resource spedSchema;
@@ -61,7 +67,8 @@ public class TestConfig implements InfrastructureConfig {
 
     private DatabasePopulator getDatabasePopulator() {
         return new ResourceDatabasePopulator(
-                batchSchemaDrop, batchSchema, spedSchema, spedData);
+                batchSpedSchemaDrop, batchSchemaDrop, batchSchema,
+                batchSpedSchema, spedSchema, spedData);
     }
 
     @Override

@@ -8,8 +8,10 @@ import org.springframework.batch.core.ItemWriteListener;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.core.step.tasklet.TaskletStep;
+import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.ItemStreamWriter;
+import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -44,10 +46,7 @@ public class StepFactory {
                 .build();
     }
 
-    public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) throws Exception {
-        ItemStreamReader<R> reader = itemReaderFactory.create(regClass, parentRegClass);
-        ItemStreamWriter<R> writer = itemWriterFactory.create(regClass, parentRegClass);
-
+    public <R extends Registro> TaskletStep create(String name, ItemReader<R> reader, ItemWriter<R> writer) {
         return stepBuilder.get(name)
                 .<R, R>chunk(spedProperties.getChunkSize())
                 .reader(reader)
@@ -55,6 +54,13 @@ public class StepFactory {
                 .listener(new UpdateRegInfoListener<R>())
                 .allowStartIfComplete(true)
                 .build();
+    }
+
+    public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) throws Exception {
+        ItemStreamReader<R> reader = itemReaderFactory.create(regClass, parentRegClass);
+        ItemStreamWriter<R> writer = itemWriterFactory.create(regClass, parentRegClass);
+
+        return create(name, reader, writer);
     }
 
     public <R extends Registro> TaskletStep create(String name, Class<R> regClass) throws Exception {
