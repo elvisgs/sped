@@ -35,6 +35,9 @@ public class SpedExecutionDao implements InitializingBean {
     private static final String FIND_BY_CNPJ = FIND_ALL +
             " WHERE CNPJ = ? AND LAYOUT = ? ORDER BY ANO DESC, MES DESC";
 
+    private static final String FIND_BY_CLIENTE = FIND_ALL +
+            " WHERE CNPJ LIKE ? AND LAYOUT = ? ORDER BY ANO DESC, MES DESC";
+
     private static final String UPDATE_FILE =
             "UPDATE BATCH_SPED_EXECUTION SET ARQUIVO = ? WHERE JOB_EXECUTION_ID = ?";
 
@@ -92,6 +95,16 @@ public class SpedExecutionDao implements InitializingBean {
 
         return jdbcTemplate.query(FIND_BY_CNPJ, new SpedExecutionRowMapper(),
                 cnpj, layout.toString());
+    }
+
+    public List<SpedExecution> findByCliente(String cnpjCliente, Layout layout) {
+        Assert.hasText(cnpjCliente, "cnpjCliente não deve ser nulo ou vazio");
+        Assert.notNull(layout, "layout não deve ser nulo");
+
+        String likeCnpj = cnpjCliente.substring(0, 8) + "%";
+
+        return jdbcTemplate.query(FIND_BY_CLIENTE, new SpedExecutionRowMapper(),
+                likeCnpj, layout.toString());
     }
 
     public void updateFile(Long jobExecutionId, String file) {

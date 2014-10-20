@@ -77,10 +77,27 @@ public class SpedExecutionDaoTest {
         spedExecutionDao.create(spedExecution2);
         spedExecutionDao.create(spedExecution3);
 
-        List<SpedExecution> spedExecutions = spedExecutionDao.findByCnpj(spedExecution1.getCnpj(), Layout.SPED_CONTRIB);
+        List<SpedExecution> spedExecutions = spedExecutionDao
+                .findByCnpj(spedExecution1.getCnpj(), Layout.SPED_CONTRIB);
 
         assertThat(spedExecutions).isNotNull();
         assertThat(spedExecutions).hasSize(2);
+    }
+
+    @Test
+    public void buscaSpedExecutionPorCnpjCliente() {
+        SpedExecution spedExecution1 = criarSpedExecution(1);
+        SpedExecution spedExecution2 = criarSpedExecution(1);
+        SpedExecution spedExecution3 = criarSpedExecution(2);
+        spedExecutionDao.create(spedExecution1);
+        spedExecutionDao.create(spedExecution2);
+        spedExecutionDao.create(spedExecution3);
+
+        List<SpedExecution> spedExecutions = spedExecutionDao
+                .findByCliente(spedExecution1.getCnpj(), Layout.SPED_CONTRIB);
+
+        assertThat(spedExecutions).isNotNull();
+        assertThat(spedExecutions).hasSize(3);
     }
 
     @Test
@@ -101,7 +118,7 @@ public class SpedExecutionDaoTest {
 
     private SpedExecution criarSpedExecution(int seq) {
         SpedExecution spedExecution = new SpedExecution();
-        spedExecution.setCnpj("0000000000000" + seq);
+        spedExecution.setCnpj("99999999000" + seq + "99");
         spedExecution.setNome("Teste" + seq);
         spedExecution.setAno(2014);
         spedExecution.setMes(1);
