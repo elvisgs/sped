@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.marshaller.registros.bloco0;
 
-import br.com.gep.sped.marshaller.common.Registro;
+import br.com.gep.sped.marshaller.common.RegistroAberturaBloco;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,25 +14,6 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "0001"),
     @Field(at = 3, name = "fimLinha", literal = "")
 })
-public class Reg0001 extends Registro {
-    
-    @Field(at = 2)
-    private String indMov;
-    
-    
-    /**
-     * Obtém Indicador de movimento
-     */
-    public String getIndMov() {
-        return indMov;
-    }
-
-    /**
-     * Seta Indicador de movimento
-     */
-    public void setIndMov(String indMov) {
-        this.indMov = indMov;
-    }
-    
+public class Reg0001 extends RegistroAberturaBloco {
     
 }

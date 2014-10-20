@@ -29,6 +29,7 @@ import static org.springframework.batch.test.AssertFile.assertFileEquals;
 public class SpedFiscalJobTest {
 
     public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
+    public static final String CAMINHO_RESULTADO_VAZIO = "target/generated-test-sources/sped_vazio_result.txt";
     public static final String CAMINHO_ZIP = "target/generated-test-sources/sped_test_result.zip";
     public static final String CNPJ_ESTABELECIMENTO = "10848620000139";
     public static final String SCHEMA = "sped_fiscal";
@@ -41,6 +42,9 @@ public class SpedFiscalJobTest {
 
     @Value("classpath:sped_test_expected.txt")
     private Resource esperado;
+
+    @Value("classpath:sped_vazio.txt")
+    private Resource spedVazio;
 
     @Before
     public void before() throws Exception {
@@ -61,6 +65,20 @@ public class SpedFiscalJobTest {
 
         Resource resultado = new FileSystemResource(CAMINHO_RESULTADO);
         assertFileEquals(esperado, resultado);
+    }
+
+    @Test
+    public void geraArquivoEstabelecimentoSemMovimentacao() throws Exception {
+        JobParameters jobParameters = new SpedJobParameterBuilder()
+                .setCnpjEstabelecimento("10848620000239")
+                .setOutputFileName(CAMINHO_RESULTADO_VAZIO)
+                .setCurrentSchema(SCHEMA)
+                .setCompressFile(false)
+                .toJobParameters();
+        jobLauncherTestUtils.launchJob(jobParameters);
+
+        Resource resultado = new FileSystemResource(CAMINHO_RESULTADO_VAZIO);
+        assertFileEquals(spedVazio, resultado);
     }
 
     @Test
