@@ -3,6 +3,7 @@ package br.com.gep.sped.fiscal.batch;
 import br.com.gep.sped.batch.common.SpedJobParameterBuilder;
 import br.com.gep.sped.batch.common.SpedLauncher;
 import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
+import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
@@ -81,5 +82,10 @@ public class SpedFiscalLauncher extends SpedLauncher {
     @Override
     protected String getPackageToScan() {
         return SpedFiscalLauncher.class.getPackage().getName();
+    }
+
+    @Override
+    protected Layout getLayout() {
+        return Layout.SPED_FISCAL;
     }
 }

@@ -4,6 +4,7 @@ import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import br.com.gep.sped.batch.common.jdbc.dao.EstabelecimentoDao;
 import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
 import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
+import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -107,6 +108,7 @@ public abstract class SpedLauncher {
         spedExecution.setMes(cal.get(Calendar.MONTH) + 1);
 
         spedExecution.setArquivo(outputFilePath);
+        spedExecution.setLayout(getLayout());
         spedExecution.setJobExecution(jobExecution);
 
         spedExecutionDao.create(spedExecution);
@@ -137,6 +139,8 @@ public abstract class SpedLauncher {
     }
 
     protected abstract String getPackageToScan();
+
+    protected abstract Layout getLayout();
 
     public void shutdown() {
         context.close();

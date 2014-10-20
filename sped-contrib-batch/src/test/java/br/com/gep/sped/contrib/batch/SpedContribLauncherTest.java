@@ -1,5 +1,6 @@
 package br.com.gep.sped.contrib.batch;
 
+import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import org.junit.After;
 import org.junit.Assert;
@@ -47,7 +48,8 @@ public class SpedContribLauncherTest {
 
         SpedExecution execution = launcher.run(CAMINHO_RESULTADO);
 
-        Assert.assertNotNull(execution);
+        assertThat(execution).isNotNull();
+        assertThat(execution.getLayout()).isEqualTo(Layout.SPED_CONTRIB);
         AssertFile.assertFileEquals(arquivoEsperado, arquivoResultado);
     }
 

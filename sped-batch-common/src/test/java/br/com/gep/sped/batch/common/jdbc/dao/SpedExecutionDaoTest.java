@@ -1,6 +1,7 @@
 package br.com.gep.sped.batch.common.jdbc.dao;
 
 import br.com.gep.sped.batch.common.TestConfig;
+import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import org.junit.Before;
 import org.junit.Test;
@@ -76,7 +77,7 @@ public class SpedExecutionDaoTest {
         spedExecutionDao.create(spedExecution2);
         spedExecutionDao.create(spedExecution3);
 
-        List<SpedExecution> spedExecutions = spedExecutionDao.findByCnpj(spedExecution1.getCnpj());
+        List<SpedExecution> spedExecutions = spedExecutionDao.findByCnpj(spedExecution1.getCnpj(), Layout.SPED_CONTRIB);
 
         assertThat(spedExecutions).isNotNull();
         assertThat(spedExecutions).hasSize(2);
@@ -105,6 +106,7 @@ public class SpedExecutionDaoTest {
         spedExecution.setAno(2014);
         spedExecution.setMes(1);
         spedExecution.setArquivo("arquivo" + seq);
+        spedExecution.setLayout(Layout.SPED_CONTRIB);
         spedExecution.setJobExecution(jobExecution);
         return spedExecution;
     }

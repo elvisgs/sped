@@ -1,5 +1,6 @@
 package br.com.gep.sped.fiscal.batch;
 
+import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import org.junit.After;
 import org.junit.Assert;
@@ -58,7 +59,8 @@ public class SpedFiscalLauncherTest {
 
         SpedExecution execution = launcher.run(CNPJ_ESTABELECIMENTO, CAMINHO_RESULTADO);
 
-        Assert.assertNotNull(execution);
+        assertThat(execution).isNotNull();
+        assertThat(execution.getLayout()).isEqualTo(Layout.SPED_FISCAL);
         AssertFile.assertFileEquals(arquivoEsperado, arquivoResultado);
     }
 

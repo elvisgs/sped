@@ -8,6 +8,7 @@ public class SpedExecution {
     private String cnpj, nome;
     private int ano, mes;
     private String arquivo;
+    private Layout layout;
     private JobExecution jobExecution;
 
     public Long getId() {
@@ -56,6 +57,14 @@ public class SpedExecution {
 
     public void setArquivo(String arquivo) {
         this.arquivo = arquivo;
+    }
+
+    public Layout getLayout() {
+        return layout;
+    }
+
+    public void setLayout(Layout layout) {
+        this.layout = layout;
     }
 
     public JobExecution getJobExecution() {

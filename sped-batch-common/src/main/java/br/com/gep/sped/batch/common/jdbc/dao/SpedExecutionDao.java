@@ -1,5 +1,6 @@
 package br.com.gep.sped.batch.common.jdbc.dao;
 
+import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.ExitStatus;
@@ -20,18 +21,19 @@ import java.util.List;
 public class SpedExecutionDao implements InitializingBean {
 
     private static final String INSERT =
-            "INSERT INTO BATCH_SPED_EXECUTION(ID, CNPJ, NOME, ANO, MES, ARQUIVO, JOB_EXECUTION_ID) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO BATCH_SPED_EXECUTION(ID, CNPJ, NOME, ANO, MES, ARQUIVO, LAYOUT, JOB_EXECUTION_ID) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static final String FIND_ALL =
-            "SELECT ID, CNPJ, ANO, MES, NOME, ARQUIVO, SE.JOB_EXECUTION_ID, VERSION, CREATE_TIME, " +
+            "SELECT ID, CNPJ, ANO, MES, NOME, ARQUIVO, LAYOUT, SE.JOB_EXECUTION_ID, VERSION, CREATE_TIME, " +
                     "START_TIME, END_TIME, STATUS, EXIT_CODE, EXIT_MESSAGE, LAST_UPDATED " +
             "FROM BATCH_SPED_EXECUTION SE JOIN BATCH_JOB_EXECUTION JE " +
                     "ON SE.JOB_EXECUTION_ID = JE.JOB_EXECUTION_ID";
 
     private static final String FIND_BY_ID = FIND_ALL + " WHERE ID = ?";
 
-    private static final String FIND_BY_CNPJ = FIND_ALL + " WHERE CNPJ = ? ORDER BY ANO DESC, MES DESC";
+    private static final String FIND_BY_CNPJ = FIND_ALL +
+            " WHERE CNPJ = ? AND LAYOUT = ? ORDER BY ANO DESC, MES DESC";
 
     private static final String UPDATE_FILE =
             "UPDATE BATCH_SPED_EXECUTION SET ARQUIVO = ? WHERE JOB_EXECUTION_ID = ?";
@@ -56,11 +58,12 @@ public class SpedExecutionDao implements InitializingBean {
         Object[] parameters = new Object[] {
                 spedExecution.getId(), spedExecution.getCnpj(), spedExecution.getNome(),
                 spedExecution.getAno(), spedExecution.getMes(), spedExecution.getArquivo(),
-                spedExecution.getJobExecution().getId()
+                spedExecution.getLayout().toString(), spedExecution.getJobExecution().getId()
         };
         int[] types = new int[] {
-                Types.BIGINT, Types.VARCHAR, Types.VARCHAR, Types.INTEGER,
-                Types.INTEGER, Types.VARCHAR, Types.BIGINT
+                Types.BIGINT, Types.VARCHAR, Types.VARCHAR,
+                Types.INTEGER, Types.INTEGER, Types.VARCHAR,
+                Types.VARCHAR, Types.BIGINT
         };
 
         jdbcTemplate.update(INSERT, parameters, types);
@@ -72,6 +75,7 @@ public class SpedExecutionDao implements InitializingBean {
         Assert.hasText(execution.getNome(), "nome do SpedExecution não deve ser nulo ou vazio");
         Assert.state(execution.getAno() > 0, "ano do SpedExecution deve ser maior que zero");
         Assert.state(execution.getMes() > 0, "mes do SpedExecution deve ser maior que zero");
+        Assert.notNull(execution.getLayout(), "layout do SpedExecution não deve ser nulo");
         Assert.notNull(execution.getJobExecution(), "jobExecution do SpedExecution não deve ser nulo");
         Assert.notNull(execution.getJobExecution().getId(), "id do jobExecution do SpedExecution não deve ser nulo");
     }
@@ -82,10 +86,12 @@ public class SpedExecutionDao implements InitializingBean {
         return jdbcTemplate.queryForObject(FIND_BY_ID, new SpedExecutionRowMapper(), id);
     }
 
-    public List<SpedExecution> findByCnpj(String cnpj) {
+    public List<SpedExecution> findByCnpj(String cnpj, Layout layout) {
         Assert.hasText(cnpj, "cnpj não deve ser nulo ou vazio");
+        Assert.notNull(layout, "layout não deve ser nulo");
 
-        return jdbcTemplate.query(FIND_BY_CNPJ, new SpedExecutionRowMapper(), cnpj);
+        return jdbcTemplate.query(FIND_BY_CNPJ, new SpedExecutionRowMapper(),
+                cnpj, layout.toString());
     }
 
     public void updateFile(Long jobExecutionId, String file) {
@@ -116,15 +122,16 @@ public class SpedExecutionDao implements InitializingBean {
             spedExecution.setMes(rs.getInt(4));
             spedExecution.setNome(rs.getString(5));
             spedExecution.setArquivo(rs.getString(6));
+            spedExecution.setLayout(Layout.valueOf(rs.getString(7)));
 
-            JobExecution jobExecution = new JobExecution(rs.getLong(7));
-            jobExecution.setVersion(rs.getInt(8));
-            jobExecution.setCreateTime(rs.getTimestamp(9));
-            jobExecution.setStartTime(rs.getTimestamp(10));
-            jobExecution.setEndTime(rs.getTimestamp(11));
-            jobExecution.setStatus(BatchStatus.valueOf(rs.getString(12)));
-            jobExecution.setExitStatus(new ExitStatus(rs.getString(13), rs.getString(14)));
-            jobExecution.setLastUpdated(rs.getTimestamp(15));
+            JobExecution jobExecution = new JobExecution(rs.getLong(8));
+            jobExecution.setVersion(rs.getInt(9));
+            jobExecution.setCreateTime(rs.getTimestamp(10));
+            jobExecution.setStartTime(rs.getTimestamp(11));
+            jobExecution.setEndTime(rs.getTimestamp(12));
+            jobExecution.setStatus(BatchStatus.valueOf(rs.getString(13)));
+            jobExecution.setExitStatus(new ExitStatus(rs.getString(14), rs.getString(15)));
+            jobExecution.setLastUpdated(rs.getTimestamp(16));
 
             spedExecution.setJobExecution(jobExecution);
 
