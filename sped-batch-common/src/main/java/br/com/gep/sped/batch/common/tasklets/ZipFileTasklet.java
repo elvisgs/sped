@@ -39,12 +39,14 @@ public class ZipFileTasklet implements Tasklet {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         if (compressFile) {
-            String zipFileName = outputFileName.replaceAll("\\..+$", "") + ".zip";
-
             File outputFile = new File(outputFileName);
-            ZipUtil.packEntry(outputFile, new File(zipFileName));
+            File dir = outputFile.getParentFile();
+            String zipFileName = outputFile.getName().replaceAll("\\..+$", "") + ".zip";
+            String zipFilePath = new File(dir, zipFileName).getAbsolutePath();
 
-            logger.info("Arquivo compactado [" + zipFileName + "]");
+            ZipUtil.packEntry(outputFile, new File(zipFilePath));
+
+            logger.info("Arquivo compactado [" + zipFilePath + "]");
 
             if (deleteFileAfterCompression) {
                 outputFile.delete();
@@ -52,7 +54,7 @@ public class ZipFileTasklet implements Tasklet {
 
             if (spedExecutionDao != null) {
                 Long jobExecutionId = chunkContext.getStepContext().getStepExecution().getJobExecutionId();
-                spedExecutionDao.updateFile(jobExecutionId, zipFileName);
+                spedExecutionDao.updateFile(jobExecutionId, zipFilePath);
             }
             else {
                 logger.warn("SpedExecutionDao nao foi setado. SpedExecution nao sera atualizado.");
