@@ -113,7 +113,8 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         QueryParts queryParts = queryPartsProvider.getQueryParts(regClass);
         SqlPagingQueryProviderFactoryBean queryProviderFactory = new SqlPagingQueryProviderFactoryBean();
         queryProviderFactory.setDataSource(infraConfig.getDataSource());
-        queryProviderFactory.setSelectClause(queryParts.getSelect());
+        String selectClause = schemaInjector.injectSchema(queryParts.getSelect());
+        queryProviderFactory.setSelectClause(selectClause);
         String fromClause = schemaInjector.injectSchema(queryParts.getFrom());
         queryProviderFactory.setFromClause(fromClause);
 
