@@ -126,6 +126,8 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
             reader.setParameterValues(params);
         }
 
+        queryProviderFactory.setGroupClause(queryParts.getGroupBy());
+
         queryProviderFactory.setSortKey("id");
 
         reader.setQueryProvider(queryProviderFactory.getObject());

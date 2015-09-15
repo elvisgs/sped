@@ -17,9 +17,10 @@ public abstract class QueryPartsProvider {
         String prefix = buildPrefix(regName);
         String select = env.getProperty(prefix + ".select");
         String from = env.getProperty(prefix + ".from");
-        String where = env.getProperty(prefix + ".where");
+        String where = env.getProperty(prefix + ".where", "");
+        String groupBy = env.getProperty(prefix + ".groupBy", "");
 
-        return new QueryParts(select, from, where);
+        return new QueryParts(select, from, where, groupBy);
     }
 
     public QueryParts getQueryParts(Class<?> regClass) {
