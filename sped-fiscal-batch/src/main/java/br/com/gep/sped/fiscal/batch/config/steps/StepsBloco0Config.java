@@ -36,10 +36,7 @@ public class StepsBloco0Config {
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepReg0000() throws Exception {
-        ItemStreamReader<Reg0000> reader = itemReaders.reg0000ItemReader();
-        ItemStreamWriter<Reg0000> writer = itemWriterFactory.create(Reg0000.class);
-
-        return stepFactory.create("stepReg0000", reader, writer);
+        return stepFactory.create("stepReg0000", Reg0000.class);
     }
     
     @Bean

@@ -1,5 +1,6 @@
-package br.com.gep.sped.batch.common.jdbc;
+package br.com.gep.sped.batch.common.mocks;
 
+import br.com.gep.sped.batch.common.jdbc.QueryPartsProvider;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
