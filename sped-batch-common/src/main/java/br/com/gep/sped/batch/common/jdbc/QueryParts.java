@@ -4,9 +4,9 @@ import org.springframework.util.Assert;
 
 public class QueryParts {
 
-    private final String select, from, where, groupBy;
+    private final String select, from, where, groupBy, orderBy;
 
-    public QueryParts(String select, String from, String where, String groupBy) {
+    public QueryParts(String select, String from, String where, String groupBy, String orderBy) {
         Assert.hasText(select, "select clause is null or empty");
         Assert.hasText(from, "from clause is null or empty");
 
@@ -14,14 +14,15 @@ public class QueryParts {
         this.from = from;
         this.where = where != null ? where : "";
         this.groupBy = groupBy != null ? groupBy : "";
+        this.orderBy = orderBy != null ? orderBy : "";
     }
 
     public QueryParts(String select, String from, String where) {
-        this(select, from, where, "");
+        this(select, from, where, "", "");
     }
 
     public QueryParts(String select, String from) {
-        this(select, from, "", "");
+        this(select, from, "", "", "");
     }
 
     public String getSelect() {
@@ -40,8 +41,12 @@ public class QueryParts {
         return groupBy;
     }
 
+    public String getOrderBy() {
+        return orderBy;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s %s %s %s", select, from, where, groupBy);
+        return String.format("%s %s %s %s %s", select, from, where, groupBy, orderBy);
     }
 }

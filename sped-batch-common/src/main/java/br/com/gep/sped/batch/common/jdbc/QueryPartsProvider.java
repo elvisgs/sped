@@ -19,8 +19,9 @@ public abstract class QueryPartsProvider {
         String from = env.getProperty(prefix + ".from");
         String where = env.getProperty(prefix + ".where", "");
         String groupBy = env.getProperty(prefix + ".groupBy", "");
+        String orderBy = env.getProperty(prefix + ".orderBy", "");
 
-        return new QueryParts(select, from, where, groupBy);
+        return new QueryParts(select, from, where, groupBy, orderBy);
     }
 
     public QueryParts getQueryParts(Class<?> regClass) {
