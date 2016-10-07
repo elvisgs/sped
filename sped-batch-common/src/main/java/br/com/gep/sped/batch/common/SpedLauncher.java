@@ -28,11 +28,11 @@ public abstract class SpedLauncher {
 
     protected static final Log logger = LogFactory.getLog(SpedLauncher.class);
 
-    private AnnotationConfigApplicationContext context;
+    protected AnnotationConfigApplicationContext context;
     protected EstabelecimentoDao estabelecimentoDao;
-    private SpedExecutionDao spedExecutionDao;
-    private InfrastructureConfig infrastructureConfig;
-    private JobLauncher jobLauncher;
+    protected SpedExecutionDao spedExecutionDao;
+    protected InfrastructureConfig infrastructureConfig;
+    protected JobLauncher jobLauncher;
     private boolean initialized = false;
 
     protected String schema;
