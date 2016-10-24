@@ -1,0 +1,29 @@
+@NAME(Reg0000_select)
+  select *
+
+@NAME(Reg0000_from)
+  from reg_0000
+
+@NAME(Reg0000_where)
+  where cnpj = coalesce(?, cnpj)
+
+--=============================================================================
+@NAME(Reg9001_select)
+  select *
+
+@NAME(Reg9001_from)
+  from reg_9001
+
+--=============================================================================
+@NAME(Reg9900_select)
+  select *
+
+@NAME(Reg9900_from)
+  from reg_9900
+
+--=============================================================================
+@NAME(Reg9999_select)
+  select *
+
+@NAME(Reg9999_from)
+  from reg_9999

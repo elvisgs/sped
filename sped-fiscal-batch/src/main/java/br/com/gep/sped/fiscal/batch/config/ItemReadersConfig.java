@@ -12,10 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.PreparedStatementSetter;
-
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.CNPJ_ESTABELECIMENTO_EL;
 
@@ -43,12 +39,8 @@ public class ItemReadersConfig {
         reader.setSql(schemaInjector.injectSchema(sql));
 
         reader.setRowMapper(new Reg0000RowMapper());
-        reader.setPreparedStatementSetter(new PreparedStatementSetter() {
-            @Override
-            public void setValues(PreparedStatement preparedStatement) throws SQLException {
-                preparedStatement.setString(1, cnpjEstabelecimento);
-            }
-        });
+        reader.setPreparedStatementSetter(preparedStatement ->
+            preparedStatement.setString(1, cnpjEstabelecimento));
 
         reader.setSaveState(false);
         reader.afterPropertiesSet();

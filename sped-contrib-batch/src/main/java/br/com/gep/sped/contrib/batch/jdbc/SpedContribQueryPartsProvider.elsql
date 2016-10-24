@@ -1,0 +1,1744 @@
+@NAME(Reg0000_select)
+  SELECT id, cod_ver, tipo_escrit, ind_sit_esp, num_rec_anterior, dt_ini, dt_fin, nome, cnpj,
+    uf, cod_mun, suframa, ind_nat_pj, ind_ativ
+
+@NAME(Reg0000_from)
+  FROM @schema@pis_0000
+
+--=================================================================================================
+@NAME(Reg0001_select)
+  SELECT id, ind_mov
+
+@NAME(Reg0001_from)
+  FROM @schema@pis_0001
+
+--=================================================================================================
+@NAME(Reg0035_select)
+  SELECT id, cod_scp, nome_scp, inf_comp
+
+@NAME(Reg0035_from)
+  FROM @schema@pis_0035
+
+@NAME(Reg0035_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0100_select)
+  SELECT id, nome, cpf, crc, cnpj, cep, "end", num, compl, bairro, fone, fax, email, cod_mun
+
+@NAME(Reg0100_from)
+  FROM @schema@pis_0100
+
+@NAME(Reg0100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0110_select)
+  SELECT id, cod_inc_trib, ind_apro_cred, cod_tipo_cont
+
+@NAME(Reg0110_from)
+  FROM @schema@pis_0110
+
+@NAME(Reg0110_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0111_select)
+  SELECT id, rec_bru_ncum_trib_mi, rec_bru_ncum_nt_mi, rec_bru_ncum_exp, rec_bru_cum, rec_bru_total
+
+@NAME(Reg0111_from)
+  FROM @schema@pis_0111
+
+@NAME(Reg0111_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0120_select)
+  SELECT id, mes_dispensa, inf_comp
+
+@NAME(Reg0120_from)
+  FROM @schema@pis_0120
+
+@NAME(Reg0120_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0140_select)
+  SELECT id, cod_est, nome, cnpj, uf, ie, cod_mun, im, suframa
+
+@NAME(Reg0140_from)
+  FROM @schema@pis_0140
+
+@NAME(Reg0140_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0145_select)
+  SELECT id, cod_inc_trib, vl_rec_tot, vl_rec_ativ, vl_rec_demais_ativ, info_compl
+
+@NAME(Reg0145_from)
+  FROM @schema@pis_0145
+
+@NAME(Reg0145_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0150_select)
+  SELECT id, cod_part, nome, cod_pais, cnpj, cpf, ie, cod_mun, suframa, "end", num, compl, bairro
+
+@NAME(Reg0150_from)
+  FROM @schema@pis_0150
+
+@NAME(Reg0150_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0190_select)
+  SELECT id, unid, descr
+
+@NAME(Reg0190_from)
+  FROM @schema@pis_0190
+
+@NAME(Reg0190_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0200_select)
+  SELECT id, cod_item, descr_item, cod_barra, cod_ant_item, unid_inv, tipo_item, cod_ncm, ex_ipi,
+    cod_gen, cod_lst, aliq_icms
+
+@NAME(Reg0200_from)
+  FROM @schema@pis_0200
+
+@NAME(Reg0200_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0205_select)
+  SELECT id, descr_ant_item, dt_ini, dt_fim, cod_ant_item
+
+@NAME(Reg0205_from)
+  FROM @schema@pis_0205
+
+@NAME(Reg0205_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0206_select)
+  SELECT id, cod_comb
+
+@NAME(Reg0206_from)
+  FROM @schema@pis_0206
+
+@NAME(Reg0206_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0208_select)
+  SELECT id, cod_tab, cod_gru, marca_com
+
+@NAME(Reg0208_from)
+  FROM @schema@pis_0208
+
+@NAME(Reg0208_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0400_select)
+  SELECT id, cod_nat, descr_nat
+
+@NAME(Reg0400_from)
+  FROM @schema@pis_0400
+
+@NAME(Reg0400_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0450_select)
+  SELECT id, cod_inf, txt
+
+@NAME(Reg0450_from)
+  FROM @schema@pis_0450
+
+@NAME(Reg0450_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0500_select)
+  SELECT id, dt_alt, cod_nat_cc, ind_cta, nivel, cod_cta, nome_cta, cod_cta_ref, cnpj_est
+
+@NAME(Reg0500_from)
+  FROM @schema@pis_0500
+
+@NAME(Reg0500_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg0600_select)
+  SELECT id, dt_alt, cod_ccus, ccus
+
+@NAME(Reg0600_from)
+  FROM @schema@pis_0600
+
+@NAME(Reg0600_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg1001_select)
+  SELECT id, ind_mov
+
+@NAME(Reg1001_from)
+  FROM @schema@pis_1001
+
+--=================================================================================================
+@NAME(Reg1010_select)
+  SELECT id, num_proc, id_sec_jud, id_vara, ind_nat_acao, desc_dec_jud, dt_sent_jud
+
+@NAME(Reg1010_from)
+  FROM @schema@pis_1010
+
+@NAME(Reg1010_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg1020_select)
+  SELECT id, num_proc, ind_nat_acao, dt_dec_adm
+
+@NAME(Reg1020_from)
+  FROM @schema@pis_1020
+
+@NAME(Reg1020_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg1100_select)
+  SELECT id, per_apu_cred, orig_cred, cnpj_suc, cod_cred, vl_cred_apu, vl_cred_ext_apu, vl_tot_cred_apu,
+    vl_cred_desc_pa_ant, vl_cred_per_pa_ant, vl_cred_dcomp_pa_ant, sd_cred_disp_efd, vl_cred_desc_efd,
+    vl_cred_per_efd, vl_cred_dcomp_efd, vl_cred_trans, vl_cred_out, sld_cred_fim
+
+@NAME(Reg1100_from)
+  FROM @schema@pis_1100
+
+@NAME(Reg1100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg1300_select)
+  SELECT id, ind_nat_ret, pr_rec_ret, vl_ret_apu, vl_ret_ded, vl_ret_per, vl_ret_dcomp, sld_ret
+
+@NAME(Reg1300_from)
+  FROM @schema@pis_1300
+
+@NAME(Reg1300_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg1500_select)
+  SELECT id, per_apu_cred, orig_cred, cnpj_suc, cod_cred, vl_cred_apu, vl_cred_ext_apu, vl_tot_cred_apu,
+    vl_cred_desc_pa_ant, vl_cred_per_pa_ant, vl_cred_dcomp_pa_ant, sd_cred_disp_efd, vl_cred_desc_efd,
+    vl_cred_per_efd, vl_cred_dcomp_efd, vl_cred_trans, vl_cred_out, sld_cred_fim
+
+@NAME(Reg1500_from)
+  FROM @schema@pis_1500
+
+@NAME(Reg1500_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg1700_select)
+  SELECT id, ind_nat_ret, pr_rec_ret, vl_ret_apu, vl_ret_ded, vl_ret_per, vl_ret_dcomp, sld_ret
+
+@NAME(Reg1700_from)
+  FROM @schema@pis_1700
+
+@NAME(Reg1700_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg1800_select)
+  SELECT id, inc_imob, rec_receb_ret, rec_fin_ret, bc_ret, aliq_ret, vl_rec_uni, dt_rec_uni, cod_rec
+
+@NAME(Reg1800_from)
+  FROM @schema@pis_1800
+
+@NAME(Reg1800_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg1809_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(Reg1809_from)
+  FROM @schema@pis_1809
+
+@NAME(Reg1809_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(Reg1900_select)
+  SELECT id, cnpj, cod_mod, ser, sub_ser, cod_sit, vl_tot_rec, quant_doc, cst_pis, cst_cofins, cfop,
+    info_compl, cod_cta
+
+@NAME(Reg1900_from)
+  FROM @schema@pis_1900
+
+--=================================================================================================
+@NAME(RegA001_select)
+  SELECT id, ind_mov
+
+@NAME(RegA001_from)
+  FROM @schema@pis_a001
+
+--=================================================================================================
+@NAME(RegA010_select)
+  SELECT id, cnpj
+
+@NAME(RegA010_from)
+  FROM @schema@pis_a010
+
+@NAME(RegA010_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegA100_select)
+  SELECT id, ind_oper, ind_emit, cod_part, cod_sit, ser, sub, num_doc, chv_nfse, dt_doc, dt_exe_serv,
+    vl_doc, ind_pgto, vl_desc, vl_bc_pis, vl_pis, vl_bc_cofins, vl_cofins, vl_pis_ret, vl_cofins_ret,
+    vl_iss
+
+@NAME(RegA100_from)
+  FROM @schema@pis_a100
+
+@NAME(RegA100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegA110_select)
+  SELECT id, cod_inf, txt_compl
+
+@NAME(RegA110_from)
+  FROM @schema@pis_a110
+
+@NAME(RegA110_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegA111_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegA111_from)
+  FROM @schema@pis_a111
+
+@NAME(RegA111_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegA120_select)
+  SELECT id, vl_tot_serv, vl_bc_pis, vl_pis_imp, dt_pag_pis, vl_bc_cofins, vl_cofins_imp, dt_pag_cofins,
+    loc_exe_serv
+
+@NAME(RegA120_from)
+  FROM @schema@pis_a120
+
+@NAME(RegA120_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegA170_select)
+  SELECT id, num_item, cod_item, descr_compl, vl_item, vl_desc, nat_bc_cred, ind_orig_cred, cst_pis,
+    vl_bc_pis, aliq_pis, vl_pis, cst_cofins, vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta, cod_ccus
+
+@NAME(RegA170_from)
+  FROM @schema@pis_a170
+
+@NAME(RegA170_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC001_select)
+  SELECT id, ind_mov
+
+@NAME(RegC001_from)
+  FROM @schema@pis_c001
+
+--=================================================================================================
+@NAME(RegC010_select)
+  SELECT id, cnpj, ind_escri
+
+@NAME(RegC010_from)
+  FROM @schema@pis_c010
+
+@NAME(RegC010_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC100_select)
+  SELECT id, ind_oper, ind_emit, cod_part, cod_mod, cod_sit, ser, num_doc, chv_nfe, dt_doc, dt_e_s,
+    vl_doc, ind_pgto, vl_desc, vl_abat_nt, vl_merc, ind_frt, vl_frt, vl_seg, vl_out_da, vl_bc_icms,
+    vl_icms, vl_bc_icms_st, vl_icms_st, vl_ipi, vl_pis, vl_cofins, vl_pis_st, vl_cofins_st
+
+@NAME(RegC100_from)
+  FROM @schema@pis_c100
+
+@NAME(RegC100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC110_select)
+  SELECT id, cod_inf, txt_compl
+
+@NAME(RegC110_from)
+  FROM @schema@pis_c110
+
+@NAME(RegC110_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC111_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegC111_from)
+  FROM @schema@pis_c111
+
+@NAME(RegC111_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC120_select)
+  SELECT id, cod_doc_imp, num_doc_imp, vl_pis_imp, vl_cofins_imp, num_acdraw
+
+@NAME(RegC120_from)
+  FROM @schema@pis_c120
+
+@NAME(RegC120_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC170_select)
+  SELECT id, num_item, cod_item, descr_compl, qtd, unid, vl_item, vl_desc, ind_mov, cst_icms, cfop,
+    cod_nat, vl_bc_icms, aliq_icms, vl_icms, vl_bc_icms_st, aliq_st, vl_icms_st, ind_apur, cst_ipi,
+    cod_enq, vl_bc_ipi, aliq_ipi, vl_ipi, cst_pis, vl_bc_pis, aliq_pis, quant_bc_pis, aliq_pis_quant,
+    vl_pis, cst_cofins, vl_bc_cofins, aliq_cofins, quant_bc_cofins, aliq_cofins_quant, vl_cofins, cod_cta
+
+@NAME(RegC170_from)
+  FROM @schema@pis_c170
+
+@NAME(RegC170_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC175_select)
+  SELECT id, cfop, vl_oper, vl_desc, cst_pis, vl_bc_pis, aliq_pis, quant_bc_pis, aliq_pis_quant,
+    vl_pis, cst_cofins, vl_bc_cofins, aliq_cofins, quant_bc_cofins, aliq_cofins_quant, vl_cofins,
+    cod_cta, info_compl
+
+@NAME(RegC175_from)
+  FROM @schema@pis_c175
+
+@NAME(RegC175_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC180_select)
+  SELECT id, cod_mod, dt_doc_ini, dt_doc_fin, cod_item, cod_ncm, ex_ipi, vl_tot_item
+
+@NAME(RegC180_from)
+  FROM @schema@pis_c180
+
+@NAME(RegC180_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC181_select)
+  SELECT id, cst_pis, cfop, vl_item, vl_desc, vl_bc_pis, aliq_pis, quant_bc_pis, aliq_pis_quant, vl_pis, cod_cta
+
+@NAME(RegC181_from)
+  FROM @schema@pis_c181
+
+@NAME(RegC181_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC185_select)
+  SELECT id, cst_cofins, cfop, vl_item, vl_desc, vl_bc_cofins, aliq_cofins, quant_bc_cofins,
+    aliq_cofins_quant, vl_cofins, cod_cta
+
+@NAME(RegC185_from)
+  FROM @schema@pis_c185
+
+@NAME(RegC185_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC188_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegC188_from)
+  FROM @schema@pis_c188
+
+@NAME(RegC188_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC190_select)
+  SELECT id, cod_mod, dt_ref_ini, dt_ref_fin, cod_item, cod_ncm, ex_ipi, vl_tot_item
+
+@NAME(RegC190_from)
+  FROM @schema@pis_c190
+
+@NAME(RegC190_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC191_select)
+  SELECT id, cnpj_cpf_part, cst_pis, cfop, vl_item, vl_desc, vl_bc_pis, aliq_pis, quant_bc_pis,
+    aliq_pis_quant, vl_pis, cod_cta
+
+@NAME(RegC191_from)
+  FROM @schema@pis_c191
+
+@NAME(RegC191_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC195_select)
+  SELECT id, cnpj_cpf_part, cst_cofins, cfop, vl_item, vl_desc, vl_bc_cofins, aliq_cofins, quant_bc_cofins,
+    aliq_cofins_quant, vl_cofins, cod_cta
+
+@NAME(RegC195_from)
+  FROM @schema@pis_c195
+
+@NAME(RegC195_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC198_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegC198_from)
+  FROM @schema@pis_c198
+
+@NAME(RegC198_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC199_select)
+  SELECT id, cod_doc_imp, num_doc_imp, vl_pis_imp, vl_cofins_imp, num_acdraw
+
+@NAME(RegC199_from)
+  FROM @schema@pis_c199
+
+@NAME(RegC199_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC380_select)
+  SELECT id, cod_mod, dt_doc_ini, dt_doc_fin, num_doc_ini, num_doc_fin, vl_doc, vl_doc_canc
+
+@NAME(RegC380_from)
+  FROM @schema@pis_c380
+
+@NAME(RegC380_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC381_select)
+  SELECT id, cst_pis, cod_item, vl_item, vl_bc_pis, aliq_pis, quant_bc_pis, aliq_pis_quant, vl_pis, cod_cta
+
+@NAME(RegC381_from)
+  FROM @schema@pis_c381
+
+@NAME(RegC381_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC385_select)
+  SELECT id, cst_cofins, cod_item, vl_item, vl_bc_cofins, aliq_cofins, quant_bc_cofins, aliq_cofins_quant,
+    vl_cofins, cod_cta
+
+@NAME(RegC385_from)
+  FROM @schema@pis_c385
+
+@NAME(RegC385_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC395_select)
+  SELECT id, cod_mod, cod_part, ser, sub_ser, num_doc, dt_doc, vl_doc
+
+@NAME(RegC395_from)
+  FROM @schema@pis_c395
+
+@NAME(RegC395_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC396_select)
+  SELECT id, cod_item, vl_item, vl_desc, nat_bc_cred, cst_pis, vl_bc_pis, aliq_pis, vl_pis, cst_cofins,
+    vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta
+
+@NAME(RegC396_from)
+  FROM @schema@pis_c396
+
+@NAME(RegC396_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC400_select)
+  SELECT id, cod_mod, ecf_mod, ecf_fab, ecf_cx
+
+@NAME(RegC400_from)
+  FROM @schema@pis_c400
+
+@NAME(RegC400_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC405_select)
+  SELECT id, dt_doc, cro, crz, num_coo_fin, gt_fin, vl_brt
+
+@NAME(RegC405_from)
+  FROM @schema@pis_c405
+
+@NAME(RegC405_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC481_select)
+  SELECT id, cst_pis, vl_item, vl_bc_pis, aliq_pis, quant_bc_pis, aliq_pis_quant, vl_pis, cod_item, cod_cta
+
+@NAME(RegC481_from)
+  FROM @schema@pis_c481
+
+@NAME(RegC481_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC485_select)
+  SELECT id, cst_cofins, vl_item, vl_bc_cofins, aliq_cofins, quant_bc_cofins, aliq_cofins_quant,
+    vl_cofins, cod_item, cod_cta
+
+@NAME(RegC485_from)
+  FROM @schema@pis_c485
+
+@NAME(RegC485_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC489_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegC489_from)
+  FROM @schema@pis_c489
+
+@NAME(RegC489_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC490_select)
+  SELECT id, dt_doc_ini, dt_doc_fin, cod_mod
+
+@NAME(RegC490_from)
+  FROM @schema@pis_c490
+
+@NAME(RegC490_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC491_select)
+  SELECT id, cod_item, cst_pis, cfop, vl_item, vl_bc_pis, aliq_pis, quant_bc_pis, aliq_pis_quant, vl_pis, cod_cta
+
+@NAME(RegC491_from)
+  FROM @schema@pis_c491
+
+@NAME(RegC491_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC495_select)
+  SELECT id, cod_item, cst_cofins, cfop, vl_item, vl_bc_cofins, aliq_cofins, quant_bc_cofins,
+    aliq_cofins_quant, vl_cofins, cod_cta
+
+@NAME(RegC495_from)
+  FROM @schema@pis_c495
+
+@NAME(RegC495_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC499_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegC499_from)
+  FROM @schema@pis_c499
+
+@NAME(RegC499_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC500_select)
+  SELECT id, cod_part, cod_mod, cod_sit, ser, sub, num_doc, dt_doc, dt_e_s, vl_doc, vl_icms, cod_inf,
+    vl_pis, vl_cofins
+
+@NAME(RegC500_from)
+  FROM @schema@pis_c500
+
+@NAME(RegC500_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC501_select)
+  SELECT id, cst_pis, vl_item, nat_bc_cred, vl_bc_pis, aliq_pis, vl_pis, cod_cta
+
+@NAME(RegC501_from)
+  FROM @schema@pis_c501
+
+@NAME(RegC501_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC505_select)
+  SELECT id, cst_cofins, vl_item, nat_bc_cred, vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta
+
+@NAME(RegC505_from)
+  FROM @schema@pis_c505
+
+@NAME(RegC505_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC509_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegC509_from)
+  FROM @schema@pis_c509
+
+@NAME(RegC509_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC600_select)
+  SELECT id, cod_mod, cod_mun, ser, sub, cod_cons, qtd_cons, qtd_canc, dt_doc, vl_doc, vl_desc, cons,
+    vl_forn, vl_serv_nt, vl_terc, vl_da, vl_bc_icms, vl_icms, vl_bc_icms_st, vl_icms_st, vl_pis, vl_cofins
+
+@NAME(RegC600_from)
+  FROM @schema@pis_c600
+
+@NAME(RegC600_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC601_select)
+  SELECT id, cst_pis, vl_item, vl_bc_pis, aliq_pis, vl_pis, cod_cta
+
+@NAME(RegC601_from)
+  FROM @schema@pis_c601
+
+@NAME(RegC601_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC605_select)
+  SELECT id, cst_cofins, vl_item, vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta
+
+@NAME(RegC605_from)
+  FROM @schema@pis_c605
+
+@NAME(RegC605_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC609_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegC609_from)
+  FROM @schema@pis_c609
+
+@NAME(RegC609_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC860_select)
+  SELECT id, cod_mod, nr_sat, dt_doc, doc_ini, doc_fim
+
+@NAME(RegC860_from)
+  FROM @schema@pis_c860
+
+@NAME(RegC860_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC870_select)
+  SELECT id, cod_item, cfop, vl_item, vl_desc, cst_pis, vl_bc_pis, aliq_pis, vl_pis, cst_cofins,
+    vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta
+
+@NAME(RegC870_from)
+  FROM @schema@pis_c870
+
+@NAME(RegC870_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC880_select)
+  SELECT id, cod_item, cfop, vl_item, vl_desc, cst_pis, quant_bc_pis, aliq_pis_quant, vl_pis,
+    cst_cofins, quant_bc_cofins, aliq_cofins_quant, vl_cofins, cod_cta
+
+@NAME(RegC880_from)
+  FROM @schema@pis_c880
+
+@NAME(RegC880_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegC890_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegC890_from)
+  FROM @schema@pis_c890
+
+@NAME(RegC890_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD001_select)
+  SELECT id, ind_mov
+
+@NAME(RegD001_from)
+  FROM @schema@pis_d001
+
+--=================================================================================================
+@NAME(RegD010_select)
+  SELECT id, cnpj
+
+@NAME(RegD010_from)
+  FROM @schema@pis_d010
+
+@NAME(RegD010_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD100_select)
+  SELECT id, ind_oper, ind_emit, cod_part, cod_mod, cod_sit, ser, sub, num_doc, chv_cte, dt_doc,
+    dt_a_p, tp_cte, chv_cte_ref, vl_doc, vl_desc, ind_frt, vl_serv, vl_bc_icms, vl_icms, vl_nt,
+    cod_inf, cod_cta
+
+@NAME(RegD100_from)
+  FROM @schema@pis_d100
+
+@NAME(RegD100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD101_select)
+  SELECT id, ind_nat_frt, vl_item, cst_pis, nat_bc_cred, vl_bc_pis, aliq_pis, vl_pis, cod_cta
+
+@NAME(RegD101_from)
+  FROM @schema@pis_d101
+
+@NAME(RegD101_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD105_select)
+  SELECT id, ind_nat_frt, vl_item, cst_cofins, nat_bc_cred, vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta
+
+@NAME(RegD105_from)
+  FROM @schema@pis_d105
+
+@NAME(RegD105_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD111_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegD111_from)
+  FROM @schema@pis_d111
+
+@NAME(RegD111_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD200_select)
+  SELECT id, cod_mod, cod_sit, ser, sub, num_doc_ini, num_doc_fin, cfop, dt_ref, vl_doc, vl_desc
+
+@NAME(RegD200_from)
+  FROM @schema@pis_d200
+
+@NAME(RegD200_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD201_select)
+  SELECT id, cst_pis, vl_item, vl_bc_pis, aliq_pis, vl_pis, cod_cta
+
+@NAME(RegD201_from)
+  FROM @schema@pis_d201
+
+@NAME(RegD201_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD205_select)
+  SELECT id, cst_cofins, vl_item, vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta
+
+@NAME(RegD205_from)
+  FROM @schema@pis_d205
+
+@NAME(RegD205_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD209_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegD209_from)
+  FROM @schema@pis_d209
+
+@NAME(RegD209_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD300_select)
+  SELECT id, cod_mod, ser, sub, num_doc_ini, num_doc_fin, cfop, dt_ref, vl_doc, vl_desc, cst_pis,
+    vl_bc_pis, aliq_pis, vl_pis, cst_cofins, vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta
+
+@NAME(RegD300_from)
+  FROM @schema@pis_d300
+
+@NAME(RegD300_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD309_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegD309_from)
+  FROM @schema@pis_d309
+
+@NAME(RegD309_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD350_select)
+  SELECT id, cod_mod, ecf_mod, ecf_fab, dt_doc, cro, crz, num_coo_fin, gt_fin, vl_brt, cst_pis,
+    vl_bc_pis, aliq_pis, quant_bc_pis, aliq_pis_quant, vl_pis, cst_cofins, vl_bc_cofins, aliq_cofins,
+    quant_bc_cofins, aliq_cofins_quant, vl_cofins, cod_cta
+
+@NAME(RegD350_from)
+  FROM @schema@pis_d350
+
+@NAME(RegD350_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD359_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegD359_from)
+  FROM @schema@pis_d359
+
+@NAME(RegD359_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD500_select)
+  SELECT id, ind_oper, ind_emit, cod_part, cod_mod, cod_sit, ser, sub, num_doc, dt_doc, dt_a_p, vl_doc,
+    vl_desc, vl_serv, vl_serv_nt, vl_terc, vl_da, vl_bc_icms, vl_icms, cod_inf, vl_pis, vl_cofins
+
+@NAME(RegD500_from)
+  FROM @schema@pis_d500
+
+@NAME(RegD500_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD501_select)
+  SELECT id, cst_pis, vl_item, nat_bc_cred, vl_bc_pis, aliq_pis, vl_pis, cod_cta
+
+@NAME(RegD501_from)
+  FROM @schema@pis_d501
+
+@NAME(RegD501_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD505_select)
+  SELECT id, cst_cofins, vl_item, nat_bc_cred, vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta
+
+@NAME(RegD505_from)
+  FROM @schema@pis_d505
+
+@NAME(RegD505_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD509_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegD509_from)
+  FROM @schema@pis_d509
+
+@NAME(RegD509_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD600_select)
+  SELECT id, cod_mod, cod_mun, ser, sub, ind_rec, qtd_cons, dt_doc_ini, dt_doc_fin, vl_doc, vl_desc,
+    vl_serv, vl_serv_nt, vl_terc, vl_da, vl_bc_icms, vl_icms, vl_pis, vl_cofins
+
+@NAME(RegD600_from)
+  FROM @schema@pis_d600
+
+@NAME(RegD600_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD601_select)
+  SELECT id, cod_class, vl_item, vl_desc, cst_pis, vl_bc_pis, aliq_pis, vl_pis, cod_cta
+
+@NAME(RegD601_from)
+  FROM @schema@pis_d601
+
+@NAME(RegD601_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD605_select)
+  SELECT id, cod_class, vl_item, vl_desc, cst_cofins, vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta
+
+@NAME(RegD605_from)
+  FROM @schema@pis_d605
+
+@NAME(RegD605_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegD609_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegD609_from)
+  FROM @schema@pis_d609
+
+@NAME(RegD609_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF001_select)
+  SELECT id, ind_mov
+
+@NAME(RegF001_from)
+  FROM @schema@pis_f001
+
+--=================================================================================================
+@NAME(RegF010_select)
+  SELECT id, cnpj
+
+@NAME(RegF010_from)
+  FROM @schema@pis_f010
+
+@NAME(RegF010_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF100_select)
+  SELECT id, ind_oper, cod_part, cod_item, dt_oper, vl_oper, cst_pis, vl_bc_pis, aliq_pis, vl_pis,
+    cst_cofins, vl_bc_cofins, aliq_cofins, vl_cofins, nat_bc_cred, ind_orig_cred, cod_cta, cod_ccus,
+    desc_doc_oper
+
+@NAME(RegF100_from)
+  FROM @schema@pis_f100
+
+@NAME(RegF100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF111_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegF111_from)
+  FROM @schema@pis_f111
+
+@NAME(RegF111_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF120_select)
+  SELECT id, nat_bc_cred, ident_bem_imob, ind_orig_cred, ind_util_bem_imob, vl_oper_dep,
+    parc_oper_nao_bc_cred, cst_pis, vl_bc_pis, aliq_pis, vl_pis, cst_cofins, vl_bc_cofins, aliq_cofins,
+    vl_cofins, cod_cta, cod_ccus, desc_bem_imob
+
+@NAME(RegF120_from)
+  FROM @schema@pis_f120
+
+@NAME(RegF120_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF129_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegF129_from)
+  FROM @schema@pis_f129
+
+@NAME(RegF129_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF130_select)
+  SELECT id, nat_bc_cred, ident_bem_imob, ind_orig_cred, ind_util_bem_imob, mes_oper_aquis, vl_oper_aquis,
+    parc_oper_nao_bc_cred, vl_bc_cred, ind_nr_parc, cst_pis, vl_bc_pis, aliq_pis, vl_pis, cst_cofins,
+    vl_bc_cofins, aliq_cofins, vl_cofins, cod_cta, cod_ccus, desc_bem_imob
+
+@NAME(RegF130_from)
+  FROM @schema@pis_f130
+
+@NAME(RegF130_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF139_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegF139_from)
+  FROM @schema@pis_f139
+
+@NAME(RegF139_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF150_select)
+  SELECT id, nat_bc_cred, vl_tot_est, est_imp, vl_bc_est, vl_bc_men_est, cst_pis, aliq_pis, vl_cred_pis,
+    cst_cofins, aliq_cofins, vl_cred_cofins, desc_est, cod_cta
+
+@NAME(RegF150_from)
+  FROM @schema@pis_f150
+
+@NAME(RegF150_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF200_select)
+  SELECT id, ind_oper, unid_imob, ident_emp, desc_unid_imob, num_cont, cpf_cnpj_adqu, dt_oper, vl_tot_vend,
+    vl_rec_acum, vl_tot_rec, cst_pis, vl_bc_pis, aliq_pis, vl_pis, cst_cofins, vl_bc_cofins, aliq_cofins,
+    vl_cofins, perc_rec_receb, ind_nat_emp, inf_comp
+
+@NAME(RegF200_from)
+  FROM @schema@pis_f200
+
+@NAME(RegF200_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF205_select)
+  SELECT id, vl_cus_inc_acum_ant, vl_cus_inc_per_esc, vl_cus_inc_acum, vl_exc_bc_cus_inc_acum,
+    vl_bc_cus_inc, cst_pis, aliq_pis, vl_cred_pis_acum, vl_cred_pis_desc_ant, vl_cred_pis_desc,
+    vl_cred_pis_desc_fut, cst_cofins, aliq_cofins, vl_cred_cofins_acum, vl_cred_cofins_desc_ant,
+    vl_cred_cofins_desc, vl_cred_cofins_desc_fut
+
+@NAME(RegF205_from)
+  FROM @schema@pis_f205
+
+@NAME(RegF205_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF210_select)
+  SELECT id, vl_cus_orc, vl_exc, vl_cus_orc_aju, vl_bc_cred, cst_pis, aliq_pis, vl_cred_pis_util,
+    cst_cofins, aliq_cofins, vl_cred_cofins_util
+
+@NAME(RegF210_from)
+  FROM @schema@pis_f210
+
+@NAME(RegF210_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF211_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegF211_from)
+  FROM @schema@pis_f211
+
+@NAME(RegF211_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF500_select)
+  SELECT id, vl_rec_caixa, cst_pis, vl_desc_pis, vl_bc_pis, aliq_pis, vl_pis, cst_cofins, vl_desc_cofins,
+    vl_bc_cofins, aliq_cofins, vl_cofins, cod_mod, cfop, cod_cta, info_compl
+
+@NAME(RegF500_from)
+  FROM @schema@pis_f500
+
+@NAME(RegF500_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF509_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegF509_from)
+  FROM @schema@pis_f509
+
+@NAME(RegF509_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF510_select)
+  SELECT id, vl_rec_caixa, cst_pis, vl_desc_pis, quant_bc_pis, aliq_pis_quant, vl_pis, cst_cofins,
+    vl_desc_cofins, quant_bc_cofins, aliq_cofins_quant, vl_cofins, cod_mod, cfop, cod_cta, info_compl
+
+@NAME(RegF510_from)
+  FROM @schema@pis_f510
+
+@NAME(RegF510_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF519_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegF519_from)
+  FROM @schema@pis_f519
+
+@NAME(RegF519_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF525_select)
+  SELECT id, vl_rec, ind_rec, cnpj_cpf, num_doc, cod_item, vl_rec_det, cst_pis, cst_cofins, info_compl, cod_cta
+
+@NAME(RegF525_from)
+  FROM @schema@pis_f525
+
+@NAME(RegF525_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF550_select)
+  SELECT id, vl_rec_comp, cst_pis, vl_desc_pis, vl_bc_pis, aliq_pis, vl_pis, cst_cofins, vl_desc_cofins,
+    vl_bc_cofins, aliq_cofins, vl_cofins, cod_mod, cfop, cod_cta, info_compl
+
+@NAME(RegF550_from)
+  FROM @schema@pis_f550
+
+@NAME(RegF550_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF559_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegF559_from)
+  FROM @schema@pis_f559
+
+@NAME(RegF559_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF560_select)
+  SELECT id, vl_rec_comp, cst_pis, vl_desc_pis, quant_bc_pis, aliq_pis_quant, vl_pis, cst_cofins,
+    vl_desc_cofins, quant_bc_cofins, aliq_cofins_quant, vl_cofins, cod_mod, cfop, cod_cta, info_compl
+
+@NAME(RegF560_from)
+  FROM @schema@pis_f560
+
+@NAME(RegF560_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF569_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegF569_from)
+  FROM @schema@pis_f569
+
+@NAME(RegF569_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF600_select)
+  SELECT id, ind_nat_ret, dt_ret, vl_bc_ret, vl_ret, cod_rec, ind_nat_rec, cnpj, vl_ret_pis,
+    vl_ret_cofins, ind_dec
+
+@NAME(RegF600_from)
+  FROM @schema@pis_f600
+
+@NAME(RegF600_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF700_select)
+  SELECT id, ind_ori_ded, ind_nat_ded, vl_ded_pis, vl_ded_cofins, vl_bc_oper, cnpj, inf_comp
+
+@NAME(RegF700_from)
+  FROM @schema@pis_f700
+
+@NAME(RegF700_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegF800_select)
+  SELECT id, ind_nat_even, dt_even, cnpj_suced, pa_cont_cred, cod_cred, vl_cred_pis, vl_cred_cofins, per_cred_cis
+
+@NAME(RegF800_from)
+  FROM @schema@pis_f800
+
+@NAME(RegF800_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegI001_select)
+  SELECT id, ind_mov
+
+@NAME(RegI001_from)
+  FROM @schema@pis_i001
+
+--=================================================================================================
+@NAME(RegI010_select)
+  SELECT id, cnpj, ind_ativ, info_compl
+
+@NAME(RegI010_from)
+  FROM @schema@pis_i010
+
+@NAME(RegI010_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegI100_select)
+  SELECT id, vl_rec_fin, cst, vl_tot_ded_ger, vl_tot_ded_esp, vl_bc_pis, aliq_pis, vl_pis, vl_bc_cofins,
+    aliq_cofins, vl_cofins, inf_comp
+
+@NAME(RegI100_from)
+  FROM @schema@pis_i100
+
+@NAME(RegI100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegI199_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegI199_from)
+  FROM @schema@pis_i199
+
+@NAME(RegI199_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegI200_select)
+  SELECT id, num_campo, cod_det, vl_det, cod_cta, inf_comp
+
+@NAME(RegI200_from)
+  FROM @schema@pis_i200
+
+@NAME(RegI200_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegI299_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegI299_from)
+  FROM @schema@pis_i299
+
+@NAME(RegI299_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegI300_select)
+  SELECT id, cod_comp, vl_comp, cod_cta, inf_comp
+
+@NAME(RegI300_from)
+  FROM @schema@pis_i300
+
+@NAME(RegI300_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegI399_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegI399_from)
+  FROM @schema@pis_i399
+
+@NAME(RegI399_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM001_select)
+  SELECT id, ind_mov
+
+@NAME(RegM001_from)
+  FROM @schema@pis_m001
+
+--=================================================================================================
+@NAME(RegM100_select)
+  SELECT id, cod_cred, ind_cred_ori, vl_bc_cred, aliq_pis, quant_bc_pis, aliq_pis_quant, vl_cred,
+    vl_ajus_acres, vl_ajus_reduc, vl_cred_dif, vl_cred_disp, ind_desc_cred, vl_cred_desc, sld_cred
+
+@NAME(RegM100_from)
+  FROM @schema@pis_m100
+
+@NAME(RegM100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM105_select)
+  SELECT id, nat_bc_cred, cst_pis, vl_bc_pis_tot, vl_bc_pis_cum, vl_bc_pis_nc, vl_bc_pis, quant_bc_pis_tot,
+    quant_bc_pis, desc_cred
+
+@NAME(RegM105_from)
+  FROM @schema@pis_m105
+
+@NAME(RegM105_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM110_select)
+  SELECT id, ind_aj, vl_aj, cod_aj, num_doc, descr_aj, dt_ref
+
+@NAME(RegM110_from)
+  FROM @schema@pis_m110
+
+@NAME(RegM110_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM115_select)
+  SELECT id, det_valor_aj, cst_pis, det_bc_cred, det_aliq, dt_oper_aj, desc_aj, cod_cta, info_compl
+
+@NAME(RegM115_from)
+  FROM @schema@pis_m115
+
+@NAME(RegM115_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM200_select)
+  SELECT id, vl_tot_cont_nc_per, vl_tot_cred_desc, vl_tot_cred_desc_ant, vl_tot_cont_nc_dev, vl_ret_nc,
+    vl_out_ded_nc, vl_cont_nc_rec, vl_tot_cont_cum_per, vl_ret_cum, vl_out_ded_cum, vl_cont_cum_rec,
+    vl_tot_cont_rec
+
+@NAME(RegM200_from)
+  FROM @schema@pis_m200
+
+@NAME(RegM200_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM205_select)
+  SELECT id, num_campo, cod_rec, vl_debito
+
+@NAME(RegM205_from)
+  FROM @schema@pis_m205
+
+@NAME(RegM205_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM210_select)
+  SELECT id, cod_cont, vl_rec_brt, vl_bc_cont, aliq_pis, quant_bc_pis, aliq_pis_quant, vl_cont_apur,
+    vl_ajus_acres, vl_ajus_reduc, vl_cont_difer, vl_cont_difer_ant, vl_cont_per
+
+@NAME(RegM210_from)
+  FROM @schema@pis_m210
+
+@NAME(RegM210_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM211_select)
+  SELECT id, ind_tip_coop, vl_bc_cont_ant_exc_coop, vl_exc_coop_ger, vl_exc_esp_coop, vl_bc_cont
+
+@NAME(RegM211_from)
+  FROM @schema@pis_m211
+
+@NAME(RegM211_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM220_select)
+  SELECT id, ind_aj, vl_aj, cod_aj, num_doc, descr_aj, dt_ref
+
+@NAME(RegM220_from)
+  FROM @schema@pis_m220
+
+@NAME(RegM220_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM225_select)
+  SELECT id, det_valor_aj, cst_pis, det_bc_cred, det_aliq, dt_oper_aj, desc_aj, cod_cta, info_compl
+
+@NAME(RegM225_from)
+  FROM @schema@pis_m225
+
+@NAME(RegM225_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM230_select)
+  SELECT id, cnpj, vl_vend, vl_nao_receb, vl_cont_dif, vl_cred_dif, cod_cred
+
+@NAME(RegM230_from)
+  FROM @schema@pis_m230
+
+@NAME(RegM230_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM300_select)
+  SELECT id, cod_cont, vl_cont_apur_difer, nat_cred_desc, vl_cred_desc_difer, vl_cont_difer_ant, per_apur, dt_receb
+
+@NAME(RegM300_from)
+  FROM @schema@pis_m300
+
+@NAME(RegM300_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM350_select)
+  SELECT id, vl_tot_fol, vl_exc_bc, vl_tot_bc, aliq_pis_fol, vl_tot_cont_fol
+
+@NAME(RegM350_from)
+  FROM @schema@pis_m350
+
+@NAME(RegM350_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM400_select)
+  SELECT id, cst_pis, vl_tot_rec, cod_cta, desc_compl
+
+@NAME(RegM400_from)
+  FROM @schema@pis_m400
+
+@NAME(RegM400_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM410_select)
+  SELECT id, nat_rec, vl_rec, cod_cta, desc_compl
+
+@NAME(RegM410_from)
+  FROM @schema@pis_m410
+
+@NAME(RegM410_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM500_select)
+  SELECT id, cod_cred, ind_cred_ori, vl_bc_cred, aliq_cofins, quant_bc_cofins, aliq_cofins_quant,
+    vl_cred, vl_ajus_acres, vl_ajus_reduc, vl_cred_dif, vl_cred_disp, ind_desc_cred, vl_cred_desc,
+    sld_cred
+
+@NAME(RegM500_from)
+  FROM @schema@pis_m500
+
+@NAME(RegM500_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM505_select)
+  SELECT id, nat_bc_cred, cst_cofins, vl_bc_cofins_tot, vl_bc_cofins_cum, vl_bc_cofins_nc, vl_bc_cofins,
+    quant_bc_cofins_tot, quant_bc_cofins, desc_cred
+
+@NAME(RegM505_from)
+  FROM @schema@pis_m505
+
+@NAME(RegM505_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM510_select)
+  SELECT id, ind_aj, vl_aj, cod_aj, num_doc, descr_aj, dt_ref
+
+@NAME(RegM510_from)
+  FROM @schema@pis_m510
+
+@NAME(RegM510_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM515_select)
+  SELECT id, det_valor_aj, cst_cofins, det_bc_cred, det_aliq, dt_oper_aj, desc_aj, cod_cta, info_compl
+
+@NAME(RegM515_from)
+  FROM @schema@pis_m515
+
+@NAME(RegM515_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM600_select)
+  SELECT id, vl_tot_cont_nc_per, vl_tot_cred_desc, vl_tot_cred_desc_ant, vl_tot_cont_nc_dev, vl_ret_nc,
+    vl_out_ded_nc, vl_cont_nc_rec, vl_tot_cont_cum_per, vl_ret_cum, vl_out_ded_cum, vl_cont_cum_rec,
+    vl_tot_cont_rec
+
+@NAME(RegM600_from)
+  FROM @schema@pis_m600
+
+@NAME(RegM600_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM605_select)
+  SELECT id, num_campo, cod_rec, vl_debito
+
+@NAME(RegM605_from)
+  FROM @schema@pis_m605
+
+@NAME(RegM605_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM610_select)
+  SELECT id, cod_cont, vl_rec_brt, vl_bc_cont, aliq_cofins, quant_bc_cofins, aliq_cofins_quant,
+    vl_cont_apur, vl_ajus_acres, vl_ajus_reduc, vl_cont_difer, vl_cont_difer_ant, vl_cont_per
+
+@NAME(RegM610_from)
+  FROM @schema@pis_m610
+
+@NAME(RegM610_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM611_select)
+  SELECT id, ind_tip_coop, vl_bc_cont_ant_exc_coop, vl_exc_coop_ger, vl_exc_esp_coop, vl_bc_cont
+
+@NAME(RegM611_from)
+  FROM @schema@pis_m611
+
+@NAME(RegM611_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM620_select)
+  SELECT id, ind_aj, vl_aj, cod_aj, num_doc, descr_aj, dt_ref
+
+@NAME(RegM620_from)
+  FROM @schema@pis_m620
+
+@NAME(RegM620_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM625_select)
+  SELECT id, det_valor_aj, cst_cofins, det_bc_cred, det_aliq, dt_oper_aj, desc_aj, cod_cta, info_compl
+
+@NAME(RegM625_from)
+  FROM @schema@pis_m625
+
+@NAME(RegM625_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM630_select)
+  SELECT id, cnpj, vl_vend, vl_nao_receb, vl_cont_dif, vl_cred_dif, cod_cred
+
+@NAME(RegM630_from)
+  FROM @schema@pis_m630
+
+@NAME(RegM630_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM700_select)
+  SELECT id, cod_cont, vl_cont_apur_difer, nat_bc_cred_desc, vl_cred_desc_difer, vl_cont_difer_ant,
+    per_apur, dt_receb
+
+@NAME(RegM700_from)
+  FROM @schema@pis_m700
+
+@NAME(RegM700_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM800_select)
+  SELECT id, cst_cofins, vl_tot_rec, cod_cta, desc_compl
+
+@NAME(RegM800_from)
+  FROM @schema@pis_m800
+
+@NAME(RegM800_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegM810_select)
+  SELECT id, nat_rec, vl_rec, cod_cta, desc_compl
+
+@NAME(RegM810_from)
+  FROM @schema@pis_m810
+
+@NAME(RegM810_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegP001_select)
+  SELECT id, ind_mov
+
+@NAME(RegP001_from)
+  FROM @schema@pis_p001
+
+--=================================================================================================
+@NAME(RegP010_select)
+  SELECT id, cnpj
+
+@NAME(RegP010_from)
+  FROM @schema@pis_p010
+
+@NAME(RegP010_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegP100_select)
+  SELECT id, dt_ini, dt_fim, vl_rec_tot_est, cod_ativ_econ, vl_rec_ativ_estab, vl_exc, vl_bc_cont,
+    aliq_cont, vl_cont_apu, cod_cta, info_compl
+
+@NAME(RegP100_from)
+  FROM @schema@pis_p100
+
+@NAME(RegP100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegP110_select)
+  SELECT id, num_campo, cod_det, det_valor, inf_compl
+
+@NAME(RegP110_from)
+  FROM @schema@pis_p110
+
+@NAME(RegP110_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegP199_select)
+  SELECT id, num_proc, ind_proc
+
+@NAME(RegP199_from)
+  FROM @schema@pis_p199
+
+@NAME(RegP199_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegP200_select)
+  SELECT id, per_ref, vl_tot_cont_apu, vl_tot_aj_reduc, vl_tot_aj_acres, vl_tot_cont_dev, cod_rec
+
+@NAME(RegP200_from)
+  FROM @schema@pis_p200
+
+@NAME(RegP200_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegP210_select)
+  SELECT id, ind_aj, vl_aj, cod_aj, num_doc, descr_aj, dt_ref
+
+@NAME(RegP210_from)
+  FROM @schema@pis_p210
+
+@NAME(RegP210_where)
+  WHERE id_pai = ?
+
