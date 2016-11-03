@@ -93,8 +93,11 @@
     SELECT r200.id, r200.cod_item, descr_item, cod_barra, cod_ant_item, unid_inv, tipo_item, cod_ncm, ex_ipi,
       cod_gen, cod_lst, r200.aliq_icms, r200.id id_0200
     FROM @schema@reg_0200 r200
-      JOIN @schema@reg_C170 c170 ON r200.cod_item = c170.cod_item AND r200.cnpj_pai = c170.cnpj_pai
+      LEFT JOIN @schema@reg_C170 c170 ON r200.cod_item = c170.cod_item AND r200.cnpj_pai = c170.cnpj_pai
+      LEFT JOIN @schema@reg_c425 c425 ON r200.cod_item = c425.cod_item AND r200.cnpj_pai = c425.cnpj_pai
+      LEFT JOIN @schema@reg_c425 c470 ON r200.cod_item = c470.cod_item AND r200.cnpj_pai = c470.cnpj_pai
     WHERE r200.id_pai = ? AND arquivo_sped = 'S'
+      AND COALESCE(c170.id, c425.id, c470.id) IS NOT NULL
   ) AS X
 
 --@NAME(Reg0200_where)
