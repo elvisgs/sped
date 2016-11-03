@@ -1123,7 +1123,8 @@ CREATE TABLE reg_c170 (
     dar_perc_icms_destino numeric(19,4),
     acao varchar(1) DEFAULT 'I',
     cnpj_pai varchar(14),
-    carga_id integer
+    carga_id integer,
+    arquivo_sped varchar(1) DEFAULT 'S'
 );
 
 

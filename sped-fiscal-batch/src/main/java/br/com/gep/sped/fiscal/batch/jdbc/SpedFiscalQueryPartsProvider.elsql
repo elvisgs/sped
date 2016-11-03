@@ -73,10 +73,11 @@
   SELECT id, unid, descr
 
 @NAME(Reg0190_from)
-  FROM @schema@reg_0190
+  FROM @schema@reg_0190 r190
+    JOIN @schema@reg_C170 c170 ON r190.unid = c170.unid AND r190.id_pai = c170.id_pai
 
 @NAME(Reg0190_where)
-  WHERE id_pai = ?
+  WHERE id_pai = ? AND arquivo_sped = 'S'
 
 --=================================================================================================
 @NAME(Reg0200_select)
@@ -84,10 +85,11 @@
     cod_gen, cod_lst, aliq_icms
 
 @NAME(Reg0200_from)
-  FROM @schema@reg_0200
+  FROM @schema@reg_0200 r200
+    JOIN @schema@reg_C170 c170 ON r200.cod_item = c170.cod_item AND r200.id_pai = c170.id_pai
 
 @NAME(Reg0200_where)
-  WHERE id_pai = ?
+  WHERE id_pai = ? AND arquivo_sped = 'S'
 
 --=================================================================================================
 @NAME(Reg0205_select)
@@ -144,10 +146,11 @@
   SELECT id, cod_nat, descr_nat
 
 @NAME(Reg0400_from)
-  FROM @schema@reg_0400
+  FROM @schema@reg_0400 r400
+    JOIN @schema@reg_C170 c170 ON r400.cod_nat = c170.cod_nat AND r400.id_pai = c170.id_pai
 
 @NAME(Reg0400_where)
-  WHERE id_pai = ?
+  WHERE id_pai = ? AND arquivo_sped = 'S'
 
 --=================================================================================================
 @NAME(Reg0450_select)
@@ -672,7 +675,7 @@
   FROM @schema@reg_c170
 
 @NAME(RegC170_where)
-  WHERE id_pai = ?
+  WHERE id_pai = ? AND arquivo_sped = 'S'
 
 --=================================================================================================
 @NAME(RegC171_select)
