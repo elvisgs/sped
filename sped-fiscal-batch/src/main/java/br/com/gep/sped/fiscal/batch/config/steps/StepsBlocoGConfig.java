@@ -7,15 +7,12 @@ import br.com.gep.sped.fiscal.marshaller.registros.blocoG.*;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
-@Configuration
+@Component
 public class StepsBlocoGConfig {
 
     @Autowired
@@ -23,51 +20,17 @@ public class StepsBlocoGConfig {
 
     @Autowired
     private TaskletFactory taskletFactory;
-    
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+
     public Step stepRegG001() throws Exception {
         return stepFactory.create("stepRegG001", RegG001.class, Reg0000.class);
     }
-    
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+
     public Step stepRegG110() throws Exception {
         Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegG110.class);
 
         return stepFactory.create("stepRegG110", tasklet);
     }
-    
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public Step stepRegG125() throws Exception {
-        Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegG125.class);
 
-        return stepFactory.create("stepRegG125", tasklet);
-    }
-    
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public Step stepRegG126() throws Exception {
-        return stepFactory.create("stepRegG126", RegG126.class, RegG125.class);
-    }
-    
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public Step stepRegG130() throws Exception {
-        Tasklet tasklet = taskletFactory.createRegTreeTasklet(RegG130.class);
-
-        return stepFactory.create("stepRegG130", tasklet);
-    }
-    
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public Step stepRegG140() throws Exception {
-        return stepFactory.create("stepRegG140", RegG140.class, RegG130.class);
-    }
-    
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step stepRegG990() throws Exception {
         Tasklet tasklet = taskletFactory.createClosingBlocRegTasklet(RegG990.class, Arrays.asList(
                 RegG001.class, RegG110.class, RegG125.class, RegG126.class, RegG130.class,
