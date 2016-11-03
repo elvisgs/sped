@@ -9,6 +9,7 @@ import br.com.gep.sped.fiscal.marshaller.registros.blocoD.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoE.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoG.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoH.*;
+import br.com.gep.sped.fiscal.marshaller.registros.blocoK.*;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9001;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9900;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9990;
@@ -29,6 +30,7 @@ public class SpedFiscalTree extends SpedTree {
         addBranchesBlocoE();
         addBranchesBlocoG();
         addBranchesBlocoH();
+        addBranchesBlocoK();
         addBranchesBloco1();
         addBranchesBloco9();
     }
@@ -247,6 +249,21 @@ public class SpedFiscalTree extends SpedTree {
                 )
         ));
         addNode(new RegNode(RegH990.class));
+    }
+
+    private void addBranchesBlocoK() {
+        addNode(new RegNode(RegK001.class, Reg0000.class));
+        addNode(new RegNode(RegK100.class, RegK001.class).addChildren(
+            new RegNode(RegK200.class),
+            new RegNode(RegK220.class),
+            new RegNode(RegK230.class).addChildren(
+                new RegNode(RegK235.class)
+            ),
+            new RegNode(RegK250.class).addChildren(
+                new RegNode(RegK255.class)
+            )
+        ));
+        addNode(new RegNode(RegK990.class));
     }
 
     private void addBranchesBloco1() {

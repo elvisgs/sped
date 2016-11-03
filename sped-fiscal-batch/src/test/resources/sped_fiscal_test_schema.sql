@@ -3001,6 +3001,107 @@ CREATE TABLE reg_h990 (
     carga_id integer
 );
 
+CREATE TABLE reg_k001 (
+  id bigint NOT NULL,
+  id_pai bigint NOT NULL,
+  acao varchar(1) DEFAULT 'I',
+  cnpj_pai varchar(14),
+  carga_id integer,
+  ind_mov varchar(1)
+);
+
+CREATE TABLE reg_k100 (
+    id bigint NOT NULL,
+    id_pai bigint NOT NULL,
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer,
+    dt_ini date,
+    dt_fin date
+);
+
+CREATE TABLE reg_k200 (
+    id bigint NOT NULL,
+    id_pai bigint NOT NULL,
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer,
+    dt_est date,
+    cod_item varchar(60),
+    qtd numeric(20,3),
+    ind_est varchar(1),
+    cod_part varchar(60)
+);
+
+CREATE TABLE reg_k220 (
+    id bigint NOT NULL,
+    id_pai bigint NOT NULL,
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer,
+    dt_mov date,
+    cod_item_ori varchar(60),
+    cod_item_dest varchar(60),
+    qtd numeric(20,3)
+);
+
+CREATE TABLE reg_k230 (
+    id bigint NOT NULL,
+    id_pai bigint NOT NULL,
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer,
+    dt_ini_op date,
+    dt_fin_op date,
+    cod_doc_op varchar(30),
+    cod_item varchar(60),
+    qtd_enc numeric(20,3)
+);
+
+CREATE TABLE reg_k235 (
+    id bigint NOT NULL,
+    id_pai bigint NOT NULL,
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer,
+    dt_saida date,
+    cod_item varchar(60),
+    qtd numeric(20,3),
+    cod_ins_subst varchar(255)
+);
+
+CREATE TABLE reg_k250 (
+    id bigint NOT NULL,
+    id_pai bigint NOT NULL,
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer,
+    dt_prod date,
+    cod_item varchar(60),
+    qtd numeric(20,3)
+);
+
+CREATE TABLE reg_k255 (
+    id bigint NOT NULL,
+    id_pai bigint NOT NULL,
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer,
+    dt_cons date,
+    cod_item varchar(60),
+    qtd numeric(20,3),
+    cod_ins_subst varchar(60)
+);
+
+CREATE TABLE reg_k990 (
+    id bigint NOT NULL,
+    id_pai bigint NOT NULL,
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer,
+    qtd_lin_k varchar(255)
+);
+
 
 ALTER TABLE reg_0000
     ADD CONSTRAINT reg_0000_pkey PRIMARY KEY (id);
@@ -3744,6 +3845,34 @@ ALTER TABLE reg_h020
 
 ALTER TABLE reg_h990
     ADD CONSTRAINT reg_h990_pkey PRIMARY KEY (id);
+
+
+ALTER TABLE reg_k001
+    ADD CONSTRAINT reg_k001_pkey PRIMARY KEY (id);
+
+ALTER TABLE reg_k100
+    ADD CONSTRAINT reg_k100_pkey PRIMARY KEY (id);
+
+ALTER TABLE reg_k200
+    ADD CONSTRAINT reg_k200_pkey PRIMARY KEY (id);
+
+ALTER TABLE reg_k220
+    ADD CONSTRAINT reg_k220_pkey PRIMARY KEY (id);
+
+ALTER TABLE reg_k230
+    ADD CONSTRAINT reg_k230_pkey PRIMARY KEY (id);
+
+ALTER TABLE reg_k235
+    ADD CONSTRAINT reg_k235_pkey PRIMARY KEY (id);
+
+ALTER TABLE reg_k250
+    ADD CONSTRAINT reg_k250_pkey PRIMARY KEY (id);
+
+ALTER TABLE reg_k255
+    ADD CONSTRAINT reg_k255_pkey PRIMARY KEY (id);
+
+ALTER TABLE reg_k990
+    ADD CONSTRAINT reg_k990_pkey PRIMARY KEY (id);
 
 
 CREATE INDEX reg_0000_idx_chave_duplicidade ON reg_0000 (dt_ini, dt_fin, cnpj, cpf, ie);
@@ -4902,5 +5031,8 @@ CREATE INDEX reg_h020_idx_id_pai ON reg_h020 (id_pai);
 
 
 CREATE INDEX reg_h990_idx_id_pai ON reg_h990 (id_pai);
+
+
+CREATE INDEX reg_k001_idx_id_pai ON reg_k001 (id_pai);
 
 SET SCHEMA public;

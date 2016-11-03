@@ -1781,3 +1781,83 @@
 @NAME(RegH020_where)
   WHERE id_pai = ?
 
+--=================================================================================================
+@NAME(RegK001_select)
+  SELECT id, ind_mov
+
+@NAME(RegK001_from)
+  FROM @schema@reg_k001
+
+@NAME(RegK001_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegK100_select)
+  SELECT id, dt_ini, dt_fin
+
+@NAME(RegK100_from)
+  FROM @schema@reg_k100
+
+@NAME(RegK100_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegK200_select)
+  SELECT id, dt_est, cod_item, qtd, ind_est, cod_part
+
+@NAME(RegK200_from)
+  FROM @schema@reg_k200
+
+@NAME(RegK200_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegK220_select)
+  SELECT id, dt_mov, cod_item_ori, cod_item_dest, qtd
+
+@NAME(RegK220_from)
+  FROM @schema@reg_k220
+
+@NAME(RegK220_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegK230_select)
+  SELECT id, dt_ini_op, dt_fin_op, cod_doc_op, cod_item, qtd_enc
+
+@NAME(RegK230_from)
+  FROM @schema@reg_k230
+
+@NAME(RegK230_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegK235_select)
+  SELECT id, dt_saida, cod_item, qtd, cod_ins_subst
+
+@NAME(RegK235_from)
+  FROM @schema@reg_k235
+
+@NAME(RegK235_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegK250_select)
+  SELECT id, dt_prod, cod_item, qtd
+
+@NAME(RegK250_from)
+  FROM @schema@reg_k250
+
+@NAME(RegK250_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegK255_select)
+  SELECT id, dt_cons, cod_item, qtd, cod_ins_subst
+
+@NAME(RegK255_from)
+  FROM @schema@reg_k255
+
+@NAME(RegK255_where)
+  WHERE id_pai = ?
+

@@ -45,6 +45,9 @@ public class JobConfig {
     private FlowBlocoHConfig flowBlocoHConfig;
 
     @Autowired
+    private FlowBlocoKConfig flowBlocoKConfig;
+
+    @Autowired
     private FlowBloco1Config flowBloco1Config;
 
     @Autowired
@@ -62,6 +65,7 @@ public class JobConfig {
                 .next(flowBlocoEConfig.flowBlocoE())
                 .next(flowBlocoGConfig.flowBlocoG())
                 .next(flowBlocoHConfig.flowBlocoH())
+                .next(flowBlocoKConfig.flowBlocoK())
                 .next(flowBloco1Config.flowBloco1())
                 .next(stepsBloco9.stepBloco9())
                 .next(miscStepsConfig.zipFileStep())
