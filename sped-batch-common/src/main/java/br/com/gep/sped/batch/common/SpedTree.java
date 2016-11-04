@@ -4,6 +4,8 @@ import br.com.gep.sped.marshaller.common.Registro;
 
 import java.util.*;
 
+import static java.util.stream.Collectors.toList;
+
 public abstract class SpedTree {
 
     protected Map<Class<? extends Registro>, RegNode> nodes;
@@ -29,15 +31,19 @@ public abstract class SpedTree {
         return Collections.unmodifiableMap(nodes);
     }
 
-    public List<RegNode> getNodesOfBloc(char bloc) {
+    public List<RegNode> getRootNodesOfBloc(char bloc) {
+        return getNodes().values().stream()
+            .filter(node -> node.getBloc() == bloc)
+            .collect(toList());
+    }
+
+    public List<RegNode> getAllNodesOfBloc(char bloc) {
         List<RegNode> nodes = new ArrayList<>();
 
-        getNodes().values().stream()
-            .filter(node -> node.getBloc() == bloc)
-            .forEach(node -> {
-                nodes.add(node);
-                nodes.addAll(getAllChildren(node));
-            });
+        getRootNodesOfBloc(bloc).forEach(node -> {
+            nodes.add(node);
+            nodes.addAll(getAllChildren(node));
+        });
 
         return nodes;
     }

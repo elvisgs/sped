@@ -57,7 +57,7 @@ public class StepFactory {
         if (isClosingBloc) {
             char bloc = regNode.getBloc();
 
-            List<Class<? extends Registro>> classesToCount = spedTree.getNodesOfBloc(bloc).stream()
+            List<Class<? extends Registro>> classesToCount = spedTree.getAllNodesOfBloc(bloc).stream()
                 .filter(n -> n.getRegClass() != regClass)
                 .map(RegNode::getRegClass)
                 .collect(toList());

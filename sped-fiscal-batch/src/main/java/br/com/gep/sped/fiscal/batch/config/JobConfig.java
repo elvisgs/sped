@@ -1,9 +1,9 @@
 package br.com.gep.sped.fiscal.batch.config;
 
 import br.com.gep.sped.batch.common.config.MiscStepsConfig;
+import br.com.gep.sped.batch.common.factory.FlowFactory;
 import br.com.gep.sped.batch.common.factory.StepFactory;
 import br.com.gep.sped.batch.common.factory.TaskletFactory;
-import br.com.gep.sped.fiscal.batch.config.flows.*;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -14,6 +14,8 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+
+import static br.com.gep.sped.fiscal.batch.util.Blocs.*;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
@@ -27,52 +29,31 @@ public class JobConfig {
     private MiscStepsConfig miscStepsConfig;
 
     @Autowired
+    private FlowFactory flowFactory;
+
+    @Autowired
     private StepFactory stepFactory;
 
     @Autowired
     private TaskletFactory taskletFactory;
 
-    @Autowired
-    private FlowBloco0Config flowBloco0Config;
-
-    @Autowired
-    private FlowBlocoCConfig flowBlocoCConfig;
-
-    @Autowired
-    private FlowBlocoDConfig flowBlocoDConfig;
-
-    @Autowired
-    private FlowBlocoEConfig flowBlocoEConfig;
-
-    @Autowired
-    private FlowBlocoGConfig flowBlocoGConfig;
-
-    @Autowired
-    private FlowBlocoHConfig flowBlocoHConfig;
-
-    @Autowired
-    private FlowBlocoKConfig flowBlocoKConfig;
-
-    @Autowired
-    private FlowBloco1Config flowBloco1Config;
-
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Job spedFiscalJob() throws Exception {
         return jobBuilder.get("spedFiscalJob")
-                .flow(miscStepsConfig.cleanupStep())
-                .next(flowBloco0Config.flowBloco0())
-                .next(flowBlocoCConfig.flowBlocoC())
-                .next(flowBlocoDConfig.flowBlocoD())
-                .next(flowBlocoEConfig.flowBlocoE())
-                .next(flowBlocoGConfig.flowBlocoG())
-                .next(flowBlocoHConfig.flowBlocoH())
-                .next(flowBlocoKConfig.flowBlocoK())
-                .next(flowBloco1Config.flowBloco1())
-                .next(stepBloco9())
-                .next(miscStepsConfig.zipFileStep())
-                .end()
-                .build();
+            .flow(miscStepsConfig.cleanupStep())
+            .next(flowFactory.create(BLOC_0))
+            .next(flowFactory.create(BLOC_C))
+            .next(flowFactory.create(BLOC_D))
+            .next(flowFactory.create(BLOC_E))
+            .next(flowFactory.create(BLOC_G))
+            .next(flowFactory.create(BLOC_H))
+            .next(flowFactory.create(BLOC_K))
+            .next(flowFactory.create(BLOC_1))
+            .next(stepBloco9())
+            .next(miscStepsConfig.zipFileStep())
+            .end()
+            .build();
     }
 
     private Step stepBloco9() throws Exception {
