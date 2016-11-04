@@ -19,6 +19,7 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.nio.charset.StandardCharsets;
 
 @Configuration
 @Primary
@@ -64,9 +65,12 @@ public class TestInfrastructureConfig implements InfrastructureConfig {
     }
 
     private DatabasePopulator getDatabasePopulator() {
-        return new ResourceDatabasePopulator(
-                batchSpedSchemaDrop, batchSchemaDrop, batchSchema,
-                batchSpedSchema, spedSchema);
+        ResourceDatabasePopulator populator = new ResourceDatabasePopulator(
+            batchSpedSchemaDrop, batchSchemaDrop, batchSchema,
+            batchSpedSchema, spedSchema);
+        populator.setSqlScriptEncoding(StandardCharsets.UTF_8.displayName());
+
+        return populator;
     }
 
     @Override
