@@ -90,8 +90,8 @@
     WHERE c470.cnpj_pai = :cnpj_pai
   ) AS r190
 
-@NAME(Reg0190_where)
-  WHERE id_pai = :id_pai
+--@NAME(Reg0190_where)
+--  WHERE id_pai = :id_pai
 
 @NAME(Reg0190_columns)
   r190.id, r190.unid, descr, r190.id_pai
@@ -118,8 +118,8 @@
     WHERE c470.cnpj_pai = :cnpj_pai
   ) AS r200
 
-@NAME(Reg0200_where)
-  WHERE id_pai = :id_pai
+--@NAME(Reg0200_where)
+--  WHERE id_pai = :id_pai
 
 @NAME(Reg0200_columns)
   r200.id, r200.cod_item, descr_item, cod_barra, cod_ant_item, unid_inv, tipo_item, cod_ncm, ex_ipi,

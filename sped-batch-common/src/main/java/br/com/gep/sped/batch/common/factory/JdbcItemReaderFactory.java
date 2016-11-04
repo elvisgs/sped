@@ -89,7 +89,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         return create(regClass, null);
     }
 
-    private <R extends Registro, P extends Registro> JdbcCursorItemReader<R> createCursorItemReader(
+    public <R extends Registro, P extends Registro> JdbcCursorItemReader<R> createCursorItemReader(
         Class<R> regClass, final Class<P> parentRegClass) throws Exception {
 
         JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<>();
@@ -111,7 +111,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         return reader;
     }
 
-    private <R extends Registro, P extends Registro> JdbcPagingItemReader<R> createPagingItemReader(
+    public <R extends Registro, P extends Registro> JdbcPagingItemReader<R> createPagingItemReader(
         Class<R> regClass, Class<P> parentRegClass) throws Exception {
 
         JdbcPagingItemReader<R> reader = new JdbcPagingItemReader<>();
@@ -127,13 +127,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         String fromClause = schemaInjector.injectSchema(queryParts.getFrom());
         queryProviderFactory.setFromClause(fromClause);
 
-        if (parentRegClass != null) {
-            queryProviderFactory.setWhereClause(queryParts.getWhere());
-
-            Map<String, Object> params = new HashMap<>();
-            params.put("1", regIdHolder.getId(parentRegClass));
-            reader.setParameterValues(params);
-        }
+        queryProviderFactory.setWhereClause(queryParts.getWhere());
 
         queryProviderFactory.setGroupClause(queryParts.getGroupBy());
 
@@ -141,6 +135,12 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         queryProviderFactory.setSortKey(sortKey != null ? sortKey : "id");
 
         reader.setQueryProvider(queryProviderFactory.getObject());
+
+        if (parentRegClass != null) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("1", regIdHolder.getId(parentRegClass));
+            reader.setParameterValues(params);
+        }
 
         reader.setPageSize(spedProperties.getChunkSize());
         reader.setRowMapper(createRowMapper(regClass));
