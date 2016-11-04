@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 
 import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.OUTPUT_FILE_NAME_EL;
 
@@ -26,6 +27,7 @@ public class ItemWriterConfig {
         SpedWriterFactory factory = SpedContribWriterFactory.getInstance();
         writer.setStreamFactory(factory.getStreamFactory());
         writer.setStreamName(factory.getStreamName());
+        writer.setEncoding(StandardCharsets.UTF_8.displayName());
         writer.setTransactional(false);
         writer.setAppendAllowed(true);
         writer.setSaveState(false);
