@@ -1,10 +1,10 @@
 package br.com.gep.sped.batch.common.factory;
 
-import br.com.gep.sped.batch.common.RegCounter;
-import br.com.gep.sped.batch.common.RegIdHolder;
-import br.com.gep.sped.batch.common.SpedProperties;
+import br.com.gep.sped.batch.common.*;
 import br.com.gep.sped.marshaller.common.Registro;
+import br.com.gep.sped.marshaller.common.RegistroEncerramentoBloco;
 import org.springframework.batch.core.ItemWriteListener;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.core.step.tasklet.TaskletStep;
@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Component
@@ -31,6 +33,9 @@ public class StepFactory {
     private ItemWriterFactory itemWriterFactory;
 
     @Autowired
+    private TaskletFactory taskletFactory;
+
+    @Autowired
     private RegCounter regCounter;
 
     @Autowired
@@ -38,6 +43,42 @@ public class StepFactory {
 
     @Autowired
     private SpedProperties spedProperties;
+
+    @Autowired
+    private SpedTree spedTree;
+
+    @SuppressWarnings("unchecked")
+    public <R extends Registro> Step create(Class<R> regClass) throws Exception {
+        boolean isClosingBloc = RegistroEncerramentoBloco.class.isAssignableFrom(regClass);
+        String stepName = String.format("step%s", regClass.getSimpleName());
+
+        RegNode regNode = spedTree.getNode(regClass);
+
+        if (isClosingBloc) {
+            char bloc = regNode.getBloc();
+
+            List<Class<? extends Registro>> classesToCount = spedTree.getNodesOfBloc(bloc).stream()
+                .filter(n -> n.getRegClass() != regClass)
+                .map(RegNode::getRegClass)
+                .collect(toList());
+
+            Tasklet tasklet = taskletFactory
+                .createClosingBlocRegTasklet((Class<RegistroEncerramentoBloco>)regClass, classesToCount);
+
+            return create(stepName, tasklet);
+        }
+        else if (!regNode.hasChildren()) {
+            RegNode parentNode = regNode.getParent();
+            Class regParentClass = parentNode != null ? parentNode.getRegClass() : null;
+
+            return create(stepName, regClass, regParentClass);
+        }
+        else {
+            Tasklet tasklet = taskletFactory.createRegTreeTasklet(regClass);
+
+            return create(stepName, tasklet);
+        }
+    }
 
     public TaskletStep create(String name, Tasklet tasklet) {
         return stepBuilder.get(name)

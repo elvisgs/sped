@@ -1,11 +1,14 @@
 package br.com.gep.sped.fiscal.batch.config;
 
 import br.com.gep.sped.batch.common.config.MiscStepsConfig;
+import br.com.gep.sped.batch.common.factory.StepFactory;
+import br.com.gep.sped.batch.common.factory.TaskletFactory;
 import br.com.gep.sped.fiscal.batch.config.flows.*;
-import br.com.gep.sped.fiscal.batch.config.steps.*;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +27,10 @@ public class JobConfig {
     private MiscStepsConfig miscStepsConfig;
 
     @Autowired
-    private StepsBloco0Config stepsBloco0;
+    private StepFactory stepFactory;
+
+    @Autowired
+    private TaskletFactory taskletFactory;
 
     @Autowired
     private FlowBloco0Config flowBloco0Config;
@@ -50,15 +56,11 @@ public class JobConfig {
     @Autowired
     private FlowBloco1Config flowBloco1Config;
 
-    @Autowired
-    private StepsBloco9Config stepsBloco9;
-
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Job spedFiscalJob() throws Exception {
         return jobBuilder.get("spedFiscalJob")
                 .flow(miscStepsConfig.cleanupStep())
-                .next(stepsBloco0.stepReg0000())
                 .next(flowBloco0Config.flowBloco0())
                 .next(flowBlocoCConfig.flowBlocoC())
                 .next(flowBlocoDConfig.flowBlocoD())
@@ -67,9 +69,15 @@ public class JobConfig {
                 .next(flowBlocoHConfig.flowBlocoH())
                 .next(flowBlocoKConfig.flowBlocoK())
                 .next(flowBloco1Config.flowBloco1())
-                .next(stepsBloco9.stepBloco9())
+                .next(stepBloco9())
                 .next(miscStepsConfig.zipFileStep())
                 .end()
                 .build();
+    }
+
+    private Step stepBloco9() throws Exception {
+        Tasklet tasklet = taskletFactory.createBloc9Tasklet();
+
+        return stepFactory.create("stepBloco9", tasklet);
     }
 }

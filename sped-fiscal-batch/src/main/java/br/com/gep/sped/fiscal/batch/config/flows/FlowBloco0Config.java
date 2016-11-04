@@ -1,6 +1,7 @@
 package br.com.gep.sped.fiscal.batch.config.flows;
 
-import br.com.gep.sped.fiscal.batch.config.steps.StepsBloco0Config;
+import br.com.gep.sped.batch.common.factory.StepFactory;
+import br.com.gep.sped.fiscal.marshaller.registros.bloco0.*;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
@@ -15,26 +16,27 @@ import org.springframework.context.annotation.Scope;
 public class FlowBloco0Config {
 
     @Autowired
-    private StepsBloco0Config stepsBloco0;
+    private StepFactory stepFactory;
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Flow flowBloco0() throws Exception {
         return new FlowBuilder<SimpleFlow>("flowBloco0")
-                .start(stepsBloco0.stepReg0001())
-                .next(stepsBloco0.stepReg0005())
-                .next(stepsBloco0.stepReg0015())
-                .next(stepsBloco0.stepReg0100())
-                .next(stepsBloco0.stepReg0150())
-                .next(stepsBloco0.stepReg0190())
-                .next(stepsBloco0.stepReg0200())
-                .next(stepsBloco0.stepReg0300())
-                .next(stepsBloco0.stepReg0400())
-                .next(stepsBloco0.stepReg0450())
-                .next(stepsBloco0.stepReg0460())
-                .next(stepsBloco0.stepReg0500())
-                .next(stepsBloco0.stepReg0600())
-                .next(stepsBloco0.stepReg0990())
+                .start(stepFactory.create(Reg0000.class))
+                .next(stepFactory.create(Reg0001.class))
+                .next(stepFactory.create(Reg0005.class))
+                .next(stepFactory.create(Reg0015.class))
+                .next(stepFactory.create(Reg0100.class))
+                .next(stepFactory.create(Reg0150.class))
+                .next(stepFactory.create(Reg0190.class))
+                .next(stepFactory.create(Reg0200.class))
+                .next(stepFactory.create(Reg0300.class))
+                .next(stepFactory.create(Reg0400.class))
+                .next(stepFactory.create(Reg0450.class))
+                .next(stepFactory.create(Reg0460.class))
+                .next(stepFactory.create(Reg0500.class))
+                .next(stepFactory.create(Reg0600.class))
+                .next(stepFactory.create(Reg0990.class))
                 .end();
     }
 }

@@ -9,9 +9,10 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
-@Configuration
+@Component
 public class MiscStepsConfig {
 
     @Autowired
@@ -23,14 +24,10 @@ public class MiscStepsConfig {
     @Autowired
     private ZipFileTasklet zipFileTasklet;
 
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step cleanupStep() {
         return stepFactory.create("cleanup", cleanupTasklet);
     }
 
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Step zipFileStep() {
         return stepFactory.create("zipFile", zipFileTasklet);
     }

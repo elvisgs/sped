@@ -1,6 +1,7 @@
 package br.com.gep.sped.fiscal.batch.config.flows;
 
-import br.com.gep.sped.fiscal.batch.config.steps.StepsBlocoDConfig;
+import br.com.gep.sped.batch.common.factory.StepFactory;
+import br.com.gep.sped.fiscal.marshaller.registros.blocoD.*;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
@@ -15,21 +16,21 @@ import org.springframework.context.annotation.Scope;
 public class FlowBlocoDConfig {
 
     @Autowired
-    private StepsBlocoDConfig stepsBlocoD;
+    private StepFactory stepFactory;
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Flow flowBlocoD() throws Exception {
         return new FlowBuilder<SimpleFlow>("flowBlocoD")
-                .start(stepsBlocoD.stepRegD001())
-                .next(stepsBlocoD.stepRegD100())
-                .next(stepsBlocoD.stepRegD300())
-                .next(stepsBlocoD.stepRegD350())
-                .next(stepsBlocoD.stepRegD400())
-                .next(stepsBlocoD.stepRegD500())
-                .next(stepsBlocoD.stepRegD600())
-                .next(stepsBlocoD.stepRegD695())
-                .next(stepsBlocoD.stepRegD990())
+                .start(stepFactory.create(RegD001.class))
+                .next(stepFactory.create(RegD100.class))
+                .next(stepFactory.create(RegD300.class))
+                .next(stepFactory.create(RegD350.class))
+                .next(stepFactory.create(RegD400.class))
+                .next(stepFactory.create(RegD500.class))
+                .next(stepFactory.create(RegD600.class))
+                .next(stepFactory.create(RegD695.class))
+                .next(stepFactory.create(RegD990.class))
                 .end();
     }
 }

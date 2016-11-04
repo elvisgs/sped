@@ -1,6 +1,9 @@
 package br.com.gep.sped.fiscal.batch.config.flows;
 
-import br.com.gep.sped.fiscal.batch.config.steps.StepsBlocoHConfig;
+import br.com.gep.sped.batch.common.factory.StepFactory;
+import br.com.gep.sped.fiscal.marshaller.registros.blocoH.RegH001;
+import br.com.gep.sped.fiscal.marshaller.registros.blocoH.RegH005;
+import br.com.gep.sped.fiscal.marshaller.registros.blocoH.RegH990;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
@@ -15,15 +18,15 @@ import org.springframework.context.annotation.Scope;
 public class FlowBlocoHConfig {
 
     @Autowired
-    private StepsBlocoHConfig stepsBlocoH;
+    private StepFactory stepFactory;
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Flow flowBlocoH() throws Exception {
         return new FlowBuilder<SimpleFlow>("flowBlocoH")
-                .start(stepsBlocoH.stepRegH001())
-                .next(stepsBlocoH.stepRegH005())
-                .next(stepsBlocoH.stepRegH990())
+                .start(stepFactory.create(RegH001.class))
+                .next(stepFactory.create(RegH005.class))
+                .next(stepFactory.create(RegH990.class))
                 .end();
     }
 }

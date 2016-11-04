@@ -13,6 +13,7 @@ import java.util.List;
 public class RegNode {
 
     private final Class<? extends Registro> regClass;
+    private final char bloc;
     private RegNode parent;
     private LinkedList<RegNode> children;
 
@@ -21,6 +22,7 @@ public class RegNode {
             throw new IllegalArgumentException("regClass is null");
 
         this.regClass = regClass;
+        this.bloc = regClass.getSimpleName().charAt(3);
         this.children = new LinkedList<>();
     }
 
@@ -35,6 +37,10 @@ public class RegNode {
 
     public Class<? extends Registro> getRegClass() {
         return regClass;
+    }
+
+    public char getBloc() {
+        return bloc;
     }
 
     public RegNode getParent() {
