@@ -19,12 +19,9 @@ import org.springframework.batch.item.database.support.SqlPagingQueryProviderFac
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,7 +89,9 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         return create(regClass, null);
     }
 
-    private <R extends Registro, P extends Registro> ItemStreamReader<R> createCursorItemReader(Class<R> regClass, final Class<P> parentRegClass) throws Exception {
+    private <R extends Registro, P extends Registro> JdbcCursorItemReader<R> createCursorItemReader(
+        Class<R> regClass, final Class<P> parentRegClass) throws Exception {
+
         JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<>();
         reader.setDataSource(infraConfig.getDataSource());
 
@@ -102,12 +101,8 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         reader.setRowMapper(createRowMapper(regClass));
 
         if (parentRegClass != null) {
-            reader.setPreparedStatementSetter(new PreparedStatementSetter() {
-                @Override
-                public void setValues(PreparedStatement preparedStatement) throws SQLException {
-                    preparedStatement.setInt(1, regIdHolder.getId(parentRegClass));
-                }
-            });
+            reader.setPreparedStatementSetter(preparedStatement ->
+                preparedStatement.setInt(1, regIdHolder.getId(parentRegClass)));
         }
 
         reader.setSaveState(false);
@@ -116,15 +111,19 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         return reader;
     }
 
-    private <R extends Registro, P extends Registro> ItemStreamReader<R> createPagingItemReader(Class<R> regClass, Class<P> parentRegClass) throws Exception {
+    private <R extends Registro, P extends Registro> JdbcPagingItemReader<R> createPagingItemReader(
+        Class<R> regClass, Class<P> parentRegClass) throws Exception {
+
         JdbcPagingItemReader<R> reader = new JdbcPagingItemReader<>();
         reader.setDataSource(infraConfig.getDataSource());
 
         QueryParts queryParts = queryPartsProvider.getQueryParts(regClass);
         SqlPagingQueryProviderFactoryBean queryProviderFactory = new SqlPagingQueryProviderFactoryBean();
         queryProviderFactory.setDataSource(infraConfig.getDataSource());
+
         String selectClause = schemaInjector.injectSchema(queryParts.getSelect());
         queryProviderFactory.setSelectClause(selectClause);
+
         String fromClause = schemaInjector.injectSchema(queryParts.getFrom());
         queryProviderFactory.setFromClause(fromClause);
 
