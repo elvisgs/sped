@@ -2032,6 +2032,108 @@ CREATE TABLE pis_f800 (
 );
 
 
+CREATE TABLE pis_i001 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    ind_mov varchar(1),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
+CREATE TABLE pis_i010 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    cnpj varchar(14),
+    ind_ativ varchar(2),
+    info_compl varchar(255),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
+CREATE TABLE pis_i100 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    vl_rec_fin numeric(21,2),
+    cst varchar(2),
+    vl_tot_ded_ger numeric(21,2),
+    vl_tot_ded_esp numeric(21,2),
+    vl_bc_pis numeric(21,2),
+    aliq_pis numeric(10,2),
+    vl_pis numeric(21,2),
+    vl_bc_cofins numeric(21,2),
+    aliq_cofins numeric(10,2),
+    vl_cofins numeric(21,2),
+    inf_comp varchar(90),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
+CREATE TABLE pis_i199 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    num_proc varchar(20),
+    ind_proc varchar(1),
+    acao integer,
+    carga_id integer,
+    cnpj_pai integer
+);
+
+
+CREATE TABLE pis_i200 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    num_campo varchar(2),
+    cod_det varchar(5),
+    vl_det numeric(21,2),
+    cod_cta varchar(60),
+    inf_comp varchar(90),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
+CREATE TABLE pis_i299 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    num_proc varchar(20),
+    ind_proc varchar(1),
+    acao integer,
+    carga_id integer,
+    cnpj_pai integer
+);
+
+
+CREATE TABLE pis_i300 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    cod_comp varchar(8),
+    vl_comp numeric(21,2),
+    cod_cta varchar(60),
+    inf_comp varchar(90),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
+CREATE TABLE pis_i399 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    num_proc varchar(20),
+    ind_proc varchar(1),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
 CREATE TABLE pis_f990 (
   id integer NOT NULL,
   id_pai integer,

@@ -47,7 +47,7 @@ public class JobConfig {
                 .next(flowFactory.create(BLOC_C))
                 .next(flowFactory.create(BLOC_D))
                 .next(flowFactory.create(BLOC_F))
-                //.next(flowFactory.create(BLOC_I)) // TODO: adicionar tabelas do bloco I no BD
+                .next(flowFactory.create(BLOC_I))
                 .next(flowFactory.create(BLOC_M))
                 .next(flowFactory.create(BLOC_P))
                 .next(flowFactory.create(BLOC_1))
