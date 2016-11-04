@@ -1,17 +1,21 @@
 package br.com.gep.sped.contrib.batch.config;
 
-import br.com.gep.sped.contrib.batch.config.flows.*;
 import br.com.gep.sped.batch.common.config.MiscStepsConfig;
-import br.com.gep.sped.contrib.batch.config.steps.StepsBloco0Config;
-import br.com.gep.sped.contrib.batch.config.steps.StepsBloco9Config;
+import br.com.gep.sped.batch.common.factory.FlowFactory;
+import br.com.gep.sped.batch.common.factory.StepFactory;
+import br.com.gep.sped.batch.common.factory.TaskletFactory;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+
+import static br.com.gep.sped.contrib.batch.util.Blocs.*;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
@@ -22,37 +26,13 @@ public class JobConfig {
     private JobBuilderFactory jobBuilder;
 
     @Autowired
-    private StepsBloco0Config stepsBloco0;
+    private FlowFactory flowFactory;
 
     @Autowired
-    private FlowBloco0Config flowBloco0Config;
+    private StepFactory stepFactory;
 
     @Autowired
-    private FlowBlocoAConfig flowBlocoAConfig;
-
-    @Autowired
-    private FlowBlocoCConfig flowBlocoCConfig;
-
-    @Autowired
-    private FlowBlocoDConfig flowBlocoDConfig;
-
-    @Autowired
-    private FlowBlocoFConfig flowBlocoFConfig;
-
-    @Autowired
-    private FlowBlocoIConfig flowBlocoIConfig;
-
-    @Autowired
-    private FlowBlocoMConfig flowBlocoMConfig;
-
-    @Autowired
-    private FlowBlocoPConfig flowBlocoPConfig;
-
-    @Autowired
-    private FlowBloco1Config flowBloco1Config;
-
-    @Autowired
-    private StepsBloco9Config stepsBloco9;
+    private TaskletFactory taskletFactory;
 
     @Autowired
     private MiscStepsConfig miscStepsConfig;
@@ -62,19 +42,24 @@ public class JobConfig {
     public Job spedContribJob() throws Exception {
         return jobBuilder.get("spedContribJob")
                 .flow(miscStepsConfig.cleanupStep())
-                .next(stepsBloco0.stepReg0000())
-                .next(flowBloco0Config.flowBloco0())
-                .next(flowBlocoAConfig.flowBlocoA())
-                .next(flowBlocoCConfig.flowBlocoC())
-                .next(flowBlocoDConfig.flowBlocoD())
-                .next(flowBlocoFConfig.flowBlocoF())
-                //.next(flowBlocoIConfig.flowBlocoI()) // TODO: adicionar tabelas do bloco I no BD
-                .next(flowBlocoMConfig.flowBlocoM())
-                .next(flowBlocoPConfig.flowBlocoP())
-                .next(flowBloco1Config.flowBloco1())
-                .next(stepsBloco9.stepBloco9())
+                .next(flowFactory.create(BLOC_0))
+                .next(flowFactory.create(BLOC_A))
+                .next(flowFactory.create(BLOC_C))
+                .next(flowFactory.create(BLOC_D))
+                .next(flowFactory.create(BLOC_F))
+                //.next(flowFactory.create(BLOC_I)) // TODO: adicionar tabelas do bloco I no BD
+                .next(flowFactory.create(BLOC_M))
+                .next(flowFactory.create(BLOC_P))
+                .next(flowFactory.create(BLOC_1))
+                .next(stepBloco9())
                 .next(miscStepsConfig.zipFileStep())
                 .end()
                 .build();
+    }
+
+    private Step stepBloco9() throws Exception {
+        Tasklet tasklet = taskletFactory.createBloc9Tasklet();
+
+        return stepFactory.create("stepBloco9", tasklet);
     }
 }

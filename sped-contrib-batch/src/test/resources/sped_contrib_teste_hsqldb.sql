@@ -34,6 +34,18 @@ CREATE TABLE pis_0001 (
 );
 
 
+CREATE TABLE pis_0035 (
+  id bigint NOT NULL PRIMARY KEY,
+  id_pai bigint NOT NULL,
+  cod_scp varchar(14),
+  nome_scp varchar(255),
+  inf_comp varchar(255),
+  acao integer,
+  carga_id integer,
+  cnpj_pai integer
+);
+
+
 CREATE TABLE pis_0100 (
   id integer NOT NULL,
   id_pai integer NOT NULL,
@@ -559,6 +571,27 @@ CREATE TABLE pis_1800 (
   vl_rec_uni numeric(21,2),
   dt_rec_uni timestamp,
   cod_rec varchar(4)
+);
+
+
+CREATE TABLE pis_1900 (
+  id bigint NOT NULL,
+  id_pai bigint NOT NULL,
+  cnpj varchar(14),
+  cod_mod varchar(2),
+  ser varchar(4),
+  sub_ser varchar(20),
+  cod_sit varchar(2),
+  vl_tot_rec numeric(21,2),
+  quant_doc varchar(255),
+  cst_pis varchar(2),
+  cst_cofins varchar(2),
+  cfop varchar(4),
+  info_compl varchar(255),
+  cod_cta varchar(60),
+  acao varchar(1) DEFAULT 'I',
+  cnpj_pai varchar(14),
+  carga_id integer
 );
 
 
@@ -2087,6 +2120,19 @@ CREATE TABLE pis_m200 (
 );
 
 
+CREATE TABLE pis_m205 (
+  id bigint NOT NULL,
+  id_pai bigint NOT NULL,
+  num_campo varchar(2),
+  cod_rec varchar(6),
+  vl_debito numeric(21,2),
+  acao integer,
+  carga_id integer,
+  cnpj_pai integer,
+  CONSTRAINT pis_m205_pkey PRIMARY KEY (id)
+);
+
+
 CREATE TABLE pis_m210 (
   id integer NOT NULL,
   id_pai integer NOT NULL,
@@ -2264,6 +2310,19 @@ CREATE TABLE pis_m600 (
   vl_out_ded_cum numeric(21,2) DEFAULT 0,
   vl_cont_cum_rec numeric(21,2) DEFAULT 0,
   vl_tot_cont_rec numeric(21,2) DEFAULT 0
+);
+
+
+CREATE TABLE pis_m605 (
+  id bigint NOT NULL,
+  id_pai bigint NOT NULL,
+  num_campo varchar(2),
+  cod_rec varchar(6),
+  vl_debito numeric(21,2),
+  acao varchar(1) DEFAULT 'I',
+  cnpj_pai varchar(14),
+  carga_id integer,
+  CONSTRAINT pis_m605_pkey PRIMARY KEY (id)
 );
 
 

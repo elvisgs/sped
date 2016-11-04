@@ -39,7 +39,7 @@ public class SpedContribTree extends SpedTree {
 
     private void addBranchesBloco0() {
         addNode(new RegNode(Reg0000.class));
-        addNode(new RegNode(Reg0001.class, Reg0000.class));
+        addNode(new RegNode(Reg0001.class));
         addNode(new RegNode(Reg0035.class, Reg0001.class));
         addNode(new RegNode(Reg0100.class, Reg0001.class));
         addNode(new RegNode(Reg0110.class, Reg0001.class).addChildren(
@@ -64,7 +64,7 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBlocoA() {
-        addNode(new RegNode(RegA001.class, Reg0000.class));
+        addNode(new RegNode(RegA001.class));
         addNode(new RegNode(RegA010.class, RegA001.class).addChildren(
                 new RegNode(RegA100.class).addChildren(
                         new RegNode(RegA110.class),
@@ -77,7 +77,7 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBlocoC() {
-        addNode(new RegNode(RegC001.class, Reg0000.class));
+        addNode(new RegNode(RegC001.class));
         addNode(new RegNode(RegC010.class, RegC001.class).addChildren(
                 new RegNode(RegC100.class).addChildren(
                         new RegNode(RegC110.class),
@@ -131,7 +131,7 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBlocoD() {
-        addNode(new RegNode(RegD001.class, Reg0000.class));
+        addNode(new RegNode(RegD001.class));
         addNode(new RegNode(RegD010.class, RegD001.class).addChildren(
                 new RegNode(RegD100.class).addChildren(
                         new RegNode(RegD101.class),
@@ -164,7 +164,7 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBlocoF() {
-        addNode(new RegNode(RegF001.class, Reg0000.class));
+        addNode(new RegNode(RegF001.class));
         addNode(new RegNode(RegF010.class, RegF001.class).addChildren(
                 new RegNode(RegF100.class).addChildren(
                         new RegNode(RegF111.class)
@@ -203,7 +203,7 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBlocoI() {
-        addNode(new RegNode(RegI001.class, Reg0000.class));
+        addNode(new RegNode(RegI001.class));
         addNode(new RegNode(RegI010.class, RegI001.class).addChildren(
                 new RegNode(RegI100.class).addChildren(
                         new RegNode(RegI200.class).addChildren(
@@ -219,14 +219,13 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBlocoM() {
-        addNode(new RegNode(RegM001.class, Reg0000.class));
+        addNode(new RegNode(RegM001.class));
         addNode(new RegNode(RegM100.class, RegM001.class).addChildren(
                 new RegNode(RegM105.class),
                 new RegNode(RegM110.class)
         ));
         addNode(new RegNode(RegM200.class, RegM001.class).addChildren(
-                // TODO: esse registro depende da versão do SPED
-                //new RegNode(RegM205.class),
+                new RegNode(RegM205.class),
                 new RegNode(RegM210.class).addChildren(
                         new RegNode(RegM211.class),
                         new RegNode(RegM220.class),
@@ -243,8 +242,7 @@ public class SpedContribTree extends SpedTree {
                 new RegNode(RegM510.class)
         ));
         addNode(new RegNode(RegM600.class, RegM001.class).addChildren(
-                // TODO: esse registro depende da versão do SPED
-                //new RegNode(RegM605.class),
+                new RegNode(RegM605.class),
                 new RegNode(RegM610.class).addChildren(
                         new RegNode(RegM611.class),
                         new RegNode(RegM620.class),
@@ -259,7 +257,7 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBlocoP() {
-        addNode(new RegNode(RegP001.class, Reg0000.class));
+        addNode(new RegNode(RegP001.class));
         addNode(new RegNode(RegP010.class, RegP001.class).addChildren(
                 new RegNode(RegP100.class).addChildren(
                         new RegNode(RegP110.class),
@@ -273,7 +271,7 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBloco1() {
-        addNode(new RegNode(Reg1001.class, Reg0000.class));
+        addNode(new RegNode(Reg1001.class));
         addNode(new RegNode(Reg1010.class, Reg1001.class));
         addNode(new RegNode(Reg1020.class, Reg1001.class));
         addNode(new RegNode(Reg1100.class, Reg1001.class));
@@ -286,7 +284,7 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBloco9() {
-        addNode(new RegNode(Reg9001.class, Reg0000.class));
+        addNode(new RegNode(Reg9001.class));
         addNode(new RegNode(Reg9900.class, Reg9001.class));
         addNode(new RegNode(Reg9990.class));
         addNode(new RegNode(Reg9999.class));
