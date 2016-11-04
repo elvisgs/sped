@@ -27,14 +27,19 @@ public abstract class SpedTree {
         return nodes.get(regClass);
     }
 
-    public Map<Class<? extends Registro>, RegNode> getNodes() {
-        return Collections.unmodifiableMap(nodes);
+    public Collection<RegNode> getRootNodes() {
+        return nodes.values();
     }
 
     public List<RegNode> getRootNodesOfBloc(char bloc) {
-        return getNodes().values().stream()
+        List<RegNode> nodes = getRootNodes().stream()
             .filter(node -> node.getBloc() == bloc)
             .collect(toList());
+
+        if (nodes.isEmpty())
+            throw new IllegalArgumentException("Invalid bloc " + bloc);
+
+        return nodes;
     }
 
     public List<RegNode> getAllNodesOfBloc(char bloc) {

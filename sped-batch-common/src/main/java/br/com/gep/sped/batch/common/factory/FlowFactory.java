@@ -23,9 +23,6 @@ public class FlowFactory {
 
     public Flow create(char bloc) throws Exception {
         List<RegNode> nodes = spedTree.getRootNodesOfBloc(bloc);
-
-        if (nodes.isEmpty()) throw new IllegalArgumentException("Invalid bloc " + bloc);
-
         nodes.sort(comparing(n -> n.getRegClass().getSimpleName()));
 
         FlowBuilder<SimpleFlow> builder = new FlowBuilder<SimpleFlow>("flowBloco" + bloc)
