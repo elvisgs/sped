@@ -13,7 +13,12 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static java.util.Collections.singletonList;
+import static java.util.Comparator.comparing;
 
 public class Bloco9Tasklet implements Tasklet, InitializingBean {
 
@@ -37,7 +42,7 @@ public class Bloco9Tasklet implements Tasklet, InitializingBean {
         writer.open(chunkContext.getStepContext().getStepExecution().getExecutionContext());
 
         Reg9001 reg9001 = new Reg9001() {{ setIndMov("0"); }};
-        writer.write(Arrays.asList(reg9001));
+        writer.write(singletonList(reg9001));
         countReg9++;
 
         List<Reg9900> regs9900 = new ArrayList<>();
@@ -60,22 +65,22 @@ public class Bloco9Tasklet implements Tasklet, InitializingBean {
         regs9900.add(new Reg9900(){{ setRegBlc("9999"); setQtdRegBlc(1); }});
         countReg9 += 3;
 
-        Collections.sort(regs9900, new Reg9900Comparator());
+        regs9900.sort(comparing(r -> r.getRegBlc().toUpperCase()));
         writer.write(regs9900);
 
         Reg9900 reg9900 = new Reg9900(){{ setRegBlc("9900"); }};
         reg9900.setQtdRegBlc(countReg9 - 1); // subtrai 1 porque o reg9001 não entra no cálculo
-        writer.write(Arrays.asList(reg9900));
+        writer.write(singletonList(reg9900));
         countReg9++;
 
         Reg9990 reg9990 = new Reg9990();
         reg9990.setQtdLin(countReg9 + 1); // soma 1 porque o reg9999 também entra no cálculo
-        writer.write(Arrays.asList(reg9990));
+        writer.write(singletonList(reg9990));
 
         countLines += countReg9;
         Reg9999 reg9999 = new Reg9999();
         reg9999.setQtdLin(countLines);
-        writer.write(Arrays.asList(reg9999));
+        writer.write(singletonList(reg9999));
 
         writer.close();
 
@@ -88,12 +93,5 @@ public class Bloco9Tasklet implements Tasklet, InitializingBean {
     public void afterPropertiesSet() throws Exception {
         Assert.notNull(regCounter, "regCounter is null");
         Assert.notNull(writer, "writer is null");
-    }
-
-    private class Reg9900Comparator implements Comparator<Reg9900> {
-        @Override
-        public int compare(Reg9900 o1, Reg9900 o2) {
-            return o1.getRegBlc().compareToIgnoreCase(o2.getRegBlc());
-        }
     }
 }

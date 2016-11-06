@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.nio.file.Files;
 
 import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.OUTPUT_FILE_NAME_EL;
 
@@ -22,15 +23,11 @@ public class CleanupTasklet implements Tasklet {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         File outputFile = new File(outputFileName);
-        if (outputFile.exists()) {
-            outputFile.delete();
-        }
+        Files.deleteIfExists(outputFile.toPath());
 
         String zipFileName = outputFileName.replaceAll("\\..+$", "") + ".zip";
         File zipFile = new File(zipFileName);
-        if (zipFile.exists()) {
-            zipFile.delete();
-        }
+        Files.deleteIfExists(zipFile.toPath());
 
         return RepeatStatus.FINISHED;
     }

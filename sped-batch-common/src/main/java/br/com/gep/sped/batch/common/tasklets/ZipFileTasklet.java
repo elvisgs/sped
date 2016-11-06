@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.zeroturnaround.zip.ZipUtil;
 
 import java.io.File;
+import java.nio.file.Files;
 
 import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.*;
 
@@ -49,7 +50,7 @@ public class ZipFileTasklet implements Tasklet {
             logger.info("Arquivo compactado [" + zipFilePath + "]");
 
             if (deleteFileAfterCompression) {
-                outputFile.delete();
+                Files.delete(outputFile.toPath());
             }
 
             if (spedExecutionDao != null) {

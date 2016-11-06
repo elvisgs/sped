@@ -52,7 +52,9 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
 
     @SuppressWarnings("unchecked")
     @Override
-    public <R extends Registro, P extends Registro> ItemStreamReader<R> create(final Class<R> regClass, final Class<P> parentRegClass) throws Exception {
+    public <R extends Registro, P extends Registro> ItemStreamReader<R> create(
+        final Class<R> regClass, final Class<P> parentRegClass) throws Exception {
+
         // Procura uma implementação específica de item reader que esteja registrada na Bean Factory.
         // A classe ou bean deve usar a convenção de nome [rR]egXXXXItemReader
         String beanName = regClass.getSimpleName().replaceFirst("^R", "r") + "ItemReader";

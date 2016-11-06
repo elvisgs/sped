@@ -88,9 +88,8 @@ public class RegNode {
 
         RegNode regNode = (RegNode) o;
 
-        if (!regClass.equals(regNode.regClass)) return false;
+        return regClass.equals(regNode.regClass);
 
-        return true;
     }
 
     @Override

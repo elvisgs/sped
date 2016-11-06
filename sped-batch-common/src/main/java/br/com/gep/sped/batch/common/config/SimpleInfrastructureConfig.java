@@ -114,16 +114,13 @@ public class SimpleInfrastructureConfig implements InfrastructureConfig, Initial
 
     public void registerShutdownHook() {
         if (shutdownHook == null) {
-            shutdownHook = new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        shutdown();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+            shutdownHook = new Thread(() -> {
+                try {
+                    shutdown();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            };
+            });
 
             Runtime.getRuntime().addShutdownHook(shutdownHook);
         }

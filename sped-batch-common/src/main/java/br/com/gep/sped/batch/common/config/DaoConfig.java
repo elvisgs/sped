@@ -1,10 +1,9 @@
 package br.com.gep.sped.batch.common.config;
 
-import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import br.com.gep.sped.batch.common.jdbc.QueryPartsProvider;
+import br.com.gep.sped.batch.common.jdbc.dao.EstabelecimentoDao;
 import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
 import br.com.gep.sped.batch.common.jdbc.support.SpedExecutionDaoFactoryBean;
-import br.com.gep.sped.batch.common.jdbc.dao.EstabelecimentoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;

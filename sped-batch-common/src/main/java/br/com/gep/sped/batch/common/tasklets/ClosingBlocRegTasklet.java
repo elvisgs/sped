@@ -12,8 +12,9 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 
-import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Collections.singletonList;
 
 public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implements Tasklet, InitializingBean {
 
@@ -51,7 +52,7 @@ public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implemen
 
         boolean isBloc0 = closingBlocRegClass.getSimpleName().startsWith("Reg0");
         if (count == 0 || (count == 1 && isBloc0)) {
-            /**
+            /*
              * se count = 0 significa que não há movimentação no bloco e nem mesmo
              * o registro de abertura existe, exceto se for o bloco 0 pois o registro 0000
              * sempre existirá. Nestes casos, cria-se um registro de abertura de bloco
@@ -68,7 +69,7 @@ public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implemen
         count++; // linha do registro de encerramento também entra na contagem
         reg.setQtdLin(count);
 
-        writer.write(Arrays.asList(reg));
+        writer.write(singletonList(reg));
         writer.close();
 
         contribution.incrementWriteCount(1);
@@ -81,7 +82,7 @@ public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implemen
     private void writeOpeningBlocWithoutMoviment(Class openingBlocClass) throws Exception {
         RegistroAberturaBloco reg = (RegistroAberturaBloco) openingBlocClass.newInstance();
         reg.setIndMov("1");
-        writer.write(Arrays.asList(reg));
+        writer.write(singletonList(reg));
     }
 
     @Override

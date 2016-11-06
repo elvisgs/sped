@@ -45,6 +45,6 @@ public class SchemaInjector {
                 return sql.replaceAll(SCHEMA_TOKEN, "");
         }
 
-        return sql;
+        return null;
     }
 }

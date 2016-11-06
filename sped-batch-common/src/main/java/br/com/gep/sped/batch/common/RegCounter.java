@@ -21,20 +21,12 @@ public class RegCounter {
     }
 
     public Integer getCount(Class regClass) {
-        if (counts.containsKey(regClass)) {
-            return counts.get(regClass);
-        }
-
-        return 0;
+        return counts.getOrDefault(regClass, 0);
     }
 
     public void incrementCount(Class regClass, int increment) {
-        if (!counts.containsKey(regClass)) {
-            counts.put(regClass, 0);
-        }
-
-        Integer count = counts.get(regClass);
-        counts.put(regClass, count + increment);
+        counts.putIfAbsent(regClass, 0);
+        counts.compute(regClass, (k, v) -> v + increment);
     }
 
     public void incrementCount(Class regClass) {

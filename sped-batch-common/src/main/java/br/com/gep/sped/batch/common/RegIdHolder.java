@@ -21,10 +21,7 @@ public class RegIdHolder {
      * @return Id do registro
      */
     public Integer getId(Class<?> regClass) {
-        if (ids.containsKey(regClass))
-            return ids.get(regClass);
-
-        return 0;
+        return ids.getOrDefault(regClass, 0);
     }
 
     /**

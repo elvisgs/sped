@@ -97,7 +97,9 @@ public class StepFactory {
                 .build();
     }
 
-    public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) throws Exception {
+    public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass)
+        throws Exception {
+
         ItemStreamReader<R> reader = itemReaderFactory.create(regClass, parentRegClass);
         ItemStreamWriter<R> writer = itemWriterFactory.create(regClass, parentRegClass);
 
