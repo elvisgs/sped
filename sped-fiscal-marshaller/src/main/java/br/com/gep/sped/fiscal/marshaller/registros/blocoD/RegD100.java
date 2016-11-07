@@ -12,9 +12,9 @@ import java.util.Date;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 0, name = "inicioLinha"),
     @Field(at = 1, name = "reg", rid = true, literal = "D100"),
-    @Field(at = 24, name = "fimLinha", literal = "")
+    @Field(at = 24, name = "fimLinha")
 })
 public class RegD100 extends Registro {
     

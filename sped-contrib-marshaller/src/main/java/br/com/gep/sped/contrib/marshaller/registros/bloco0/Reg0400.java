@@ -10,9 +10,9 @@ import org.beanio.annotation.Record;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 0, name = "inicioLinha"),
     @Field(at = 1, name = "reg", rid = true, literal = "0400"),
-    @Field(at = 4, name = "fimLinha", literal = "")
+    @Field(at = 4, name = "fimLinha")
 })
 public class Reg0400 extends Registro {
     

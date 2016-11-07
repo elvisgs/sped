@@ -11,9 +11,9 @@ import org.beanio.annotation.Record;
  */
 @Record
 @Fields({
-    @Field(at = 0, name = "inicioLinha", literal = ""),
+    @Field(at = 0, name = "inicioLinha"),
     @Field(at = 1, name = "reg", rid = true, literal = "9001"),
-    @Field(at = 3, name = "fimLinha", literal = "")
+    @Field(at = 3, name = "fimLinha")
 })
 public class Reg9001 extends RegistroAberturaBloco {
 
