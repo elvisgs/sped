@@ -891,6 +891,32 @@ CREATE TABLE pis_c170 (
 );
 
 
+CREATE TABLE pis_c175 (
+  id bigint NOT NULL PRIMARY KEY,
+  id_pai bigint NOT NULL,
+  cfop varchar(4),
+  vl_oper numeric(21,2),
+  vl_desc numeric(21,2),
+  cst_pis varchar(2),
+  vl_bc_pis numeric(21,2),
+  aliq_pis numeric(12,4),
+  quant_bc_pis numeric(22,3),
+  aliq_pis_quant numeric(23,4),
+  vl_pis numeric(21,2),
+  cst_cofins varchar(2),
+  vl_bc_cofins numeric(21,2),
+  aliq_cofins numeric(12,4),
+  quant_bc_cofins numeric(22,3),
+  aliq_cofins_quant numeric(23,4),
+  vl_cofins numeric(21,2),
+  cod_cta varchar(60),
+  info_compl varchar(255),
+  acao varchar(1),
+  carga_id integer,
+  cnpj_pai varchar(14)
+);
+
+
 CREATE TABLE pis_c180 (
   id integer NOT NULL,
   id_pai integer NOT NULL,
