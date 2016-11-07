@@ -181,20 +181,19 @@ public class SpedContribTree extends SpedTree {
                 new RegNode(RegF210.class),
                 new RegNode(RegF211.class)
             ),
-            // TODO: esses registros dependem da versão do SPED e estão relacionados ao registro 0110
-                /*new RegNode(RegF500.class).addChildren(
-                        new RegNode(RegF509.class)
-                ),
-                new RegNode(RegF510.class).addChildren(
-                        new RegNode(RegF519.class)
-                ),
-                new RegNode(RegF525.class),
-                new RegNode(RegF550.class).addChildren(
-                        new RegNode(RegF559.class)
-                ),
-                new RegNode(RegF560.class).addChildren(
-                        new RegNode(RegF569.class)
-                ),*/
+            new RegNode(RegF500.class).addChildren(
+                    new RegNode(RegF509.class)
+            ),
+            new RegNode(RegF510.class).addChildren(
+                    new RegNode(RegF519.class)
+            ),
+            new RegNode(RegF525.class),
+            new RegNode(RegF550.class).addChildren(
+                    new RegNode(RegF559.class)
+            ),
+            new RegNode(RegF560.class).addChildren(
+                    new RegNode(RegF569.class)
+            ),
             new RegNode(RegF600.class),
             new RegNode(RegF700.class),
             new RegNode(RegF800.class)

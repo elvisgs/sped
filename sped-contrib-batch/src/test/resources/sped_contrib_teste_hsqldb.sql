@@ -2009,6 +2009,165 @@ CREATE TABLE pis_f211 (
 );
 
 
+CREATE TABLE pis_f500 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    vl_rec_caixa numeric(21,2),
+    cst_pis varchar(2),
+    vl_desc_pis numeric(21,2),
+    vl_bc_pis numeric(21,2),
+    aliq_pis numeric(12,4),
+    vl_pis numeric(21,2),
+    cst_cofins varchar(2),
+    vl_desc_cofins numeric(21,2),
+    vl_bc_cofins numeric(21,2),
+    aliq_cofins numeric(12,4),
+    vl_cofins numeric(21,2),
+    cod_mod varchar(2),
+    cfop varchar(4),
+    cod_cta varchar(60),
+    info_compl varchar(255),
+    acao varchar(1) DEFAULT 'I',
+    carga_id integer,
+    cnpj_pai varchar(14)
+);
+
+
+CREATE TABLE pis_f509 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    num_proc varchar(20),
+    ind_proc varchar(1),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
+CREATE TABLE pis_f510 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    vl_rec_caixa numeric(21,2),
+    cst_pis varchar(2),
+    vl_desc_pis numeric(21,2),
+    quant_bc_pis numeric(22,3),
+    aliq_pis_quant numeric(23,4),
+    vl_pis numeric(21,2),
+    cst_cofins varchar(2),
+    vl_desc_cofins numeric(21,2),
+    quant_bc_cofins numeric(22,3),
+    aliq_cofins_quant numeric(23,4),
+    vl_cofins numeric(21,2),
+    cod_mod varchar(2),
+    cfop varchar(4),
+    cod_cta varchar(60),
+    info_compl varchar(255),
+    acao varchar(1) DEFAULT 'I',
+    carga_id integer,
+    cnpj_pai varchar(14)
+);
+
+
+CREATE TABLE pis_f519 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    num_proc varchar(20),
+    ind_proc varchar(1),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
+CREATE TABLE pis_f525 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    vl_rec numeric(21,2),
+    ind_rec varchar(2),
+    cnpj_cpf varchar(14),
+    num_doc varchar(60),
+    cod_item varchar(60),
+    vl_rec_det numeric(21,2),
+    cst_pis varchar(2),
+    cst_cofins varchar(2),
+    info_compl varchar(255),
+    cod_cta varchar(60),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
+CREATE TABLE pis_f550 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    vl_rec_comp numeric(21,2),
+    cst_pis varchar(2),
+    vl_desc_pis numeric(21,2),
+    vl_bc_pis numeric(21,2),
+    aliq_pis numeric(12,4),
+    vl_pis numeric(21,2),
+    cst_cofins varchar(2),
+    vl_desc_cofins numeric(21,2),
+    vl_bc_cofins numeric(21,2),
+    aliq_cofins numeric(12,4),
+    vl_cofins numeric(21,2),
+    cod_mod varchar(2),
+    cfop varchar(4),
+    cod_cta varchar(60),
+    info_compl varchar(255),
+    acao varchar(1) DEFAULT 'I',
+    carga_id integer,
+    cnpj_pai varchar(14)
+);
+
+
+CREATE TABLE pis_f559 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    num_proc varchar(20),
+    ind_proc varchar(1),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
+CREATE TABLE pis_f560 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    vl_rec_comp numeric(21,2),
+    cst_pis varchar(2),
+    vl_desc_pis numeric(21,2),
+    quant_bc_pis numeric(22,3),
+    aliq_pis_quant numeric(12,4),
+    vl_pis numeric(21,2),
+    cst_cofins varchar(2),
+    vl_desc_cofins numeric(21,2),
+    quant_bc_cofins numeric(22,3),
+    aliq_cofins_quant numeric(12,4),
+    vl_cofins numeric(21,2),
+    cod_mod varchar(2),
+    cfop varchar(4),
+    cod_cta varchar(60),
+    info_compl varchar(255),
+    acao varchar(1) DEFAULT 'I',
+    carga_id integer,
+    cnpj_pai varchar(14)
+);
+
+
+CREATE TABLE pis_f569 (
+    id bigint NOT NULL PRIMARY KEY,
+    id_pai bigint NOT NULL,
+    num_proc varchar(20),
+    ind_proc varchar(1),
+    acao varchar(1) DEFAULT 'I',
+    cnpj_pai varchar(14),
+    carga_id integer
+);
+
+
 CREATE TABLE pis_f600 (
   id integer NOT NULL,
   id_pai integer NOT NULL,
