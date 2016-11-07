@@ -4,9 +4,8 @@ import br.com.gep.sped.marshaller.common.bloco9.Reg9001;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9900;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9990;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
-import br.com.gep.sped.marshaller.common.reflection.ReflectionUtil;
+import br.com.gep.sped.marshaller.common.reflection.BeanIORecordLocator;
 import br.com.gep.sped.marshaller.common.writer.SpedWriterFactory;
-import org.beanio.annotation.Record;
 import org.beanio.builder.StreamBuilder;
 
 import java.io.IOException;
@@ -35,8 +34,7 @@ public class SpedFiscalWriterFactory extends SpedWriterFactory {
     @Override
     protected void addRecords(StreamBuilder builder) {
         try {
-            ReflectionUtil.getClasses("br.com.gep.sped.fiscal.marshaller.registros").stream()
-                .filter(c -> c.isAnnotationPresent(Record.class))
+            BeanIORecordLocator.findAllFrom("br.com.gep.sped.fiscal.marshaller.registros")
                 .forEach(builder::addRecord);
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
