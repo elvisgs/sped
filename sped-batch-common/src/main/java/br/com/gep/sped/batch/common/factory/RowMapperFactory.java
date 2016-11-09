@@ -15,6 +15,7 @@ public class RowMapperFactory implements IRowMapperFactory {
         this.basePackage = basePackage;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T extends Registro> RowMapper<T> create(Class<T> regClass) throws ClassNotFoundException {
         char bloc = regClass.getSimpleName().charAt(3);
