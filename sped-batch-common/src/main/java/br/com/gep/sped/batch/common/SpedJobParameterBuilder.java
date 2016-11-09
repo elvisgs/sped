@@ -1,6 +1,9 @@
 package br.com.gep.sped.batch.common;
 
+import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
+
+import java.util.UUID;
 
 public class SpedJobParameterBuilder extends JobParametersBuilder {
 
@@ -39,5 +42,13 @@ public class SpedJobParameterBuilder extends JobParametersBuilder {
     public SpedJobParameterBuilder setCnpjEstabelecimento(String cnpjEstabelecimento) {
         super.addString(CNPJ_ESTABELECIMENTO, cnpjEstabelecimento);
         return this;
+    }
+
+    @Override
+    public JobParameters toJobParameters() {
+        // para permitir múltiplas execuções para os mesmos parâmetros
+        super.addString("uuid", UUID.randomUUID().toString());
+
+        return super.toJobParameters();
     }
 }
