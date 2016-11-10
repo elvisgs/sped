@@ -22,7 +22,8 @@ public class ItemWriterConfig {
 
     @Bean
     @StepScope
-    public <T extends Registro> BeanIOFlatFileItemWriter<T> beanIOWriter(@Value(OUTPUT_FILE_NAME_EL) String outputFileName) {
+    @Value(OUTPUT_FILE_NAME_EL)
+    public <T extends Registro> BeanIOFlatFileItemWriter<T> beanIOWriter(String outputFileName) {
         BeanIOFlatFileItemWriter<T> writer = new BeanIOFlatFileItemWriter<>();
         SpedWriterFactory factory = SpedFiscalWriterFactory.getInstance();
         writer.setStreamFactory(factory.getStreamFactory());

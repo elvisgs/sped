@@ -26,9 +26,8 @@ public class ItemReadersConfig {
 
     @Bean
     @StepScope
-    public ItemStreamReader<Reg0000> reg0000ItemReader(@Value(CNPJ_ESTABELECIMENTO_EL) String cnpjEstabelecimento)
-        throws Exception {
-
+    @Value(CNPJ_ESTABELECIMENTO_EL)
+    public ItemStreamReader<Reg0000> reg0000ItemReader(String cnpjEstabelecimento) throws Exception {
         JdbcCursorItemReader<Reg0000> reader = itemReaderFactory.createCursorItemReader(Reg0000.class, null);
         reader.setPreparedStatementSetter(preparedStatement ->
             preparedStatement.setString(1, cnpjEstabelecimento));
@@ -38,9 +37,8 @@ public class ItemReadersConfig {
 
     @Bean
     @StepScope
-    public ItemStreamReader<Reg0200> reg0200ItemReader(@Value(CNPJ_ESTABELECIMENTO_EL) String cnpjEstabelecimento)
-        throws Exception {
-
+    @Value(CNPJ_ESTABELECIMENTO_EL)
+    public ItemStreamReader<Reg0200> reg0200ItemReader(String cnpjEstabelecimento) throws Exception {
         JdbcPagingItemReader<Reg0200> reader = itemReaderFactory.createPagingItemReader(Reg0200.class, null);
 
         Map<String, Object> params = new HashMap<>();
@@ -52,9 +50,8 @@ public class ItemReadersConfig {
 
     @Bean
     @StepScope
-    public ItemStreamReader<Reg0190> reg0190ItemReader(@Value(CNPJ_ESTABELECIMENTO_EL) String cnpjEstabelecimento)
-        throws Exception {
-
+    @Value(CNPJ_ESTABELECIMENTO_EL)
+    public ItemStreamReader<Reg0190> reg0190ItemReader(String cnpjEstabelecimento) throws Exception {
         JdbcPagingItemReader<Reg0190> reader = itemReaderFactory.createPagingItemReader(Reg0190.class, null);
 
         Map<String, Object> params = new HashMap<>();
