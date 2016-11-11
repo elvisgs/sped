@@ -13,6 +13,7 @@ public class BeanIOItemWriterFactory implements ItemWriterFactory {
     @Autowired
     private ItemWriterConfig itemWriterConfig;
 
+    @SuppressWarnings("unchecked")
     @Override
     public <R extends Registro, P extends Registro> ItemStreamWriter<R> create(Class<R> regClass, Class<P> parentRegClass) {
         return itemWriterConfig.beanIOWriter();
