@@ -2987,6 +2987,7 @@ CREATE TABLE reg_h010 (
     cod_part varchar(60),
     txt_compl varchar(255),
     cod_cta varchar(255),
+    vl_item_ir numeric(22,2),
     acao varchar(1) DEFAULT 'I',
     cnpj_pai varchar(14),
     carga_id integer

@@ -1814,7 +1814,7 @@
 
 --=================================================================================================
 @NAME(RegH010_select)
-  SELECT id, cod_item, unid, qtd, vl_unit, vl_item, ind_prop, cod_part, txt_compl, cod_cta
+  SELECT id, cod_item, unid, qtd, vl_unit, vl_item, ind_prop, cod_part, txt_compl, cod_cta, vl_item_ir
 
 @NAME(RegH010_from)
   FROM @schema@reg_h010

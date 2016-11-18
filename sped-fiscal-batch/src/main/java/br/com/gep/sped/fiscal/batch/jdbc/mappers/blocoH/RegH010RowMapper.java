@@ -21,6 +21,7 @@ public class RegH010RowMapper implements RowMapper<RegH010> {
         reg.setCodPart(rs.getString("cod_part"));
         reg.setTxtCompl(rs.getString("txt_compl"));
         reg.setCodCta(rs.getString("cod_cta"));
+        reg.setVlItemIr(rs.getObject("vl_item_ir") == null ? null : rs.getDouble("vl_item_ir"));
         return reg;
     }
 }

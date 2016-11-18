@@ -14,7 +14,7 @@ import org.beanio.annotation.Record;
 @Fields({
     @Field(at = 0, name = "inicioLinha"),
     @Field(at = 1, name = "reg", rid = true, literal = "H010"),
-    @Field(at = 11, name = "fimLinha")
+    @Field(at = 12, name = "fimLinha")
 })
 @Getter
 @Setter
@@ -74,6 +74,12 @@ public class RegH010 extends Registro {
      */
     @Field(at = 10)
     private String codCta;
+
+    /**
+     * Valor do item para efeitos do Imposto de Renda
+     */
+    @Field(at = 11)
+    private Double vlItemIr;
 
 
 }
