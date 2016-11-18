@@ -574,6 +574,17 @@ CREATE TABLE pis_1800 (
 );
 
 
+CREATE TABLE pis_1809 (
+  id bigint NOT NULL PRIMARY KEY,
+  id_pai bigint NOT NULL,
+  num_proc varchar(20),
+  ind_proc varchar(1),
+  acao varchar(1),
+  carga_id integer,
+  cnpj_pai varchar(14)
+);
+
+
 CREATE TABLE pis_1900 (
   id bigint NOT NULL,
   id_pai bigint NOT NULL,

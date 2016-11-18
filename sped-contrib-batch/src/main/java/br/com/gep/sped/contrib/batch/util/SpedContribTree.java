@@ -277,7 +277,9 @@ public class SpedContribTree extends SpedTree {
         addNode(new RegNode(Reg1300.class, Reg1001.class));
         addNode(new RegNode(Reg1500.class, Reg1001.class));
         addNode(new RegNode(Reg1700.class, Reg1001.class));
-        addNode(new RegNode(Reg1800.class, Reg1001.class));
+        addNode(new RegNode(Reg1800.class, Reg1001.class).addChildren(
+            new RegNode(Reg1809.class)
+        ));
         addNode(new RegNode(Reg1900.class));
         addNode(new RegNode(Reg1990.class));
     }
