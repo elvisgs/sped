@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoI;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,59 +16,28 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "I010"),
     @Field(at = 5, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegI010 extends Registro {
-    
+
+    /**
+     * Número de inscrição do estabelecimento no CNPJ
+     */
     @Field(at = 2)
     private String cnpj;
-    
+
+    /**
+     * Indicador de operações realizadas no período
+     * <p>01=Exclusivamente operações de Instituições Financeiras e Assemelhadas;02=Exclusivamente operações de Seguros Privados;03=Exclusivamente operações de Previdência Complementar;04=Exclusivamente operações de Capitalização;05=Exclusivamente operações de Planos de Assistência à Saúde;06=Realizou operações referentes a mais de um dos indicadores acima</p>
+     */
     @Field(at = 3)
     private String indAtiv;
-    
+
+    /**
+     * Informação complementar
+     */
     @Field(at = 4)
     private String infoCompl;
-    
-    
-    /**
-     * Obtém Número de inscrição do estabelecimento no CNPJ
-     */
-    public String getCnpj() {
-        return cnpj;
-    }
 
-    /**
-     * Seta Número de inscrição do estabelecimento no CNPJ
-     */
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-    
-    /**
-     * Obtém Indicador de operações realizadas no período
-     */
-    public String getIndAtiv() {
-        return indAtiv;
-    }
 
-    /**
-     * Seta Indicador de operações realizadas no período
-     */
-    public void setIndAtiv(String indAtiv) {
-        this.indAtiv = indAtiv;
-    }
-    
-    /**
-     * Obtém Informação complementar
-     */
-    public String getInfoCompl() {
-        return infoCompl;
-    }
-
-    /**
-     * Seta Informação complementar
-     */
-    public void setInfoCompl(String infoCompl) {
-        this.infoCompl = infoCompl;
-    }
-    
-    
 }

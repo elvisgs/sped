@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoA;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,348 +18,133 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "A100"),
     @Field(at = 22, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegA100 extends Registro {
-    
+
+    /**
+     * Indicador do tipo de operação
+     * <p>0=Serviço Contratado pelo Estabelecimento;1=Serviço Prestado pelo Estabelecimento</p>
+     */
     @Field(at = 2)
     private String indOper;
-    
+
+    /**
+     * Indicador do emitente do documento fiscal
+     * <p>0=Emissão própria;1=Emissão de Terceiros</p>
+     */
     @Field(at = 3)
     private String indEmit;
-    
+
+    /**
+     * Código do participante (campo 02 do Registro 0150): emitente do documento, no caso de emissão de terceiros; adquirente, no caso de serviços prestados
+     */
     @Field(at = 4)
     private String codPart;
-    
+
+    /**
+     * Código da situação do documento fiscal
+     * <p>00=Documento regular;02=Documento cancelado</p>
+     */
     @Field(at = 5)
     private String codSit;
-    
+
+    /**
+     * Série do documento fiscal
+     */
     @Field(at = 6)
     private String ser;
-    
+
+    /**
+     * Subsérie do documento fiscal
+     */
     @Field(at = 7)
     private String sub;
-    
+
+    /**
+     * Número do documento fiscal ou documento internacional equivalente
+     */
     @Field(at = 8)
     private String numDoc;
-    
+
+    /**
+     * Chave da nota fiscal de serviço eletronica
+     */
     @Field(at = 9)
     private String chvNfse;
-    
+
+    /**
+     * Data da emissão do documento fiscal
+     */
     @Field(at = 10)
     private Date dtDoc;
-    
+
+    /**
+     * Data de Execução / Conclusão do Serviço
+     */
     @Field(at = 11)
     private Date dtExeServ;
-    
+
+    /**
+     * Valor total do documento
+     */
     @Field(at = 12)
     private Double vlDoc;
-    
+
+    /**
+     * Indicador do tipo de pagamento
+     * <p>0=À vista;1=A prazo;9=Sem pagamento</p>
+     */
     @Field(at = 13)
     private String indPgto;
-    
+
+    /**
+     * Valor total do desconto
+     */
     @Field(at = 14)
     private Double vlDesc;
-    
+
+    /**
+     * Valor da base de cálculo do PIS/PASEP
+     */
     @Field(at = 15)
     private Double vlBcPis;
-    
+
+    /**
+     * Valor total do PIS
+     */
     @Field(at = 16)
     private Double vlPis;
-    
+
+    /**
+     * Valor da base de cálculo da COFINS
+     */
     @Field(at = 17)
     private Double vlBcCofins;
-    
+
+    /**
+     * Valor total da COFINS
+     */
     @Field(at = 18)
     private Double vlCofins;
-    
+
+    /**
+     * Valor total do PIS retido na fonte
+     */
     @Field(at = 19)
     private Double vlPisRet;
-    
+
+    /**
+     * Valor total da COFINS retido na fonte
+     */
     @Field(at = 20)
     private Double vlCofinsRet;
-    
+
+    /**
+     * Valor do ISS
+     */
     @Field(at = 21)
     private Double vlIss;
-    
-    
-    /**
-     * Obtém Tipo de operação
-     */
-    public String getIndOper() {
-        return indOper;
-    }
 
-    /**
-     * Seta Tipo de operação
-     */
-    public void setIndOper(String indOper) {
-        this.indOper = indOper;
-    }
-    
-    /**
-     * Obtém Indicador de Emitente
-     */
-    public String getIndEmit() {
-        return indEmit;
-    }
 
-    /**
-     * Seta Indicador de Emitente
-     */
-    public void setIndEmit(String indEmit) {
-        this.indEmit = indEmit;
-    }
-    
-    /**
-     * Obtém Participante
-     */
-    public String getCodPart() {
-        return codPart;
-    }
-
-    /**
-     * Seta Participante
-     */
-    public void setCodPart(String codPart) {
-        this.codPart = codPart;
-    }
-    
-    /**
-     * Obtém Situação do documento
-     */
-    public String getCodSit() {
-        return codSit;
-    }
-
-    /**
-     * Seta Situação do documento
-     */
-    public void setCodSit(String codSit) {
-        this.codSit = codSit;
-    }
-    
-    /**
-     * Obtém Série
-     */
-    public String getSer() {
-        return ser;
-    }
-
-    /**
-     * Seta Série
-     */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Subsérie
-     */
-    public String getSub() {
-        return sub;
-    }
-
-    /**
-     * Seta Subsérie
-     */
-    public void setSub(String sub) {
-        this.sub = sub;
-    }
-    
-    /**
-     * Obtém Número do documento
-     */
-    public String getNumDoc() {
-        return numDoc;
-    }
-
-    /**
-     * Seta Número do documento
-     */
-    public void setNumDoc(String numDoc) {
-        this.numDoc = numDoc;
-    }
-    
-    /**
-     * Obtém Chave da NFS-e
-     */
-    public String getChvNfse() {
-        return chvNfse;
-    }
-
-    /**
-     * Seta Chave da NFS-e
-     */
-    public void setChvNfse(String chvNfse) {
-        this.chvNfse = chvNfse;
-    }
-    
-    /**
-     * Obtém Data da emissão
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
-
-    /**
-     * Seta Data da emissão
-     */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Data de execução/conclusão do serviço
-     */
-    public Date getDtExeServ() {
-        return dtExeServ;
-    }
-
-    /**
-     * Seta Data de execução/conclusão do serviço
-     */
-    public void setDtExeServ(Date dtExeServ) {
-        this.dtExeServ = dtExeServ;
-    }
-    
-    /**
-     * Obtém Valor total do Documento
-     */
-    public Double getVlDoc() {
-        return vlDoc;
-    }
-
-    /**
-     * Seta Valor total do Documento
-     */
-    public void setVlDoc(Double vlDoc) {
-        this.vlDoc = vlDoc;
-    }
-    
-    /**
-     * Obtém Tipo de pagamento
-     */
-    public String getIndPgto() {
-        return indPgto;
-    }
-
-    /**
-     * Seta Tipo de pagamento
-     */
-    public void setIndPgto(String indPgto) {
-        this.indPgto = indPgto;
-    }
-    
-    /**
-     * Obtém Valor total do desconto
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
-
-    /**
-     * Seta Valor total do desconto
-     */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Base de cálculo do PIS/PASEP
-     */
-    public Double getVlBcPis() {
-        return vlBcPis;
-    }
-
-    /**
-     * Seta Base de cálculo do PIS/PASEP
-     */
-    public void setVlBcPis(Double vlBcPis) {
-        this.vlBcPis = vlBcPis;
-    }
-    
-    /**
-     * Obtém Valor do PIS/PASEP
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
-
-    /**
-     * Seta Valor do PIS/PASEP
-     */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém Base de cálculo do COFINS
-     */
-    public Double getVlBcCofins() {
-        return vlBcCofins;
-    }
-
-    /**
-     * Seta Base de cálculo do COFINS
-     */
-    public void setVlBcCofins(Double vlBcCofins) {
-        this.vlBcCofins = vlBcCofins;
-    }
-    
-    /**
-     * Obtém Valor da COFINS
-     */
-    public Double getVlCofins() {
-        return vlCofins;
-    }
-
-    /**
-     * Seta Valor da COFINS
-     */
-    public void setVlCofins(Double vlCofins) {
-        this.vlCofins = vlCofins;
-    }
-    
-    /**
-     * Obtém Valor do PIS/PASEP retido na fonte
-     */
-    public Double getVlPisRet() {
-        return vlPisRet;
-    }
-
-    /**
-     * Seta Valor do PIS/PASEP retido na fonte
-     */
-    public void setVlPisRet(Double vlPisRet) {
-        this.vlPisRet = vlPisRet;
-    }
-    
-    /**
-     * Obtém Valor da COFINS retida na fonte
-     */
-    public Double getVlCofinsRet() {
-        return vlCofinsRet;
-    }
-
-    /**
-     * Seta Valor da COFINS retida na fonte
-     */
-    public void setVlCofinsRet(Double vlCofinsRet) {
-        this.vlCofinsRet = vlCofinsRet;
-    }
-    
-    /**
-     * Obtém Valor do ISS
-     */
-    public Double getVlIss() {
-        return vlIss;
-    }
-
-    /**
-     * Seta Valor do ISS
-     */
-    public void setVlIss(Double vlIss) {
-        this.vlIss = vlIss;
-    }
-    
-    
 }

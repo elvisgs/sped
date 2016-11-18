@@ -5,8 +5,6 @@ import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
 
-import java.util.Date;
-
 /**
  * ABERTURA DO BLOCO 0
  */
@@ -17,5 +15,5 @@ import java.util.Date;
     @Field(at = 3, name = "fimLinha")
 })
 public class Reg0001 extends RegistroAberturaBloco {
-    
+
 }

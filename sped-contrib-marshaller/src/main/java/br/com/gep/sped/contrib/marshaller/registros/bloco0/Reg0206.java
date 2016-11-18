@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.bloco0;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,25 +16,15 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "0206"),
     @Field(at = 3, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg0206 extends Registro {
-    
-    @Field(at = 2)
-    private String codComb;
-    
-    
-    /**
-     * Obtém Código do combustível
-     */
-    public String getCodComb() {
-        return codComb;
-    }
 
     /**
-     * Seta Código do combustível
+     * Código do combustível, conforme tabela publicada pela ANP
      */
-    public void setCodComb(String codComb) {
-        this.codComb = codComb;
-    }
-    
-    
+    @Field(at = 2)
+    private String codComb;
+
+
 }

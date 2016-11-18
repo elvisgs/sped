@@ -1,24 +1,16 @@
 package br.com.gep.sped.marshaller.common;
 
-import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 
+@Getter
+@Setter
 public abstract class RegistroEncerramentoBloco extends Registro {
 
+    /**
+     * Quantidade de linhas no bloco
+     */
     @Field(at = 2)
     private int qtdLin;
-
-    /**
-     * Obtém quantidade de linhas no bloco
-     */
-    public int getQtdLin() {
-        return qtdLin;
-    }
-
-    /**
-     * Seta quantidade de linhas no bloco
-     */
-    public void setQtdLin(int qtdLin) {
-        this.qtdLin = qtdLin;
-    }
 }

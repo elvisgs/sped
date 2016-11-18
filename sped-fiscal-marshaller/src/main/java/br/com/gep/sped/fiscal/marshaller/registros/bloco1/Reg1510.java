@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.bloco1;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Itens
@@ -16,347 +16,130 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "1510"),
     @Field(at = 22, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg1510 extends Registro {
-    
+
+    /**
+     * Número sequencial
+     */
     @Field(at = 2)
     private String numItem;
-    
+
+    /**
+     * Código do item
+     */
     @Field(at = 3)
     private String codItem;
-    
+
+    /**
+     * Código de classificação
+     */
     @Field(at = 4)
     private String codClass;
-    
+
+    /**
+     * Quantidade do item
+     */
     @Field(at = 5)
     private Double qtd;
-    
+
+    /**
+     * Unidade do item
+     */
     @Field(at = 6)
     private String unid;
-    
+
+    /**
+     * Valor do item
+     */
     @Field(at = 7)
     private Double vlItem;
-    
+
+    /**
+     * Valor total do desconto
+     */
     @Field(at = 8)
     private Double vlDesc;
-    
+
+    /**
+     * CST/ICMS
+     */
     @Field(at = 9)
     private String cstIcms;
-    
+
+    /**
+     * CFOP
+     */
     @Field(at = 10)
     private String cfop;
-    
+
+    /**
+     * Valor da base de cálculo do ICMS
+     */
     @Field(at = 11)
     private Double vlBcIcms;
-    
+
+    /**
+     * Alíquota do ICMS
+     */
     @Field(at = 12)
     private Double aliqIcms;
-    
+
+    /**
+     * Valor do ICMS creditado/debitado
+     */
     @Field(at = 13)
     private Double vlIcms;
-    
+
+    /**
+     * Valor da base de cálculo ST
+     */
     @Field(at = 14)
     private Double vlBcIcmsSt;
-    
+
+    /**
+     * Alíquota do ICMS da ST
+     */
     @Field(at = 15)
     private Double aliqSt;
-    
+
+    /**
+     * Valor do ICMS ST
+     */
     @Field(at = 16)
     private Double vlIcmsSt;
-    
-    @Field(at = 17)
-    private String indRec;
-    
-    @Field(at = 18)
-    private String codPart;
-    
-    @Field(at = 19)
-    private Double vlPis;
-    
-    @Field(at = 20)
-    private Double vlCofis;
-    
-    @Field(at = 21)
-    private String codCta;
-    
-    /**
-     * Obtém Número sequencial
-     */
-    public String getNumItem() {
-        return numItem;
-    }
 
     /**
-     * Seta Número sequencial
-     */
-    public void setNumItem(String numItem) {
-        this.numItem = numItem;
-    }
-    
-    /**
-     * Obtém Código do item
-     */
-    public String getCodItem() {
-        return codItem;
-    }
-
-    /**
-     * Seta Código do item
-     */
-    public void setCodItem(String codItem) {
-        this.codItem = codItem;
-    }
-    
-    /**
-     * Obtém Código de classificação
-     */
-    public String getCodClass() {
-        return codClass;
-    }
-
-    /**
-     * Seta Código de classificação
-     */
-    public void setCodClass(String codClass) {
-        this.codClass = codClass;
-    }
-    
-    /**
-     * Obtém Quantidade do item
-     */
-    public Double getQtd() {
-        return qtd;
-    }
-
-    /**
-     * Seta Quantidade do item
-     */
-    public void setQtd(Double qtd) {
-        this.qtd = qtd;
-    }
-    
-    /**
-     * Obtém Unidade do item
-     */
-    public String getUnid() {
-        return unid;
-    }
-
-    /**
-     * Seta Unidade do item
-     */
-    public void setUnid(String unid) {
-        this.unid = unid;
-    }
-    
-    /**
-     * Obtém Valor do item
-     */
-    public Double getVlItem() {
-        return vlItem;
-    }
-
-    /**
-     * Seta Valor do item
-     */
-    public void setVlItem(Double vlItem) {
-        this.vlItem = vlItem;
-    }
-    
-    /**
-     * Obtém Valor total do desconto
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
-
-    /**
-     * Seta Valor total do desconto
-     */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém CST/ICMS
-     */
-    public String getCstIcms() {
-        return cstIcms;
-    }
-
-    /**
-     * Seta CST/ICMS
-     */
-    public void setCstIcms(String cstIcms) {
-        this.cstIcms = cstIcms;
-    }
-    
-    /**
-     * Obtém CFOP
-     */
-    public String getCfop() {
-        return cfop;
-    }
-
-    /**
-     * Seta CFOP
-     */
-    public void setCfop(String cfop) {
-        this.cfop = cfop;
-    }
-    
-    /**
-     * Obtém Valor da base de cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
-
-    /**
-     * Seta Valor da base de cálculo do ICMS
-     */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Alíquota do ICMS
-     */
-    public Double getAliqIcms() {
-        return aliqIcms;
-    }
-
-    /**
-     * Seta Alíquota do ICMS
-     */
-    public void setAliqIcms(Double aliqIcms) {
-        this.aliqIcms = aliqIcms;
-    }
-    
-    /**
-     * Obtém Valor do ICMS creditado/debitado
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
-
-    /**
-     * Seta Valor do ICMS creditado/debitado
-     */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Valor da base de cálculo ST
-     */
-    public Double getVlBcIcmsSt() {
-        return vlBcIcmsSt;
-    }
-
-    /**
-     * Seta Valor da base de cálculo ST
-     */
-    public void setVlBcIcmsSt(Double vlBcIcmsSt) {
-        this.vlBcIcmsSt = vlBcIcmsSt;
-    }
-    
-    /**
-     * Obtém Alíquota do ICMS da ST
-     */
-    public Double getAliqSt() {
-        return aliqSt;
-    }
-
-    /**
-     * Seta Alíquota do ICMS da ST
-     */
-    public void setAliqSt(Double aliqSt) {
-        this.aliqSt = aliqSt;
-    }
-    
-    /**
-     * Obtém Valor do ICMS ST
-     */
-    public Double getVlIcmsSt() {
-        return vlIcmsSt;
-    }
-
-    /**
-     * Seta Valor do ICMS ST
-     */
-    public void setVlIcmsSt(Double vlIcmsSt) {
-        this.vlIcmsSt = vlIcmsSt;
-    }
-    
-    /**
-     * Obtém Indicador do tipo de receita:
-     */
-    public String getIndRec() {
-        return indRec;
-    }
-
-    /**
-     * Seta Indicador do tipo de receita:
+     * Indicador do tipo de receita:
      * <p>0=Receita própria;1=Receita de terceiros</p>
      */
-    public void setIndRec(String indRec) {
-        this.indRec = indRec;
-    }
-    
-    /**
-     * Obtém Código do participante
-     */
-    public String getCodPart() {
-        return codPart;
-    }
+    @Field(at = 17)
+    private String indRec;
 
     /**
-     * Seta Código do participante
+     * Código do participante
      */
-    public void setCodPart(String codPart) {
-        this.codPart = codPart;
-    }
-    
-    /**
-     * Obtém Valor do PIS
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
+    @Field(at = 18)
+    private String codPart;
 
     /**
-     * Seta Valor do PIS
+     * Valor do PIS
      */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém Valor da COFINS
-     */
-    public Double getVlCofis() {
-        return vlCofis;
-    }
+    @Field(at = 19)
+    private Double vlPis;
 
     /**
-     * Seta Valor da COFINS
+     * Valor da COFINS
      */
-    public void setVlCofis(Double vlCofis) {
-        this.vlCofis = vlCofis;
-    }
-    
-    /**
-     * Obtém Código da conta analítica contábil
-     */
-    public String getCodCta() {
-        return codCta;
-    }
+    @Field(at = 20)
+    private Double vlCofis;
 
     /**
-     * Seta Código da conta analítica contábil
+     * Código da conta analítica contábil
      */
-    public void setCodCta(String codCta) {
-        this.codCta = codCta;
-    }
-    
+    @Field(at = 21)
+    private String codCta;
+
+
 }

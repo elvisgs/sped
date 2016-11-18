@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoM;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,127 +18,52 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "M300"),
     @Field(at = 9, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegM300 extends Registro {
-    
+
+    /**
+     * Código da contribuição  social diferida em períodos anteriores , conforme a Tabela 4.3.5
+     */
     @Field(at = 2)
     private String codCont;
-    
+
+    /**
+     * Valor da Contribuição Apurada, diferida em períodos anteriores
+     */
     @Field(at = 3)
     private Double vlContApurDifer;
-    
+
+    /**
+     * Natureza do Crédito Diferido, vinculado a receita tributada no mercado interno, a descontar:01 - Crédito a Alíquota Básica;02 - Crédito a Alíquota Diferenciada;03 - Crédito a Alíquota por Unidade de Produto;04 Crédito Presumido da Agroindústria.
+     * <p>01=Crédito a Alíquota Básica;02=Crédito a Alíquota Diferenciada;03=Crédito a Alíquota por Unidade de Produto;04=Crédito Presumido da Agroindústria</p>
+     */
     @Field(at = 4)
     private String natCredDesc;
-    
+
+    /**
+     * Valor do Crédito a Descontar vinculado à contribuição diferida
+     */
     @Field(at = 5)
     private Double vlCredDescDifer;
-    
+
+    /**
+     * Valor da Contribuição a Recolher, diferida em períodos anteriores (Campo 03 – Campo 05)
+     */
     @Field(at = 6)
     private Double vlContDiferAnt;
-    
+
+    /**
+     * Período de apuração da contribuição social e dos créditos diferidos (MMAAAA)
+     */
     @Field(at = 7)
     private String perApur;
-    
+
+    /**
+     * Data de recebimento da receita, objeto de diferimento
+     */
     @Field(at = 8)
     private Date dtReceb;
-    
-    
-    /**
-     * Obtém Código da contribuição  social diferida em períodos anteriores , conforme a Tabela 4.3.5
-     */
-    public String getCodCont() {
-        return codCont;
-    }
 
-    /**
-     * Seta Código da contribuição  social diferida em períodos anteriores , conforme a Tabela 4.3.5
-     */
-    public void setCodCont(String codCont) {
-        this.codCont = codCont;
-    }
-    
-    /**
-     * Obtém Valor da Contribuição Apurada, diferida em períodos anteriores
-     */
-    public Double getVlContApurDifer() {
-        return vlContApurDifer;
-    }
 
-    /**
-     * Seta Valor da Contribuição Apurada, diferida em períodos anteriores
-     */
-    public void setVlContApurDifer(Double vlContApurDifer) {
-        this.vlContApurDifer = vlContApurDifer;
-    }
-    
-    /**
-     * Obtém Natureza do Crédito Diferido, vinculado a receita tributada no mercado interno, a descontar:01 - Crédito a Alíquota Básica;02 - Crédito a Alíquota Diferenciada;03 - Crédito a Alíquota por Unidade de Produto;04 Crédito Presumido da Agroindústria.
-     */
-    public String getNatCredDesc() {
-        return natCredDesc;
-    }
-
-    /**
-     * Seta Natureza do Crédito Diferido, vinculado a receita tributada no mercado interno, a descontar:01 - Crédito a Alíquota Básica;02 - Crédito a Alíquota Diferenciada;03 - Crédito a Alíquota por Unidade de Produto;04 Crédito Presumido da Agroindústria.
-     */
-    public void setNatCredDesc(String natCredDesc) {
-        this.natCredDesc = natCredDesc;
-    }
-    
-    /**
-     * Obtém Valor do Crédito a Descontar vinculado à contribuição diferida
-     */
-    public Double getVlCredDescDifer() {
-        return vlCredDescDifer;
-    }
-
-    /**
-     * Seta Valor do Crédito a Descontar vinculado à contribuição diferida
-     */
-    public void setVlCredDescDifer(Double vlCredDescDifer) {
-        this.vlCredDescDifer = vlCredDescDifer;
-    }
-    
-    /**
-     * Obtém Valor da Contribuição a Recolher, diferida em períodos anteriores (Campo 03 – Campo 05)
-     */
-    public Double getVlContDiferAnt() {
-        return vlContDiferAnt;
-    }
-
-    /**
-     * Seta Valor da Contribuição a Recolher, diferida em períodos anteriores (Campo 03 – Campo 05)
-     */
-    public void setVlContDiferAnt(Double vlContDiferAnt) {
-        this.vlContDiferAnt = vlContDiferAnt;
-    }
-    
-    /**
-     * Obtém Período de apuração da contribuição social e dos créditos diferidos (MMAAAA)
-     */
-    public String getPerApur() {
-        return perApur;
-    }
-
-    /**
-     * Seta Período de apuração da contribuição social e dos créditos diferidos (MMAAAA)
-     */
-    public void setPerApur(String perApur) {
-        this.perApur = perApur;
-    }
-    
-    /**
-     * Obtém Data de recebimento da receita, objeto de diferimento
-     */
-    public Date getDtReceb() {
-        return dtReceb;
-    }
-
-    /**
-     * Seta Data de recebimento da receita, objeto de diferimento
-     */
-    public void setDtReceb(Date dtReceb) {
-        this.dtReceb = dtReceb;
-    }
-    
-    
 }

@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.bloco1;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Volume de Vendas
@@ -16,176 +16,69 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "1320"),
     @Field(at = 12, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg1320 extends Registro {
-    
+
+    /**
+     * Bico ligado à bomba
+     */
     @Field(at = 2)
     private Integer numBico;
-    
+
+    /**
+     * Número da intervenção
+     */
     @Field(at = 3)
     private Integer nrInterv;
-    
+
+    /**
+     * Motivo da intervenção
+     */
     @Field(at = 4)
     private String motInterv;
-    
+
+    /**
+     * Nome do interventor
+     */
     @Field(at = 5)
     private String nomInterv;
-    
+
+    /**
+     * CNPJ da empresa responsável pela intervenção
+     */
     @Field(at = 6)
     private String cnpjInterv;
-    
+
+    /**
+     * CPF do técnico responsável pela intervenção
+     */
     @Field(at = 7)
     private String cpfInterv;
-    
+
+    /**
+     * Valor da leitura final do contador, no fechamento do bico
+     */
     @Field(at = 8)
     private Double valFecha;
-    
+
+    /**
+     * Valor da leitura inicial do contador, na abertura do bico
+     */
     @Field(at = 9)
     private Double valAbert;
-    
+
+    /**
+     * Aferição da bomba, em litros
+     */
     @Field(at = 10)
     private Double volAferi;
-    
+
+    /**
+     * Venda (08 - 09 - 10) do bico, em litros
+     */
     @Field(at = 11)
     private Double volVendas;
-    
-    /**
-     * Obtém Bico ligado à bomba
-     */
-    public Integer getNumBico() {
-        return numBico;
-    }
 
-    /**
-     * Seta Bico ligado à bomba
-     */
-    public void setNumBico(Integer numBico) {
-        this.numBico = numBico;
-    }
-    
-    /**
-     * Obtém Número da intervenção
-     */
-    public Integer getNrInterv() {
-        return nrInterv;
-    }
 
-    /**
-     * Seta Número da intervenção
-     */
-    public void setNrInterv(Integer nrInterv) {
-        this.nrInterv = nrInterv;
-    }
-    
-    /**
-     * Obtém Motivo da intervenção
-     */
-    public String getMotInterv() {
-        return motInterv;
-    }
-
-    /**
-     * Seta Motivo da intervenção
-     */
-    public void setMotInterv(String motInterv) {
-        this.motInterv = motInterv;
-    }
-    
-    /**
-     * Obtém Nome do interventor
-     */
-    public String getNomInterv() {
-        return nomInterv;
-    }
-
-    /**
-     * Seta Nome do interventor
-     */
-    public void setNomInterv(String nomInterv) {
-        this.nomInterv = nomInterv;
-    }
-    
-    /**
-     * Obtém CNPJ da empresa responsável pela intervenção
-     */
-    public String getCnpjInterv() {
-        return cnpjInterv;
-    }
-
-    /**
-     * Seta CNPJ da empresa responsável pela intervenção
-     */
-    public void setCnpjInterv(String cnpjInterv) {
-        this.cnpjInterv = cnpjInterv;
-    }
-    
-    /**
-     * Obtém CPF do técnico responsável pela intervenção
-     */
-    public String getCpfInterv() {
-        return cpfInterv;
-    }
-
-    /**
-     * Seta CPF do técnico responsável pela intervenção
-     */
-    public void setCpfInterv(String cpfInterv) {
-        this.cpfInterv = cpfInterv;
-    }
-    
-    /**
-     * Obtém Valor da leitura final do contador, no fechamento do bico
-     */
-    public Double getValFecha() {
-        return valFecha;
-    }
-
-    /**
-     * Seta Valor da leitura final do contador, no fechamento do bico
-     */
-    public void setValFecha(Double valFecha) {
-        this.valFecha = valFecha;
-    }
-    
-    /**
-     * Obtém Valor da leitura inicial do contador, na abertura do bico
-     */
-    public Double getValAbert() {
-        return valAbert;
-    }
-
-    /**
-     * Seta Valor da leitura inicial do contador, na abertura do bico
-     */
-    public void setValAbert(Double valAbert) {
-        this.valAbert = valAbert;
-    }
-    
-    /**
-     * Obtém Aferição da bomba, em litros
-     */
-    public Double getVolAferi() {
-        return volAferi;
-    }
-
-    /**
-     * Seta Aferição da bomba, em litros
-     */
-    public void setVolAferi(Double volAferi) {
-        this.volAferi = volAferi;
-    }
-    
-    /**
-     * Obtém Venda (08 - 09 - 10) do bico, em litros
-     */
-    public Double getVolVendas() {
-        return volVendas;
-    }
-
-    /**
-     * Seta Venda (08 - 09 - 10) do bico, em litros
-     */
-    public void setVolVendas(Double volVendas) {
-        this.volVendas = volVendas;
-    }
-    
 }

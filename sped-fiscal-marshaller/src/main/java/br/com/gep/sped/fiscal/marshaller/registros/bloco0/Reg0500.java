@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.bloco0;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,110 +18,47 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "0500"),
     @Field(at = 8, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg0500 extends Registro {
-    
+
+    /**
+     * Data da inclusão/alteração
+     */
     @Field(at = 2)
     private Date dtAlt;
-    
-    @Field(at = 3)
-    private String codNatCc;
-    
-    @Field(at = 4)
-    private String indCta;
-    
-    @Field(at = 5)
-    private String nivel;
-    
-    @Field(at = 6)
-    private String codCta;
-    
-    @Field(at = 7)
-    private String nomeCta;
-    
-    /**
-     * Obtém Data da inclusão/alteração
-     */
-    public Date getDtAlt() {
-        return dtAlt;
-    }
 
     /**
-     * Seta Data da inclusão/alteração
-     */
-    public void setDtAlt(Date dtAlt) {
-        this.dtAlt = dtAlt;
-    }
-    
-    /**
-     * Obtém Código da natureza da conta
-     */
-    public String getCodNatCc() {
-        return codNatCc;
-    }
-
-    /**
-     * Seta Código da natureza da conta
+     * Código da natureza da conta
      * <p>01=Contas de ativo;02=Contas de passivo;03=Patrimônio líquido;04=Contas de resultado;05=Contas de compensação;09=Outras</p>
      */
-    public void setCodNatCc(String codNatCc) {
-        this.codNatCc = codNatCc;
-    }
-    
-    /**
-     * Obtém Indicador do tipo de conta
-     */
-    public String getIndCta() {
-        return indCta;
-    }
+    @Field(at = 3)
+    private String codNatCc;
 
     /**
-     * Seta Indicador do tipo de conta
+     * Indicador do tipo de conta
      * <p>S=Sintética (grupo de contas);A=Analítica (conta)</p>
      */
-    public void setIndCta(String indCta) {
-        this.indCta = indCta;
-    }
-    
-    /**
-     * Obtém Nível da conta
-     */
-    public String getNivel() {
-        return nivel;
-    }
+    @Field(at = 4)
+    private String indCta;
 
     /**
-     * Seta Nível da conta
+     * Nível da conta
      */
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
-    }
-    
-    /**
-     * Obtém Código da conta
-     */
-    public String getCodCta() {
-        return codCta;
-    }
+    @Field(at = 5)
+    private String nivel;
 
     /**
-     * Seta Código da conta
+     * Código da conta
      */
-    public void setCodCta(String codCta) {
-        this.codCta = codCta;
-    }
-    
-    /**
-     * Obtém Nome da conta
-     */
-    public String getNomeCta() {
-        return nomeCta;
-    }
+    @Field(at = 6)
+    private String codCta;
 
     /**
-     * Seta Nome da conta
+     * Nome da conta
      */
-    public void setNomeCta(String nomeCta) {
-        this.nomeCta = nomeCta;
-    }
-    
+    @Field(at = 7)
+    private String nomeCta;
+
+
 }

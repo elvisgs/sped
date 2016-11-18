@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,280 +18,107 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C800"),
     @Field(at = 18, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC800 extends Registro {
-    
-    @Field(at = 2)
-    private String codMod;
-    
-    @Field(at = 3)
-    private String codSit;
-    
-    @Field(at = 4)
-    private String numCfe;
-    
-    @Field(at = 5)
-    private Date dtDoc;
-    
-    @Field(at = 6)
-    private Double vlCfe;
-    
-    @Field(at = 7)
-    private Double vlPis;
-    
-    @Field(at = 8)
-    private Double vlCofins;
-    
-    @Field(at = 9)
-    private String cnpjCpf;
-    
-    @Field(at = 10)
-    private String nrSat;
-    
-    @Field(at = 11)
-    private String chvCfe;
-    
-    @Field(at = 12)
-    private Double vlDesc;
-    
-    @Field(at = 13)
-    private Double vlMerc;
-    
-    @Field(at = 14)
-    private Double vlOutDa;
-    
-    @Field(at = 15)
-    private Double vlIcms;
-    
-    @Field(at = 16)
-    private Double vlPisSt;
-    
-    @Field(at = 17)
-    private Double vlCofinsSt;
-    
-    /**
-     * Obtém Código do modelo de documento fiscal
-     */
-    public String getCodMod() {
-        return codMod;
-    }
 
     /**
-     * Seta Código do modelo de documento fiscal
+     * Código do modelo de documento fiscal
      * <p>59=Cupom Fiscal Eletrônico - CF-e</p>
      */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Código da Situação do documento fiscal
-     */
-    public String getCodSit() {
-        return codSit;
-    }
+    @Field(at = 2)
+    private String codMod;
 
     /**
-     * Seta Código da Situação do documento fiscal
+     * Código da Situação do documento fiscal
      * <p>00=Documento regular;01=Documento regular extemporâneo;02=Documento cancelado;03=Documento cancelado extemporâneo</p>
      */
-    public void setCodSit(String codSit) {
-        this.codSit = codSit;
-    }
-    
-    /**
-     * Obtém Número do cupom fiscal Eletrônico
-     */
-    public String getNumCfe() {
-        return numCfe;
-    }
+    @Field(at = 3)
+    private String codSit;
 
     /**
-     * Seta Número do cupom fiscal Eletrônico
+     * Número do cupom fiscal Eletrônico
      */
-    public void setNumCfe(String numCfe) {
-        this.numCfe = numCfe;
-    }
-    
-    /**
-     * Obtém Data da Emissão do cupom fiscal eletrônico
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
+    @Field(at = 4)
+    private String numCfe;
 
     /**
-     * Seta Data da Emissão do cupom fiscal eletrônico
+     * Data da Emissão do cupom fiscal eletrônico
      */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Valor Total do Cupom Fiscal Eletrônico
-     */
-    public Double getVlCfe() {
-        return vlCfe;
-    }
+    @Field(at = 5)
+    private Date dtDoc;
 
     /**
-     * Seta Valor Total do Cupom Fiscal Eletrônico
+     * Valor Total do Cupom Fiscal Eletrônico
      */
-    public void setVlCfe(Double vlCfe) {
-        this.vlCfe = vlCfe;
-    }
-    
-    /**
-     * Obtém Valor Total do PIS
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
+    @Field(at = 6)
+    private Double vlCfe;
 
     /**
-     * Seta Valor Total do PIS
+     * Valor Total do PIS
      */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém Valor Total da COFINS
-     */
-    public Double getVlCofins() {
-        return vlCofins;
-    }
+    @Field(at = 7)
+    private Double vlPis;
 
     /**
-     * Seta Valor Total da COFINS
+     * Valor Total da COFINS
      */
-    public void setVlCofins(Double vlCofins) {
-        this.vlCofins = vlCofins;
-    }
-    
-    /**
-     * Obtém CNPJ ou CPF do destinatário
-     */
-    public String getCnpjCpf() {
-        return cnpjCpf;
-    }
+    @Field(at = 8)
+    private Double vlCofins;
 
     /**
-     * Seta CNPJ ou CPF do destinatário
+     * CNPJ ou CPF do destinatário
      */
-    public void setCnpjCpf(String cnpjCpf) {
-        this.cnpjCpf = cnpjCpf;
-    }
-    
-    /**
-     * Obtém Número de Série do Equipamento SAT
-     */
-    public String getNrSat() {
-        return nrSat;
-    }
+    @Field(at = 9)
+    private String cnpjCpf;
 
     /**
-     * Seta Número de Série do Equipamento SAT
+     * Número de Série do Equipamento SAT
      */
-    public void setNrSat(String nrSat) {
-        this.nrSat = nrSat;
-    }
-    
-    /**
-     * Obtém Chave do Cupom Fiscal Eletrônico
-     */
-    public String getChvCfe() {
-        return chvCfe;
-    }
+    @Field(at = 10)
+    private String nrSat;
 
     /**
-     * Seta Chave do Cupom Fiscal Eletrônico
+     * Chave do Cupom Fiscal Eletrônico
      */
-    public void setChvCfe(String chvCfe) {
-        this.chvCfe = chvCfe;
-    }
-    
-    /**
-     * Obtém Valor total do desconto sobre item
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
+    @Field(at = 11)
+    private String chvCfe;
 
     /**
-     * Seta Valor total do desconto sobre item
+     * Valor total do desconto sobre item
      */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Valor total das mercadorias e serviços
-     */
-    public Double getVlMerc() {
-        return vlMerc;
-    }
+    @Field(at = 12)
+    private Double vlDesc;
 
     /**
-     * Seta Valor total das mercadorias e serviços
+     * Valor total das mercadorias e serviços
      */
-    public void setVlMerc(Double vlMerc) {
-        this.vlMerc = vlMerc;
-    }
-    
-    /**
-     * Obtém Valor de outras desp. acessórias (acréscimo)
-     */
-    public Double getVlOutDa() {
-        return vlOutDa;
-    }
+    @Field(at = 13)
+    private Double vlMerc;
 
     /**
-     * Seta Valor de outras desp. acessórias (acréscimo)
+     * Valor de outras desp. acessórias (acréscimo)
      */
-    public void setVlOutDa(Double vlOutDa) {
-        this.vlOutDa = vlOutDa;
-    }
-    
-    /**
-     * Obtém Valor do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
+    @Field(at = 14)
+    private Double vlOutDa;
 
     /**
-     * Seta Valor do ICMS
+     * Valor do ICMS
      */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Valor total do PIS retido por subs. trib
-     */
-    public Double getVlPisSt() {
-        return vlPisSt;
-    }
+    @Field(at = 15)
+    private Double vlIcms;
 
     /**
-     * Seta Valor total do PIS retido por subs. trib
+     * Valor total do PIS retido por subs. trib
      */
-    public void setVlPisSt(Double vlPisSt) {
-        this.vlPisSt = vlPisSt;
-    }
-    
-    /**
-     * Obtém Valor total da COFINS retido por subs. trib
-     */
-    public Double getVlCofinsSt() {
-        return vlCofinsSt;
-    }
+    @Field(at = 16)
+    private Double vlPisSt;
 
     /**
-     * Seta Valor total da COFINS retido por subs. trib
+     * Valor total da COFINS retido por subs. trib
      */
-    public void setVlCofinsSt(Double vlCofinsSt) {
-        this.vlCofinsSt = vlCofinsSt;
-    }
-    
+    @Field(at = 17)
+    private Double vlCofinsSt;
+
+
 }

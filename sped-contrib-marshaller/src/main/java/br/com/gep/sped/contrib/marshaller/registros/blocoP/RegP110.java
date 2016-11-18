@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoP;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,76 +16,34 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "P110"),
     @Field(at = 6, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegP110 extends Registro {
-    
+
+    /**
+     * Informar o número do campo do registro “P100”
+     * <p>04=Valor da Receita Bruta Total do Estabelecimento no Período;06=Valor da Receita Bruta Total do Estabelecimento;07=Valor das Exclusões da Receita Bruta;08=Valor da Base de Cálculo da Contribuição sobre o valor da Receita Bruta;10=Valor da Contribuição Previdenciária Devida sobre o valor da Receita Bruta</p>
+     */
     @Field(at = 2)
     private String numCampo;
-    
+
+    /**
+     * Código do tipo de detalhamento
+     */
     @Field(at = 3)
     private String codDet;
-    
+
+    /**
+     * Valor detalhado
+     */
     @Field(at = 4)
     private Double detValor;
-    
+
+    /**
+     * Informação Complementar
+     */
     @Field(at = 5)
     private String infCompl;
-    
-    
-    /**
-     * Obtém Informar o número do campo do registro “P100”
-     */
-    public String getNumCampo() {
-        return numCampo;
-    }
 
-    /**
-     * Seta Informar o número do campo do registro “P100”
-     */
-    public void setNumCampo(String numCampo) {
-        this.numCampo = numCampo;
-    }
-    
-    /**
-     * Obtém Código do tipo de detalhamento
-     */
-    public String getCodDet() {
-        return codDet;
-    }
 
-    /**
-     * Seta Código do tipo de detalhamento
-     */
-    public void setCodDet(String codDet) {
-        this.codDet = codDet;
-    }
-    
-    /**
-     * Obtém Valor detalhado
-     */
-    public Double getDetValor() {
-        return detValor;
-    }
-
-    /**
-     * Seta Valor detalhado
-     */
-    public void setDetValor(Double detValor) {
-        this.detValor = detValor;
-    }
-    
-    /**
-     * Obtém Informação Complementar
-     */
-    public String getInfCompl() {
-        return infCompl;
-    }
-
-    /**
-     * Seta Informação Complementar
-     */
-    public void setInfCompl(String infCompl) {
-        this.infCompl = infCompl;
-    }
-    
-    
 }

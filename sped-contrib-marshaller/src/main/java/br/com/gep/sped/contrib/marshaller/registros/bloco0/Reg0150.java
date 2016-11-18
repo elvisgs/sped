@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.bloco0;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,212 +16,81 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "0150"),
     @Field(at = 14, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg0150 extends Registro {
-    
+
+    /**
+     * Código de identificação do participante no arquivo
+     */
     @Field(at = 2)
     private String codPart;
-    
+
+    /**
+     * Nome pessoal ou empresarial do participante
+     */
     @Field(at = 3)
     private String nome;
-    
+
+    /**
+     * Código do país do participante, conforme a tabela indicada no item 3.2.1
+     */
     @Field(at = 4)
     private String codPais;
-    
+
+    /**
+     * CNPJ do participante
+     */
     @Field(at = 5)
     private String cnpj;
-    
+
+    /**
+     * CPF do participante
+     */
     @Field(at = 6)
     private String cpf;
-    
+
+    /**
+     * Inscrição Estadual do participante
+     */
     @Field(at = 7)
     private String ie;
-    
+
+    /**
+     * Código do município, conforme a tabela IBGE
+     */
     @Field(at = 8)
     private String codMun;
-    
+
+    /**
+     * Número de inscrição do participante na Suframa
+     */
     @Field(at = 9)
     private String suframa;
-    
+
+    /**
+     * Logradouro e endereço do imóvel
+     */
     @Field(at = 10)
     private String end;
-    
+
+    /**
+     * Número do imóvel
+     */
     @Field(at = 11)
     private String num;
-    
+
+    /**
+     * Dados complementares do endereço
+     */
     @Field(at = 12)
     private String compl;
-    
+
+    /**
+     * Bairro em que o imóvel está situado
+     */
     @Field(at = 13)
     private String bairro;
-    
-    
-    /**
-     * Obtém Código
-     */
-    public String getCodPart() {
-        return codPart;
-    }
 
-    /**
-     * Seta Código
-     */
-    public void setCodPart(String codPart) {
-        this.codPart = codPart;
-    }
-    
-    /**
-     * Obtém Nome
-     */
-    public String getNome() {
-        return nome;
-    }
 
-    /**
-     * Seta Nome
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    
-    /**
-     * Obtém País
-     */
-    public String getCodPais() {
-        return codPais;
-    }
-
-    /**
-     * Seta País
-     */
-    public void setCodPais(String codPais) {
-        this.codPais = codPais;
-    }
-    
-    /**
-     * Obtém CNPJ
-     */
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    /**
-     * Seta CNPJ
-     */
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-    
-    /**
-     * Obtém CPF
-     */
-    public String getCpf() {
-        return cpf;
-    }
-
-    /**
-     * Seta CPF
-     */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    
-    /**
-     * Obtém Inscrição Estadual
-     */
-    public String getIe() {
-        return ie;
-    }
-
-    /**
-     * Seta Inscrição Estadual
-     */
-    public void setIe(String ie) {
-        this.ie = ie;
-    }
-    
-    /**
-     * Obtém Município
-     */
-    public String getCodMun() {
-        return codMun;
-    }
-
-    /**
-     * Seta Município
-     */
-    public void setCodMun(String codMun) {
-        this.codMun = codMun;
-    }
-    
-    /**
-     * Obtém Inscrição na SUFRAMA
-     */
-    public String getSuframa() {
-        return suframa;
-    }
-
-    /**
-     * Seta Inscrição na SUFRAMA
-     */
-    public void setSuframa(String suframa) {
-        this.suframa = suframa;
-    }
-    
-    /**
-     * Obtém Logradouro
-     */
-    public String getEnd() {
-        return end;
-    }
-
-    /**
-     * Seta Logradouro
-     */
-    public void setEnd(String end) {
-        this.end = end;
-    }
-    
-    /**
-     * Obtém Número
-     */
-    public String getNum() {
-        return num;
-    }
-
-    /**
-     * Seta Número
-     */
-    public void setNum(String num) {
-        this.num = num;
-    }
-    
-    /**
-     * Obtém Complemento
-     */
-    public String getCompl() {
-        return compl;
-    }
-
-    /**
-     * Seta Complemento
-     */
-    public void setCompl(String compl) {
-        this.compl = compl;
-    }
-    
-    /**
-     * Obtém Bairro
-     */
-    public String getBairro() {
-        return bairro;
-    }
-
-    /**
-     * Seta Bairro
-     */
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-    
-    
 }

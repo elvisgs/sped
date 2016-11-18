@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.bloco0;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,144 +18,59 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "0500"),
     @Field(at = 10, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg0500 extends Registro {
-    
+
+    /**
+     * Data da inclusão/alteração
+     */
     @Field(at = 2)
     private Date dtAlt;
-    
+
+    /**
+     * Código da natureza da conta/grupo de contas
+     * <p>01=Contas de ativo;02=Contas de passivo;03=Patrimônio líquido;04=Contas de resultado;05=Contas de compensação;09=Outras</p>
+     */
     @Field(at = 3)
     private String codNatCc;
-    
+
+    /**
+     * Indicador do tipo de conta
+     * <p>S=Sintética (grupo de contas);A=Analítica (conta)</p>
+     */
     @Field(at = 4)
     private String indCta;
-    
+
+    /**
+     * Nível da conta analítica/grupo de contas
+     */
     @Field(at = 5)
     private String nivel;
-    
+
+    /**
+     * Código da conta analítica/grupo de contas
+     */
     @Field(at = 6)
     private String codCta;
-    
+
+    /**
+     * Nome da conta analítica/grupo de contas
+     */
     @Field(at = 7)
     private String nomeCta;
-    
+
+    /**
+     * Código da conta correlacionada no Plano de Contas Referenciado, publicado pela RFB
+     */
     @Field(at = 8)
     private String codCtaRef;
-    
+
+    /**
+     * CNPJ do estabelecimento, no caso da conta informada no campo COD_CTA ser específica de um estabelecimento
+     */
     @Field(at = 9)
     private String cnpjEst;
-    
-    
-    /**
-     * Obtém Data da inclusão ou alteração
-     */
-    public Date getDtAlt() {
-        return dtAlt;
-    }
 
-    /**
-     * Seta Data da inclusão ou alteração
-     */
-    public void setDtAlt(Date dtAlt) {
-        this.dtAlt = dtAlt;
-    }
-    
-    /**
-     * Obtém Natureza
-     */
-    public String getCodNatCc() {
-        return codNatCc;
-    }
 
-    /**
-     * Seta Natureza
-     */
-    public void setCodNatCc(String codNatCc) {
-        this.codNatCc = codNatCc;
-    }
-    
-    /**
-     * Obtém Tipo
-     */
-    public String getIndCta() {
-        return indCta;
-    }
-
-    /**
-     * Seta Tipo
-     */
-    public void setIndCta(String indCta) {
-        this.indCta = indCta;
-    }
-    
-    /**
-     * Obtém Nível
-     */
-    public String getNivel() {
-        return nivel;
-    }
-
-    /**
-     * Seta Nível
-     */
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
-    }
-    
-    /**
-     * Obtém Código
-     */
-    public String getCodCta() {
-        return codCta;
-    }
-
-    /**
-     * Seta Código
-     */
-    public void setCodCta(String codCta) {
-        this.codCta = codCta;
-    }
-    
-    /**
-     * Obtém Nome
-     */
-    public String getNomeCta() {
-        return nomeCta;
-    }
-
-    /**
-     * Seta Nome
-     */
-    public void setNomeCta(String nomeCta) {
-        this.nomeCta = nomeCta;
-    }
-    
-    /**
-     * Obtém Conta relacionada no Plano de Contas Referenciado da RFB
-     */
-    public String getCodCtaRef() {
-        return codCtaRef;
-    }
-
-    /**
-     * Seta Conta relacionada no Plano de Contas Referenciado da RFB
-     */
-    public void setCodCtaRef(String codCtaRef) {
-        this.codCtaRef = codCtaRef;
-    }
-    
-    /**
-     * Obtém CNPJ do Estabelecimento
-     */
-    public String getCnpjEst() {
-        return cnpjEst;
-    }
-
-    /**
-     * Seta CNPJ do Estabelecimento
-     */
-    public void setCnpjEst(String cnpjEst) {
-        this.cnpjEst = cnpjEst;
-    }
-    
-    
 }

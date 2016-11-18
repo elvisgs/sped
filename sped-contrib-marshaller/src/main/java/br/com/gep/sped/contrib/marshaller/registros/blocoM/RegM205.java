@@ -1,12 +1,14 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoM;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
 
 /**
- * M205 - Detalhamento da Contribuição
+ * M205 - Detalhamento por Código de Receita (Visão DCTF)
  */
 @Record
 @Fields({
@@ -14,59 +16,28 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "M205"),
     @Field(at = 5, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegM205 extends Registro {
-    
+
+    /**
+     * Informar o número do campo do registro M200
+     * <p>08=Valor da contribuição não-cumulativa a recolher;12=Valor da contribuição cumulativa a recolher</p>
+     */
     @Field(at = 2)
     private String numCampo;
-    
+
+    /**
+     * Informar o Código da Receita referente à contribuição a recolher, detalhada neste registro
+     */
     @Field(at = 3)
     private String codRec;
-    
+
+    /**
+     * Valor do Débito correspondente à contribuição a recolher, detalhada neste registro
+     */
     @Field(at = 4)
     private Double vlDebito;
-    
-    
-    /**
-     * Obtém Número do Campo de M200 a ser detalhado
-     */
-    public String getNumCampo() {
-        return numCampo;
-    }
 
-    /**
-     * Seta Número do Campo de M200 a ser detalhado
-     */
-    public void setNumCampo(String numCampo) {
-        this.numCampo = numCampo;
-    }
-    
-    /**
-     * Obtém Código da Receita
-     */
-    public String getCodRec() {
-        return codRec;
-    }
 
-    /**
-     * Seta Código da Receita
-     */
-    public void setCodRec(String codRec) {
-        this.codRec = codRec;
-    }
-    
-    /**
-     * Obtém Valor do Débito
-     */
-    public Double getVlDebito() {
-        return vlDebito;
-    }
-
-    /**
-     * Seta Valor do Débito
-     */
-    public void setVlDebito(Double vlDebito) {
-        this.vlDebito = vlDebito;
-    }
-    
-    
 }

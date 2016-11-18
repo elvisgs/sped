@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Local Coleta/Entrega
@@ -16,160 +16,64 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C115"),
     @Field(at = 11, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC115 extends Registro {
-    
-    @Field(at = 2)
-    private String indCarga;
-    
-    @Field(at = 3)
-    private String cnpjCol;
-    
-    @Field(at = 4)
-    private String ieCol;
-    
-    @Field(at = 5)
-    private String cpfCol;
-    
-    @Field(at = 6)
-    private String codMunCol;
-    
-    @Field(at = 7)
-    private String cnpjEntg;
-    
-    @Field(at = 8)
-    private String ieEntg;
-    
-    @Field(at = 9)
-    private String cpfEntg;
-    
-    @Field(at = 10)
-    private String codMunEntg;
-    
-    /**
-     * Obtém Tipo de carga
-     */
-    public String getIndCarga() {
-        return indCarga;
-    }
 
     /**
-     * Seta Tipo de carga
+     * Tipo de carga
      * <p>0=Rodoviário;1=Ferroviário;2=Rodo-Ferroviário;3=Aquaviário;4=Dutoviário;5=Aéreo;9=Outros</p>
      */
-    public void setIndCarga(String indCarga) {
-        this.indCarga = indCarga;
-    }
-    
-    /**
-     * Obtém CNPJ (coleta)
-     */
-    public String getCnpjCol() {
-        return cnpjCol;
-    }
+    @Field(at = 2)
+    private String indCarga;
 
     /**
-     * Seta CNPJ (coleta)
+     * CNPJ (coleta)
      */
-    public void setCnpjCol(String cnpjCol) {
-        this.cnpjCol = cnpjCol;
-    }
-    
-    /**
-     * Obtém IE (coleta)
-     */
-    public String getIeCol() {
-        return ieCol;
-    }
+    @Field(at = 3)
+    private String cnpjCol;
 
     /**
-     * Seta IE (coleta)
+     * IE (coleta)
      */
-    public void setIeCol(String ieCol) {
-        this.ieCol = ieCol;
-    }
-    
-    /**
-     * Obtém CPF (coleta)
-     */
-    public String getCpfCol() {
-        return cpfCol;
-    }
+    @Field(at = 4)
+    private String ieCol;
 
     /**
-     * Seta CPF (coleta)
+     * CPF (coleta)
      */
-    public void setCpfCol(String cpfCol) {
-        this.cpfCol = cpfCol;
-    }
-    
-    /**
-     * Obtém Código do Município (coleta)
-     */
-    public String getCodMunCol() {
-        return codMunCol;
-    }
+    @Field(at = 5)
+    private String cpfCol;
 
     /**
-     * Seta Código do Município (coleta)
+     * Código do Município (coleta)
      */
-    public void setCodMunCol(String codMunCol) {
-        this.codMunCol = codMunCol;
-    }
-    
-    /**
-     * Obtém CNPJ (entrega)
-     */
-    public String getCnpjEntg() {
-        return cnpjEntg;
-    }
+    @Field(at = 6)
+    private String codMunCol;
 
     /**
-     * Seta CNPJ (entrega)
+     * CNPJ (entrega)
      */
-    public void setCnpjEntg(String cnpjEntg) {
-        this.cnpjEntg = cnpjEntg;
-    }
-    
-    /**
-     * Obtém IE (entrega)
-     */
-    public String getIeEntg() {
-        return ieEntg;
-    }
+    @Field(at = 7)
+    private String cnpjEntg;
 
     /**
-     * Seta IE (entrega)
+     * IE (entrega)
      */
-    public void setIeEntg(String ieEntg) {
-        this.ieEntg = ieEntg;
-    }
-    
-    /**
-     * Obtém CPF (entrega)
-     */
-    public String getCpfEntg() {
-        return cpfEntg;
-    }
+    @Field(at = 8)
+    private String ieEntg;
 
     /**
-     * Seta CPF (entrega)
+     * CPF (entrega)
      */
-    public void setCpfEntg(String cpfEntg) {
-        this.cpfEntg = cpfEntg;
-    }
-    
-    /**
-     * Obtém Código do Município (entrega)
-     */
-    public String getCodMunEntg() {
-        return codMunEntg;
-    }
+    @Field(at = 9)
+    private String cpfEntg;
 
     /**
-     * Seta Código do Município (entrega)
+     * Código do Município (entrega)
      */
-    public void setCodMunEntg(String codMunEntg) {
-        this.codMunEntg = codMunEntg;
-    }
-    
+    @Field(at = 10)
+    private String codMunEntg;
+
+
 }

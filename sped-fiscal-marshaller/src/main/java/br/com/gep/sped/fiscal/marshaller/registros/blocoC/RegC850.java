@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Registro Analitico do CF-e
@@ -16,125 +16,51 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C850"),
     @Field(at = 9, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC850 extends Registro {
-    
+
+    /**
+     * Código da Situação Tributária
+     */
     @Field(at = 2)
     private String cstIcms;
-    
+
+    /**
+     * Código Fiscal de Operação e Prestação
+     */
     @Field(at = 3)
     private String cfop;
-    
+
+    /**
+     * Alíquota do ICMS
+     */
     @Field(at = 4)
     private Double aliqIcms;
-    
+
+    /**
+     * Valor da operação
+     */
     @Field(at = 5)
     private Double vlOpr;
-    
+
+    /**
+     * Base de Cálculo do ICMS
+     */
     @Field(at = 6)
     private Double vlBcIcms;
-    
+
+    /**
+     * Valor do ICMS
+     */
     @Field(at = 7)
     private Double vlIcms;
-    
+
+    /**
+     * Código da observação do lançamento fiscal (Campo 02 do regisro 0460)
+     */
     @Field(at = 8)
     private String codObs;
-    
-    /**
-     * Obtém Código da Situação Tributária
-     */
-    public String getCstIcms() {
-        return cstIcms;
-    }
 
-    /**
-     * Seta Código da Situação Tributária
-     */
-    public void setCstIcms(String cstIcms) {
-        this.cstIcms = cstIcms;
-    }
-    
-    /**
-     * Obtém Código Fiscal de Operação e Prestação
-     */
-    public String getCfop() {
-        return cfop;
-    }
 
-    /**
-     * Seta Código Fiscal de Operação e Prestação
-     */
-    public void setCfop(String cfop) {
-        this.cfop = cfop;
-    }
-    
-    /**
-     * Obtém Alíquota do ICMS
-     */
-    public Double getAliqIcms() {
-        return aliqIcms;
-    }
-
-    /**
-     * Seta Alíquota do ICMS
-     */
-    public void setAliqIcms(Double aliqIcms) {
-        this.aliqIcms = aliqIcms;
-    }
-    
-    /**
-     * Obtém Valor da operação
-     */
-    public Double getVlOpr() {
-        return vlOpr;
-    }
-
-    /**
-     * Seta Valor da operação
-     */
-    public void setVlOpr(Double vlOpr) {
-        this.vlOpr = vlOpr;
-    }
-    
-    /**
-     * Obtém Base de Cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
-
-    /**
-     * Seta Base de Cálculo do ICMS
-     */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Valor do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
-
-    /**
-     * Seta Valor do ICMS
-     */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Código da observação do lançamento fiscal (Campo 02 do regisro 0460)
-     */
-    public String getCodObs() {
-        return codObs;
-    }
-
-    /**
-     * Seta Código da observação do lançamento fiscal (Campo 02 do regisro 0460)
-     */
-    public void setCodObs(String codObs) {
-        this.codObs = codObs;
-    }
-    
 }

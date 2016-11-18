@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoD;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Local Coleta/Entrega
@@ -16,126 +16,52 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "D161"),
     @Field(at = 9, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegD161 extends Registro {
-    
-    @Field(at = 2)
-    private String indCarga;
-    
-    @Field(at = 3)
-    private String cnpjCpfCol;
-    
-    @Field(at = 4)
-    private String ieCol;
-    
-    @Field(at = 5)
-    private String codMunCol;
-    
-    @Field(at = 6)
-    private String cnpjCpfEntg;
-    
-    @Field(at = 7)
-    private String ieEntg;
-    
-    @Field(at = 8)
-    private String codMunEntg;
-    
-    /**
-     * Obtém Tipo de transporte
-     */
-    public String getIndCarga() {
-        return indCarga;
-    }
 
     /**
-     * Seta Tipo de transporte
+     * Tipo de transporte
      * <p>0=Rodoviário;1=Ferroviário;2=Rodo-Ferroviário;3=Aquaviário;4=Dutoviário;5=Aéreo;9=Outros</p>
      */
-    public void setIndCarga(String indCarga) {
-        this.indCarga = indCarga;
-    }
-    
-    /**
-     * Obtém CNPJ ou CPF do contribuinte na coleta
-     */
-    public String getCnpjCpfCol() {
-        return cnpjCpfCol;
-    }
+    @Field(at = 2)
+    private String indCarga;
 
     /**
-     * Seta CNPJ ou CPF do contribuinte na coleta
+     * CNPJ ou CPF do contribuinte na coleta
      */
-    public void setCnpjCpfCol(String cnpjCpfCol) {
-        this.cnpjCpfCol = cnpjCpfCol;
-    }
-    
-    /**
-     * Obtém Inscrição Estadual na coleta
-     */
-    public String getIeCol() {
-        return ieCol;
-    }
+    @Field(at = 3)
+    private String cnpjCpfCol;
 
     /**
-     * Seta Inscrição Estadual na coleta
+     * Inscrição Estadual na coleta
      */
-    public void setIeCol(String ieCol) {
-        this.ieCol = ieCol;
-    }
-    
-    /**
-     * Obtém Código do município na coleta
-     */
-    public String getCodMunCol() {
-        return codMunCol;
-    }
+    @Field(at = 4)
+    private String ieCol;
 
     /**
-     * Seta Código do município na coleta
+     * Código do município na coleta
      */
-    public void setCodMunCol(String codMunCol) {
-        this.codMunCol = codMunCol;
-    }
-    
-    /**
-     * Obtém CNPJ ou CPF do contribuinte na entrega
-     */
-    public String getCnpjCpfEntg() {
-        return cnpjCpfEntg;
-    }
+    @Field(at = 5)
+    private String codMunCol;
 
     /**
-     * Seta CNPJ ou CPF do contribuinte na entrega
+     * CNPJ ou CPF do contribuinte na entrega
      */
-    public void setCnpjCpfEntg(String cnpjCpfEntg) {
-        this.cnpjCpfEntg = cnpjCpfEntg;
-    }
-    
-    /**
-     * Obtém Inscrição Estadual na entrega
-     */
-    public String getIeEntg() {
-        return ieEntg;
-    }
+    @Field(at = 6)
+    private String cnpjCpfEntg;
 
     /**
-     * Seta Inscrição Estadual na entrega
+     * Inscrição Estadual na entrega
      */
-    public void setIeEntg(String ieEntg) {
-        this.ieEntg = ieEntg;
-    }
-    
-    /**
-     * Obtém Código do município na entrega
-     */
-    public String getCodMunEntg() {
-        return codMunEntg;
-    }
+    @Field(at = 7)
+    private String ieEntg;
 
     /**
-     * Seta Código do município na entrega
+     * Código do município na entrega
      */
-    public void setCodMunEntg(String codMunEntg) {
-        this.codMunEntg = codMunEntg;
-    }
-    
+    @Field(at = 8)
+    private String codMunEntg;
+
+
 }

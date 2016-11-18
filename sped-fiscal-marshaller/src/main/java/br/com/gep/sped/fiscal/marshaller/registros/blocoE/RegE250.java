@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoE;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,160 +18,64 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "E250"),
     @Field(at = 11, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegE250 extends Registro {
-    
+
+    /**
+     * Código do ICMS ST recolhido ou a recolher
+     */
     @Field(at = 2)
     private String codOr;
-    
+
+    /**
+     * Valor do ICMS ST a recolher
+     */
     @Field(at = 3)
     private Double vlOr;
-    
+
+    /**
+     * Data de vencimento
+     */
     @Field(at = 4)
     private Date dtVcto;
-    
+
+    /**
+     * Código de receita
+     */
     @Field(at = 5)
     private String codRec;
-    
+
+    /**
+     * Número do processo
+     */
     @Field(at = 6)
     private String numProc;
-    
-    @Field(at = 7)
-    private String indProc;
-    
-    @Field(at = 8)
-    private String proc;
-    
-    @Field(at = 9)
-    private String txtCompl;
-    
-    @Field(at = 10)
-    private String mesRef;
-    
-    /**
-     * Obtém Código do ICMS ST recolhido ou a recolher
-     */
-    public String getCodOr() {
-        return codOr;
-    }
 
     /**
-     * Seta Código do ICMS ST recolhido ou a recolher
-     */
-    public void setCodOr(String codOr) {
-        this.codOr = codOr;
-    }
-    
-    /**
-     * Obtém Valor do ICMS ST a recolher
-     */
-    public Double getVlOr() {
-        return vlOr;
-    }
-
-    /**
-     * Seta Valor do ICMS ST a recolher
-     */
-    public void setVlOr(Double vlOr) {
-        this.vlOr = vlOr;
-    }
-    
-    /**
-     * Obtém Data de vencimento
-     */
-    public Date getDtVcto() {
-        return dtVcto;
-    }
-
-    /**
-     * Seta Data de vencimento
-     */
-    public void setDtVcto(Date dtVcto) {
-        this.dtVcto = dtVcto;
-    }
-    
-    /**
-     * Obtém Código de receita
-     */
-    public String getCodRec() {
-        return codRec;
-    }
-
-    /**
-     * Seta Código de receita
-     */
-    public void setCodRec(String codRec) {
-        this.codRec = codRec;
-    }
-    
-    /**
-     * Obtém Número do processo
-     */
-    public String getNumProc() {
-        return numProc;
-    }
-
-    /**
-     * Seta Número do processo
-     */
-    public void setNumProc(String numProc) {
-        this.numProc = numProc;
-    }
-    
-    /**
-     * Obtém Origem do processo
-     */
-    public String getIndProc() {
-        return indProc;
-    }
-
-    /**
-     * Seta Origem do processo
+     * Origem do processo
      * <p>0=Sefaz;1=Justiça Federal;2=Justiça Estadual;9=Outros</p>
      */
-    public void setIndProc(String indProc) {
-        this.indProc = indProc;
-    }
-    
-    /**
-     * Obtém Descrição resumida do processo
-     */
-    public String getProc() {
-        return proc;
-    }
+    @Field(at = 7)
+    private String indProc;
 
     /**
-     * Seta Descrição resumida do processo
+     * Descrição resumida do processo
      */
-    public void setProc(String proc) {
-        this.proc = proc;
-    }
-    
-    /**
-     * Obtém Descrição complementar
-     */
-    public String getTxtCompl() {
-        return txtCompl;
-    }
+    @Field(at = 8)
+    private String proc;
 
     /**
-     * Seta Descrição complementar
+     * Descrição complementar
      */
-    public void setTxtCompl(String txtCompl) {
-        this.txtCompl = txtCompl;
-    }
-    
-    /**
-     * Obtém Mês de referência
-     */
-    public String getMesRef() {
-        return mesRef;
-    }
+    @Field(at = 9)
+    private String txtCompl;
 
     /**
-     * Seta Mês de referência
+     * Mês de referência
      */
-    public void setMesRef(String mesRef) {
-        this.mesRef = mesRef;
-    }
-    
+    @Field(at = 10)
+    private String mesRef;
+
+
 }

@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.bloco0;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Bens/Componentes do Ativo Imobilizado
@@ -16,109 +16,46 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "0300"),
     @Field(at = 8, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg0300 extends Registro {
-    
+
+    /**
+     * Código do bem
+     */
     @Field(at = 2)
     private String codIndBem;
-    
-    @Field(at = 3)
-    private String identMerc;
-    
-    @Field(at = 4)
-    private String descrItem;
-    
-    @Field(at = 5)
-    private String codPrnc;
-    
-    @Field(at = 6)
-    private String codCta;
-    
-    @Field(at = 7)
-    private String nrParc;
-    
-    /**
-     * Obtém Código do bem
-     */
-    public String getCodIndBem() {
-        return codIndBem;
-    }
 
     /**
-     * Seta Código do bem
-     */
-    public void setCodIndBem(String codIndBem) {
-        this.codIndBem = codIndBem;
-    }
-    
-    /**
-     * Obtém Tipo de mercadoria
-     */
-    public String getIdentMerc() {
-        return identMerc;
-    }
-
-    /**
-     * Seta Tipo de mercadoria
+     * Tipo de mercadoria
      * <p>1=bem;2=componente</p>
      */
-    public void setIdentMerc(String identMerc) {
-        this.identMerc = identMerc;
-    }
-    
-    /**
-     * Obtém Descrição do bem
-     */
-    public String getDescrItem() {
-        return descrItem;
-    }
+    @Field(at = 3)
+    private String identMerc;
 
     /**
-     * Seta Descrição do bem
+     * Descrição do bem
      */
-    public void setDescrItem(String descrItem) {
-        this.descrItem = descrItem;
-    }
-    
-    /**
-     * Obtém Código do bem principal
-     */
-    public String getCodPrnc() {
-        return codPrnc;
-    }
+    @Field(at = 4)
+    private String descrItem;
 
     /**
-     * Seta Código do bem principal
+     * Código do bem principal
      */
-    public void setCodPrnc(String codPrnc) {
-        this.codPrnc = codPrnc;
-    }
-    
-    /**
-     * Obtém Código da conta
-     */
-    public String getCodCta() {
-        return codCta;
-    }
+    @Field(at = 5)
+    private String codPrnc;
 
     /**
-     * Seta Código da conta
+     * Código da conta
      */
-    public void setCodCta(String codCta) {
-        this.codCta = codCta;
-    }
-    
-    /**
-     * Obtém Número de parcelas
-     */
-    public String getNrParc() {
-        return nrParc;
-    }
+    @Field(at = 6)
+    private String codCta;
 
     /**
-     * Seta Número de parcelas
+     * Número de parcelas
      */
-    public void setNrParc(String nrParc) {
-        this.nrParc = nrParc;
-    }
-    
+    @Field(at = 7)
+    private String nrParc;
+
+
 }

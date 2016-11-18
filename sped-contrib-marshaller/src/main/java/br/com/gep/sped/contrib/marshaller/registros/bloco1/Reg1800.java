@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.bloco1;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,144 +18,57 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "1800"),
     @Field(at = 10, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg1800 extends Registro {
-    
+
+    /**
+     * Empreendimento objeto de Incorporação Imobiliária, optante pelo RET.
+     */
     @Field(at = 2)
     private String incImob;
-    
+
+    /**
+     * Receitas recebidas pela incorporadora na venda das unidades imobiliárias que compõem a incorporação.
+     */
     @Field(at = 3)
     private Double recRecebRet;
-    
+
+    /**
+     * Receitas Financeiras e Variações Monetárias decorrentes das vendas submetidas ao RET.
+     */
     @Field(at = 4)
     private Double recFinRet;
-    
+
+    /**
+     * Base de Cálculo do Recolhimento Unificado
+     */
     @Field(at = 5)
     private Double bcRet;
-    
+
+    /**
+     * Alíquota do Recolhimento Unificado
+     */
     @Field(at = 6)
     private Double aliqRet;
-    
+
+    /**
+     * Valor do Recolhimento Unificado.
+     */
     @Field(at = 7)
     private Double vlRecUni;
-    
+
+    /**
+     * Data do recolhimento unificado
+     */
     @Field(at = 8)
     private Date dtRecUni;
-    
+
+    /**
+     * Código da Receita
+     */
     @Field(at = 9)
     private String codRec;
-    
-    
-    /**
-     * Obtém Empreendimento objeto de Incorporação Imobiliária, optante pelo RET.
-     */
-    public String getIncImob() {
-        return incImob;
-    }
 
-    /**
-     * Seta Empreendimento objeto de Incorporação Imobiliária, optante pelo RET.
-     */
-    public void setIncImob(String incImob) {
-        this.incImob = incImob;
-    }
-    
-    /**
-     * Obtém Receitas recebidas pela incorporadora na venda das unidades imobiliárias que compõem a incorporação.
-     */
-    public Double getRecRecebRet() {
-        return recRecebRet;
-    }
 
-    /**
-     * Seta Receitas recebidas pela incorporadora na venda das unidades imobiliárias que compõem a incorporação.
-     */
-    public void setRecRecebRet(Double recRecebRet) {
-        this.recRecebRet = recRecebRet;
-    }
-    
-    /**
-     * Obtém Receitas Financeiras e Variações Monetárias decorrentes das vendas submetidas ao RET.
-     */
-    public Double getRecFinRet() {
-        return recFinRet;
-    }
-
-    /**
-     * Seta Receitas Financeiras e Variações Monetárias decorrentes das vendas submetidas ao RET.
-     */
-    public void setRecFinRet(Double recFinRet) {
-        this.recFinRet = recFinRet;
-    }
-    
-    /**
-     * Obtém Base de Cálculo do Recolhimento Unificado
-     */
-    public Double getBcRet() {
-        return bcRet;
-    }
-
-    /**
-     * Seta Base de Cálculo do Recolhimento Unificado
-     */
-    public void setBcRet(Double bcRet) {
-        this.bcRet = bcRet;
-    }
-    
-    /**
-     * Obtém Alíquota do Recolhimento Unificado
-     */
-    public Double getAliqRet() {
-        return aliqRet;
-    }
-
-    /**
-     * Seta Alíquota do Recolhimento Unificado
-     */
-    public void setAliqRet(Double aliqRet) {
-        this.aliqRet = aliqRet;
-    }
-    
-    /**
-     * Obtém Valor do Recolhimento Unificado.
-     */
-    public Double getVlRecUni() {
-        return vlRecUni;
-    }
-
-    /**
-     * Seta Valor do Recolhimento Unificado.
-     */
-    public void setVlRecUni(Double vlRecUni) {
-        this.vlRecUni = vlRecUni;
-    }
-    
-    /**
-     * Obtém Data do recolhimento unificado
-     */
-    public Date getDtRecUni() {
-        return dtRecUni;
-    }
-
-    /**
-     * Seta Data do recolhimento unificado
-     */
-    public void setDtRecUni(Date dtRecUni) {
-        this.dtRecUni = dtRecUni;
-    }
-    
-    /**
-     * Obtém Código da Receita
-     */
-    public String getCodRec() {
-        return codRec;
-    }
-
-    /**
-     * Seta Código da Receita
-     */
-    public void setCodRec(String codRec) {
-        this.codRec = codRec;
-    }
-    
-    
 }

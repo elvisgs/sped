@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,620 +16,227 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "C170"),
     @Field(at = 38, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC170 extends Registro {
-    
+
+    /**
+     * Número seqüencial do item no documento fiscal
+     */
     @Field(at = 2)
     private String numItem;
-    
+
+    /**
+     * Código do item (campo 02 do Registro 0200)
+     */
     @Field(at = 3)
     private String codItem;
-    
+
+    /**
+     * Descrição complementar do item como adotado no documento fiscal
+     */
     @Field(at = 4)
     private String descrCompl;
-    
+
+    /**
+     * Quantidade do item
+     */
     @Field(at = 5)
     private Double qtd;
-    
+
+    /**
+     * Unidade do item (Campo 02 do registro 0190)
+     */
     @Field(at = 6)
     private String unid;
-    
+
+    /**
+     * Valor total do item (mercadorias ou serviços)
+     */
     @Field(at = 7)
     private Double vlItem;
-    
+
+    /**
+     * Valor do desconto comercial
+     */
     @Field(at = 8)
     private Double vlDesc;
-    
+
+    /**
+     * Movimentação física do ITEM/PRODUTO
+     * <p>0=Sim;1=Não</p>
+     */
     @Field(at = 9)
     private String indMov;
-    
+
+    /**
+     * Código da Situação Tributária referente ao ICMS, conforme a Tabela indicada no item 4.3.1
+     */
     @Field(at = 10)
     private String cstIcms;
-    
+
+    /**
+     * Código Fiscal de Operação e Prestação
+     */
     @Field(at = 11)
     private String cfop;
-    
+
+    /**
+     * Código da natureza da operação (campo 02 do Registro 0400)
+     */
     @Field(at = 12)
     private String codNat;
-    
+
+    /**
+     * Valor da base de cálculo do ICMS
+     */
     @Field(at = 13)
     private Double vlBcIcms;
-    
+
+    /**
+     * Alíquota do ICMS
+     */
     @Field(at = 14)
     private Double aliqIcms;
-    
+
+    /**
+     * Valor do ICMS creditado/debitado
+     */
     @Field(at = 15)
     private Double vlIcms;
-    
+
+    /**
+     * Valor da base de cálculo referente à substituição tributária
+     */
     @Field(at = 16)
     private Double vlBcIcmsSt;
-    
+
+    /**
+     * Alíquota do ICMS da substituição tributária na unidade da federação de destino
+     */
     @Field(at = 17)
     private Double aliqSt;
-    
+
+    /**
+     * Valor do ICMS referente à substituição tributária
+     */
     @Field(at = 18)
     private Double vlIcmsSt;
-    
+
+    /**
+     * Indicador de período de apuração do IPI
+     * <p>0=Mensal;1=Decendial</p>
+     */
     @Field(at = 19)
     private String indApur;
-    
+
+    /**
+     * Código da Situação Tributária referente ao IPI, conforme a Tabela indicada no item 4.3.2.
+     */
     @Field(at = 20)
     private String cstIpi;
-    
+
+    /**
+     * Código de enquadramento legal do IPI, conforme tabela indicada no item 4.5.3.
+     */
     @Field(at = 21)
     private String codEnq;
-    
+
+    /**
+     * Valor da base de cálculo do IPI
+     */
     @Field(at = 22)
     private Double vlBcIpi;
-    
+
+    /**
+     * Alíquota do IPI
+     */
     @Field(at = 23)
     private Double aliqIpi;
-    
+
+    /**
+     * Valor do IPI creditado/debitado
+     */
     @Field(at = 24)
     private Double vlIpi;
-    
+
+    /**
+     * Código da Situação Tributária referente ao PIS
+     */
     @Field(at = 25)
     private String cstPis;
-    
+
+    /**
+     * Valor da base de cálculo do PIS
+     */
     @Field(at = 26)
     private Double vlBcPis;
-    
+
+    /**
+     * Alíquota do PIS (em percentual)
+     */
     @Field(at = 27)
     private Double aliqPis;
-    
+
+    /**
+     * Base de cálculo em quantidade PIS/PASEP
+     */
     @Field(at = 28)
     private Double quantBcPis;
-    
+
+    /**
+     * Alíquota do PIS (em reais)
+     */
     @Field(at = 29)
     private Double aliqPisQuant;
-    
+
+    /**
+     * Valor do PIS
+     */
     @Field(at = 30)
     private Double vlPis;
-    
+
+    /**
+     * Código da Situação Tributária referente ao COFINS
+     */
     @Field(at = 31)
     private String cstCofins;
-    
+
+    /**
+     * Valor da base de cálculo da COFINS
+     */
     @Field(at = 32)
     private Double vlBcCofins;
-    
+
+    /**
+     * Alíquota do COFINS (em percentual)
+     */
     @Field(at = 33)
     private Double aliqCofins;
-    
+
+    /**
+     * Base de cálculo em quantidade COFINS
+     */
     @Field(at = 34)
     private Double quantBcCofins;
-    
+
+    /**
+     * Alíquota da COFINS (em reais)
+     */
     @Field(at = 35)
     private Double aliqCofinsQuant;
-    
+
+    /**
+     * Valor da COFINS
+     */
     @Field(at = 36)
     private Double vlCofins;
-    
+
+    /**
+     * Código da conta analítica contábil debitada/creditada
+     */
     @Field(at = 37)
     private String codCta;
-    
-    
-    /**
-     * Obtém Número sequencial
-     */
-    public String getNumItem() {
-        return numItem;
-    }
 
-    /**
-     * Seta Número sequencial
-     */
-    public void setNumItem(String numItem) {
-        this.numItem = numItem;
-    }
-    
-    /**
-     * Obtém Item
-     */
-    public String getCodItem() {
-        return codItem;
-    }
 
-    /**
-     * Seta Item
-     */
-    public void setCodItem(String codItem) {
-        this.codItem = codItem;
-    }
-    
-    /**
-     * Obtém Descrição complementar
-     */
-    public String getDescrCompl() {
-        return descrCompl;
-    }
-
-    /**
-     * Seta Descrição complementar
-     */
-    public void setDescrCompl(String descrCompl) {
-        this.descrCompl = descrCompl;
-    }
-    
-    /**
-     * Obtém Quantidade
-     */
-    public Double getQtd() {
-        return qtd;
-    }
-
-    /**
-     * Seta Quantidade
-     */
-    public void setQtd(Double qtd) {
-        this.qtd = qtd;
-    }
-    
-    /**
-     * Obtém Unidade
-     */
-    public String getUnid() {
-        return unid;
-    }
-
-    /**
-     * Seta Unidade
-     */
-    public void setUnid(String unid) {
-        this.unid = unid;
-    }
-    
-    /**
-     * Obtém Valor total
-     */
-    public Double getVlItem() {
-        return vlItem;
-    }
-
-    /**
-     * Seta Valor total
-     */
-    public void setVlItem(Double vlItem) {
-        this.vlItem = vlItem;
-    }
-    
-    /**
-     * Obtém Valor do desconto
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
-
-    /**
-     * Seta Valor do desconto
-     */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Movimentação física
-     */
-    public String getIndMov() {
-        return indMov;
-    }
-
-    /**
-     * Seta Movimentação física
-     */
-    public void setIndMov(String indMov) {
-        this.indMov = indMov;
-    }
-    
-    /**
-     * Obtém CST ICMS
-     */
-    public String getCstIcms() {
-        return cstIcms;
-    }
-
-    /**
-     * Seta CST ICMS
-     */
-    public void setCstIcms(String cstIcms) {
-        this.cstIcms = cstIcms;
-    }
-    
-    /**
-     * Obtém CFOP
-     */
-    public String getCfop() {
-        return cfop;
-    }
-
-    /**
-     * Seta CFOP
-     */
-    public void setCfop(String cfop) {
-        this.cfop = cfop;
-    }
-    
-    /**
-     * Obtém Natureza da operação
-     */
-    public String getCodNat() {
-        return codNat;
-    }
-
-    /**
-     * Seta Natureza da operação
-     */
-    public void setCodNat(String codNat) {
-        this.codNat = codNat;
-    }
-    
-    /**
-     * Obtém Base de cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
-
-    /**
-     * Seta Base de cálculo do ICMS
-     */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Alíquota do ICMS
-     */
-    public Double getAliqIcms() {
-        return aliqIcms;
-    }
-
-    /**
-     * Seta Alíquota do ICMS
-     */
-    public void setAliqIcms(Double aliqIcms) {
-        this.aliqIcms = aliqIcms;
-    }
-    
-    /**
-     * Obtém Valor do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
-
-    /**
-     * Seta Valor do ICMS
-     */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Base de cálculo do ICMS ST
-     */
-    public Double getVlBcIcmsSt() {
-        return vlBcIcmsSt;
-    }
-
-    /**
-     * Seta Base de cálculo do ICMS ST
-     */
-    public void setVlBcIcmsSt(Double vlBcIcmsSt) {
-        this.vlBcIcmsSt = vlBcIcmsSt;
-    }
-    
-    /**
-     * Obtém Alíquota do ICMS ST
-     */
-    public Double getAliqSt() {
-        return aliqSt;
-    }
-
-    /**
-     * Seta Alíquota do ICMS ST
-     */
-    public void setAliqSt(Double aliqSt) {
-        this.aliqSt = aliqSt;
-    }
-    
-    /**
-     * Obtém Valor do ICMS ST
-     */
-    public Double getVlIcmsSt() {
-        return vlIcmsSt;
-    }
-
-    /**
-     * Seta Valor do ICMS ST
-     */
-    public void setVlIcmsSt(Double vlIcmsSt) {
-        this.vlIcmsSt = vlIcmsSt;
-    }
-    
-    /**
-     * Obtém Período de apuração do IPI
-     */
-    public String getIndApur() {
-        return indApur;
-    }
-
-    /**
-     * Seta Período de apuração do IPI
-     */
-    public void setIndApur(String indApur) {
-        this.indApur = indApur;
-    }
-    
-    /**
-     * Obtém CST IPI
-     */
-    public String getCstIpi() {
-        return cstIpi;
-    }
-
-    /**
-     * Seta CST IPI
-     */
-    public void setCstIpi(String cstIpi) {
-        this.cstIpi = cstIpi;
-    }
-    
-    /**
-     * Obtém Código de enquadramento do IPI
-     */
-    public String getCodEnq() {
-        return codEnq;
-    }
-
-    /**
-     * Seta Código de enquadramento do IPI
-     */
-    public void setCodEnq(String codEnq) {
-        this.codEnq = codEnq;
-    }
-    
-    /**
-     * Obtém Base de cálculo do IPI
-     */
-    public Double getVlBcIpi() {
-        return vlBcIpi;
-    }
-
-    /**
-     * Seta Base de cálculo do IPI
-     */
-    public void setVlBcIpi(Double vlBcIpi) {
-        this.vlBcIpi = vlBcIpi;
-    }
-    
-    /**
-     * Obtém Alíquota do IPI
-     */
-    public Double getAliqIpi() {
-        return aliqIpi;
-    }
-
-    /**
-     * Seta Alíquota do IPI
-     */
-    public void setAliqIpi(Double aliqIpi) {
-        this.aliqIpi = aliqIpi;
-    }
-    
-    /**
-     * Obtém Valor do IPI
-     */
-    public Double getVlIpi() {
-        return vlIpi;
-    }
-
-    /**
-     * Seta Valor do IPI
-     */
-    public void setVlIpi(Double vlIpi) {
-        this.vlIpi = vlIpi;
-    }
-    
-    /**
-     * Obtém CST PIS/PASEP
-     */
-    public String getCstPis() {
-        return cstPis;
-    }
-
-    /**
-     * Seta CST PIS/PASEP
-     */
-    public void setCstPis(String cstPis) {
-        this.cstPis = cstPis;
-    }
-    
-    /**
-     * Obtém Base de cálculo PIS/PASEP
-     */
-    public Double getVlBcPis() {
-        return vlBcPis;
-    }
-
-    /**
-     * Seta Base de cálculo PIS/PASEP
-     */
-    public void setVlBcPis(Double vlBcPis) {
-        this.vlBcPis = vlBcPis;
-    }
-    
-    /**
-     * Obtém Alíquota PIS/PASEP
-     */
-    public Double getAliqPis() {
-        return aliqPis;
-    }
-
-    /**
-     * Seta Alíquota PIS/PASEP
-     */
-    public void setAliqPis(Double aliqPis) {
-        this.aliqPis = aliqPis;
-    }
-    
-    /**
-     * Obtém Base de cálculo em quantidade PIS/PASEP
-     */
-    public Double getQuantBcPis() {
-        return quantBcPis;
-    }
-
-    /**
-     * Seta Base de cálculo em quantidade PIS/PASEP
-     */
-    public void setQuantBcPis(Double quantBcPis) {
-        this.quantBcPis = quantBcPis;
-    }
-    
-    /**
-     * Obtém Alíquota PIS/PASEP (em reais)
-     */
-    public Double getAliqPisQuant() {
-        return aliqPisQuant;
-    }
-
-    /**
-     * Seta Alíquota PIS/PASEP (em reais)
-     */
-    public void setAliqPisQuant(Double aliqPisQuant) {
-        this.aliqPisQuant = aliqPisQuant;
-    }
-    
-    /**
-     * Obtém Valor PIS/PASEP
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
-
-    /**
-     * Seta Valor PIS/PASEP
-     */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém CST COFINS
-     */
-    public String getCstCofins() {
-        return cstCofins;
-    }
-
-    /**
-     * Seta CST COFINS
-     */
-    public void setCstCofins(String cstCofins) {
-        this.cstCofins = cstCofins;
-    }
-    
-    /**
-     * Obtém Base de cálculo COFINS
-     */
-    public Double getVlBcCofins() {
-        return vlBcCofins;
-    }
-
-    /**
-     * Seta Base de cálculo COFINS
-     */
-    public void setVlBcCofins(Double vlBcCofins) {
-        this.vlBcCofins = vlBcCofins;
-    }
-    
-    /**
-     * Obtém Alíquota COFINS
-     */
-    public Double getAliqCofins() {
-        return aliqCofins;
-    }
-
-    /**
-     * Seta Alíquota COFINS
-     */
-    public void setAliqCofins(Double aliqCofins) {
-        this.aliqCofins = aliqCofins;
-    }
-    
-    /**
-     * Obtém Base de cálculo em quantidade COFINS
-     */
-    public Double getQuantBcCofins() {
-        return quantBcCofins;
-    }
-
-    /**
-     * Seta Base de cálculo em quantidade COFINS
-     */
-    public void setQuantBcCofins(Double quantBcCofins) {
-        this.quantBcCofins = quantBcCofins;
-    }
-    
-    /**
-     * Obtém Alíquota COFINS (em reais)
-     */
-    public Double getAliqCofinsQuant() {
-        return aliqCofinsQuant;
-    }
-
-    /**
-     * Seta Alíquota COFINS (em reais)
-     */
-    public void setAliqCofinsQuant(Double aliqCofinsQuant) {
-        this.aliqCofinsQuant = aliqCofinsQuant;
-    }
-    
-    /**
-     * Obtém Valor COFINS
-     */
-    public Double getVlCofins() {
-        return vlCofins;
-    }
-
-    /**
-     * Seta Valor COFINS
-     */
-    public void setVlCofins(Double vlCofins) {
-        this.vlCofins = vlCofins;
-    }
-    
-    /**
-     * Obtém Conta analítica contábil
-     */
-    public String getCodCta() {
-        return codCta;
-    }
-
-    /**
-     * Seta Conta analítica contábil
-     */
-    public void setCodCta(String codCta) {
-        this.codCta = codCta;
-    }
-    
-    
 }

@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Registro Analítico
@@ -16,125 +16,51 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C490"),
     @Field(at = 9, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC490 extends Registro {
-    
+
+    /**
+     * CST/ICMS
+     */
     @Field(at = 2)
     private String cstIcms;
-    
+
+    /**
+     * CFOP
+     */
     @Field(at = 3)
     private String cfop;
-    
+
+    /**
+     * Carga tributária ICMS(%)
+     */
     @Field(at = 4)
     private Double aliqIcms;
-    
+
+    /**
+     * Valor da operação
+     */
     @Field(at = 5)
     private Double vlOpr;
-    
+
+    /**
+     * Base de cálculo do ICMS
+     */
     @Field(at = 6)
     private Double vlBcIcms;
-    
+
+    /**
+     * Valor acumulado do ICMS
+     */
     @Field(at = 7)
     private Double vlIcms;
-    
+
+    /**
+     * Código observação lançamento
+     */
     @Field(at = 8)
     private String codObs;
-    
-    /**
-     * Obtém CST/ICMS
-     */
-    public String getCstIcms() {
-        return cstIcms;
-    }
 
-    /**
-     * Seta CST/ICMS
-     */
-    public void setCstIcms(String cstIcms) {
-        this.cstIcms = cstIcms;
-    }
-    
-    /**
-     * Obtém CFOP
-     */
-    public String getCfop() {
-        return cfop;
-    }
 
-    /**
-     * Seta CFOP
-     */
-    public void setCfop(String cfop) {
-        this.cfop = cfop;
-    }
-    
-    /**
-     * Obtém Carga tributária ICMS(%)
-     */
-    public Double getAliqIcms() {
-        return aliqIcms;
-    }
-
-    /**
-     * Seta Carga tributária ICMS(%)
-     */
-    public void setAliqIcms(Double aliqIcms) {
-        this.aliqIcms = aliqIcms;
-    }
-    
-    /**
-     * Obtém Valor da operação
-     */
-    public Double getVlOpr() {
-        return vlOpr;
-    }
-
-    /**
-     * Seta Valor da operação
-     */
-    public void setVlOpr(Double vlOpr) {
-        this.vlOpr = vlOpr;
-    }
-    
-    /**
-     * Obtém Base de cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
-
-    /**
-     * Seta Base de cálculo do ICMS
-     */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Valor acumulado do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
-
-    /**
-     * Seta Valor acumulado do ICMS
-     */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Código observação lançamento
-     */
-    public String getCodObs() {
-        return codObs;
-    }
-
-    /**
-     * Seta Código observação lançamento
-     */
-    public void setCodObs(String codObs) {
-        this.codObs = codObs;
-    }
-    
 }

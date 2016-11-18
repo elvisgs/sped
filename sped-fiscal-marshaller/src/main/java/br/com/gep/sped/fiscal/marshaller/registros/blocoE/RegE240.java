@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoE;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,142 +18,57 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "E240"),
     @Field(at = 10, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegE240 extends Registro {
-    
+
+    /**
+     * Código do participante
+     */
     @Field(at = 2)
     private String codPart;
-    
+
+    /**
+     * Código do modelo
+     */
     @Field(at = 3)
     private String codMod;
-    
+
+    /**
+     * Série
+     */
     @Field(at = 4)
     private String ser;
-    
+
+    /**
+     * Subserie
+     */
     @Field(at = 5)
     private String sub;
-    
+
+    /**
+     * Número do documento
+     */
     @Field(at = 6)
     private String numDoc;
-    
+
+    /**
+     * Data da emissão
+     */
     @Field(at = 7)
     private Date dtDoc;
-    
+
+    /**
+     * Código do item
+     */
     @Field(at = 8)
     private String codItem;
-    
+
+    /**
+     * Valor do ajuste do item
+     */
     @Field(at = 9)
     private Double vlAjItem;
-    
-    /**
-     * Obtém Código do participante
-     */
-    public String getCodPart() {
-        return codPart;
-    }
 
-    /**
-     * Seta Código do participante
-     */
-    public void setCodPart(String codPart) {
-        this.codPart = codPart;
-    }
-    
-    /**
-     * Obtém Código do modelo
-     */
-    public String getCodMod() {
-        return codMod;
-    }
 
-    /**
-     * Seta Código do modelo
-     */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Série
-     */
-    public String getSer() {
-        return ser;
-    }
-
-    /**
-     * Seta Série
-     */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Subserie
-     */
-    public String getSub() {
-        return sub;
-    }
-
-    /**
-     * Seta Subserie
-     */
-    public void setSub(String sub) {
-        this.sub = sub;
-    }
-    
-    /**
-     * Obtém Número do documento
-     */
-    public String getNumDoc() {
-        return numDoc;
-    }
-
-    /**
-     * Seta Número do documento
-     */
-    public void setNumDoc(String numDoc) {
-        this.numDoc = numDoc;
-    }
-    
-    /**
-     * Obtém Data da emissão
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
-
-    /**
-     * Seta Data da emissão
-     */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Código do item
-     */
-    public String getCodItem() {
-        return codItem;
-    }
-
-    /**
-     * Seta Código do item
-     */
-    public void setCodItem(String codItem) {
-        this.codItem = codItem;
-    }
-    
-    /**
-     * Obtém Valor do ajuste do item
-     */
-    public Double getVlAjItem() {
-        return vlAjItem;
-    }
-
-    /**
-     * Seta Valor do ajuste do item
-     */
-    public void setVlAjItem(Double vlAjItem) {
-        this.vlAjItem = vlAjItem;
-    }
-    
 }

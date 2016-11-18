@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,229 +16,88 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "C396"),
     @Field(at = 15, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC396 extends Registro {
-    
+
+    /**
+     * Código do item (campo 02 do Registro 0200)
+     */
     @Field(at = 2)
     private String codItem;
-    
+
+    /**
+     * Valor total do item (mercadorias ou serviços)
+     */
     @Field(at = 3)
     private Double vlItem;
-    
+
+    /**
+     * Valor do desconto comercial do item
+     */
     @Field(at = 4)
     private Double vlDesc;
-    
+
+    /**
+     * Código da Natureza da Base de Cálculo do Crédito, conforme a Tabela indicada no item 4.3.7
+     * <p>01=Aquisição de bens para revenda;02=Aquisição de bens utilizados como insumo;10=Máquinas, equipamentos e outros bens incorporados ao ativo imobilizado (crédito com base no valor de aquisição);13=Outras Operações com Direito a Crédito</p>
+     */
     @Field(at = 5)
     private String natBcCred;
-    
+
+    /**
+     * Código da Situação Tributária referente ao PIS/PASEP
+     */
     @Field(at = 6)
     private String cstPis;
-    
+
+    /**
+     * Valor da base de cálculo do credito de PIS/PASEP
+     */
     @Field(at = 7)
     private Double vlBcPis;
-    
+
+    /**
+     * Alíquota do PIS/PASEP (em percentual)
+     */
     @Field(at = 8)
     private Double aliqPis;
-    
+
+    /**
+     * Valor do crédito de PIS/PASEP
+     */
     @Field(at = 9)
     private Double vlPis;
-    
+
+    /**
+     * Código da Situação Tributária referente a COFINS
+     */
     @Field(at = 10)
     private String cstCofins;
-    
+
+    /**
+     * Valor da base de cálculo do crédito de COFINS
+     */
     @Field(at = 11)
     private Double vlBcCofins;
-    
+
+    /**
+     * Alíquota da COFINS (em percentual)
+     */
     @Field(at = 12)
     private Double aliqCofins;
-    
+
+    /**
+     * Valor do crédito de COFINS
+     */
     @Field(at = 13)
     private Double vlCofins;
-    
+
+    /**
+     * Código da conta analítica contábil debitada/creditada
+     */
     @Field(at = 14)
     private String codCta;
-    
-    
-    /**
-     * Obtém Item
-     */
-    public String getCodItem() {
-        return codItem;
-    }
 
-    /**
-     * Seta Item
-     */
-    public void setCodItem(String codItem) {
-        this.codItem = codItem;
-    }
-    
-    /**
-     * Obtém Valor Total do Item
-     */
-    public Double getVlItem() {
-        return vlItem;
-    }
 
-    /**
-     * Seta Valor Total do Item
-     */
-    public void setVlItem(Double vlItem) {
-        this.vlItem = vlItem;
-    }
-    
-    /**
-     * Obtém Valor do Desconto Comercial
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
-
-    /**
-     * Seta Valor do Desconto Comercial
-     */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Natureza da Base de Cálculo do Crédito
-     */
-    public String getNatBcCred() {
-        return natBcCred;
-    }
-
-    /**
-     * Seta Natureza da Base de Cálculo do Crédito
-     */
-    public void setNatBcCred(String natBcCred) {
-        this.natBcCred = natBcCred;
-    }
-    
-    /**
-     * Obtém CST do PIS/PASEP
-     */
-    public String getCstPis() {
-        return cstPis;
-    }
-
-    /**
-     * Seta CST do PIS/PASEP
-     */
-    public void setCstPis(String cstPis) {
-        this.cstPis = cstPis;
-    }
-    
-    /**
-     * Obtém Base de Cálculo do PIS/PASEP
-     */
-    public Double getVlBcPis() {
-        return vlBcPis;
-    }
-
-    /**
-     * Seta Base de Cálculo do PIS/PASEP
-     */
-    public void setVlBcPis(Double vlBcPis) {
-        this.vlBcPis = vlBcPis;
-    }
-    
-    /**
-     * Obtém Alíquota do PIS/PASEP
-     */
-    public Double getAliqPis() {
-        return aliqPis;
-    }
-
-    /**
-     * Seta Alíquota do PIS/PASEP
-     */
-    public void setAliqPis(Double aliqPis) {
-        this.aliqPis = aliqPis;
-    }
-    
-    /**
-     * Obtém Valor do PIS/PASEP
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
-
-    /**
-     * Seta Valor do PIS/PASEP
-     */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém CST da COFINS
-     */
-    public String getCstCofins() {
-        return cstCofins;
-    }
-
-    /**
-     * Seta CST da COFINS
-     */
-    public void setCstCofins(String cstCofins) {
-        this.cstCofins = cstCofins;
-    }
-    
-    /**
-     * Obtém Base de Cálculo da COFINS
-     */
-    public Double getVlBcCofins() {
-        return vlBcCofins;
-    }
-
-    /**
-     * Seta Base de Cálculo da COFINS
-     */
-    public void setVlBcCofins(Double vlBcCofins) {
-        this.vlBcCofins = vlBcCofins;
-    }
-    
-    /**
-     * Obtém Alíquota da COFINS
-     */
-    public Double getAliqCofins() {
-        return aliqCofins;
-    }
-
-    /**
-     * Seta Alíquota da COFINS
-     */
-    public void setAliqCofins(Double aliqCofins) {
-        this.aliqCofins = aliqCofins;
-    }
-    
-    /**
-     * Obtém Valor da COFINS
-     */
-    public Double getVlCofins() {
-        return vlCofins;
-    }
-
-    /**
-     * Seta Valor da COFINS
-     */
-    public void setVlCofins(Double vlCofins) {
-        this.vlCofins = vlCofins;
-    }
-    
-    /**
-     * Obtém Conta Analítica Contábil
-     */
-    public String getCodCta() {
-        return codCta;
-    }
-
-    /**
-     * Seta Conta Analítica Contábil
-     */
-    public void setCodCta(String codCta) {
-        this.codCta = codCta;
-    }
-    
-    
 }

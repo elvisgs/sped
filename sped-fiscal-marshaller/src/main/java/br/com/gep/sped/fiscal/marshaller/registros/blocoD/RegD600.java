@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoD;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,296 +18,112 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "D600"),
     @Field(at = 19, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegD600 extends Registro {
-    
-    @Field(at = 2)
-    private String codMod;
-    
-    @Field(at = 3)
-    private String codMun;
-    
-    @Field(at = 4)
-    private String ser;
-    
-    @Field(at = 5)
-    private String sub;
-    
-    @Field(at = 6)
-    private String codCons;
-    
-    @Field(at = 7)
-    private Integer qtdCons;
-    
-    @Field(at = 8)
-    private Date dtDoc;
-    
-    @Field(at = 9)
-    private Double vlDoc;
-    
-    @Field(at = 10)
-    private Double vlDesc;
-    
-    @Field(at = 11)
-    private Double vlServ;
-    
-    @Field(at = 12)
-    private Double vlServNt;
-    
-    @Field(at = 13)
-    private Double vlTerc;
-    
-    @Field(at = 14)
-    private Double vlDa;
-    
-    @Field(at = 15)
-    private Double vlBcIcms;
-    
-    @Field(at = 16)
-    private Double vlIcms;
-    
-    @Field(at = 17)
-    private Double vlPis;
-    
-    @Field(at = 18)
-    private Double vlCofins;
-    
-    /**
-     * Obtém Código do modelo do documento
-     */
-    public String getCodMod() {
-        return codMod;
-    }
 
     /**
-     * Seta Código do modelo do documento
+     * Código do modelo do documento
      * <p>21=Nota Fiscal de Serviço de Comunicação;22=Nota Fiscal de Serviço de Telecomunicação</p>
      */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Código do município
-     */
-    public String getCodMun() {
-        return codMun;
-    }
+    @Field(at = 2)
+    private String codMod;
 
     /**
-     * Seta Código do município
+     * Código do município
      */
-    public void setCodMun(String codMun) {
-        this.codMun = codMun;
-    }
-    
-    /**
-     * Obtém Série do documento fiscal
-     */
-    public String getSer() {
-        return ser;
-    }
+    @Field(at = 3)
+    private String codMun;
 
     /**
-     * Seta Série do documento fiscal
+     * Série do documento fiscal
      */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Subsérie do documento fiscal
-     */
-    public String getSub() {
-        return sub;
-    }
+    @Field(at = 4)
+    private String ser;
 
     /**
-     * Seta Subsérie do documento fiscal
+     * Subsérie do documento fiscal
      */
-    public void setSub(String sub) {
-        this.sub = sub;
-    }
-    
-    /**
-     * Obtém Código de classe de consumo
-     */
-    public String getCodCons() {
-        return codCons;
-    }
+    @Field(at = 5)
+    private String sub;
 
     /**
-     * Seta Código de classe de consumo
+     * Código de classe de consumo
      */
-    public void setCodCons(String codCons) {
-        this.codCons = codCons;
-    }
-    
-    /**
-     * Obtém Quantidade doc consolidados
-     */
-    public Integer getQtdCons() {
-        return qtdCons;
-    }
+    @Field(at = 6)
+    private String codCons;
 
     /**
-     * Seta Quantidade doc consolidados
+     * Quantidade doc consolidados
      */
-    public void setQtdCons(Integer qtdCons) {
-        this.qtdCons = qtdCons;
-    }
-    
-    /**
-     * Obtém Data dos documentos
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
+    @Field(at = 7)
+    private Integer qtdCons;
 
     /**
-     * Seta Data dos documentos
+     * Data dos documentos
      */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Valor total dos doc fiscais
-     */
-    public Double getVlDoc() {
-        return vlDoc;
-    }
+    @Field(at = 8)
+    private Date dtDoc;
 
     /**
-     * Seta Valor total dos doc fiscais
+     * Valor total dos doc fiscais
      */
-    public void setVlDoc(Double vlDoc) {
-        this.vlDoc = vlDoc;
-    }
-    
-    /**
-     * Obtém Valor dos descontos
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
+    @Field(at = 9)
+    private Double vlDoc;
 
     /**
-     * Seta Valor dos descontos
+     * Valor dos descontos
      */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Valor tributado pelo ICMS
-     */
-    public Double getVlServ() {
-        return vlServ;
-    }
+    @Field(at = 10)
+    private Double vlDesc;
 
     /**
-     * Seta Valor tributado pelo ICMS
+     * Valor tributado pelo ICMS
      */
-    public void setVlServ(Double vlServ) {
-        this.vlServ = vlServ;
-    }
-    
-    /**
-     * Obtém Valor não-tributado pelo ICMS
-     */
-    public Double getVlServNt() {
-        return vlServNt;
-    }
+    @Field(at = 11)
+    private Double vlServ;
 
     /**
-     * Seta Valor não-tributado pelo ICMS
+     * Valor não-tributado pelo ICMS
      */
-    public void setVlServNt(Double vlServNt) {
-        this.vlServNt = vlServNt;
-    }
-    
-    /**
-     * Obtém Valores cobrados para terceiros
-     */
-    public Double getVlTerc() {
-        return vlTerc;
-    }
+    @Field(at = 12)
+    private Double vlServNt;
 
     /**
-     * Seta Valores cobrados para terceiros
+     * Valores cobrados para terceiros
      */
-    public void setVlTerc(Double vlTerc) {
-        this.vlTerc = vlTerc;
-    }
-    
-    /**
-     * Obtém Valor despesas acessórias
-     */
-    public Double getVlDa() {
-        return vlDa;
-    }
+    @Field(at = 13)
+    private Double vlTerc;
 
     /**
-     * Seta Valor despesas acessórias
+     * Valor despesas acessórias
      */
-    public void setVlDa(Double vlDa) {
-        this.vlDa = vlDa;
-    }
-    
-    /**
-     * Obtém Base de cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
+    @Field(at = 14)
+    private Double vlDa;
 
     /**
-     * Seta Base de cálculo do ICMS
+     * Base de cálculo do ICMS
      */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Valor do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
+    @Field(at = 15)
+    private Double vlBcIcms;
 
     /**
-     * Seta Valor do ICMS
+     * Valor do ICMS
      */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Valor do PIS
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
+    @Field(at = 16)
+    private Double vlIcms;
 
     /**
-     * Seta Valor do PIS
+     * Valor do PIS
      */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém Valor da COFINS
-     */
-    public Double getVlCofins() {
-        return vlCofins;
-    }
+    @Field(at = 17)
+    private Double vlPis;
 
     /**
-     * Seta Valor da COFINS
+     * Valor da COFINS
      */
-    public void setVlCofins(Double vlCofins) {
-        this.vlCofins = vlCofins;
-    }
-    
+    @Field(at = 18)
+    private Double vlCofins;
+
+
 }

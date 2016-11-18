@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoK;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,86 +18,39 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "K230"),
     @Field(at = 7, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegK230 extends Registro {
 
+    /**
+     * Data de início da ordem de produção
+     */
     @Field(at = 2)
     private Date dtIniOp;
 
+    /**
+     * Data de conclusão da ordem de produção
+     */
     @Field(at = 3)
     private Date dtFinOp;
 
+    /**
+     * Código de identificação da ordem de produção
+     */
     @Field(at = 4)
     private String codDocOp;
 
+    /**
+     * Código do item produzido
+     */
     @Field(at = 5)
     private String codItem;
 
+    /**
+     * Quantidade de produção acabada
+     */
     @Field(at = 6)
     private Double qtdEnc;
 
-    /**
-     * Obtém Data de início da ordem de produção
-     */
-    public Date getDtIniOp() {
-        return dtIniOp;
-    }
 
-    /**
-     * Seta Data de início da ordem de produção
-     */
-    public void setDtIniOp(Date dtIniOp) {
-        this.dtIniOp = dtIniOp;
-    }
-    /**
-     * Obtém Data de conclusão da ordem de produção
-     */
-    public Date getDtFinOp() {
-        return dtFinOp;
-    }
-
-    /**
-     * Seta Data de conclusão da ordem de produção
-     */
-    public void setDtFinOp(Date dtFinOp) {
-        this.dtFinOp = dtFinOp;
-    }
-    /**
-     * Obtém Código de identificação da ordem de produção
-     */
-    public String getCodDocOp() {
-        return codDocOp;
-    }
-
-    /**
-     * Seta Código de identificação da ordem de produção
-     */
-    public void setCodDocOp(String codDocOp) {
-        this.codDocOp = codDocOp;
-    }
-    /**
-     * Obtém Código do item produzido
-     */
-    public String getCodItem() {
-        return codItem;
-    }
-
-    /**
-     * Seta Código do item produzido
-     */
-    public void setCodItem(String codItem) {
-        this.codItem = codItem;
-    }
-    /**
-     * Obtém Quantidade de produção acabada
-     */
-    public Double getQtdEnc() {
-        return qtdEnc;
-    }
-
-    /**
-     * Seta Quantidade de produção acabada
-     */
-    public void setQtdEnc(Double qtdEnc) {
-        this.qtdEnc = qtdEnc;
-    }
 }

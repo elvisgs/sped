@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.bloco0;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,247 +18,96 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "0000"),
     @Field(at = 16, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg0000 extends Registro {
-    
+
+    /**
+     * Código da versão do leiaute
+     */
     @Field(at = 2)
     private String codVer;
-    
-    @Field(at = 3)
-    private String codFin;
-    
-    @Field(at = 4)
-    private Date dtIni;
-    
-    @Field(at = 5)
-    private Date dtFin;
-    
-    @Field(at = 6)
-    private String nome;
-    
-    @Field(at = 7)
-    private String cnpj;
-    
-    @Field(at = 8)
-    private String cpf;
-    
-    @Field(at = 9)
-    private String uf;
-    
-    @Field(at = 10)
-    private String ie;
-    
-    @Field(at = 11)
-    private String codMun;
-    
-    @Field(at = 12)
-    private String im;
-    
-    @Field(at = 13)
-    private String suframa;
-    
-    @Field(at = 14)
-    private String indPerfil;
-    
-    @Field(at = 15)
-    private String indAtiv;
-    
-    /**
-     * Obtém Código da versão do leiaute
-     */
-    public String getCodVer() {
-        return codVer;
-    }
 
     /**
-     * Seta Código da versão do leiaute
-     */
-    public void setCodVer(String codVer) {
-        this.codVer = codVer;
-    }
-    
-    /**
-     * Obtém Código da finalidade
-     */
-    public String getCodFin() {
-        return codFin;
-    }
-
-    /**
-     * Seta Código da finalidade
+     * Código da finalidade
      * <p>0=Remessa do arquivo original;1=Remessa do arquivo substituto</p>
      */
-    public void setCodFin(String codFin) {
-        this.codFin = codFin;
-    }
-    
-    /**
-     * Obtém Data inicial
-     */
-    public Date getDtIni() {
-        return dtIni;
-    }
+    @Field(at = 3)
+    private String codFin;
 
     /**
-     * Seta Data inicial
+     * Data inicial
      */
-    public void setDtIni(Date dtIni) {
-        this.dtIni = dtIni;
-    }
-    
-    /**
-     * Obtém Data final
-     */
-    public Date getDtFin() {
-        return dtFin;
-    }
+    @Field(at = 4)
+    private Date dtIni;
 
     /**
-     * Seta Data final
+     * Data final
      */
-    public void setDtFin(Date dtFin) {
-        this.dtFin = dtFin;
-    }
-    
-    /**
-     * Obtém Nome empresarial
-     */
-    public String getNome() {
-        return nome;
-    }
+    @Field(at = 5)
+    private Date dtFin;
 
     /**
-     * Seta Nome empresarial
+     * Nome empresarial
      */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    
-    /**
-     * Obtém CNPJ
-     */
-    public String getCnpj() {
-        return cnpj;
-    }
+    @Field(at = 6)
+    private String nome;
 
     /**
-     * Seta CNPJ
+     * CNPJ
      */
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-    
-    /**
-     * Obtém CPF
-     */
-    public String getCpf() {
-        return cpf;
-    }
+    @Field(at = 7)
+    private String cnpj;
 
     /**
-     * Seta CPF
+     * CPF
      */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    
-    /**
-     * Obtém UF
-     */
-    public String getUf() {
-        return uf;
-    }
+    @Field(at = 8)
+    private String cpf;
 
     /**
-     * Seta UF
+     * UF
      */
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-    
-    /**
-     * Obtém Inscrição Estadual
-     */
-    public String getIe() {
-        return ie;
-    }
+    @Field(at = 9)
+    private String uf;
 
     /**
-     * Seta Inscrição Estadual
+     * Inscrição Estadual
      */
-    public void setIe(String ie) {
-        this.ie = ie;
-    }
-    
-    /**
-     * Obtém Código do município
-     */
-    public String getCodMun() {
-        return codMun;
-    }
+    @Field(at = 10)
+    private String ie;
 
     /**
-     * Seta Código do município
+     * Código do município
      */
-    public void setCodMun(String codMun) {
-        this.codMun = codMun;
-    }
-    
-    /**
-     * Obtém Inscrição Municipal
-     */
-    public String getIm() {
-        return im;
-    }
+    @Field(at = 11)
+    private String codMun;
 
     /**
-     * Seta Inscrição Municipal
+     * Inscrição Municipal
      */
-    public void setIm(String im) {
-        this.im = im;
-    }
-    
-    /**
-     * Obtém Inscrição na SUFRAMA
-     */
-    public String getSuframa() {
-        return suframa;
-    }
+    @Field(at = 12)
+    private String im;
 
     /**
-     * Seta Inscrição na SUFRAMA
+     * Inscrição na SUFRAMA
      */
-    public void setSuframa(String suframa) {
-        this.suframa = suframa;
-    }
-    
-    /**
-     * Obtém Perfil do arquivo fiscal
-     */
-    public String getIndPerfil() {
-        return indPerfil;
-    }
+    @Field(at = 13)
+    private String suframa;
 
     /**
-     * Seta Perfil do arquivo fiscal
+     * Perfil do arquivo fiscal
      * <p>A=Perfil A;B=Perfil B;C=Perfil C</p>
      */
-    public void setIndPerfil(String indPerfil) {
-        this.indPerfil = indPerfil;
-    }
-    
-    /**
-     * Obtém Tipo de atividade
-     */
-    public String getIndAtiv() {
-        return indAtiv;
-    }
+    @Field(at = 14)
+    private String indPerfil;
 
     /**
-     * Seta Tipo de atividade
+     * Tipo de atividade
      * <p>0=Industrial ou equiparado a industrial;1=Outras</p>
      */
-    public void setIndAtiv(String indAtiv) {
-        this.indAtiv = indAtiv;
-    }
-    
+    @Field(at = 15)
+    private String indAtiv;
+
+
 }

@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoD;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,382 +18,146 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "D100"),
     @Field(at = 24, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegD100 extends Registro {
-    
+
+    /**
+     * Indicador do tipo de operação
+     * <p>0=Aquisição</p>
+     */
     @Field(at = 2)
     private String indOper;
-    
+
+    /**
+     * Indicador do emitente do documento fiscal
+     * <p>0=Emissão própria;1=Terceiros</p>
+     */
     @Field(at = 3)
     private String indEmit;
-    
+
+    /**
+     * Código do participante (campo 02 do Registro 0150): do prestador de serviço, no caso de aquisição de serviço; tomador do serviço, no caso de prestação de serviços
+     */
     @Field(at = 4)
     private String codPart;
-    
+
+    /**
+     * Código do modelo do documento fiscal, conforme a Tabela 4.1.1
+     * <p>07=D100 - Nota Fiscal de Serviço de Transporte;08=D100 - Conhecimento de Transporte Rodoviário de Cargas;8B=D100 - Conhecimento de Transporte de Cargas Avulso;09=D100 - Conhecimento de Transporte Aquaviário de Cargas;10=D100 - Conhecimento Aéreo;11=D100 - Conhecimento de Transporte Ferroviário de Cargas;26=D100 - Conhecimento de Transporte Multimodal de Cargas;27=D100 - Nota Fiscal de Transporte Ferroviário de Cargas;57=D100 - Conhecimento de Transporte Eletrônico - CT-e</p>
+     */
     @Field(at = 5)
     private String codMod;
-    
+
+    /**
+     * Código da situação do documento fiscal, conforme a Tabela 4.1.2
+     * <p>00=Documento regular;02=Documento cancelado;04=NFe ou CT-e denegada;05=NFe ou CT-e Numeração inutilizada;06=Documento Fiscal Complementar;08=Documento Fiscal emitido com base em Regime Especial ou Norma Específica</p>
+     */
     @Field(at = 6)
     private String codSit;
-    
+
+    /**
+     * Série do documento fiscal
+     */
     @Field(at = 7)
     private String ser;
-    
+
+    /**
+     * Subsérie do documento fiscal
+     */
     @Field(at = 8)
     private String sub;
-    
+
+    /**
+     * Número do documento fiscal
+     */
     @Field(at = 9)
     private String numDoc;
-    
+
+    /**
+     * Chave do Conhecimento de Transporte Eletrônico
+     */
     @Field(at = 10)
     private String chvCte;
-    
+
+    /**
+     * Data da emissão do documento fiscal
+     */
     @Field(at = 11)
     private Date dtDoc;
-    
+
+    /**
+     * Data da aquisição ou da prestação do serviço
+     */
     @Field(at = 12)
     private Date dtAP;
-    
+
+    /**
+     * Tipo de Conhecimento de Transporte Eletrônico conforme definido no Manual de Integração do CT-e
+     */
     @Field(at = 13)
     private String tpCte;
-    
+
+    /**
+     * Chave do CT-e de referência cujos valores foram complementados (opção “1” do campo anterior) ou cujo débito foi anulado(opção “2” do campo anterior)
+     */
     @Field(at = 14)
     private String chvCteRef;
-    
+
+    /**
+     * Valor total do documento fiscal
+     */
     @Field(at = 15)
     private Double vlDoc;
-    
+
+    /**
+     * Valor total do desconto
+     */
     @Field(at = 16)
     private Double vlDesc;
-    
+
+    /**
+     * Indicador do tipo do frete
+     * <p>0=Por conta do emitente;1=Por conta do destinatário/remetente;2=Por conta de terceiros;9=Sem cobrança de frete</p>
+     */
     @Field(at = 17)
     private String indFrt;
-    
+
+    /**
+     * Valor total da prestação de serviço
+     */
     @Field(at = 18)
     private Double vlServ;
-    
+
+    /**
+     * Valor da base de cálculo do ICMS
+     */
     @Field(at = 19)
     private Double vlBcIcms;
-    
+
+    /**
+     * Valor do ICMS
+     */
     @Field(at = 20)
     private Double vlIcms;
-    
+
+    /**
+     * Valor não-tributado do ICMS
+     */
     @Field(at = 21)
     private Double vlNt;
-    
+
+    /**
+     * Código da informação complementar do documento fiscal (campo 02 do Registro 0450)
+     */
     @Field(at = 22)
     private String codInf;
-    
+
+    /**
+     * Código da conta analítica contábil debitada/creditada
+     */
     @Field(at = 23)
     private String codCta;
-    
-    
-    /**
-     * Obtém Tipo de Operação
-     */
-    public String getIndOper() {
-        return indOper;
-    }
 
-    /**
-     * Seta Tipo de Operação
-     */
-    public void setIndOper(String indOper) {
-        this.indOper = indOper;
-    }
-    
-    /**
-     * Obtém Emitente do Documento
-     */
-    public String getIndEmit() {
-        return indEmit;
-    }
 
-    /**
-     * Seta Emitente do Documento
-     */
-    public void setIndEmit(String indEmit) {
-        this.indEmit = indEmit;
-    }
-    
-    /**
-     * Obtém Participante
-     */
-    public String getCodPart() {
-        return codPart;
-    }
-
-    /**
-     * Seta Participante
-     */
-    public void setCodPart(String codPart) {
-        this.codPart = codPart;
-    }
-    
-    /**
-     * Obtém Modelo do Documento
-     */
-    public String getCodMod() {
-        return codMod;
-    }
-
-    /**
-     * Seta Modelo do Documento
-     */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Situação do Documento
-     */
-    public String getCodSit() {
-        return codSit;
-    }
-
-    /**
-     * Seta Situação do Documento
-     */
-    public void setCodSit(String codSit) {
-        this.codSit = codSit;
-    }
-    
-    /**
-     * Obtém Série
-     */
-    public String getSer() {
-        return ser;
-    }
-
-    /**
-     * Seta Série
-     */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Subsérie
-     */
-    public String getSub() {
-        return sub;
-    }
-
-    /**
-     * Seta Subsérie
-     */
-    public void setSub(String sub) {
-        this.sub = sub;
-    }
-    
-    /**
-     * Obtém Número
-     */
-    public String getNumDoc() {
-        return numDoc;
-    }
-
-    /**
-     * Seta Número
-     */
-    public void setNumDoc(String numDoc) {
-        this.numDoc = numDoc;
-    }
-    
-    /**
-     * Obtém Chave do CT-e
-     */
-    public String getChvCte() {
-        return chvCte;
-    }
-
-    /**
-     * Seta Chave do CT-e
-     */
-    public void setChvCte(String chvCte) {
-        this.chvCte = chvCte;
-    }
-    
-    /**
-     * Obtém Data da Emissão do Documento
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
-
-    /**
-     * Seta Data da Emissão do Documento
-     */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Data da aquisição/prestação do Serviço
-     */
-    public Date getDtAP() {
-        return dtAP;
-    }
-
-    /**
-     * Seta Data da aquisição/prestação do Serviço
-     */
-    public void setDtAP(Date dtAP) {
-        this.dtAP = dtAP;
-    }
-    
-    /**
-     * Obtém Tipo de CT-e
-     */
-    public String getTpCte() {
-        return tpCte;
-    }
-
-    /**
-     * Seta Tipo de CT-e
-     */
-    public void setTpCte(String tpCte) {
-        this.tpCte = tpCte;
-    }
-    
-    /**
-     * Obtém Chave do CT-e de referência
-     */
-    public String getChvCteRef() {
-        return chvCteRef;
-    }
-
-    /**
-     * Seta Chave do CT-e de referência
-     */
-    public void setChvCteRef(String chvCteRef) {
-        this.chvCteRef = chvCteRef;
-    }
-    
-    /**
-     * Obtém Valor Total do Documento Fiscal
-     */
-    public Double getVlDoc() {
-        return vlDoc;
-    }
-
-    /**
-     * Seta Valor Total do Documento Fiscal
-     */
-    public void setVlDoc(Double vlDoc) {
-        this.vlDoc = vlDoc;
-    }
-    
-    /**
-     * Obtém Valor Total do Desconto
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
-
-    /**
-     * Seta Valor Total do Desconto
-     */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Tipo do Frete
-     */
-    public String getIndFrt() {
-        return indFrt;
-    }
-
-    /**
-     * Seta Tipo do Frete
-     */
-    public void setIndFrt(String indFrt) {
-        this.indFrt = indFrt;
-    }
-    
-    /**
-     * Obtém Valor Total da Prestação de Serviço
-     */
-    public Double getVlServ() {
-        return vlServ;
-    }
-
-    /**
-     * Seta Valor Total da Prestação de Serviço
-     */
-    public void setVlServ(Double vlServ) {
-        this.vlServ = vlServ;
-    }
-    
-    /**
-     * Obtém Base de Cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
-
-    /**
-     * Seta Base de Cálculo do ICMS
-     */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Valor do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
-
-    /**
-     * Seta Valor do ICMS
-     */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Valor não-tributado do ICMS
-     */
-    public Double getVlNt() {
-        return vlNt;
-    }
-
-    /**
-     * Seta Valor não-tributado do ICMS
-     */
-    public void setVlNt(Double vlNt) {
-        this.vlNt = vlNt;
-    }
-    
-    /**
-     * Obtém Informação Complementar do Documento
-     */
-    public String getCodInf() {
-        return codInf;
-    }
-
-    /**
-     * Seta Informação Complementar do Documento
-     */
-    public void setCodInf(String codInf) {
-        this.codInf = codInf;
-    }
-    
-    /**
-     * Obtém Conta Analítica Contábil
-     */
-    public String getCodCta() {
-        return codCta;
-    }
-
-    /**
-     * Seta Conta Analítica Contábil
-     */
-    public void setCodCta(String codCta) {
-        this.codCta = codCta;
-    }
-    
-    
 }

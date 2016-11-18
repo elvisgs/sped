@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,143 +18,58 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C700"),
     @Field(at = 10, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC700 extends Registro {
-    
-    @Field(at = 2)
-    private String codMod;
-    
-    @Field(at = 3)
-    private String ser;
-    
-    @Field(at = 4)
-    private String nroOrdIni;
-    
-    @Field(at = 5)
-    private String nroOrdFin;
-    
-    @Field(at = 6)
-    private Date dtDocIni;
-    
-    @Field(at = 7)
-    private Date dtDocFin;
-    
-    @Field(at = 8)
-    private String nomMest;
-    
-    @Field(at = 9)
-    private String chvCodDig;
-    
-    /**
-     * Obtém Código do modelo do documento
-     */
-    public String getCodMod() {
-        return codMod;
-    }
 
     /**
-     * Seta Código do modelo do documento
+     * Código do modelo do documento
      * <p>06=Nota Fiscal/Conta de Energia Elétrica;28=Nota Fiscal/Conta de Fornecimento de Gás Canalizado</p>
      */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Série do documento fiscal
-     */
-    public String getSer() {
-        return ser;
-    }
+    @Field(at = 2)
+    private String codMod;
 
     /**
-     * Seta Série do documento fiscal
+     * Série do documento fiscal
      */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Número de ordem inicial
-     */
-    public String getNroOrdIni() {
-        return nroOrdIni;
-    }
+    @Field(at = 3)
+    private String ser;
 
     /**
-     * Seta Número de ordem inicial
+     * Número de ordem inicial
      */
-    public void setNroOrdIni(String nroOrdIni) {
-        this.nroOrdIni = nroOrdIni;
-    }
-    
-    /**
-     * Obtém Número de ordem final
-     */
-    public String getNroOrdFin() {
-        return nroOrdFin;
-    }
+    @Field(at = 4)
+    private String nroOrdIni;
 
     /**
-     * Seta Número de ordem final
+     * Número de ordem final
      */
-    public void setNroOrdFin(String nroOrdFin) {
-        this.nroOrdFin = nroOrdFin;
-    }
-    
-    /**
-     * Obtém Data de emissão inicial
-     */
-    public Date getDtDocIni() {
-        return dtDocIni;
-    }
+    @Field(at = 5)
+    private String nroOrdFin;
 
     /**
-     * Seta Data de emissão inicial
+     * Data de emissão inicial
      */
-    public void setDtDocIni(Date dtDocIni) {
-        this.dtDocIni = dtDocIni;
-    }
-    
-    /**
-     * Obtém Data de emissão final
-     */
-    public Date getDtDocFin() {
-        return dtDocFin;
-    }
+    @Field(at = 6)
+    private Date dtDocIni;
 
     /**
-     * Seta Data de emissão final
+     * Data de emissão final
      */
-    public void setDtDocFin(Date dtDocFin) {
-        this.dtDocFin = dtDocFin;
-    }
-    
-    /**
-     * Obtém Nome do arquivo mestre
-     */
-    public String getNomMest() {
-        return nomMest;
-    }
+    @Field(at = 7)
+    private Date dtDocFin;
 
     /**
-     * Seta Nome do arquivo mestre
+     * Nome do arquivo mestre
      */
-    public void setNomMest(String nomMest) {
-        this.nomMest = nomMest;
-    }
-    
-    /**
-     * Obtém Chave de codificação
-     */
-    public String getChvCodDig() {
-        return chvCodDig;
-    }
+    @Field(at = 8)
+    private String nomMest;
 
     /**
-     * Seta Chave de codificação
+     * Chave de codificação
      */
-    public void setChvCodDig(String chvCodDig) {
-        this.chvCodDig = chvCodDig;
-    }
-    
+    @Field(at = 9)
+    private String chvCodDig;
+
+
 }

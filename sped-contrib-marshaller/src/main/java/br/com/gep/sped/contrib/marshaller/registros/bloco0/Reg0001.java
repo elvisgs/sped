@@ -15,5 +15,5 @@ import org.beanio.annotation.Record;
     @Field(at = 3, name = "fimLinha")
 })
 public class Reg0001 extends RegistroAberturaBloco {
-    
+
 }

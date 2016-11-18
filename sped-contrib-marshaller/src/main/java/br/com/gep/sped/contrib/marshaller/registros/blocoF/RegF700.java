@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoF;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,127 +16,53 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "F700"),
     @Field(at = 9, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegF700 extends Registro {
-    
+
+    /**
+     * Indicador de Origem de Deduções Diversas
+     * <p>01=Créditos Presumidos - Medicamentos;02=Créditos Admitidos no Regime Cumulativo - Bebidas Frias;03=Contribuição Paga pelo Substituto Tributário - ZFM;04=Substituição Tributária - Não Ocorrência do Fato Gerador Presumido;99=Outras Deduções</p>
+     */
     @Field(at = 2)
     private String indOriDed;
-    
+
+    /**
+     * Indicador da Natureza da Dedução
+     * <p>0=Dedução de Natureza Não Cumulativa;1=Dedução de Natureza Cumulativa</p>
+     */
     @Field(at = 3)
     private String indNatDed;
-    
+
+    /**
+     * Valor a Deduzir - PIS/Pasep
+     */
     @Field(at = 4)
     private Double vlDedPis;
-    
+
+    /**
+     * Valor a Deduzir - COFINS
+     */
     @Field(at = 5)
     private Double vlDedCofins;
-    
+
+    /**
+     * Valor da Base de Cálculo da Operação
+     */
     @Field(at = 6)
     private Double vlBcOper;
-    
+
+    /**
+     * CNPJ da Pessoa Jurídica relacionada à Operação
+     */
     @Field(at = 7)
     private String cnpj;
-    
+
+    /**
+     * Informações Complementares do Documento/Operação
+     */
     @Field(at = 8)
     private String infComp;
-    
-    
-    /**
-     * Obtém Indicador de Origem de Deduções Diversas
-     */
-    public String getIndOriDed() {
-        return indOriDed;
-    }
 
-    /**
-     * Seta Indicador de Origem de Deduções Diversas
-     */
-    public void setIndOriDed(String indOriDed) {
-        this.indOriDed = indOriDed;
-    }
-    
-    /**
-     * Obtém Indicador da Natureza da Dedução
-     */
-    public String getIndNatDed() {
-        return indNatDed;
-    }
 
-    /**
-     * Seta Indicador da Natureza da Dedução
-     */
-    public void setIndNatDed(String indNatDed) {
-        this.indNatDed = indNatDed;
-    }
-    
-    /**
-     * Obtém Valor a Deduzir - PIS/Pasep
-     */
-    public Double getVlDedPis() {
-        return vlDedPis;
-    }
-
-    /**
-     * Seta Valor a Deduzir - PIS/Pasep
-     */
-    public void setVlDedPis(Double vlDedPis) {
-        this.vlDedPis = vlDedPis;
-    }
-    
-    /**
-     * Obtém Valor a Deduzir - COFINS
-     */
-    public Double getVlDedCofins() {
-        return vlDedCofins;
-    }
-
-    /**
-     * Seta Valor a Deduzir - COFINS
-     */
-    public void setVlDedCofins(Double vlDedCofins) {
-        this.vlDedCofins = vlDedCofins;
-    }
-    
-    /**
-     * Obtém Valor da Base de Cálculo da Operação
-     */
-    public Double getVlBcOper() {
-        return vlBcOper;
-    }
-
-    /**
-     * Seta Valor da Base de Cálculo da Operação
-     */
-    public void setVlBcOper(Double vlBcOper) {
-        this.vlBcOper = vlBcOper;
-    }
-    
-    /**
-     * Obtém CNPJ da Pessoa Jurídica relacionada à Operação
-     */
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    /**
-     * Seta CNPJ da Pessoa Jurídica relacionada à Operação
-     */
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-    
-    /**
-     * Obtém Informações Complementares do Documento/Operação
-     */
-    public String getInfComp() {
-        return infComp;
-    }
-
-    /**
-     * Seta Informações Complementares do Documento/Operação
-     */
-    public void setInfComp(String infComp) {
-        this.infComp = infComp;
-    }
-    
-    
 }

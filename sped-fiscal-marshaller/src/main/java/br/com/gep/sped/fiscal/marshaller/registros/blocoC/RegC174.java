@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Arma de fogo
@@ -16,58 +16,28 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C174"),
     @Field(at = 5, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC174 extends Registro {
-    
-    @Field(at = 2)
-    private String indArm;
-    
-    @Field(at = 3)
-    private String numArm;
-    
-    @Field(at = 4)
-    private String descrCompl;
-    
-    /**
-     * Obtém Tipo da arma
-     */
-    public String getIndArm() {
-        return indArm;
-    }
 
     /**
-     * Seta Tipo da arma
+     * Tipo da arma
      * <p>0=Uso permitido;1=Uso restrito</p>
      */
-    public void setIndArm(String indArm) {
-        this.indArm = indArm;
-    }
-    
-    /**
-     * Obtém Número de Série
-     */
-    public String getNumArm() {
-        return numArm;
-    }
+    @Field(at = 2)
+    private String indArm;
 
     /**
-     * Seta Número de Série
+     * Número de Série
      */
-    public void setNumArm(String numArm) {
-        this.numArm = numArm;
-    }
-    
-    /**
-     * Obtém Descrição da arma
-     */
-    public String getDescrCompl() {
-        return descrCompl;
-    }
+    @Field(at = 3)
+    private String numArm;
 
     /**
-     * Seta Descrição da arma
+     * Descrição da arma
      */
-    public void setDescrCompl(String descrCompl) {
-        this.descrCompl = descrCompl;
-    }
-    
+    @Field(at = 4)
+    private String descrCompl;
+
+
 }

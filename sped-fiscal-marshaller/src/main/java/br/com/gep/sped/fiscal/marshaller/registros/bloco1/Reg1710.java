@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.bloco1;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * DOCUMENTOS FISCAIS CANCELADOS/INUTILIZADOS
@@ -16,40 +16,21 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "1710"),
     @Field(at = 4, name = "fimLinha")
 })
+@Getter
+@Setter
 public class Reg1710 extends Registro {
-    
+
+    /**
+     * Dispositivo autorizado inicial
+     */
     @Field(at = 6)
     private String numDocIni;
-    
+
+    /**
+     * Dispositivo autorizado final
+     */
     @Field(at = 7)
     private String numDocFin;
-    
-    /**
-     * Obtém Dispositivo autorizado inicial
-     */
-    public String getNumDocIni() {
-        return numDocIni;
-    }
 
-    /**
-     * Seta Dispositivo autorizado inicial
-     */
-    public void setNumDocIni(String numDocIni) {
-        this.numDocIni = numDocIni;
-    }
-    
-    /**
-     * Obtém Dispositivo autorizado final
-     */
-    public String getNumDocFin() {
-        return numDocFin;
-    }
 
-    /**
-     * Seta Dispositivo autorizado final
-     */
-    public void setNumDocFin(String numDocFin) {
-        this.numDocFin = numDocFin;
-    }
-    
 }

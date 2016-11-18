@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,365 +18,136 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C600"),
     @Field(at = 23, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC600 extends Registro {
-    
+
+    /**
+     * Código do modelo do documento fiscal, conforme a Tabela 4.1.1
+     * <p>01=C600 - Nota Fiscal;06=C600 - Nota Fiscal/Conta de Energia Elétrica;29=C600 - Nota Fiscal/Conta de Fornecimento de Água Canalizada;28=C600 - Nota Fiscal/Conta de Fornecimento de Gás Canalizado;55=C600 - Nota Fiscal Eletrônica</p>
+     */
     @Field(at = 2)
     private String codMod;
-    
+
+    /**
+     * Código do município dos pontos de consumo, conforme a tabela IBGE
+     */
     @Field(at = 3)
     private String codMun;
-    
+
+    /**
+     * Série do documento fiscal
+     */
     @Field(at = 4)
     private String ser;
-    
+
+    /**
+     * Subsérie do documento fiscal
+     */
     @Field(at = 5)
     private String sub;
-    
+
+    /**
+     * Código de classe de consumo de energia elétrica, conforme a Tabela 4.4.5, ou Código de Consumo de Fornecimento D'água - Tabela 4.4.2 ou Código da classe de consumo de gás canalizado conforme Tabela 4.4.3
+     */
     @Field(at = 6)
     private String codCons;
-    
+
+    /**
+     * Quantidade de documentos consolidados neste registro
+     */
     @Field(at = 7)
     private Integer qtdCons;
-    
+
+    /**
+     * Quantidade de documentos cancelados
+     */
     @Field(at = 8)
     private Integer qtdCanc;
-    
+
+    /**
+     * Data dos documentos consolidados
+     */
     @Field(at = 9)
     private Date dtDoc;
-    
+
+    /**
+     * Valor total dos documentos
+     */
     @Field(at = 10)
     private Double vlDoc;
-    
+
+    /**
+     * Valor acumulado dos descontos
+     */
     @Field(at = 11)
     private Double vlDesc;
-    
+
+    /**
+     * Consumo total acumulado, em kWh (Código 06)
+     */
     @Field(at = 12)
     private Integer cons;
-    
+
+    /**
+     * Valor acumulado do fornecimento
+     */
     @Field(at = 13)
     private Double vlForn;
-    
+
+    /**
+     * Valor acumulado dos serviços não-tributados pelo ICMS
+     */
     @Field(at = 14)
     private Double vlServNt;
-    
+
+    /**
+     * Valores cobrados em nome de terceiros
+     */
     @Field(at = 15)
     private Double vlTerc;
-    
+
+    /**
+     * Valor acumulado das despesas acessórias
+     */
     @Field(at = 16)
     private Double vlDa;
-    
+
+    /**
+     * Valor acumulado da base de cálculo do ICMS
+     */
     @Field(at = 17)
     private Double vlBcIcms;
-    
+
+    /**
+     * Valor acumulado do ICMS
+     */
     @Field(at = 18)
     private Double vlIcms;
-    
+
+    /**
+     * Valor acumulado da base de cálculo do ICMS substituição tributária
+     */
     @Field(at = 19)
     private Double vlBcIcmsSt;
-    
+
+    /**
+     * Valor acumulado do ICMS retido por substituição tributária
+     */
     @Field(at = 20)
     private Double vlIcmsSt;
-    
+
+    /**
+     * Valor acumulado do PIS/PASEP
+     */
     @Field(at = 21)
     private Double vlPis;
-    
+
+    /**
+     * Valor acumulado da COFINS
+     */
     @Field(at = 22)
     private Double vlCofins;
-    
-    
-    /**
-     * Obtém Modelo do Documento
-     */
-    public String getCodMod() {
-        return codMod;
-    }
 
-    /**
-     * Seta Modelo do Documento
-     */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Município dos Pontos de Consumo
-     */
-    public String getCodMun() {
-        return codMun;
-    }
 
-    /**
-     * Seta Município dos Pontos de Consumo
-     */
-    public void setCodMun(String codMun) {
-        this.codMun = codMun;
-    }
-    
-    /**
-     * Obtém Série
-     */
-    public String getSer() {
-        return ser;
-    }
-
-    /**
-     * Seta Série
-     */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Subsérie
-     */
-    public String getSub() {
-        return sub;
-    }
-
-    /**
-     * Seta Subsérie
-     */
-    public void setSub(String sub) {
-        this.sub = sub;
-    }
-    
-    /**
-     * Obtém Classe de Consumo
-     */
-    public String getCodCons() {
-        return codCons;
-    }
-
-    /**
-     * Seta Classe de Consumo
-     */
-    public void setCodCons(String codCons) {
-        this.codCons = codCons;
-    }
-    
-    /**
-     * Obtém Quantidade de Documentos Consolidados
-     */
-    public Integer getQtdCons() {
-        return qtdCons;
-    }
-
-    /**
-     * Seta Quantidade de Documentos Consolidados
-     */
-    public void setQtdCons(Integer qtdCons) {
-        this.qtdCons = qtdCons;
-    }
-    
-    /**
-     * Obtém Quantidade de Documentos Cancelados
-     */
-    public Integer getQtdCanc() {
-        return qtdCanc;
-    }
-
-    /**
-     * Seta Quantidade de Documentos Cancelados
-     */
-    public void setQtdCanc(Integer qtdCanc) {
-        this.qtdCanc = qtdCanc;
-    }
-    
-    /**
-     * Obtém Data dos Documentos Consolidados
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
-
-    /**
-     * Seta Data dos Documentos Consolidados
-     */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Valor Total dos Documentos
-     */
-    public Double getVlDoc() {
-        return vlDoc;
-    }
-
-    /**
-     * Seta Valor Total dos Documentos
-     */
-    public void setVlDoc(Double vlDoc) {
-        this.vlDoc = vlDoc;
-    }
-    
-    /**
-     * Obtém Valor Acumulado dos Descontos
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
-
-    /**
-     * Seta Valor Acumulado dos Descontos
-     */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Consumo Total Acumulado
-     */
-    public Integer getCons() {
-        return cons;
-    }
-
-    /**
-     * Seta Consumo Total Acumulado
-     */
-    public void setCons(Integer cons) {
-        this.cons = cons;
-    }
-    
-    /**
-     * Obtém Valor Acumulado do Fornecimento
-     */
-    public Double getVlForn() {
-        return vlForn;
-    }
-
-    /**
-     * Seta Valor Acumulado do Fornecimento
-     */
-    public void setVlForn(Double vlForn) {
-        this.vlForn = vlForn;
-    }
-    
-    /**
-     * Obtém Valor Acumulado dos Serviços não-tributados pelo ICMS
-     */
-    public Double getVlServNt() {
-        return vlServNt;
-    }
-
-    /**
-     * Seta Valor Acumulado dos Serviços não-tributados pelo ICMS
-     */
-    public void setVlServNt(Double vlServNt) {
-        this.vlServNt = vlServNt;
-    }
-    
-    /**
-     * Obtém Valores Cobrados em Nome de Terceiros
-     */
-    public Double getVlTerc() {
-        return vlTerc;
-    }
-
-    /**
-     * Seta Valores Cobrados em Nome de Terceiros
-     */
-    public void setVlTerc(Double vlTerc) {
-        this.vlTerc = vlTerc;
-    }
-    
-    /**
-     * Obtém Valor Acumulado das Despesas Acessórias
-     */
-    public Double getVlDa() {
-        return vlDa;
-    }
-
-    /**
-     * Seta Valor Acumulado das Despesas Acessórias
-     */
-    public void setVlDa(Double vlDa) {
-        this.vlDa = vlDa;
-    }
-    
-    /**
-     * Obtém Valor Acumulado da Base de Cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
-
-    /**
-     * Seta Valor Acumulado da Base de Cálculo do ICMS
-     */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Valor Acumulado do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
-
-    /**
-     * Seta Valor Acumulado do ICMS
-     */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Valor Acumulado da Base de Cálculo do ICMS ST
-     */
-    public Double getVlBcIcmsSt() {
-        return vlBcIcmsSt;
-    }
-
-    /**
-     * Seta Valor Acumulado da Base de Cálculo do ICMS ST
-     */
-    public void setVlBcIcmsSt(Double vlBcIcmsSt) {
-        this.vlBcIcmsSt = vlBcIcmsSt;
-    }
-    
-    /**
-     * Obtém Valor Acumulado do ICMS ST
-     */
-    public Double getVlIcmsSt() {
-        return vlIcmsSt;
-    }
-
-    /**
-     * Seta Valor Acumulado do ICMS ST
-     */
-    public void setVlIcmsSt(Double vlIcmsSt) {
-        this.vlIcmsSt = vlIcmsSt;
-    }
-    
-    /**
-     * Obtém Valor Acumulado do PIS/PASEP
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
-
-    /**
-     * Seta Valor Acumulado do PIS/PASEP
-     */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém Valor Acumulado da COFINS
-     */
-    public Double getVlCofins() {
-        return vlCofins;
-    }
-
-    /**
-     * Seta Valor Acumulado da COFINS
-     */
-    public void setVlCofins(Double vlCofins) {
-        this.vlCofins = vlCofins;
-    }
-    
-    
 }

@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,177 +18,70 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C300"),
     @Field(at = 12, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC300 extends Registro {
-    
-    @Field(at = 2)
-    private String codMod;
-    
-    @Field(at = 3)
-    private String ser;
-    
-    @Field(at = 4)
-    private String sub;
-    
-    @Field(at = 5)
-    private String numDocIni;
-    
-    @Field(at = 6)
-    private String numDocFin;
-    
-    @Field(at = 7)
-    private Date dtDoc;
-    
-    @Field(at = 8)
-    private Double vlDoc;
-    
-    @Field(at = 9)
-    private Double vlPis;
-    
-    @Field(at = 10)
-    private Double vlCofins;
-    
-    @Field(at = 11)
-    private String codCta;
-    
-    /**
-     * Obtém Código do modelo do documento
-     */
-    public String getCodMod() {
-        return codMod;
-    }
 
     /**
-     * Seta Código do modelo do documento
+     * Código do modelo do documento
      * <p>02=Nota Fiscal de Venda a Consumidor;</p>
      */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Série do documento fiscal
-     */
-    public String getSer() {
-        return ser;
-    }
+    @Field(at = 2)
+    private String codMod;
 
     /**
-     * Seta Série do documento fiscal
+     * Série do documento fiscal
      */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Subsérie do documento fiscal
-     */
-    public String getSub() {
-        return sub;
-    }
+    @Field(at = 3)
+    private String ser;
 
     /**
-     * Seta Subsérie do documento fiscal
+     * Subsérie do documento fiscal
      */
-    public void setSub(String sub) {
-        this.sub = sub;
-    }
-    
-    /**
-     * Obtém Documento fiscal inicial
-     */
-    public String getNumDocIni() {
-        return numDocIni;
-    }
+    @Field(at = 4)
+    private String sub;
 
     /**
-     * Seta Documento fiscal inicial
+     * Documento fiscal inicial
      */
-    public void setNumDocIni(String numDocIni) {
-        this.numDocIni = numDocIni;
-    }
-    
-    /**
-     * Obtém Documento fiscal final
-     */
-    public String getNumDocFin() {
-        return numDocFin;
-    }
+    @Field(at = 5)
+    private String numDocIni;
 
     /**
-     * Seta Documento fiscal final
+     * Documento fiscal final
      */
-    public void setNumDocFin(String numDocFin) {
-        this.numDocFin = numDocFin;
-    }
-    
-    /**
-     * Obtém Data da emissão
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
+    @Field(at = 6)
+    private String numDocFin;
 
     /**
-     * Seta Data da emissão
+     * Data da emissão
      */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Valor total dos documentos
-     */
-    public Double getVlDoc() {
-        return vlDoc;
-    }
+    @Field(at = 7)
+    private Date dtDoc;
 
     /**
-     * Seta Valor total dos documentos
+     * Valor total dos documentos
      */
-    public void setVlDoc(Double vlDoc) {
-        this.vlDoc = vlDoc;
-    }
-    
-    /**
-     * Obtém Valor total do PIS
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
+    @Field(at = 8)
+    private Double vlDoc;
 
     /**
-     * Seta Valor total do PIS
+     * Valor total do PIS
      */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém Valor total da COFINS
-     */
-    public Double getVlCofins() {
-        return vlCofins;
-    }
+    @Field(at = 9)
+    private Double vlPis;
 
     /**
-     * Seta Valor total da COFINS
+     * Valor total da COFINS
      */
-    public void setVlCofins(Double vlCofins) {
-        this.vlCofins = vlCofins;
-    }
-    
-    /**
-     * Obtém Código da conta analítica
-     */
-    public String getCodCta() {
-        return codCta;
-    }
+    @Field(at = 10)
+    private Double vlCofins;
 
     /**
-     * Seta Código da conta analítica
+     * Código da conta analítica
      */
-    public void setCodCta(String codCta) {
-        this.codCta = codCta;
-    }
-    
+    @Field(at = 11)
+    private String codCta;
+
+
 }

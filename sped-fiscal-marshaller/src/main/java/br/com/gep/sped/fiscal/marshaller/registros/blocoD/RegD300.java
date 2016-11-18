@@ -1,6 +1,8 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoD;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,330 +18,124 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "D300"),
     @Field(at = 21, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegD300 extends Registro {
-    
-    @Field(at = 2)
-    private String codMod;
-    
-    @Field(at = 3)
-    private String ser;
-    
-    @Field(at = 4)
-    private String sub;
-    
-    @Field(at = 5)
-    private String numDocIni;
-    
-    @Field(at = 6)
-    private Integer numDocFin;
-    
-    @Field(at = 7)
-    private String cstIcms;
-    
-    @Field(at = 8)
-    private String cfop;
-    
-    @Field(at = 9)
-    private Double aliqIcms;
-    
-    @Field(at = 10)
-    private Date dtDoc;
-    
-    @Field(at = 11)
-    private Double vlOpr;
-    
-    @Field(at = 12)
-    private Double vlDesc;
-    
-    @Field(at = 13)
-    private Double vlServ;
-    
-    @Field(at = 14)
-    private Double vlSeg;
-    
-    @Field(at = 15)
-    private Double vlOutDesp;
-    
-    @Field(at = 16)
-    private Double vlBcIcms;
-    
-    @Field(at = 17)
-    private Double vlIcms;
-    
-    @Field(at = 18)
-    private Double vlRedBc;
-    
-    @Field(at = 19)
-    private String codObs;
-    
-    @Field(at = 20)
-    private String codCta;
-    
-    /**
-     * Obtém Código do modelo do documento
-     */
-    public String getCodMod() {
-        return codMod;
-    }
 
     /**
-     * Seta Código do modelo do documento
+     * Código do modelo do documento
      * <p>13=Bilhete de Passagem Rodoviário;14=Bilhete de Passagem Aquaviário;15=Bilhete de Passagem e Nota de Bagagem;16=Bilhete de Passagem Ferroviário</p>
      */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Série do documento fiscal
-     */
-    public String getSer() {
-        return ser;
-    }
+    @Field(at = 2)
+    private String codMod;
 
     /**
-     * Seta Série do documento fiscal
+     * Série do documento fiscal
      */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Subsérie do documento fiscal
-     */
-    public String getSub() {
-        return sub;
-    }
+    @Field(at = 3)
+    private String ser;
 
     /**
-     * Seta Subsérie do documento fiscal
+     * Subsérie do documento fiscal
      */
-    public void setSub(String sub) {
-        this.sub = sub;
-    }
-    
-    /**
-     * Obtém Documento fiscal inicial
-     */
-    public String getNumDocIni() {
-        return numDocIni;
-    }
+    @Field(at = 4)
+    private String sub;
 
     /**
-     * Seta Documento fiscal inicial
+     * Documento fiscal inicial
      */
-    public void setNumDocIni(String numDocIni) {
-        this.numDocIni = numDocIni;
-    }
-    
-    /**
-     * Obtém Documento fiscal final
-     */
-    public Integer getNumDocFin() {
-        return numDocFin;
-    }
+    @Field(at = 5)
+    private String numDocIni;
 
     /**
-     * Seta Documento fiscal final
+     * Documento fiscal final
      */
-    public void setNumDocFin(Integer numDocFin) {
-        this.numDocFin = numDocFin;
-    }
-    
-    /**
-     * Obtém CST/ICMS
-     */
-    public String getCstIcms() {
-        return cstIcms;
-    }
+    @Field(at = 6)
+    private Integer numDocFin;
 
     /**
-     * Seta CST/ICMS
+     * CST/ICMS
      */
-    public void setCstIcms(String cstIcms) {
-        this.cstIcms = cstIcms;
-    }
-    
-    /**
-     * Obtém CFOP
-     */
-    public String getCfop() {
-        return cfop;
-    }
+    @Field(at = 7)
+    private String cstIcms;
 
     /**
-     * Seta CFOP
+     * CFOP
      */
-    public void setCfop(String cfop) {
-        this.cfop = cfop;
-    }
-    
-    /**
-     * Obtém Alíquota do ICMS(%)
-     */
-    public Double getAliqIcms() {
-        return aliqIcms;
-    }
+    @Field(at = 8)
+    private String cfop;
 
     /**
-     * Seta Alíquota do ICMS(%)
+     * Alíquota do ICMS(%)
      */
-    public void setAliqIcms(Double aliqIcms) {
-        this.aliqIcms = aliqIcms;
-    }
-    
-    /**
-     * Obtém Data da emissão
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
+    @Field(at = 9)
+    private Double aliqIcms;
 
     /**
-     * Seta Data da emissão
+     * Data da emissão
      */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Valor da operação
-     */
-    public Double getVlOpr() {
-        return vlOpr;
-    }
+    @Field(at = 10)
+    private Date dtDoc;
 
     /**
-     * Seta Valor da operação
+     * Valor da operação
      */
-    public void setVlOpr(Double vlOpr) {
-        this.vlOpr = vlOpr;
-    }
-    
-    /**
-     * Obtém Valor total dos descontos
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
+    @Field(at = 11)
+    private Double vlOpr;
 
     /**
-     * Seta Valor total dos descontos
+     * Valor total dos descontos
      */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Valor total da prestação de serviço
-     */
-    public Double getVlServ() {
-        return vlServ;
-    }
+    @Field(at = 12)
+    private Double vlDesc;
 
     /**
-     * Seta Valor total da prestação de serviço
+     * Valor total da prestação de serviço
      */
-    public void setVlServ(Double vlServ) {
-        this.vlServ = vlServ;
-    }
-    
-    /**
-     * Obtém Valor de seguro
-     */
-    public Double getVlSeg() {
-        return vlSeg;
-    }
+    @Field(at = 13)
+    private Double vlServ;
 
     /**
-     * Seta Valor de seguro
+     * Valor de seguro
      */
-    public void setVlSeg(Double vlSeg) {
-        this.vlSeg = vlSeg;
-    }
-    
-    /**
-     * Obtém Valor de outras despesas
-     */
-    public Double getVlOutDesp() {
-        return vlOutDesp;
-    }
+    @Field(at = 14)
+    private Double vlSeg;
 
     /**
-     * Seta Valor de outras despesas
+     * Valor de outras despesas
      */
-    public void setVlOutDesp(Double vlOutDesp) {
-        this.vlOutDesp = vlOutDesp;
-    }
-    
-    /**
-     * Obtém Base de cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
+    @Field(at = 15)
+    private Double vlOutDesp;
 
     /**
-     * Seta Base de cálculo do ICMS
+     * Base de cálculo do ICMS
      */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Valor do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
+    @Field(at = 16)
+    private Double vlBcIcms;
 
     /**
-     * Seta Valor do ICMS
+     * Valor do ICMS
      */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Valor não tributado base ICMS
-     */
-    public Double getVlRedBc() {
-        return vlRedBc;
-    }
+    @Field(at = 17)
+    private Double vlIcms;
 
     /**
-     * Seta Valor não tributado base ICMS
+     * Valor não tributado base ICMS
      */
-    public void setVlRedBc(Double vlRedBc) {
-        this.vlRedBc = vlRedBc;
-    }
-    
-    /**
-     * Obtém Código observação lançamento
-     */
-    public String getCodObs() {
-        return codObs;
-    }
+    @Field(at = 18)
+    private Double vlRedBc;
 
     /**
-     * Seta Código observação lançamento
+     * Código observação lançamento
      */
-    public void setCodObs(String codObs) {
-        this.codObs = codObs;
-    }
-    
-    /**
-     * Obtém Código da conta analítica
-     */
-    public String getCodCta() {
-        return codCta;
-    }
+    @Field(at = 19)
+    private String codObs;
 
     /**
-     * Seta Código da conta analítica
+     * Código da conta analítica
      */
-    public void setCodCta(String codCta) {
-        this.codCta = codCta;
-    }
-    
+    @Field(at = 20)
+    private String codCta;
+
+
 }

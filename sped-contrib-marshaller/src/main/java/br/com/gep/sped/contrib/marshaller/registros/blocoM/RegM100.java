@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoM;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,246 +16,95 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "M100"),
     @Field(at = 16, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegM100 extends Registro {
-    
+
+    /**
+     * Código de Tipo de Crédito apurado no período, conforme a Tabela 4.3.6
+     */
     @Field(at = 2)
     private String codCred;
-    
+
+    /**
+     * Indicador de Crédito Oriundo de
+     * <p>0=Operações próprias;1=Evento de incorporação, cisão ou fusão</p>
+     */
     @Field(at = 3)
     private String indCredOri;
-    
+
+    /**
+     * Valor da Base de Cálculo do Crédito
+     */
     @Field(at = 4)
     private Double vlBcCred;
-    
+
+    /**
+     * Alíquota do PIS/PASEP (em percentual)
+     */
     @Field(at = 5)
     private Double aliqPis;
-    
+
+    /**
+     * Base de cálculo em quantidade PIS/PASEP
+     */
     @Field(at = 6)
     private Double quantBcPis;
-    
+
+    /**
+     * Alíquota do PIS (em reais)
+     */
     @Field(at = 7)
     private Double aliqPisQuant;
-    
+
+    /**
+     * Valor total do crédito apurado no período
+     */
     @Field(at = 8)
     private Double vlCred;
-    
+
+    /**
+     * Valor total dos ajustes de acréscimo
+     */
     @Field(at = 9)
     private Double vlAjusAcres;
-    
+
+    /**
+     * Valor total dos ajustes de redução
+     */
     @Field(at = 10)
     private Double vlAjusReduc;
-    
+
+    /**
+     * Valor total do crédito diferido no período
+     */
     @Field(at = 11)
     private Double vlCredDif;
-    
+
+    /**
+     * Valor Total do Crédito Disponível relativo ao Período (07 + 08 - 09 - 10)
+     */
     @Field(at = 12)
     private Double vlCredDisp;
-    
+
+    /**
+     * Indicador de utilização do crédito disponível no período.
+     * <p>0=Utilização do valor total para desconto da contribuição apurada, no Registro M200;1=Utilização de valor parcial para desconto da contribuição apurada, no Registro M200.</p>
+     */
     @Field(at = 13)
     private String indDescCred;
-    
+
+    /**
+     * Valor do Crédito disponível, descontado da contribuição apurada no próprio período
+     */
     @Field(at = 14)
     private Double vlCredDesc;
-    
+
+    /**
+     * Saldo de créditos a utilizar em períodos futuros (12 - 14)
+     */
     @Field(at = 15)
     private Double sldCred;
-    
-    
-    /**
-     * Obtém Código de Tipo de Crédito apurado no período, conforme a Tabela 4.3.6
-     */
-    public String getCodCred() {
-        return codCred;
-    }
 
-    /**
-     * Seta Código de Tipo de Crédito apurado no período, conforme a Tabela 4.3.6
-     */
-    public void setCodCred(String codCred) {
-        this.codCred = codCred;
-    }
-    
-    /**
-     * Obtém Indicador de Crédito Oriundo de
-     */
-    public String getIndCredOri() {
-        return indCredOri;
-    }
 
-    /**
-     * Seta Indicador de Crédito Oriundo de
-     */
-    public void setIndCredOri(String indCredOri) {
-        this.indCredOri = indCredOri;
-    }
-    
-    /**
-     * Obtém Valor da Base de Cálculo do Crédito
-     */
-    public Double getVlBcCred() {
-        return vlBcCred;
-    }
-
-    /**
-     * Seta Valor da Base de Cálculo do Crédito
-     */
-    public void setVlBcCred(Double vlBcCred) {
-        this.vlBcCred = vlBcCred;
-    }
-    
-    /**
-     * Obtém Alíquota do PIS/PASEP (em percentual)
-     */
-    public Double getAliqPis() {
-        return aliqPis;
-    }
-
-    /**
-     * Seta Alíquota do PIS/PASEP (em percentual)
-     */
-    public void setAliqPis(Double aliqPis) {
-        this.aliqPis = aliqPis;
-    }
-    
-    /**
-     * Obtém Base de cálculo em quantidade PIS/PASEP
-     */
-    public Double getQuantBcPis() {
-        return quantBcPis;
-    }
-
-    /**
-     * Seta Base de cálculo em quantidade PIS/PASEP
-     */
-    public void setQuantBcPis(Double quantBcPis) {
-        this.quantBcPis = quantBcPis;
-    }
-    
-    /**
-     * Obtém Alíquota do PIS (em reais)
-     */
-    public Double getAliqPisQuant() {
-        return aliqPisQuant;
-    }
-
-    /**
-     * Seta Alíquota do PIS (em reais)
-     */
-    public void setAliqPisQuant(Double aliqPisQuant) {
-        this.aliqPisQuant = aliqPisQuant;
-    }
-    
-    /**
-     * Obtém Valor total do crédito apurado no período
-     */
-    public Double getVlCred() {
-        return vlCred;
-    }
-
-    /**
-     * Seta Valor total do crédito apurado no período
-     */
-    public void setVlCred(Double vlCred) {
-        this.vlCred = vlCred;
-    }
-    
-    /**
-     * Obtém Valor total dos ajustes de acréscimo
-     */
-    public Double getVlAjusAcres() {
-        return vlAjusAcres;
-    }
-
-    /**
-     * Seta Valor total dos ajustes de acréscimo
-     */
-    public void setVlAjusAcres(Double vlAjusAcres) {
-        this.vlAjusAcres = vlAjusAcres;
-    }
-    
-    /**
-     * Obtém Valor total dos ajustes de redução
-     */
-    public Double getVlAjusReduc() {
-        return vlAjusReduc;
-    }
-
-    /**
-     * Seta Valor total dos ajustes de redução
-     */
-    public void setVlAjusReduc(Double vlAjusReduc) {
-        this.vlAjusReduc = vlAjusReduc;
-    }
-    
-    /**
-     * Obtém Valor total do crédito diferido no período
-     */
-    public Double getVlCredDif() {
-        return vlCredDif;
-    }
-
-    /**
-     * Seta Valor total do crédito diferido no período
-     */
-    public void setVlCredDif(Double vlCredDif) {
-        this.vlCredDif = vlCredDif;
-    }
-    
-    /**
-     * Obtém Valor Total do Crédito Disponível relativo ao Período (07 + 08 - 09 - 10)
-     */
-    public Double getVlCredDisp() {
-        return vlCredDisp;
-    }
-
-    /**
-     * Seta Valor Total do Crédito Disponível relativo ao Período (07 + 08 - 09 - 10)
-     */
-    public void setVlCredDisp(Double vlCredDisp) {
-        this.vlCredDisp = vlCredDisp;
-    }
-    
-    /**
-     * Obtém Indicador de utilização do crédito disponível no período.
-     */
-    public String getIndDescCred() {
-        return indDescCred;
-    }
-
-    /**
-     * Seta Indicador de utilização do crédito disponível no período.
-     */
-    public void setIndDescCred(String indDescCred) {
-        this.indDescCred = indDescCred;
-    }
-    
-    /**
-     * Obtém Valor do Crédito disponível, descontado da contribuição apurada no próprio período
-     */
-    public Double getVlCredDesc() {
-        return vlCredDesc;
-    }
-
-    /**
-     * Seta Valor do Crédito disponível, descontado da contribuição apurada no próprio período
-     */
-    public void setVlCredDesc(Double vlCredDesc) {
-        this.vlCredDesc = vlCredDesc;
-    }
-    
-    /**
-     * Obtém Saldo de créditos a utilizar em períodos futuros (12 - 14)
-     */
-    public Double getSldCred() {
-        return sldCred;
-    }
-
-    /**
-     * Seta Saldo de créditos a utilizar em períodos futuros (12 - 14)
-     */
-    public void setSldCred(Double sldCred) {
-        this.sldCred = sldCred;
-    }
-    
-    
 }

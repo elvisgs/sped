@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -14,42 +16,21 @@ import org.beanio.annotation.Record;
     @Field(at = 1, name = "reg", rid = true, literal = "C110"),
     @Field(at = 4, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC110 extends Registro {
-    
+
+    /**
+     * Código da informação complementar do documento fiscal (campo 02 do Registro 0450)
+     */
     @Field(at = 2)
     private String codInf;
-    
+
+    /**
+     * Descrição complementar do código de referência
+     */
     @Field(at = 3)
     private String txtCompl;
-    
-    
-    /**
-     * Obtém Código
-     */
-    public String getCodInf() {
-        return codInf;
-    }
 
-    /**
-     * Seta Código
-     */
-    public void setCodInf(String codInf) {
-        this.codInf = codInf;
-    }
-    
-    /**
-     * Obtém Texto
-     */
-    public String getTxtCompl() {
-        return txtCompl;
-    }
 
-    /**
-     * Seta Texto
-     */
-    public void setTxtCompl(String txtCompl) {
-        this.txtCompl = txtCompl;
-    }
-    
-    
 }

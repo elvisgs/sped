@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoD;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -16,365 +18,139 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "D500"),
     @Field(at = 23, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegD500 extends Registro {
-    
+
+    /**
+     * Indicador do tipo de operação
+     * <p>0=Aquisição</p>
+     */
     @Field(at = 2)
     private String indOper;
-    
+
+    /**
+     * Indicador do emitente do documento fiscal
+     * <p>0=Emissão própria;1=Terceiros</p>
+     */
     @Field(at = 3)
     private String indEmit;
-    
+
+    /**
+     * Código do participante prestador do serviço (campo 02 do Registro 0150)
+     */
     @Field(at = 4)
     private String codPart;
-    
+
+    /**
+     * Código do modelo do documento fiscal, conforme a Tabela 4.1.1
+     * <p>21=D500 - Nota Fiscal de Serviço de Comunicação;22=D500 - Nota Fiscal de Serviço de Telecomunicação;55=D500 - Nota Fiscal Eletrônica</p>
+     */
     @Field(at = 5)
     private String codMod;
-    
+
+    /**
+     * Çódigo da situação do documento fiscal, conforme a Tabela 4.1.2
+     * <p>00=Documento regular;02=Documento cancelado;08=Documento Fiscal emitido com base em Regime Especial ou Norma Específica</p>
+     */
     @Field(at = 6)
     private String codSit;
-    
+
+    /**
+     * Série do documento fiscal
+     */
     @Field(at = 7)
     private String ser;
-    
+
+    /**
+     * Subsérie do documento fiscal
+     */
     @Field(at = 8)
     private String sub;
-    
+
+    /**
+     * Número do documento fiscal
+     */
     @Field(at = 9)
     private String numDoc;
-    
+
+    /**
+     * Data da emissão do documento fiscal
+     */
     @Field(at = 10)
     private Date dtDoc;
-    
+
+    /**
+     * Data da entrada (aquisição)
+     */
     @Field(at = 11)
     private Date dtAP;
-    
+
+    /**
+     * Valor total do documento fiscal
+     */
     @Field(at = 12)
     private Double vlDoc;
-    
+
+    /**
+     * Valor total do desconto
+     */
     @Field(at = 13)
     private Double vlDesc;
-    
+
+    /**
+     * Valor da prestação de serviços
+     */
     @Field(at = 14)
     private Double vlServ;
-    
+
+    /**
+     * Valor total dos serviços não-tributados pelo ICMS
+     */
     @Field(at = 15)
     private Double vlServNt;
-    
+
+    /**
+     * Valores cobrados em nome de terceiros
+     */
     @Field(at = 16)
     private Double vlTerc;
-    
+
+    /**
+     * Valor de outras despesas indicadas no documento fiscal
+     */
     @Field(at = 17)
     private Double vlDa;
-    
+
+    /**
+     * Valor da base de cálculo do ICMS
+     */
     @Field(at = 18)
     private Double vlBcIcms;
-    
+
+    /**
+     * Valor do ICMS
+     */
     @Field(at = 19)
     private Double vlIcms;
-    
+
+    /**
+     * Código da informação complementar (campo 02 do Registro 0450)
+     */
     @Field(at = 20)
     private String codInf;
-    
+
+    /**
+     * Valor do PIS/PASEP
+     */
     @Field(at = 21)
     private Double vlPis;
-    
+
+    /**
+     * Valor da COFINS
+     */
     @Field(at = 22)
     private Double vlCofins;
-    
-    
-    /**
-     * Obtém Tipo de Operação
-     */
-    public String getIndOper() {
-        return indOper;
-    }
 
-    /**
-     * Seta Tipo de Operação
-     */
-    public void setIndOper(String indOper) {
-        this.indOper = indOper;
-    }
-    
-    /**
-     * Obtém Indicador do emitente do documento
-     */
-    public String getIndEmit() {
-        return indEmit;
-    }
 
-    /**
-     * Seta Indicador do emitente do documento
-     */
-    public void setIndEmit(String indEmit) {
-        this.indEmit = indEmit;
-    }
-    
-    /**
-     * Obtém Participante
-     */
-    public String getCodPart() {
-        return codPart;
-    }
-
-    /**
-     * Seta Participante
-     */
-    public void setCodPart(String codPart) {
-        this.codPart = codPart;
-    }
-    
-    /**
-     * Obtém Modelo do Documento
-     */
-    public String getCodMod() {
-        return codMod;
-    }
-
-    /**
-     * Seta Modelo do Documento
-     */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Situação do Documento
-     */
-    public String getCodSit() {
-        return codSit;
-    }
-
-    /**
-     * Seta Situação do Documento
-     */
-    public void setCodSit(String codSit) {
-        this.codSit = codSit;
-    }
-    
-    /**
-     * Obtém Série
-     */
-    public String getSer() {
-        return ser;
-    }
-
-    /**
-     * Seta Série
-     */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Subsérie
-     */
-    public String getSub() {
-        return sub;
-    }
-
-    /**
-     * Seta Subsérie
-     */
-    public void setSub(String sub) {
-        this.sub = sub;
-    }
-    
-    /**
-     * Obtém Número
-     */
-    public String getNumDoc() {
-        return numDoc;
-    }
-
-    /**
-     * Seta Número
-     */
-    public void setNumDoc(String numDoc) {
-        this.numDoc = numDoc;
-    }
-    
-    /**
-     * Obtém Data da emissão do Documento
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
-
-    /**
-     * Seta Data da emissão do Documento
-     */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Data da entrada (aquisição)
-     */
-    public Date getDtAP() {
-        return dtAP;
-    }
-
-    /**
-     * Seta Data da entrada (aquisição)
-     */
-    public void setDtAP(Date dtAP) {
-        this.dtAP = dtAP;
-    }
-    
-    /**
-     * Obtém Valor total do Documento
-     */
-    public Double getVlDoc() {
-        return vlDoc;
-    }
-
-    /**
-     * Seta Valor total do Documento
-     */
-    public void setVlDoc(Double vlDoc) {
-        this.vlDoc = vlDoc;
-    }
-    
-    /**
-     * Obtém Valor Total do Desconto
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
-
-    /**
-     * Seta Valor Total do Desconto
-     */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Valor da Prestação de Serviços
-     */
-    public Double getVlServ() {
-        return vlServ;
-    }
-
-    /**
-     * Seta Valor da Prestação de Serviços
-     */
-    public void setVlServ(Double vlServ) {
-        this.vlServ = vlServ;
-    }
-    
-    /**
-     * Obtém Valor Total dos Serviços não-tributados pelo ICMS
-     */
-    public Double getVlServNt() {
-        return vlServNt;
-    }
-
-    /**
-     * Seta Valor Total dos Serviços não-tributados pelo ICMS
-     */
-    public void setVlServNt(Double vlServNt) {
-        this.vlServNt = vlServNt;
-    }
-    
-    /**
-     * Obtém Valores Cobrados em Nome de Terceiros
-     */
-    public Double getVlTerc() {
-        return vlTerc;
-    }
-
-    /**
-     * Seta Valores Cobrados em Nome de Terceiros
-     */
-    public void setVlTerc(Double vlTerc) {
-        this.vlTerc = vlTerc;
-    }
-    
-    /**
-     * Obtém Valor de outras despesas
-     */
-    public Double getVlDa() {
-        return vlDa;
-    }
-
-    /**
-     * Seta Valor de outras despesas
-     */
-    public void setVlDa(Double vlDa) {
-        this.vlDa = vlDa;
-    }
-    
-    /**
-     * Obtém Base de Cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
-
-    /**
-     * Seta Base de Cálculo do ICMS
-     */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Valor do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
-
-    /**
-     * Seta Valor do ICMS
-     */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Informação Complementar do Documento
-     */
-    public String getCodInf() {
-        return codInf;
-    }
-
-    /**
-     * Seta Informação Complementar do Documento
-     */
-    public void setCodInf(String codInf) {
-        this.codInf = codInf;
-    }
-    
-    /**
-     * Obtém Valor do PIS/PASEP
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
-
-    /**
-     * Seta Valor do PIS/PASEP
-     */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém Valor da COFINS
-     */
-    public Double getVlCofins() {
-        return vlCofins;
-    }
-
-    /**
-     * Seta Valor da COFINS
-     */
-    public void setVlCofins(Double vlCofins) {
-        this.vlCofins = vlCofins;
-    }
-    
-    
 }

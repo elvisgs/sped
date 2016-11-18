@@ -1,6 +1,8 @@
 package br.com.gep.sped.contrib.marshaller.registros.blocoC;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
@@ -8,7 +10,7 @@ import org.beanio.annotation.Record;
 import java.util.Date;
 
 /**
- * C100 - NF, NF Avulsa, NF de Produtor e NF-e
+ * C100 - NF, NF Avulsa, NF de Produtor, NF-e e NFC-e
  */
 @Record
 @Fields({
@@ -16,484 +18,183 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "C100"),
     @Field(at = 30, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegC100 extends Registro {
-    
+
+    /**
+     * Indicador do tipo de operação
+     * <p>0=Entrada;1=Saída</p>
+     */
     @Field(at = 2)
     private String indOper;
-    
+
+    /**
+     * Indicador do emitente do documento fiscal
+     * <p>0=Emissão própria;1=Terceiros</p>
+     */
     @Field(at = 3)
     private String indEmit;
-    
+
+    /**
+     * Código do participante (campo 02 do Registro 0150): emitente do documento ou do remetente das mercadorias, no caso de entradas; adquirente, no caso de saídas
+     */
     @Field(at = 4)
     private String codPart;
-    
+
+    /**
+     * Código do modelo do documento fiscal, conforme a Tabela 4.1.1
+     * <p>01=C100 - Nota Fiscal;1B=C100 - Nota Fiscal Avulsa;04=C100 - Nota Fiscal de Produtor;55=C100 - Nota Fiscal Eletrônica;65=C100 - Nota Fiscal do Consumidor Eletrônica</p>
+     */
     @Field(at = 5)
     private String codMod;
-    
+
+    /**
+     * Código da situação do documento fiscal
+     * <p>00=Documento regular;01=Documento regular extemporâneo;02=Documento cancelado;03=Documento cancelado extemporâneo;04=Documento eletrônico denegado;05=Documento eletrônico com numeração inutilizada;06=Documento fiscal complementar;07=Documento fiscal complementar extemporâneo;08=Documento fiscal emitido com base em Regime Especial ou Norma Específica</p>
+     */
     @Field(at = 6)
     private String codSit;
-    
+
+    /**
+     * Série do documento fiscal
+     */
     @Field(at = 7)
     private String ser;
-    
+
+    /**
+     * Número do documento fiscal
+     */
     @Field(at = 8)
     private String numDoc;
-    
+
+    /**
+     * Chave da NF-e / NFC-e
+     */
     @Field(at = 9)
     private String chvNfe;
-    
+
+    /**
+     * Data da emissão do documento fiscal
+     */
     @Field(at = 10)
     private Date dtDoc;
-    
+
+    /**
+     * Data da entrada ou da saída
+     */
     @Field(at = 11)
     private Date dtES;
-    
+
+    /**
+     * Valor total do documento fiscal
+     */
     @Field(at = 12)
     private Double vlDoc;
-    
+
+    /**
+     * Indicador do tipo de pagamento
+     * <p>0=À vista;1=A prazo;2=Outros</p>
+     */
     @Field(at = 13)
     private String indPgto;
-    
+
+    /**
+     * Valor total do desconto
+     */
     @Field(at = 14)
     private Double vlDesc;
-    
+
+    /**
+     * Abatimento não tributado e não comercial Ex. desconto ICMS nas remessas para ZFM
+     */
     @Field(at = 15)
     private Double vlAbatNt;
-    
+
+    /**
+     * Valor total das mercadorias e serviços
+     */
     @Field(at = 16)
     private Double vlMerc;
-    
+
+    /**
+     * Indicador do tipo do frete
+     * <p>0=Por conta do emitente;1=Por conta do destinatário/remetente;2=Por conta de terceiros;9=Sem cobrança de frete</p>
+     */
     @Field(at = 17)
     private String indFrt;
-    
+
+    /**
+     * Valor do frete indicado no documento fiscal
+     */
     @Field(at = 18)
     private Double vlFrt;
-    
+
+    /**
+     * Valor do seguro indicado no documento fiscal
+     */
     @Field(at = 19)
     private Double vlSeg;
-    
+
+    /**
+     * Valor de outras despesas acessórias
+     */
     @Field(at = 20)
     private Double vlOutDa;
-    
+
+    /**
+     * Valor da base de cálculo do ICMS
+     */
     @Field(at = 21)
     private Double vlBcIcms;
-    
+
+    /**
+     * Valor do ICMS
+     */
     @Field(at = 22)
     private Double vlIcms;
-    
+
+    /**
+     * Valor da base de cálculo do ICMS substituição tributária
+     */
     @Field(at = 23)
     private Double vlBcIcmsSt;
-    
+
+    /**
+     * Valor do ICMS retido por substituição tributária
+     */
     @Field(at = 24)
     private Double vlIcmsSt;
-    
+
+    /**
+     * Valor total do IPI
+     */
     @Field(at = 25)
     private Double vlIpi;
-    
+
+    /**
+     * Valor total do PIS
+     */
     @Field(at = 26)
     private Double vlPis;
-    
+
+    /**
+     * Valor total da COFINS
+     */
     @Field(at = 27)
     private Double vlCofins;
-    
+
+    /**
+     * Valor total do PIS retido por substituição tributária
+     */
     @Field(at = 28)
     private Double vlPisSt;
-    
+
+    /**
+     * Valor total da COFINS retido por substituição tributária
+     */
     @Field(at = 29)
     private Double vlCofinsSt;
-    
-    
-    /**
-     * Obtém Tipo de operação
-     */
-    public String getIndOper() {
-        return indOper;
-    }
 
-    /**
-     * Seta Tipo de operação
-     */
-    public void setIndOper(String indOper) {
-        this.indOper = indOper;
-    }
-    
-    /**
-     * Obtém Emitente
-     */
-    public String getIndEmit() {
-        return indEmit;
-    }
 
-    /**
-     * Seta Emitente
-     */
-    public void setIndEmit(String indEmit) {
-        this.indEmit = indEmit;
-    }
-    
-    /**
-     * Obtém Participante
-     */
-    public String getCodPart() {
-        return codPart;
-    }
-
-    /**
-     * Seta Participante
-     */
-    public void setCodPart(String codPart) {
-        this.codPart = codPart;
-    }
-    
-    /**
-     * Obtém Modelo
-     */
-    public String getCodMod() {
-        return codMod;
-    }
-
-    /**
-     * Seta Modelo
-     */
-    public void setCodMod(String codMod) {
-        this.codMod = codMod;
-    }
-    
-    /**
-     * Obtém Situação
-     */
-    public String getCodSit() {
-        return codSit;
-    }
-
-    /**
-     * Seta Situação
-     */
-    public void setCodSit(String codSit) {
-        this.codSit = codSit;
-    }
-    
-    /**
-     * Obtém Série
-     */
-    public String getSer() {
-        return ser;
-    }
-
-    /**
-     * Seta Série
-     */
-    public void setSer(String ser) {
-        this.ser = ser;
-    }
-    
-    /**
-     * Obtém Número do documento
-     */
-    public String getNumDoc() {
-        return numDoc;
-    }
-
-    /**
-     * Seta Número do documento
-     */
-    public void setNumDoc(String numDoc) {
-        this.numDoc = numDoc;
-    }
-    
-    /**
-     * Obtém Chave NF-e
-     */
-    public String getChvNfe() {
-        return chvNfe;
-    }
-
-    /**
-     * Seta Chave NF-e
-     */
-    public void setChvNfe(String chvNfe) {
-        this.chvNfe = chvNfe;
-    }
-    
-    /**
-     * Obtém Data da emissão
-     */
-    public Date getDtDoc() {
-        return dtDoc;
-    }
-
-    /**
-     * Seta Data da emissão
-     */
-    public void setDtDoc(Date dtDoc) {
-        this.dtDoc = dtDoc;
-    }
-    
-    /**
-     * Obtém Data da entrada ou da saída
-     */
-    public Date getDtES() {
-        return dtES;
-    }
-
-    /**
-     * Seta Data da entrada ou da saída
-     */
-    public void setDtES(Date dtES) {
-        this.dtES = dtES;
-    }
-    
-    /**
-     * Obtém Valor total do documento
-     */
-    public Double getVlDoc() {
-        return vlDoc;
-    }
-
-    /**
-     * Seta Valor total do documento
-     */
-    public void setVlDoc(Double vlDoc) {
-        this.vlDoc = vlDoc;
-    }
-    
-    /**
-     * Obtém Tipo de pagamento
-     */
-    public String getIndPgto() {
-        return indPgto;
-    }
-
-    /**
-     * Seta Tipo de pagamento
-     */
-    public void setIndPgto(String indPgto) {
-        this.indPgto = indPgto;
-    }
-    
-    /**
-     * Obtém Valor do desconto
-     */
-    public Double getVlDesc() {
-        return vlDesc;
-    }
-
-    /**
-     * Seta Valor do desconto
-     */
-    public void setVlDesc(Double vlDesc) {
-        this.vlDesc = vlDesc;
-    }
-    
-    /**
-     * Obtém Abatimento não tributado e não comercial
-     */
-    public Double getVlAbatNt() {
-        return vlAbatNt;
-    }
-
-    /**
-     * Seta Abatimento não tributado e não comercial
-     */
-    public void setVlAbatNt(Double vlAbatNt) {
-        this.vlAbatNt = vlAbatNt;
-    }
-    
-    /**
-     * Obtém Valor total das mercadorias e serviços
-     */
-    public Double getVlMerc() {
-        return vlMerc;
-    }
-
-    /**
-     * Seta Valor total das mercadorias e serviços
-     */
-    public void setVlMerc(Double vlMerc) {
-        this.vlMerc = vlMerc;
-    }
-    
-    /**
-     * Obtém Tipo do frete
-     */
-    public String getIndFrt() {
-        return indFrt;
-    }
-
-    /**
-     * Seta Tipo do frete
-     */
-    public void setIndFrt(String indFrt) {
-        this.indFrt = indFrt;
-    }
-    
-    /**
-     * Obtém Valor do frete
-     */
-    public Double getVlFrt() {
-        return vlFrt;
-    }
-
-    /**
-     * Seta Valor do frete
-     */
-    public void setVlFrt(Double vlFrt) {
-        this.vlFrt = vlFrt;
-    }
-    
-    /**
-     * Obtém Valor do seguro
-     */
-    public Double getVlSeg() {
-        return vlSeg;
-    }
-
-    /**
-     * Seta Valor do seguro
-     */
-    public void setVlSeg(Double vlSeg) {
-        this.vlSeg = vlSeg;
-    }
-    
-    /**
-     * Obtém Valor de outras despesas
-     */
-    public Double getVlOutDa() {
-        return vlOutDa;
-    }
-
-    /**
-     * Seta Valor de outras despesas
-     */
-    public void setVlOutDa(Double vlOutDa) {
-        this.vlOutDa = vlOutDa;
-    }
-    
-    /**
-     * Obtém Base de cálculo do ICMS
-     */
-    public Double getVlBcIcms() {
-        return vlBcIcms;
-    }
-
-    /**
-     * Seta Base de cálculo do ICMS
-     */
-    public void setVlBcIcms(Double vlBcIcms) {
-        this.vlBcIcms = vlBcIcms;
-    }
-    
-    /**
-     * Obtém Valor do ICMS
-     */
-    public Double getVlIcms() {
-        return vlIcms;
-    }
-
-    /**
-     * Seta Valor do ICMS
-     */
-    public void setVlIcms(Double vlIcms) {
-        this.vlIcms = vlIcms;
-    }
-    
-    /**
-     * Obtém Base de cálculo do ICMS ST
-     */
-    public Double getVlBcIcmsSt() {
-        return vlBcIcmsSt;
-    }
-
-    /**
-     * Seta Base de cálculo do ICMS ST
-     */
-    public void setVlBcIcmsSt(Double vlBcIcmsSt) {
-        this.vlBcIcmsSt = vlBcIcmsSt;
-    }
-    
-    /**
-     * Obtém Valor do ICMS ST
-     */
-    public Double getVlIcmsSt() {
-        return vlIcmsSt;
-    }
-
-    /**
-     * Seta Valor do ICMS ST
-     */
-    public void setVlIcmsSt(Double vlIcmsSt) {
-        this.vlIcmsSt = vlIcmsSt;
-    }
-    
-    /**
-     * Obtém Valor do IPI
-     */
-    public Double getVlIpi() {
-        return vlIpi;
-    }
-
-    /**
-     * Seta Valor do IPI
-     */
-    public void setVlIpi(Double vlIpi) {
-        this.vlIpi = vlIpi;
-    }
-    
-    /**
-     * Obtém Valor do PIS/PASEP
-     */
-    public Double getVlPis() {
-        return vlPis;
-    }
-
-    /**
-     * Seta Valor do PIS/PASEP
-     */
-    public void setVlPis(Double vlPis) {
-        this.vlPis = vlPis;
-    }
-    
-    /**
-     * Obtém Valor da COFINS
-     */
-    public Double getVlCofins() {
-        return vlCofins;
-    }
-
-    /**
-     * Seta Valor da COFINS
-     */
-    public void setVlCofins(Double vlCofins) {
-        this.vlCofins = vlCofins;
-    }
-    
-    /**
-     * Obtém Valor do PIS/PASEP ST
-     */
-    public Double getVlPisSt() {
-        return vlPisSt;
-    }
-
-    /**
-     * Seta Valor do PIS/PASEP ST
-     */
-    public void setVlPisSt(Double vlPisSt) {
-        this.vlPisSt = vlPisSt;
-    }
-    
-    /**
-     * Obtém Valor da COFINS ST
-     */
-    public Double getVlCofinsSt() {
-        return vlCofinsSt;
-    }
-
-    /**
-     * Seta Valor da COFINS ST
-     */
-    public void setVlCofinsSt(Double vlCofinsSt) {
-        this.vlCofinsSt = vlCofinsSt;
-    }
-    
-    
 }

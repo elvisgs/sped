@@ -1,11 +1,11 @@
 package br.com.gep.sped.fiscal.marshaller.registros.blocoG;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.Getter;
+import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
-
-import java.util.Date;
 
 /**
  * Identificação do item
@@ -16,40 +16,21 @@ import java.util.Date;
     @Field(at = 1, name = "reg", rid = true, literal = "G140"),
     @Field(at = 4, name = "fimLinha")
 })
+@Getter
+@Setter
 public class RegG140 extends Registro {
-    
+
+    /**
+     * Número seqüencial
+     */
     @Field(at = 2)
     private String numItem;
-    
+
+    /**
+     * Código do item
+     */
     @Field(at = 3)
     private String codItem;
-    
-    /**
-     * Obtém Número seqüencial
-     */
-    public String getNumItem() {
-        return numItem;
-    }
 
-    /**
-     * Seta Número seqüencial
-     */
-    public void setNumItem(String numItem) {
-        this.numItem = numItem;
-    }
-    
-    /**
-     * Obtém Código do item
-     */
-    public String getCodItem() {
-        return codItem;
-    }
 
-    /**
-     * Seta Código do item
-     */
-    public void setCodItem(String codItem) {
-        this.codItem = codItem;
-    }
-    
 }

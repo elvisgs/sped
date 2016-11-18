@@ -15,4 +15,5 @@ import org.beanio.annotation.Record;
     @Field(at = 3, name = "fimLinha")
 })
 public class RegD990 extends RegistroEncerramentoBloco {
+
 }
