@@ -1389,6 +1389,20 @@ CREATE TABLE pis_c601 (
 );
 
 
+CREATE TABLE pis_c860 (
+  id bigint NOT NULL,
+  id_pai bigint NOT NULL,
+  cod_mod varchar(2),
+  nr_sat varchar(9),
+  dt_doc date,
+  doc_ini varchar(9),
+  doc_fim varchar(9),
+  acao varchar(1),
+  carga_id integer,
+  cnpj_pai varchar(14)
+);
+
+
 CREATE TABLE pis_c605 (
   id integer NOT NULL,
   id_pai integer NOT NULL,
