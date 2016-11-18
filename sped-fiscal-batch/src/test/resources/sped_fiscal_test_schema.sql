@@ -175,6 +175,18 @@ CREATE TABLE reg_0206 (
 );
 
 
+CREATE TABLE reg_0210 (
+  id bigint NOT NULL PRIMARY KEY,
+  id_pai bigint NOT NULL,
+  acao varchar(1) DEFAULT 'I',
+  cnpj_pai varchar(14),
+  carga_id integer,
+  cod_item_comp varchar(60),
+  qtd_comp numeric(23,6),
+  perda numeric(11,4)
+);
+
+
 CREATE TABLE reg_0220 (
     id bigint NOT NULL,
     id_pai bigint NOT NULL,

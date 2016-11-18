@@ -146,6 +146,16 @@
   WHERE id_pai = ?
 
 --=================================================================================================
+@NAME(Reg0210_select)
+  SELECT id, cod_item_comp, qtd_comp, perda
+
+@NAME(Reg0210_from)
+  FROM @schema@reg_0210
+
+@NAME(Reg0210_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
 @NAME(Reg0220_select)
   SELECT id, unid_conv, fat_conv
 

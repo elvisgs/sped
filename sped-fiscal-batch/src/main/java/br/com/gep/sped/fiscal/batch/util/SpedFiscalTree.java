@@ -48,6 +48,7 @@ public class SpedFiscalTree extends SpedTree {
         addNode(new RegNode(Reg0200.class, Reg0001.class).addChildren(
             new RegNode(Reg0205.class),
             new RegNode(Reg0206.class),
+            new RegNode(Reg0210.class),
             new RegNode(Reg0220.class)
         ));
         addNode(new RegNode(Reg0300.class, Reg0001.class).addChildren(
