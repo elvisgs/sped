@@ -23,13 +23,13 @@ public class Reg1710 extends Registro {
     /**
      * Dispositivo autorizado inicial
      */
-    @Field(at = 6)
+    @Field(at = 2)
     private String numDocIni;
 
     /**
      * Dispositivo autorizado final
      */
-    @Field(at = 7)
+    @Field(at = 3)
     private String numDocFin;
 
 
