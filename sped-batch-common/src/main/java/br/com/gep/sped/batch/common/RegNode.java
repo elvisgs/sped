@@ -1,6 +1,7 @@
 package br.com.gep.sped.batch.common;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.EqualsAndHashCode;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -10,6 +11,7 @@ import java.util.List;
  * Representa um nó na árvore de registros do SPED, com zero ou um registro pai e
  * zero ou muitos registros filhos.
  */
+@EqualsAndHashCode(of = "regClass")
 public class RegNode {
 
     private final Class<? extends Registro> regClass;
@@ -17,22 +19,13 @@ public class RegNode {
     private RegNode parent;
     private LinkedList<RegNode> children;
 
-    public RegNode(Class<? extends Registro> regClass) {
+    private RegNode(Class<? extends Registro> regClass) {
         if (regClass == null)
             throw new IllegalArgumentException("regClass is null");
 
         this.regClass = regClass;
         this.bloc = regClass.getSimpleName().charAt(3);
         this.children = new LinkedList<>();
-    }
-
-    public RegNode(Class<? extends Registro> regClass, RegNode parent) {
-        this(regClass);
-        this.parent = parent;
-    }
-
-    public RegNode(Class<? extends Registro> regClass, Class<? extends Registro> regParent) {
-        this(regClass, new RegNode(regParent));
     }
 
     public Class<? extends Registro> getRegClass() {
@@ -51,24 +44,21 @@ public class RegNode {
         return Collections.unmodifiableList(children);
     }
 
-    public RegNode addChild(RegNode child) {
+    public RegNode withParent(Class<? extends Registro> regParentClass) {
+        parent = new RegNode(regParentClass);
+
+        return this;
+    }
+
+    private RegNode withChild(RegNode child) {
         child.parent = this;
         children.add(child);
 
         return this;
     }
 
-    public RegNode addChildren(RegNode... children) {
-        for (RegNode node : children) {
-            node.parent = this;
-            this.children.add(node);
-        }
-
-        return this;
-    }
-
-    public RegNode removeChild(RegNode child) {
-        children.remove(child);
+    public RegNode withChildren(RegNode... children) {
+        for (RegNode node : children) withChild(node);
 
         return this;
     }
@@ -81,19 +71,7 @@ public class RegNode {
         return parent != null;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof RegNode)) return false;
-
-        RegNode regNode = (RegNode) o;
-
-        return regClass.equals(regNode.regClass);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return regClass.hashCode();
+    public static RegNode of(Class<? extends Registro> regClass) {
+        return new RegNode(regClass);
     }
 }

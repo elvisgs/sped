@@ -38,269 +38,269 @@ public class SpedContribTree extends SpedTree {
     }
 
     private void addBranchesBloco0() {
-        addNode(new RegNode(Reg0000.class));
-        addNode(new RegNode(Reg0001.class));
-        addNode(new RegNode(Reg0035.class, Reg0001.class));
-        addNode(new RegNode(Reg0100.class, Reg0001.class));
-        addNode(new RegNode(Reg0110.class, Reg0001.class).addChildren(
-            new RegNode(Reg0111.class)
+        addNode(RegNode.of(Reg0000.class));
+        addNode(RegNode.of(Reg0001.class));
+        addNode(RegNode.of(Reg0035.class).withParent(Reg0001.class));
+        addNode(RegNode.of(Reg0100.class).withParent(Reg0001.class));
+        addNode(RegNode.of(Reg0110.class).withParent(Reg0001.class).withChildren(
+            RegNode.of(Reg0111.class)
         ));
-        addNode(new RegNode(Reg0120.class, Reg0001.class));
-        addNode(new RegNode(Reg0140.class, Reg0001.class).addChildren(
-            new RegNode(Reg0145.class),
-            new RegNode(Reg0150.class),
-            new RegNode(Reg0190.class),
-            new RegNode(Reg0200.class).addChildren(
-                new RegNode(Reg0205.class),
-                new RegNode(Reg0206.class),
-                new RegNode(Reg0208.class)
+        addNode(RegNode.of(Reg0120.class).withParent(Reg0001.class));
+        addNode(RegNode.of(Reg0140.class).withParent(Reg0001.class).withChildren(
+            RegNode.of(Reg0145.class),
+            RegNode.of(Reg0150.class),
+            RegNode.of(Reg0190.class),
+            RegNode.of(Reg0200.class).withChildren(
+                RegNode.of(Reg0205.class),
+                RegNode.of(Reg0206.class),
+                RegNode.of(Reg0208.class)
             ),
-            new RegNode(Reg0400.class),
-            new RegNode(Reg0450.class)
+            RegNode.of(Reg0400.class),
+            RegNode.of(Reg0450.class)
         ));
-        addNode(new RegNode(Reg0500.class, Reg0001.class));
-        addNode(new RegNode(Reg0600.class, Reg0001.class));
-        addNode(new RegNode(Reg0990.class));
+        addNode(RegNode.of(Reg0500.class).withParent(Reg0001.class));
+        addNode(RegNode.of(Reg0600.class).withParent(Reg0001.class));
+        addNode(RegNode.of(Reg0990.class));
     }
 
     private void addBranchesBlocoA() {
-        addNode(new RegNode(RegA001.class));
-        addNode(new RegNode(RegA010.class, RegA001.class).addChildren(
-            new RegNode(RegA100.class).addChildren(
-                new RegNode(RegA110.class),
-                new RegNode(RegA111.class),
-                new RegNode(RegA120.class),
-                new RegNode(RegA170.class)
+        addNode(RegNode.of(RegA001.class));
+        addNode(RegNode.of(RegA010.class).withParent(RegA001.class).withChildren(
+            RegNode.of(RegA100.class).withChildren(
+                RegNode.of(RegA110.class),
+                RegNode.of(RegA111.class),
+                RegNode.of(RegA120.class),
+                RegNode.of(RegA170.class)
             )
         ));
-        addNode(new RegNode(RegA990.class));
+        addNode(RegNode.of(RegA990.class));
     }
 
     private void addBranchesBlocoC() {
-        addNode(new RegNode(RegC001.class));
-        addNode(new RegNode(RegC010.class, RegC001.class).addChildren(
-            new RegNode(RegC100.class).addChildren(
-                new RegNode(RegC110.class),
-                new RegNode(RegC111.class),
-                new RegNode(RegC120.class),
-                new RegNode(RegC170.class),
-                new RegNode(RegC175.class)
+        addNode(RegNode.of(RegC001.class));
+        addNode(RegNode.of(RegC010.class).withParent(RegC001.class).withChildren(
+            RegNode.of(RegC100.class).withChildren(
+                RegNode.of(RegC110.class),
+                RegNode.of(RegC111.class),
+                RegNode.of(RegC120.class),
+                RegNode.of(RegC170.class),
+                RegNode.of(RegC175.class)
             ),
-            new RegNode(RegC180.class).addChildren(
-                new RegNode(RegC181.class),
-                new RegNode(RegC185.class),
-                new RegNode(RegC188.class)
+            RegNode.of(RegC180.class).withChildren(
+                RegNode.of(RegC181.class),
+                RegNode.of(RegC185.class),
+                RegNode.of(RegC188.class)
             ),
-            new RegNode(RegC190.class).addChildren(
-                new RegNode(RegC191.class),
-                new RegNode(RegC195.class),
-                new RegNode(RegC198.class),
-                new RegNode(RegC199.class)
+            RegNode.of(RegC190.class).withChildren(
+                RegNode.of(RegC191.class),
+                RegNode.of(RegC195.class),
+                RegNode.of(RegC198.class),
+                RegNode.of(RegC199.class)
             ),
-            new RegNode(RegC380.class).addChildren(
-                new RegNode(RegC381.class),
-                new RegNode(RegC385.class)
+            RegNode.of(RegC380.class).withChildren(
+                RegNode.of(RegC381.class),
+                RegNode.of(RegC385.class)
             ),
-            new RegNode(RegC395.class).addChildren(
-                new RegNode(RegC396.class)
+            RegNode.of(RegC395.class).withChildren(
+                RegNode.of(RegC396.class)
             ),
-            new RegNode(RegC400.class).addChildren(
-                new RegNode(RegC405.class).addChildren(
-                    new RegNode(RegC481.class),
-                    new RegNode(RegC485.class)
+            RegNode.of(RegC400.class).withChildren(
+                RegNode.of(RegC405.class).withChildren(
+                    RegNode.of(RegC481.class),
+                    RegNode.of(RegC485.class)
                 ),
-                new RegNode(RegC489.class)
+                RegNode.of(RegC489.class)
             ),
-            new RegNode(RegC490.class).addChildren(
-                new RegNode(RegC491.class),
-                new RegNode(RegC495.class),
-                new RegNode(RegC499.class)
+            RegNode.of(RegC490.class).withChildren(
+                RegNode.of(RegC491.class),
+                RegNode.of(RegC495.class),
+                RegNode.of(RegC499.class)
             ),
-            new RegNode(RegC500.class).addChildren(
-                new RegNode(RegC501.class),
-                new RegNode(RegC505.class),
-                new RegNode(RegC509.class)
+            RegNode.of(RegC500.class).withChildren(
+                RegNode.of(RegC501.class),
+                RegNode.of(RegC505.class),
+                RegNode.of(RegC509.class)
             ),
-            new RegNode(RegC600.class).addChildren(
-                new RegNode(RegC601.class),
-                new RegNode(RegC605.class),
-                new RegNode(RegC609.class)
+            RegNode.of(RegC600.class).withChildren(
+                RegNode.of(RegC601.class),
+                RegNode.of(RegC605.class),
+                RegNode.of(RegC609.class)
             ),
-            new RegNode(RegC860.class).addChildren(
-                new RegNode(RegC870.class),
-                new RegNode(RegC880.class),
-                new RegNode(RegC890.class)
+            RegNode.of(RegC860.class).withChildren(
+                RegNode.of(RegC870.class),
+                RegNode.of(RegC880.class),
+                RegNode.of(RegC890.class)
             )
         ));
-        addNode(new RegNode(RegC990.class));
+        addNode(RegNode.of(RegC990.class));
     }
 
     private void addBranchesBlocoD() {
-        addNode(new RegNode(RegD001.class));
-        addNode(new RegNode(RegD010.class, RegD001.class).addChildren(
-            new RegNode(RegD100.class).addChildren(
-                new RegNode(RegD101.class),
-                new RegNode(RegD105.class),
-                new RegNode(RegD111.class)
+        addNode(RegNode.of(RegD001.class));
+        addNode(RegNode.of(RegD010.class).withParent(RegD001.class).withChildren(
+            RegNode.of(RegD100.class).withChildren(
+                RegNode.of(RegD101.class),
+                RegNode.of(RegD105.class),
+                RegNode.of(RegD111.class)
             ),
-            new RegNode(RegD200.class).addChildren(
-                new RegNode(RegD201.class),
-                new RegNode(RegD205.class),
-                new RegNode(RegD209.class)
+            RegNode.of(RegD200.class).withChildren(
+                RegNode.of(RegD201.class),
+                RegNode.of(RegD205.class),
+                RegNode.of(RegD209.class)
             ),
-            new RegNode(RegD300.class).addChildren(
-                new RegNode(RegD309.class)
+            RegNode.of(RegD300.class).withChildren(
+                RegNode.of(RegD309.class)
             ),
-            new RegNode(RegD350.class).addChildren(
-                new RegNode(RegD359.class)
+            RegNode.of(RegD350.class).withChildren(
+                RegNode.of(RegD359.class)
             ),
-            new RegNode(RegD500.class).addChildren(
-                new RegNode(RegD501.class),
-                new RegNode(RegD505.class),
-                new RegNode(RegD509.class)
+            RegNode.of(RegD500.class).withChildren(
+                RegNode.of(RegD501.class),
+                RegNode.of(RegD505.class),
+                RegNode.of(RegD509.class)
             ),
-            new RegNode(RegD600.class).addChildren(
-                new RegNode(RegD601.class),
-                new RegNode(RegD605.class),
-                new RegNode(RegD609.class)
+            RegNode.of(RegD600.class).withChildren(
+                RegNode.of(RegD601.class),
+                RegNode.of(RegD605.class),
+                RegNode.of(RegD609.class)
             )
         ));
-        addNode(new RegNode(RegD990.class));
+        addNode(RegNode.of(RegD990.class));
     }
 
     private void addBranchesBlocoF() {
-        addNode(new RegNode(RegF001.class));
-        addNode(new RegNode(RegF010.class, RegF001.class).addChildren(
-            new RegNode(RegF100.class).addChildren(
-                new RegNode(RegF111.class)
+        addNode(RegNode.of(RegF001.class));
+        addNode(RegNode.of(RegF010.class).withParent(RegF001.class).withChildren(
+            RegNode.of(RegF100.class).withChildren(
+                RegNode.of(RegF111.class)
             ),
-            new RegNode(RegF120.class).addChildren(
-                new RegNode(RegF129.class)
+            RegNode.of(RegF120.class).withChildren(
+                RegNode.of(RegF129.class)
             ),
-            new RegNode(RegF130.class).addChildren(
-                new RegNode(RegF139.class)
+            RegNode.of(RegF130.class).withChildren(
+                RegNode.of(RegF139.class)
             ),
-            new RegNode(RegF150.class),
-            new RegNode(RegF200.class).addChildren(
-                new RegNode(RegF205.class),
-                new RegNode(RegF210.class),
-                new RegNode(RegF211.class)
+            RegNode.of(RegF150.class),
+            RegNode.of(RegF200.class).withChildren(
+                RegNode.of(RegF205.class),
+                RegNode.of(RegF210.class),
+                RegNode.of(RegF211.class)
             ),
-            new RegNode(RegF500.class).addChildren(
-                    new RegNode(RegF509.class)
+            RegNode.of(RegF500.class).withChildren(
+                RegNode.of(RegF509.class)
             ),
-            new RegNode(RegF510.class).addChildren(
-                    new RegNode(RegF519.class)
+            RegNode.of(RegF510.class).withChildren(
+                RegNode.of(RegF519.class)
             ),
-            new RegNode(RegF525.class),
-            new RegNode(RegF550.class).addChildren(
-                    new RegNode(RegF559.class)
+            RegNode.of(RegF525.class),
+            RegNode.of(RegF550.class).withChildren(
+                RegNode.of(RegF559.class)
             ),
-            new RegNode(RegF560.class).addChildren(
-                    new RegNode(RegF569.class)
+            RegNode.of(RegF560.class).withChildren(
+                RegNode.of(RegF569.class)
             ),
-            new RegNode(RegF600.class),
-            new RegNode(RegF700.class),
-            new RegNode(RegF800.class)
+            RegNode.of(RegF600.class),
+            RegNode.of(RegF700.class),
+            RegNode.of(RegF800.class)
         ));
-        addNode(new RegNode(RegF990.class));
+        addNode(RegNode.of(RegF990.class));
     }
 
     private void addBranchesBlocoI() {
-        addNode(new RegNode(RegI001.class));
-        addNode(new RegNode(RegI010.class, RegI001.class).addChildren(
-            new RegNode(RegI100.class).addChildren(
-                new RegNode(RegI200.class).addChildren(
-                    new RegNode(RegI300.class).addChildren(
-                        new RegNode(RegI399.class)
+        addNode(RegNode.of(RegI001.class));
+        addNode(RegNode.of(RegI010.class).withParent(RegI001.class).withChildren(
+            RegNode.of(RegI100.class).withChildren(
+                RegNode.of(RegI200.class).withChildren(
+                    RegNode.of(RegI300.class).withChildren(
+                        RegNode.of(RegI399.class)
                     ),
-                    new RegNode(RegI299.class)
+                    RegNode.of(RegI299.class)
                 ),
-                new RegNode(RegI199.class)
+                RegNode.of(RegI199.class)
             )
         ));
-        addNode(new RegNode(RegI990.class));
+        addNode(RegNode.of(RegI990.class));
     }
 
     private void addBranchesBlocoM() {
-        addNode(new RegNode(RegM001.class));
-        addNode(new RegNode(RegM100.class, RegM001.class).addChildren(
-            new RegNode(RegM105.class),
-            new RegNode(RegM110.class).addChildren(
-                new RegNode(RegM115.class)
+        addNode(RegNode.of(RegM001.class));
+        addNode(RegNode.of(RegM100.class).withParent(RegM001.class).withChildren(
+            RegNode.of(RegM105.class),
+            RegNode.of(RegM110.class).withChildren(
+                RegNode.of(RegM115.class)
             )
         ));
-        addNode(new RegNode(RegM200.class, RegM001.class).addChildren(
-            new RegNode(RegM205.class),
-            new RegNode(RegM210.class).addChildren(
-                new RegNode(RegM211.class),
-                new RegNode(RegM220.class).addChildren(
-                    new RegNode(RegM225.class)
+        addNode(RegNode.of(RegM200.class).withParent(RegM001.class).withChildren(
+            RegNode.of(RegM205.class),
+            RegNode.of(RegM210.class).withChildren(
+                RegNode.of(RegM211.class),
+                RegNode.of(RegM220.class).withChildren(
+                    RegNode.of(RegM225.class)
                 ),
-                new RegNode(RegM230.class)
+                RegNode.of(RegM230.class)
             )
         ));
-        addNode(new RegNode(RegM300.class, RegM001.class));
-        addNode(new RegNode(RegM350.class, RegM001.class));
-        addNode(new RegNode(RegM400.class, RegM001.class).addChildren(
-            new RegNode(RegM410.class)
+        addNode(RegNode.of(RegM300.class).withParent(RegM001.class));
+        addNode(RegNode.of(RegM350.class).withParent(RegM001.class));
+        addNode(RegNode.of(RegM400.class).withParent(RegM001.class).withChildren(
+            RegNode.of(RegM410.class)
         ));
-        addNode(new RegNode(RegM500.class, RegM001.class).addChildren(
-            new RegNode(RegM505.class),
-            new RegNode(RegM510.class).addChildren(
-                new RegNode(RegM515.class)
+        addNode(RegNode.of(RegM500.class).withParent(RegM001.class).withChildren(
+            RegNode.of(RegM505.class),
+            RegNode.of(RegM510.class).withChildren(
+                RegNode.of(RegM515.class)
             )
         ));
-        addNode(new RegNode(RegM600.class, RegM001.class).addChildren(
-            new RegNode(RegM605.class),
-            new RegNode(RegM610.class).addChildren(
-                new RegNode(RegM611.class),
-                new RegNode(RegM620.class).addChildren(
-                    new RegNode(RegM625.class)
+        addNode(RegNode.of(RegM600.class).withParent(RegM001.class).withChildren(
+            RegNode.of(RegM605.class),
+            RegNode.of(RegM610.class).withChildren(
+                RegNode.of(RegM611.class),
+                RegNode.of(RegM620.class).withChildren(
+                    RegNode.of(RegM625.class)
                 ),
-                new RegNode(RegM630.class)
+                RegNode.of(RegM630.class)
             )
         ));
-        addNode(new RegNode(RegM700.class, RegM001.class));
-        addNode(new RegNode(RegM800.class, RegM001.class).addChildren(
-            new RegNode(RegM810.class)
+        addNode(RegNode.of(RegM700.class).withParent(RegM001.class));
+        addNode(RegNode.of(RegM800.class).withParent(RegM001.class).withChildren(
+            RegNode.of(RegM810.class)
         ));
-        addNode(new RegNode(RegM990.class));
+        addNode(RegNode.of(RegM990.class));
     }
 
     private void addBranchesBlocoP() {
-        addNode(new RegNode(RegP001.class));
-        addNode(new RegNode(RegP010.class, RegP001.class).addChildren(
-            new RegNode(RegP100.class).addChildren(
-                new RegNode(RegP110.class),
-                new RegNode(RegP199.class)
+        addNode(RegNode.of(RegP001.class));
+        addNode(RegNode.of(RegP010.class).withParent(RegP001.class).withChildren(
+            RegNode.of(RegP100.class).withChildren(
+                RegNode.of(RegP110.class),
+                RegNode.of(RegP199.class)
             )
         ));
-        addNode(new RegNode(RegP200.class, RegP001.class).addChildren(
-            new RegNode(RegP210.class)
+        addNode(RegNode.of(RegP200.class).withParent(RegP001.class).withChildren(
+            RegNode.of(RegP210.class)
         ));
-        addNode(new RegNode(RegP990.class));
+        addNode(RegNode.of(RegP990.class));
     }
 
     private void addBranchesBloco1() {
-        addNode(new RegNode(Reg1001.class));
-        addNode(new RegNode(Reg1010.class, Reg1001.class));
-        addNode(new RegNode(Reg1020.class, Reg1001.class));
-        addNode(new RegNode(Reg1100.class, Reg1001.class));
-        addNode(new RegNode(Reg1300.class, Reg1001.class));
-        addNode(new RegNode(Reg1500.class, Reg1001.class));
-        addNode(new RegNode(Reg1700.class, Reg1001.class));
-        addNode(new RegNode(Reg1800.class, Reg1001.class).addChildren(
-            new RegNode(Reg1809.class)
+        addNode(RegNode.of(Reg1001.class));
+        addNode(RegNode.of(Reg1010.class).withParent(Reg1001.class));
+        addNode(RegNode.of(Reg1020.class).withParent(Reg1001.class));
+        addNode(RegNode.of(Reg1100.class).withParent(Reg1001.class));
+        addNode(RegNode.of(Reg1300.class).withParent(Reg1001.class));
+        addNode(RegNode.of(Reg1500.class).withParent(Reg1001.class));
+        addNode(RegNode.of(Reg1700.class).withParent(Reg1001.class));
+        addNode(RegNode.of(Reg1800.class).withParent(Reg1001.class).withChildren(
+            RegNode.of(Reg1809.class)
         ));
-        addNode(new RegNode(Reg1900.class));
-        addNode(new RegNode(Reg1990.class));
+        addNode(RegNode.of(Reg1900.class));
+        addNode(RegNode.of(Reg1990.class));
     }
 
     private void addBranchesBloco9() {
-        addNode(new RegNode(Reg9001.class));
-        addNode(new RegNode(Reg9900.class, Reg9001.class));
-        addNode(new RegNode(Reg9990.class));
-        addNode(new RegNode(Reg9999.class));
+        addNode(RegNode.of(Reg9001.class));
+        addNode(RegNode.of(Reg9900.class).withParent(Reg9001.class));
+        addNode(RegNode.of(Reg9990.class));
+        addNode(RegNode.of(Reg9999.class));
     }
 }
