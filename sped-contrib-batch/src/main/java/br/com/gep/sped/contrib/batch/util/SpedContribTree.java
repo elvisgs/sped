@@ -226,13 +226,17 @@ public class SpedContribTree extends SpedTree {
         addNode(new RegNode(RegM001.class));
         addNode(new RegNode(RegM100.class, RegM001.class).addChildren(
             new RegNode(RegM105.class),
-            new RegNode(RegM110.class)
+            new RegNode(RegM110.class).addChildren(
+                new RegNode(RegM115.class)
+            )
         ));
         addNode(new RegNode(RegM200.class, RegM001.class).addChildren(
             new RegNode(RegM205.class),
             new RegNode(RegM210.class).addChildren(
                 new RegNode(RegM211.class),
-                new RegNode(RegM220.class),
+                new RegNode(RegM220.class).addChildren(
+                    new RegNode(RegM225.class)
+                ),
                 new RegNode(RegM230.class)
             )
         ));
@@ -243,13 +247,17 @@ public class SpedContribTree extends SpedTree {
         ));
         addNode(new RegNode(RegM500.class, RegM001.class).addChildren(
             new RegNode(RegM505.class),
-            new RegNode(RegM510.class)
+            new RegNode(RegM510.class).addChildren(
+                new RegNode(RegM515.class)
+            )
         ));
         addNode(new RegNode(RegM600.class, RegM001.class).addChildren(
             new RegNode(RegM605.class),
             new RegNode(RegM610.class).addChildren(
                 new RegNode(RegM611.class),
-                new RegNode(RegM620.class),
+                new RegNode(RegM620.class).addChildren(
+                    new RegNode(RegM625.class)
+                ),
                 new RegNode(RegM630.class)
             )
         ));
