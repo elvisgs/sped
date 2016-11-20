@@ -17,8 +17,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Component
 public class StepFactory {
@@ -55,28 +53,20 @@ public class StepFactory {
         RegNode regNode = spedTree.getNode(regClass);
 
         if (isClosingBloc) {
-            char bloc = regNode.getBloc();
-
-            List<Class<? extends Registro>> classesToCount = spedTree.getAllNodesOfBloc(bloc).stream()
-                .filter(n -> n.getRegClass() != regClass)
-                .map(RegNode::getRegClass)
-                .collect(toList());
-
             Tasklet tasklet = taskletFactory
-                .createClosingBlocRegTasklet((Class<RegistroEncerramentoBloco>)regClass, classesToCount);
+                .createClosingBlocRegTasklet((Class<RegistroEncerramentoBloco>)regClass);
 
             return create(stepName, tasklet);
         }
-        else if (!regNode.hasChildren()) {
+        else if (regNode.hasChildren()) {
+            Tasklet tasklet = taskletFactory.createRegTreeTasklet(regClass);
+
+            return create(stepName, tasklet);
+        } else {
             RegNode parentNode = regNode.getParent();
             Class regParentClass = parentNode != null ? parentNode.getRegClass() : null;
 
             return create(stepName, regClass, regParentClass);
-        }
-        else {
-            Tasklet tasklet = taskletFactory.createRegTreeTasklet(regClass);
-
-            return create(stepName, tasklet);
         }
     }
 

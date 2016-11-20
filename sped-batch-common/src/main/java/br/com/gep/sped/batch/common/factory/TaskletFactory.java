@@ -10,8 +10,6 @@ import br.com.gep.sped.marshaller.common.RegistroEncerramentoBloco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Component
 public class TaskletFactory {
@@ -53,10 +51,13 @@ public class TaskletFactory {
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends RegistroEncerramentoBloco> ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<T> closingBlocRegClass, List<Class<? extends Registro>> regClassesToCount) throws Exception {
-        ClosingBlocRegTasklet tasklet = new ClosingBlocRegTasklet(closingBlocRegClass, regClassesToCount);
-        tasklet.setWriter(itemWriterFactory.create(closingBlocRegClass));
+    public ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<? extends RegistroEncerramentoBloco> regClass)
+        throws Exception {
+
+        ClosingBlocRegTasklet tasklet = new ClosingBlocRegTasklet(regClass);
+        tasklet.setWriter(itemWriterFactory.create(regClass));
         tasklet.setRegCounter(regCounter);
+        tasklet.setSpedTree(spedTree);
 
         tasklet.afterPropertiesSet();
 
