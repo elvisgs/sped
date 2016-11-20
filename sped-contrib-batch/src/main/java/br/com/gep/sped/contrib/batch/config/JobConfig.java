@@ -2,13 +2,9 @@ package br.com.gep.sped.contrib.batch.config;
 
 import br.com.gep.sped.batch.common.config.MiscStepsConfig;
 import br.com.gep.sped.batch.common.factory.FlowFactory;
-import br.com.gep.sped.batch.common.factory.StepFactory;
-import br.com.gep.sped.batch.common.factory.TaskletFactory;
 import org.springframework.batch.core.Job;
-import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
@@ -29,12 +25,6 @@ public class JobConfig {
     private FlowFactory flowFactory;
 
     @Autowired
-    private StepFactory stepFactory;
-
-    @Autowired
-    private TaskletFactory taskletFactory;
-
-    @Autowired
     private MiscStepsConfig miscStepsConfig;
 
     @Bean
@@ -51,15 +41,9 @@ public class JobConfig {
                 .next(flowFactory.create(BLOC_M))
                 .next(flowFactory.create(BLOC_P))
                 .next(flowFactory.create(BLOC_1))
-                .next(stepBloco9())
+                .next(flowFactory.create(BLOC_9))
                 .next(miscStepsConfig.zipFileStep())
                 .end()
                 .build();
-    }
-
-    private Step stepBloco9() throws Exception {
-        Tasklet tasklet = taskletFactory.createBloc9Tasklet();
-
-        return stepFactory.create("stepBloco9", tasklet);
     }
 }

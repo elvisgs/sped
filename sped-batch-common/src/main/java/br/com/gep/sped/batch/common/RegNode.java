@@ -2,6 +2,7 @@ package br.com.gep.sped.batch.common;
 
 import br.com.gep.sped.marshaller.common.Registro;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -14,15 +15,12 @@ import java.util.List;
 @EqualsAndHashCode(of = "regClass")
 public class RegNode {
 
-    private final Class<? extends Registro> regClass;
+    private final @NonNull Class<? extends Registro> regClass;
     private final char bloc;
     private RegNode parent;
     private LinkedList<RegNode> children;
 
     private RegNode(Class<? extends Registro> regClass) {
-        if (regClass == null)
-            throw new IllegalArgumentException("regClass is null");
-
         this.regClass = regClass;
         this.bloc = regClass.getSimpleName().charAt(3);
         this.children = new LinkedList<>();

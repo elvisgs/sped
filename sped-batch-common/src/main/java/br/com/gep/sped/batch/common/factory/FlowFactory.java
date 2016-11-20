@@ -2,6 +2,7 @@ package br.com.gep.sped.batch.common.factory;
 
 import br.com.gep.sped.batch.common.RegNode;
 import br.com.gep.sped.batch.common.SpedTree;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
@@ -22,14 +23,18 @@ public class FlowFactory {
     private StepFactory stepFactory;
 
     public Flow create(char bloc) throws Exception {
-        List<RegNode> nodes = spedTree.getRootNodesOfBloc(bloc);
-        nodes.sort(comparing(n -> n.getRegClass().getSimpleName()));
+        FlowBuilder<SimpleFlow> builder = new FlowBuilder<>("flowBloco" + bloc);
 
-        FlowBuilder<SimpleFlow> builder = new FlowBuilder<SimpleFlow>("flowBloco" + bloc)
-            .from(stepFactory.create(nodes.remove(0).getRegClass()));
+        if (bloc == '9') {
+            builder.start(stepFactory.create(Reg9999.class));
+        } else {
+            List<RegNode> nodes = spedTree.getRootNodesOfBloc(bloc);
+            nodes.sort(comparing(n -> n.getRegClass().getSimpleName()));
 
-        for (RegNode node : nodes) {
-            builder.next(stepFactory.create(node.getRegClass()));
+            builder.start(stepFactory.create(nodes.remove(0).getRegClass()));
+
+            nodes.forEach(n ->
+                builder.next(stepFactory.create(n.getRegClass())));
         }
 
         return builder.end();

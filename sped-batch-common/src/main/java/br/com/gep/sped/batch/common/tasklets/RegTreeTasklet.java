@@ -7,6 +7,8 @@ import br.com.gep.sped.batch.common.factory.ItemReaderFactory;
 import br.com.gep.sped.batch.common.factory.ItemWriterFactory;
 import br.com.gep.sped.batch.common.jdbc.EmptyTableChecker;
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.NonNull;
+import lombok.Setter;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -14,19 +16,21 @@ import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.ItemStreamWriter;
 import org.springframework.batch.repeat.RepeatStatus;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
-public class RegTreeTasklet implements Tasklet, InitializingBean {
+public class RegTreeTasklet implements Tasklet {
 
-    private final RegNode root;
-    private ItemWriterFactory itemWriterFactory;
-    private ItemReaderFactory itemReaderFactory;
-    private RegIdHolder regIdHolder;
-    private RegCounter regCounter;
-    private EmptyTableChecker emptyTableChecker;
+    private final @NonNull RegNode root;
+    private @NonNull @Setter ItemWriterFactory itemWriterFactory;
+    private @NonNull @Setter ItemReaderFactory itemReaderFactory;
+    private @NonNull @Setter RegIdHolder regIdHolder;
+    private @NonNull @Setter RegCounter regCounter;
+    private @NonNull @Setter EmptyTableChecker emptyTableChecker;
     private ItemStreamWriter writer;
     private int chunkSize = 1;
     private List chunk = new LinkedList();
@@ -36,27 +40,8 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
         this.root = root;
     }
 
-    public void setItemReaderFactory(ItemReaderFactory itemReaderFactory) {
-        this.itemReaderFactory = itemReaderFactory;
-    }
-
-    public void setItemWriterFactory(ItemWriterFactory itemWriterFactory) {
-        this.itemWriterFactory = itemWriterFactory;
-    }
-
-    public void setRegIdHolder(RegIdHolder regIdHolder) {
-        this.regIdHolder = regIdHolder;
-    }
-
-    public void setRegCounter(RegCounter regCounter) {
-        this.regCounter = regCounter;
-    }
-
-    public void setEmptyTableChecker(EmptyTableChecker emptyTableChecker) {
-        this.emptyTableChecker = emptyTableChecker;
-    }
-
     public void setChunkSize(int chunkSize) {
+        Assert.state(chunkSize > 0, "chunkSize must be greater than zero");
         this.chunkSize = chunkSize;
     }
 
@@ -133,16 +118,5 @@ public class RegTreeTasklet implements Tasklet, InitializingBean {
         }
 
         reader.close();
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        Assert.notNull(root, "root regNode is null");
-        Assert.notNull(itemReaderFactory, "itemReaderFactory is null");
-        Assert.notNull(itemWriterFactory, "itemWriterFactory is null");
-        Assert.notNull(regIdHolder, "regIdHolder is null");
-        Assert.notNull(regCounter, "regCounter is null");
-        Assert.notNull(emptyTableChecker, "emptyTableChecker is null");
-        Assert.state(chunkSize > 0, "chunkSize must be greater than zero");
     }
 }

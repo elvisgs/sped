@@ -46,20 +46,14 @@ public class StepFactory {
     private SpedTree spedTree;
 
     @SuppressWarnings("unchecked")
-    public <R extends Registro> Step create(Class<R> regClass) throws Exception {
+    public Step create(Class<? extends Registro> regClass) {
         boolean isClosingBloc = RegistroEncerramentoBloco.class.isAssignableFrom(regClass);
         String stepName = String.format("step%s", regClass.getSimpleName());
 
         RegNode regNode = spedTree.getNode(regClass);
 
-        if (isClosingBloc) {
-            Tasklet tasklet = taskletFactory
-                .createClosingBlocRegTasklet((Class<RegistroEncerramentoBloco>)regClass);
-
-            return create(stepName, tasklet);
-        }
-        else if (regNode.hasChildren()) {
-            Tasklet tasklet = taskletFactory.createRegTreeTasklet(regClass);
+        if (isClosingBloc || regNode.hasChildren()) {
+            Tasklet tasklet = taskletFactory.create(regClass);
 
             return create(stepName, tasklet);
         } else {
@@ -82,13 +76,12 @@ public class StepFactory {
                 .<R, R>chunk(spedProperties.getChunkSize())
                 .reader(reader)
                 .writer(writer)
-                .listener(new UpdateRegInfoListener<R>())
+                .listener(new UpdateRegInfoListener<>())
                 .allowStartIfComplete(true)
                 .build();
     }
 
-    public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass)
-        throws Exception {
+    public <R extends Registro, P extends Registro> TaskletStep create(String name, Class<R> regClass, Class<P> parentRegClass) {
 
         ItemStreamReader<R> reader = itemReaderFactory.create(regClass, parentRegClass);
         ItemStreamWriter<R> writer = itemWriterFactory.create(regClass, parentRegClass);

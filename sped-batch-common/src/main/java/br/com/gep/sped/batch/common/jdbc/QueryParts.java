@@ -1,9 +1,11 @@
 package br.com.gep.sped.batch.common.jdbc;
 
+import lombok.Getter;
 import org.springframework.util.Assert;
 
 import static org.springframework.util.StringUtils.hasText;
 
+@Getter
 public class QueryParts {
 
     private final String select, from, where, groupBy, orderBy;
@@ -25,26 +27,6 @@ public class QueryParts {
 
     public QueryParts(String select, String from) {
         this(select, from, "", "", "");
-    }
-
-    public String getSelect() {
-        return select;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public String getWhere() {
-        return where;
-    }
-
-    public String getGroupBy() {
-        return groupBy;
-    }
-
-    public String getOrderBy() {
-        return orderBy;
     }
 
     private String removeKeyWord(String keyWord, String clause) {

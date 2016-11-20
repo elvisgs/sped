@@ -12,8 +12,6 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemStreamWriter;
 import org.springframework.batch.repeat.RepeatStatus;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -21,14 +19,14 @@ import static br.com.gep.sped.marshaller.common.RegistroAberturaBloco.SEM_MOVIME
 import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
 
-public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implements Tasklet, InitializingBean {
+public class ClosingBlocRegTasklet implements Tasklet {
 
-    @NonNull private final Class<C> closingBlocRegClass;
-    @Setter @NonNull private RegCounter regCounter;
-    @Setter @NonNull private ItemStreamWriter writer;
-    @Setter @NonNull private SpedTree spedTree;
+    private final @NonNull Class<? extends RegistroEncerramentoBloco> closingBlocRegClass;
+    private @Setter @NonNull RegCounter regCounter;
+    private @Setter @NonNull ItemStreamWriter writer;
+    private @Setter @NonNull SpedTree spedTree;
 
-    public ClosingBlocRegTasklet(Class<C> closingBlocRegClass) {
+    public ClosingBlocRegTasklet(Class<? extends RegistroEncerramentoBloco> closingBlocRegClass) {
         this.closingBlocRegClass = closingBlocRegClass;
     }
 
@@ -63,7 +61,7 @@ public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implemen
             count++;
         }
 
-        C reg = closingBlocRegClass.newInstance();
+        RegistroEncerramentoBloco reg = closingBlocRegClass.newInstance();
         count++; // linha do registro de encerramento também entra na contagem
         reg.setQtdLin(count);
 
@@ -90,11 +88,5 @@ public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implemen
         RegistroAberturaBloco reg = (RegistroAberturaBloco) openingBlocClass.newInstance();
         reg.setIndMov(SEM_MOVIMENTO);
         writer.write(singletonList(reg));
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        Assert.notNull(writer);
-        Assert.notNull(regCounter);
     }
 }

@@ -53,7 +53,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <R extends Registro, P extends Registro> ItemStreamReader<R> create(
-        final Class<R> regClass, final Class<P> parentRegClass) throws Exception {
+        Class<R> regClass, Class<P> parentRegClass) {
 
         // Procura uma implementação específica de item reader que esteja registrada na Bean Factory.
         // A classe ou bean deve usar a convenção de nome [rR]egXXXXItemReader
@@ -87,12 +87,12 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
     }
 
     @Override
-    public <R extends Registro> ItemStreamReader<R> create(Class<R> regClass) throws Exception {
+    public <R extends Registro> ItemStreamReader<R> create(Class<R> regClass) {
         return create(regClass, null);
     }
 
     public <R extends Registro, P extends Registro> JdbcCursorItemReader<R> createCursorItemReader(
-        Class<R> regClass, final Class<P> parentRegClass) throws Exception {
+        Class<R> regClass, Class<P> parentRegClass) throws Exception {
 
         JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<>();
         reader.setDataSource(infraConfig.getDataSource());

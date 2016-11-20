@@ -7,6 +7,8 @@ import br.com.gep.sped.batch.common.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.batch.common.tasklets.RegTreeTasklet;
 import br.com.gep.sped.marshaller.common.Registro;
 import br.com.gep.sped.marshaller.common.RegistroEncerramentoBloco;
+import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
+import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -35,7 +37,18 @@ public class TaskletFactory {
     @Autowired
     private EmptyTableChecker emptyTableChecker;
 
-    public RegTreeTasklet createRegTreeTasklet(Class<? extends Registro> regClass) throws Exception {
+    @SuppressWarnings("unchecked")
+    public Tasklet create(Class<? extends Registro> regClass) {
+        if (Reg9999.class.isAssignableFrom(regClass)) {
+            return createBloc9Tasklet();
+        } else if (RegistroEncerramentoBloco.class.isAssignableFrom(regClass)) {
+            return createClosingBlocRegTasklet((Class<? extends RegistroEncerramentoBloco>) regClass);
+        } else {
+            return createRegTreeTasklet(regClass);
+        }
+    }
+
+    private RegTreeTasklet createRegTreeTasklet(Class<? extends Registro> regClass) {
         RegNode rootNode = spedTree.getNode(regClass);
         RegTreeTasklet tasklet = new RegTreeTasklet(rootNode);
         tasklet.setItemReaderFactory(itemReaderFactory);
@@ -45,26 +58,19 @@ public class TaskletFactory {
         tasklet.setEmptyTableChecker(emptyTableChecker);
         tasklet.setChunkSize(spedProperties.getChunkSize());
 
-        tasklet.afterPropertiesSet();
-
         return tasklet;
     }
 
-    @SuppressWarnings("unchecked")
-    public ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<? extends RegistroEncerramentoBloco> regClass)
-        throws Exception {
-
+    private ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<? extends RegistroEncerramentoBloco> regClass) {
         ClosingBlocRegTasklet tasklet = new ClosingBlocRegTasklet(regClass);
         tasklet.setWriter(itemWriterFactory.create(regClass));
         tasklet.setRegCounter(regCounter);
         tasklet.setSpedTree(spedTree);
 
-        tasklet.afterPropertiesSet();
-
         return tasklet;
     }
 
-    public Bloc9Tasklet createBloc9Tasklet() {
+    private Bloc9Tasklet createBloc9Tasklet() {
         return new Bloc9Tasklet(regCounter, itemWriterFactory.create(Registro.class));
     }
 }
