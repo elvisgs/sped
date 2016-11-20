@@ -6,14 +6,12 @@ import br.com.gep.sped.marshaller.common.bloco9.Reg9900;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9990;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
 import lombok.NonNull;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemStreamWriter;
 import org.springframework.batch.repeat.RepeatStatus;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,19 +21,11 @@ import static br.com.gep.sped.marshaller.common.RegistroAberturaBloco.COM_MOVIME
 import static java.util.Collections.singletonList;
 import static java.util.Comparator.comparing;
 
-@Setter
-public class Bloc9Tasklet implements Tasklet, InitializingBean {
+@RequiredArgsConstructor
+public class Bloc9Tasklet implements Tasklet {
 
-    @NonNull private RegCounter regCounter;
-    @NonNull private ItemStreamWriter writer;
-
-    public void setRegCounter(RegCounter regCounter) {
-        this.regCounter = regCounter;
-    }
-
-    public void setWriter(ItemStreamWriter writer) {
-        this.writer = writer;
-    }
+    private final @NonNull RegCounter regCounter;
+    private final @NonNull ItemStreamWriter writer;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -57,17 +47,16 @@ public class Bloc9Tasklet implements Tasklet, InitializingBean {
 
             regs9900.add(new Reg9900(reg, count));
 
-            countReg9++;
             countLines += count;
         }
 
         regs9900.add(new Reg9900("9001", 1));
         regs9900.add(new Reg9900("9990", 1));
         regs9900.add(new Reg9900("9999", 1));
-        countReg9 += 3;
 
         regs9900.sort(comparing(r -> r.getRegBlc().toUpperCase()));
         writer.write(regs9900);
+        countReg9 += regs9900.size();
 
         Reg9900 reg9900 = new Reg9900("9900", countReg9 - 1); // subtrai 1 porque o reg9001 não entra no cálculo
         writer.write(singletonList(reg9900));
@@ -85,11 +74,5 @@ public class Bloc9Tasklet implements Tasklet, InitializingBean {
         contribution.incrementWriteCount(reg9990.getQtdLin());
 
         return RepeatStatus.FINISHED;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        Assert.notNull(regCounter, "regCounter is null");
-        Assert.notNull(writer, "writer is null");
     }
 }

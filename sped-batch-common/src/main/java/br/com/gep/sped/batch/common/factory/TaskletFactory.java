@@ -64,12 +64,7 @@ public class TaskletFactory {
         return tasklet;
     }
 
-    public Bloc9Tasklet createBloc9Tasklet() throws Exception {
-        Bloc9Tasklet tasklet = new Bloc9Tasklet();
-        tasklet.setWriter(itemWriterFactory.create(Registro.class));
-        tasklet.setRegCounter(regCounter);
-        tasklet.afterPropertiesSet();
-
-        return tasklet;
+    public Bloc9Tasklet createBloc9Tasklet() {
+        return new Bloc9Tasklet(regCounter, itemWriterFactory.create(Registro.class));
     }
 }
