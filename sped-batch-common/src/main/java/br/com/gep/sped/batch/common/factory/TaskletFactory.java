@@ -2,7 +2,7 @@ package br.com.gep.sped.batch.common.factory;
 
 import br.com.gep.sped.batch.common.*;
 import br.com.gep.sped.batch.common.jdbc.EmptyTableChecker;
-import br.com.gep.sped.batch.common.tasklets.Bloco9Tasklet;
+import br.com.gep.sped.batch.common.tasklets.Bloc9Tasklet;
 import br.com.gep.sped.batch.common.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.batch.common.tasklets.RegTreeTasklet;
 import br.com.gep.sped.marshaller.common.Registro;
@@ -64,8 +64,8 @@ public class TaskletFactory {
         return tasklet;
     }
 
-    public Bloco9Tasklet createBloc9Tasklet() throws Exception {
-        Bloco9Tasklet tasklet = new Bloco9Tasklet();
+    public Bloc9Tasklet createBloc9Tasklet() throws Exception {
+        Bloc9Tasklet tasklet = new Bloc9Tasklet();
         tasklet.setWriter(itemWriterFactory.create(Registro.class));
         tasklet.setRegCounter(regCounter);
         tasklet.afterPropertiesSet();

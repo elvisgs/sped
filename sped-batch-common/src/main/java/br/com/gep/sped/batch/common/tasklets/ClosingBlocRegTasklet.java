@@ -17,6 +17,7 @@ import org.springframework.util.Assert;
 
 import java.util.List;
 
+import static br.com.gep.sped.marshaller.common.RegistroAberturaBloco.SEM_MOVIMENTO;
 import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
 
@@ -87,7 +88,7 @@ public class ClosingBlocRegTasklet<C extends RegistroEncerramentoBloco> implemen
     @SuppressWarnings("unchecked")
     private void writeOpeningBlocWithoutMoviment(Class openingBlocClass) throws Exception {
         RegistroAberturaBloco reg = (RegistroAberturaBloco) openingBlocClass.newInstance();
-        reg.setIndMov("1");
+        reg.setIndMov(SEM_MOVIMENTO);
         writer.write(singletonList(reg));
     }
 

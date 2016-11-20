@@ -1,7 +1,9 @@
 package br.com.gep.sped.marshaller.common.bloco9;
 
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
@@ -18,6 +20,8 @@ import org.beanio.annotation.Record;
 })
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Reg9900 extends Registro {
 
     /**
