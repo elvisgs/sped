@@ -1,22 +1,17 @@
 package br.com.gep.sped.batch.common.jdbc;
 
-import br.com.gep.sped.batch.common.TestConfig;
+import br.com.gep.sped.batch.common.AbstractIntegrationTest;
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9900;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestConfig.class)
-public class EmptyTableCheckerTest {
+public class EmptyTableCheckerTest extends AbstractIntegrationTest {
 
     @Autowired
     private InfrastructureConfig infraConfig;

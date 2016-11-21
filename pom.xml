@@ -6,7 +6,7 @@
 
     <groupId>br.com.gep.sped</groupId>
     <artifactId>sped-parent</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <packaging>pom</packaging>
     <name>SPED Project</name>
     <description>
@@ -25,17 +25,14 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.0.6.RELEASE</spring.version>
-        <spring.batch.version>3.0.1.RELEASE</spring.batch.version>
+        <spring.version>4.3.3.RELEASE</spring.version>
+        <spring.batch.version>3.0.7.RELEASE</spring.batch.version>
     </properties>
 
     <developers>
         <developer>
             <name>Elvis Luciano Guimarães da Silva</name>
             <email>elvis.gs@gmail.com</email>
-            <roles>
-                <role>Desenvolvedor</role>
-            </roles>
         </developer>
     </developers>
 
@@ -108,13 +105,13 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>1.6.1</version>
+            <version>3.5.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>

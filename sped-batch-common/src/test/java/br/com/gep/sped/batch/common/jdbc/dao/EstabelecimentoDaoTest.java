@@ -1,25 +1,18 @@
 package br.com.gep.sped.batch.common.jdbc.dao;
 
-import br.com.gep.sped.batch.common.TestConfig;
+import br.com.gep.sped.batch.common.AbstractIntegrationTest;
 import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.text.ParseException;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@SuppressWarnings("SpringJavaAutowiringInspection")
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestConfig.class)
 @DirtiesContext
-public class EstabelecimentoDaoTest {
+public class EstabelecimentoDaoTest extends AbstractIntegrationTest {
 
     @Autowired
     private EstabelecimentoDao estabelecimentoDao;
