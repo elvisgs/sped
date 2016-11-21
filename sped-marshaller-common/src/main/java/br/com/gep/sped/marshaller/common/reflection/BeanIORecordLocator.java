@@ -46,7 +46,8 @@ public class BeanIORecordLocator {
         return ClassUtils.convertClassNameToResourcePath(SystemPropertyUtils.resolvePlaceholders(basePackage));
     }
 
-    private static boolean isCandidate(Class klass) throws ClassNotFoundException {
+    @SuppressWarnings("unchecked")
+    private static boolean isCandidate(Class klass) {
         return klass.isAnnotationPresent(Record.class) || klass.isAnnotationPresent(Group.class);
     }
 }
