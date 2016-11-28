@@ -1,12 +1,13 @@
 package br.com.gep.sped.batch.common.factory;
 
-import br.com.gep.sped.batch.common.RegIdHolder;
-import br.com.gep.sped.batch.common.SpedProperties;
+import br.com.gep.sped.batch.common.support.RegIdHolder;
+import br.com.gep.sped.batch.common.config.SpedProperties;
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import br.com.gep.sped.batch.common.jdbc.QueryParts;
 import br.com.gep.sped.batch.common.jdbc.QueryPartsProvider;
 import br.com.gep.sped.batch.common.jdbc.SchemaInjector;
 import br.com.gep.sped.marshaller.common.Registro;
+import lombok.RequiredArgsConstructor;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.TargetSource;
@@ -17,7 +18,6 @@ import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -25,30 +25,17 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@SuppressWarnings("SpringJavaAutowiringInspection")
 @Component
+@RequiredArgsConstructor
 public class JdbcItemReaderFactory implements ItemReaderFactory {
 
-    @Autowired
-    private BeanFactory beanFactory;
-
-    @Autowired
-    private InfrastructureConfig infraConfig;
-
-    @Autowired
-    private RegIdHolder regIdHolder;
-
-    @Autowired
-    private QueryPartsProvider queryPartsProvider;
-
-    @Autowired
-    private SchemaInjector schemaInjector;
-
-    @Autowired
-    private SpedProperties spedProperties;
-
-    @Autowired
-    private IRowMapperFactory IRowMapperFactory;
+    private final BeanFactory beanFactory;
+    private final InfrastructureConfig infraConfig;
+    private final RegIdHolder regIdHolder;
+    private final QueryPartsProvider queryPartsProvider;
+    private final SchemaInjector schemaInjector;
+    private final SpedProperties spedProperties;
+    private final IRowMapperFactory IRowMapperFactory;
 
     @SuppressWarnings("unchecked")
     @Override

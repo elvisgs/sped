@@ -1,10 +1,14 @@
 package br.com.gep.sped.batch.common.jdbc;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.CURRENT_SCHEMA_EL;
+import static org.springframework.util.StringUtils.hasText;
 
 /**
  * Esta classe destina-se a injetar o schema informado como job parameter (caso exista)
@@ -15,22 +19,13 @@ import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.CURRENT_SCHEM
  */
 @Component
 @StepScope
+@AllArgsConstructor
+@NoArgsConstructor
 public class SchemaInjector {
 
     public static final String SCHEMA_TOKEN = "@schema@";
 
-    private String currentSchema;
-
-    public SchemaInjector() {
-    }
-
-    public SchemaInjector(String currentSchema) {
-        this.currentSchema = currentSchema;
-    }
-
-    public String getCurrentSchema() {
-        return currentSchema;
-    }
+    private @Getter String currentSchema;
 
     @Value(CURRENT_SCHEMA_EL)
     public void setCurrentSchema(String currentSchema) {
@@ -39,7 +34,7 @@ public class SchemaInjector {
 
     public String injectSchema(String sql) {
         if (sql != null) {
-            if (currentSchema != null && !"".equals(currentSchema))
+            if (hasText(currentSchema))
                 return sql.replaceAll(SCHEMA_TOKEN, currentSchema + ".");
             else
                 return sql.replaceAll(SCHEMA_TOKEN, "");

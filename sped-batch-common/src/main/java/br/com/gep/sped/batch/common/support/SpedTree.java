@@ -1,4 +1,4 @@
-package br.com.gep.sped.batch.common;
+package br.com.gep.sped.batch.common.support;
 
 import br.com.gep.sped.marshaller.common.Registro;
 

@@ -1,6 +1,7 @@
 package br.com.gep.sped.batch.common.jdbc.support;
 
 import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
+import lombok.Setter;
 import org.springframework.batch.item.database.support.DefaultDataFieldMaxValueIncrementerFactory;
 import org.springframework.batch.support.DatabaseType;
 import org.springframework.beans.factory.FactoryBean;
@@ -12,12 +13,8 @@ import javax.sql.DataSource;
 
 public class SpedExecutionDaoFactoryBean implements FactoryBean<SpedExecutionDao>, InitializingBean {
 
-    private DataSource dataSource;
+    private @Setter DataSource dataSource;
     private DataFieldMaxValueIncrementer incrementer;
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
 
     @Override
     public SpedExecutionDao getObject() throws Exception {

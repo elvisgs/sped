@@ -1,6 +1,6 @@
 package br.com.gep.sped.batch.common.mocks;
 
-import br.com.gep.sped.batch.common.SpedTree;
+import br.com.gep.sped.batch.common.support.SpedTree;
 import org.springframework.stereotype.Component;
 
 @Component

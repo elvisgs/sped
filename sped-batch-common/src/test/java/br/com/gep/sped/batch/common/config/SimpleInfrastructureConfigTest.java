@@ -7,7 +7,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import javax.sql.DataSource;
 import java.io.Closeable;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.fail;
 import static org.mockito.Mockito.*;
 
 public class SimpleInfrastructureConfigTest {
@@ -16,10 +17,8 @@ public class SimpleInfrastructureConfigTest {
     public void lancaExcecaoSeDataSourceEPropriedadesDeConexaoForemInvalidos() {
         SimpleInfrastructureConfig config = new SimpleInfrastructureConfig();
 
-        try {
-            config.afterPropertiesSet();
-            failBecauseExceptionWasNotThrown(IllegalStateException.class);
-        } catch (Exception e) {}
+        assertThatThrownBy(config::afterPropertiesSet)
+            .isInstanceOf(IllegalStateException.class);
     }
 
     @Test

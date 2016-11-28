@@ -15,7 +15,6 @@ public interface ItemWriterFactory {
      * @param regClass Classe do registro
      * @param parentRegClass Classe do registro pai
      * @return {@link org.springframework.batch.item.ItemStreamWriter} do registro
-     * @throws Exception
      */
     <R extends Registro, P extends Registro> ItemStreamWriter<R> create(Class<R> regClass, Class<P> parentRegClass);
 
@@ -23,7 +22,6 @@ public interface ItemWriterFactory {
      * Cria um {@link ItemStreamWriter} para um registro.
      * @param regClass Classe do registro
      * @return {@link ItemStreamWriter} do registro
-     * @throws Exception
      */
     <R extends Registro> ItemStreamWriter<R> create(Class<R> regClass);
 }

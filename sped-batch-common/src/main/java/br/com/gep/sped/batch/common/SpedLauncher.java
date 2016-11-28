@@ -6,8 +6,9 @@ import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
 import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
 import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import lombok.NonNull;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
@@ -22,59 +23,35 @@ import org.springframework.util.Assert;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
+@Slf4j
 public abstract class SpedLauncher {
-
-    protected static final Log logger = LogFactory.getLog(SpedLauncher.class);
-
     protected AnnotationConfigApplicationContext context;
     protected EstabelecimentoDao estabelecimentoDao;
     protected SpedExecutionDao spedExecutionDao;
-    protected InfrastructureConfig infrastructureConfig;
+    protected @Setter InfrastructureConfig infrastructureConfig;
     protected JobLauncher jobLauncher;
     private boolean initialized = false;
 
-    protected String schema;
-    protected boolean compressFile = true;
-    protected boolean deleteFileAfterCompression = true;
-    private String destinationDir = "";
-
-    public void setInfrastructureConfig(InfrastructureConfig infrastructureConfig) {
-        this.infrastructureConfig = infrastructureConfig;
-    }
-
-    public void setSchema(String schema) {
-        this.schema = schema;
-    }
-
-    public void setDestinationDir(String destinationDir) {
-        this.destinationDir = destinationDir;
-    }
-
-    public void setCompressFile(boolean compressFile) {
-        this.compressFile = compressFile;
-    }
-
-    public void setDeleteFileAfterCompression(boolean deleteFileAfterCompression) {
-        this.deleteFileAfterCompression = deleteFileAfterCompression;
-    }
+    protected @Setter String schema;
+    protected @Setter boolean compressFile = true;
+    protected @Setter boolean deleteFileAfterCompression = true;
+    private @NonNull @Setter String destinationDir = ".";
 
     protected SpedExecution doRun(String outputFilePath, Estabelecimento estabelecimento, JobParameters jobParameters)
             throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException,
             JobParametersInvalidException {
-        Job spedJob = context.getBean(Job.class);
 
+        Job spedJob = context.getBean(Job.class);
         JobExecution jobExecution = jobLauncher.run(spedJob, jobParameters);
 
         return createSpedExecution(outputFilePath, estabelecimento, jobExecution);
     }
 
     protected void validateDestinationDir() {
-        Assert.notNull(destinationDir, "destinationDir não deve ser nulo");
-        if (!"".equals(destinationDir)) {
-            Assert.state(new File(destinationDir).isDirectory(), "destinationDir inválido");
-        }
+        Assert.state(new File(destinationDir).isDirectory(), "destinationDir não é um diretório válido");
     }
 
     protected String buildOutputFilePath(Estabelecimento estabelecimento, String suffix) {
@@ -83,7 +60,7 @@ public abstract class SpedLauncher {
         String fileName = buildFileName(estabelecimento, suffix);
         String outputFilePath = new File(destinationDir, fileName).getAbsolutePath();
 
-        logger.info("Caminho do arquivo de saida gerado automaticamente [" + outputFilePath + "].");
+        log.info("Caminho do arquivo de saída gerado automaticamente [{}]", outputFilePath);
 
         return outputFilePath;
     }
@@ -91,21 +68,22 @@ public abstract class SpedLauncher {
     private String buildFileName(Estabelecimento estabelecimento, String suffix) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM");
         String outputFilePath = String.format("%s_%s_%s.txt",
-                estabelecimento.getCnpj(),
-                sdf.format(estabelecimento.getDtIni()),
-                suffix);
+            estabelecimento.getCnpj(),
+            sdf.format(estabelecimento.getDtIni()),
+            suffix);
         return outputFilePath;
     }
 
-    private SpedExecution createSpedExecution(String outputFilePath, Estabelecimento estabelecimento, JobExecution jobExecution) {
+    private SpedExecution createSpedExecution(String outputFilePath, Estabelecimento estabelecimento,
+                                              JobExecution jobExecution) {
+
         SpedExecution spedExecution = new SpedExecution();
         spedExecution.setCnpj(estabelecimento.getCnpj());
         spedExecution.setNome(estabelecimento.getNome());
 
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(estabelecimento.getDtIni());
-        spedExecution.setAno(cal.get(Calendar.YEAR));
-        spedExecution.setMes(cal.get(Calendar.MONTH) + 1);
+        LocalDate dtIni = estabelecimento.getDtIni().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        spedExecution.setAno(dtIni.getYear());
+        spedExecution.setMes(dtIni.getMonthValue());
 
         spedExecution.setArquivo(outputFilePath);
         spedExecution.setLayout(getLayout());
@@ -123,11 +101,11 @@ public abstract class SpedLauncher {
 
         Assert.notNull(infrastructureConfig, "infrastructureConfig não deve ser nula");
         context.getBeanFactory()
-                .registerSingleton("infrastructureConfig", infrastructureConfig);
+            .registerSingleton("infrastructureConfig", infrastructureConfig);
 
         context.scan(
-                getPackageToScan(),
-                RegCounter.class.getPackage().getName());
+            getPackageToScan(),
+            SpedLauncher.class.getPackage().getName());
         context.refresh();
         context.registerShutdownHook();
 

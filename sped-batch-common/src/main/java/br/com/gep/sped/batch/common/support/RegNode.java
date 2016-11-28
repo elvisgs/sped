@@ -1,7 +1,8 @@
-package br.com.gep.sped.batch.common;
+package br.com.gep.sped.batch.common.support;
 
 import br.com.gep.sped.marshaller.common.Registro;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NonNull;
 
 import java.util.Collections;
@@ -15,27 +16,15 @@ import java.util.List;
 @EqualsAndHashCode(of = "regClass")
 public class RegNode {
 
-    private final @NonNull Class<? extends Registro> regClass;
-    private final char bloc;
-    private RegNode parent;
+    private final @NonNull @Getter Class<? extends Registro> regClass;
+    private final @Getter char bloc;
+    private @Getter RegNode parent;
     private LinkedList<RegNode> children;
 
     private RegNode(Class<? extends Registro> regClass) {
         this.regClass = regClass;
         this.bloc = regClass.getSimpleName().charAt(3);
         this.children = new LinkedList<>();
-    }
-
-    public Class<? extends Registro> getRegClass() {
-        return regClass;
-    }
-
-    public char getBloc() {
-        return bloc;
-    }
-
-    public RegNode getParent() {
-        return parent;
     }
 
     public List<RegNode> getChildren() {

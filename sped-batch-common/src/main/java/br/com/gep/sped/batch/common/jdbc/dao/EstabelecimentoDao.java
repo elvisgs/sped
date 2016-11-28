@@ -2,6 +2,7 @@ package br.com.gep.sped.batch.common.jdbc.dao;
 
 import br.com.gep.sped.batch.common.jdbc.SchemaInjector;
 import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
+import lombok.Setter;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,22 +13,10 @@ import java.util.List;
 
 public class EstabelecimentoDao implements InitializingBean {
 
-    private DataSource dataSource;
+    private @Setter DataSource dataSource;
+    private @Setter String selectQuery;
+    private @Setter String schema;
     private JdbcTemplate jdbcTemplate;
-    private String selectQuery;
-    private String schema;
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
-    public void setSelectQuery(String query) {
-        this.selectQuery = query;
-    }
-
-    public void setSchema(String schema) {
-        this.schema = schema;
-    }
 
     public Estabelecimento obterUnico() {
         String sql = new SchemaInjector(schema).injectSchema(selectQuery);

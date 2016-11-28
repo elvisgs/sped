@@ -1,12 +1,13 @@
 package br.com.gep.sped.batch.common.tasklets;
 
-import br.com.gep.sped.batch.common.RegCounter;
-import br.com.gep.sped.batch.common.RegNode;
-import br.com.gep.sped.batch.common.SpedTree;
+import br.com.gep.sped.batch.common.support.RegNode;
+import br.com.gep.sped.batch.common.support.SpedTree;
+import br.com.gep.sped.batch.common.support.RegCounter;
+import br.com.gep.sped.marshaller.common.Registro;
 import br.com.gep.sped.marshaller.common.RegistroAberturaBloco;
 import br.com.gep.sped.marshaller.common.RegistroEncerramentoBloco;
 import lombok.NonNull;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -19,18 +20,14 @@ import static br.com.gep.sped.marshaller.common.RegistroAberturaBloco.SEM_MOVIME
 import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
 
+@RequiredArgsConstructor
 public class ClosingBlocRegTasklet implements Tasklet {
 
     private final @NonNull Class<? extends RegistroEncerramentoBloco> closingBlocRegClass;
-    private @Setter @NonNull RegCounter regCounter;
-    private @Setter @NonNull ItemStreamWriter writer;
-    private @Setter @NonNull SpedTree spedTree;
+    private final @NonNull ItemStreamWriter<Registro> writer;
+    private final @NonNull RegCounter regCounter;
+    private final @NonNull SpedTree spedTree;
 
-    public ClosingBlocRegTasklet(Class<? extends RegistroEncerramentoBloco> closingBlocRegClass) {
-        this.closingBlocRegClass = closingBlocRegClass;
-    }
-
-    @SuppressWarnings("unchecked")
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         List<Class> regsToCount = listRegsToCount();
@@ -83,7 +80,6 @@ public class ClosingBlocRegTasklet implements Tasklet {
             .collect(toList());
     }
 
-    @SuppressWarnings("unchecked")
     private void writeOpeningBlocWithoutMoviment(Class openingBlocClass) throws Exception {
         RegistroAberturaBloco reg = (RegistroAberturaBloco) openingBlocClass.newInstance();
         reg.setIndMov(SEM_MOVIMENTO);

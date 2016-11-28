@@ -1,6 +1,6 @@
 package br.com.gep.sped.contrib.batch;
 
-import br.com.gep.sped.batch.common.RegCounter;
+import br.com.gep.sped.batch.common.SpedLauncher;
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +24,7 @@ import java.nio.charset.StandardCharsets;
 @Configuration
 @Primary
 @ComponentScan(
-        basePackageClasses = {TestInfrastructureConfig.class, RegCounter.class})
+        basePackageClasses = {TestInfrastructureConfig.class, SpedLauncher.class})
 public class TestInfrastructureConfig implements InfrastructureConfig {
 
     @Value("classpath:/schemas/schema-drop-hsqldb.sql")

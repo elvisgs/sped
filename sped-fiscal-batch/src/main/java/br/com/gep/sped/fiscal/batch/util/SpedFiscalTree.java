@@ -1,7 +1,7 @@
 package br.com.gep.sped.fiscal.batch.util;
 
-import br.com.gep.sped.batch.common.RegNode;
-import br.com.gep.sped.batch.common.SpedTree;
+import br.com.gep.sped.batch.common.support.RegNode;
+import br.com.gep.sped.batch.common.support.SpedTree;
 import br.com.gep.sped.fiscal.marshaller.registros.bloco0.*;
 import br.com.gep.sped.fiscal.marshaller.registros.bloco1.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoC.*;

@@ -1,5 +1,6 @@
-package br.com.gep.sped.batch.common;
+package br.com.gep.sped.batch.common.support;
 
+import lombok.Getter;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.stereotype.Component;
 
@@ -10,14 +11,10 @@ import java.util.Map;
 @JobScope
 public class RegCounter {
 
-    private final Map<Class, Integer> counts;
+    private final @Getter Map<Class, Integer> counts;
 
     public RegCounter() {
         counts = new HashMap<>();
-    }
-
-    public Map<Class, Integer> getCounts() {
-        return counts;
     }
 
     public Integer getCount(Class regClass) {

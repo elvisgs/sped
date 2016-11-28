@@ -1,8 +1,7 @@
 package br.com.gep.sped.batch.common.tasklets;
 
 import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -20,9 +19,8 @@ import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.*;
 
 @Component
 @StepScope
+@Slf4j
 public class ZipFileTasklet implements Tasklet {
-
-    private static final Log logger = LogFactory.getLog(ZipFileTasklet.class);
 
     @Value(OUTPUT_FILE_NAME_EL)
     private String outputFileName;
@@ -47,7 +45,7 @@ public class ZipFileTasklet implements Tasklet {
 
             ZipUtil.packEntry(outputFile, new File(zipFilePath));
 
-            logger.info("Arquivo compactado [" + zipFilePath + "]");
+            log.info("Arquivo compactado [" + zipFilePath + "]");
 
             if (deleteFileAfterCompression) {
                 Files.delete(outputFile.toPath());
@@ -58,7 +56,7 @@ public class ZipFileTasklet implements Tasklet {
                 spedExecutionDao.updateFile(jobExecutionId, zipFilePath);
             }
             else {
-                logger.warn("SpedExecutionDao nao foi setado. SpedExecution nao sera atualizado.");
+                log.warn("SpedExecutionDao nao foi setado. SpedExecution nao sera atualizado.");
             }
         }
 

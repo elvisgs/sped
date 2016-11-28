@@ -17,8 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.concurrent.Callable;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -31,30 +29,24 @@ public class JdbcItemReaderFactoryTest {
     @Test
     public void criaItemReaderGenerico() throws Exception {
         StepExecution stepExecution = MetaDataInstanceFactory.createStepExecution();
-        StepScopeTestUtils.doInStepScope(stepExecution, new Callable<Object>() {
-            @Override
-            public Object call() throws Exception {
-                ItemStreamReader<Reg9001> reader = factory.create(Reg9001.class);
+        StepScopeTestUtils.doInStepScope(stepExecution, () -> {
+            ItemStreamReader<Reg9001> reader = factory.create(Reg9001.class);
 
-                assertThat(unwrapProxy(reader)).isInstanceOf(JdbcCursorItemReader.class);
+            assertThat(unwrapProxy(reader)).isInstanceOf(JdbcCursorItemReader.class);
 
-                return null;
-            }
+            return null;
         });
     }
 
     @Test
     public void criaItemReaderEspecifico() throws Exception {
         StepExecution stepExecution = MetaDataInstanceFactory.createStepExecution();
-        StepScopeTestUtils.doInStepScope(stepExecution, new Callable<Object>() {
-            @Override
-            public Object call() throws Exception {
-                ItemStreamReader<Reg9900> reader = factory.create(Reg9900.class);
+        StepScopeTestUtils.doInStepScope(stepExecution, () -> {
+            ItemStreamReader<Reg9900> reader = factory.create(Reg9900.class);
 
-                assertThat(unwrapProxy(reader)).isInstanceOf(Reg9900ItemReader.class);
+            assertThat(unwrapProxy(reader)).isInstanceOf(Reg9900ItemReader.class);
 
-                return null;
-            }
+            return null;
         });
     }
 

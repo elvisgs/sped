@@ -2,6 +2,9 @@ package br.com.gep.sped.batch.common.jdbc.dao;
 
 import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
+import com.opengamma.elsql.ElSqlBundle;
+import com.opengamma.elsql.ElSqlConfig;
+import lombok.Setter;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
@@ -20,38 +23,10 @@ import java.util.List;
 
 public class SpedExecutionDao implements InitializingBean {
 
-    private static final String INSERT =
-            "INSERT INTO BATCH_SPED_EXECUTION(ID, CNPJ, NOME, ANO, MES, ARQUIVO, LAYOUT, JOB_EXECUTION_ID) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-    private static final String FIND_ALL =
-            "SELECT ID, CNPJ, ANO, MES, NOME, ARQUIVO, LAYOUT, SE.JOB_EXECUTION_ID, VERSION, CREATE_TIME, " +
-                    "START_TIME, END_TIME, STATUS, EXIT_CODE, EXIT_MESSAGE, LAST_UPDATED " +
-            "FROM BATCH_SPED_EXECUTION SE JOIN BATCH_JOB_EXECUTION JE " +
-                    "ON SE.JOB_EXECUTION_ID = JE.JOB_EXECUTION_ID";
-
-    private static final String FIND_BY_ID = FIND_ALL + " WHERE ID = ?";
-
-    private static final String FIND_BY_CNPJ = FIND_ALL +
-            " WHERE CNPJ = ? AND LAYOUT = ? ORDER BY ANO DESC, MES DESC";
-
-    private static final String FIND_BY_CLIENTE = FIND_ALL +
-            " WHERE CNPJ LIKE ? AND LAYOUT = ? ORDER BY ANO DESC, MES DESC";
-
-    private static final String UPDATE_FILE =
-            "UPDATE BATCH_SPED_EXECUTION SET ARQUIVO = ? WHERE JOB_EXECUTION_ID = ?";
-
-    private DataSource dataSource;
+    private @Setter DataSource dataSource;
+    private @Setter DataFieldMaxValueIncrementer incrementer;
     private JdbcOperations jdbcTemplate;
-    private DataFieldMaxValueIncrementer incrementer;
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
-    public void setIncrementer(DataFieldMaxValueIncrementer incrementer) {
-        this.incrementer = incrementer;
-    }
+    private ElSqlBundle sqlBundle = ElSqlBundle.of(ElSqlConfig.DEFAULT, getClass());
 
     public void create(SpedExecution spedExecution) {
         validateSpedExecution(spedExecution);
@@ -69,7 +44,7 @@ public class SpedExecutionDao implements InitializingBean {
                 Types.VARCHAR, Types.BIGINT
         };
 
-        jdbcTemplate.update(INSERT, parameters, types);
+        jdbcTemplate.update(sqlBundle.getSql("INSERT"), parameters, types);
     }
 
     private void validateSpedExecution(SpedExecution execution) {
@@ -86,15 +61,16 @@ public class SpedExecutionDao implements InitializingBean {
     public SpedExecution findById(Long id) {
         Assert.notNull(id, "id não deve ser nulo");
 
-        return jdbcTemplate.queryForObject(FIND_BY_ID, new SpedExecutionRowMapper(), id);
+        return jdbcTemplate.queryForObject(sqlBundle.getSql("FIND_BY_ID"),
+            new SpedExecutionRowMapper(), id);
     }
 
     public List<SpedExecution> findByCnpj(String cnpj, Layout layout) {
         Assert.hasText(cnpj, "cnpj não deve ser nulo ou vazio");
         Assert.notNull(layout, "layout não deve ser nulo");
 
-        return jdbcTemplate.query(FIND_BY_CNPJ, new SpedExecutionRowMapper(),
-                cnpj, layout.toString());
+        return jdbcTemplate.query(sqlBundle.getSql("FIND_BY_CNPJ"),
+            new SpedExecutionRowMapper(), cnpj, layout.toString());
     }
 
     public List<SpedExecution> findByCliente(String cnpjCliente, Layout layout) {
@@ -103,15 +79,15 @@ public class SpedExecutionDao implements InitializingBean {
 
         String likeCnpj = cnpjCliente.substring(0, 8) + "%";
 
-        return jdbcTemplate.query(FIND_BY_CLIENTE, new SpedExecutionRowMapper(),
-                likeCnpj, layout.toString());
+        return jdbcTemplate.query(sqlBundle.getSql("FIND_BY_CLIENTE"),
+            new SpedExecutionRowMapper(), likeCnpj, layout.toString());
     }
 
     public void updateFile(Long jobExecutionId, String file) {
         Assert.notNull(jobExecutionId, "jobExecutionId não deve ser null");
         Assert.hasText(file, "file não deve ser nulo ou vazio");
 
-        jdbcTemplate.update(UPDATE_FILE, file, jobExecutionId);
+        jdbcTemplate.update(sqlBundle.getSql("UPDATE_FILE"), file, jobExecutionId);
     }
 
     @Override

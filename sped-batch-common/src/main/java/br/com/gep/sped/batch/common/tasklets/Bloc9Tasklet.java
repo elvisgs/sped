@@ -1,6 +1,6 @@
 package br.com.gep.sped.batch.common.tasklets;
 
-import br.com.gep.sped.batch.common.RegCounter;
+import br.com.gep.sped.batch.common.support.RegCounter;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9001;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9900;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9990;

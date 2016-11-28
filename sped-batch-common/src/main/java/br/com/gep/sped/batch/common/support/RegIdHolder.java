@@ -1,4 +1,4 @@
-package br.com.gep.sped.batch.common;
+package br.com.gep.sped.batch.common.support;
 
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.stereotype.Component;
