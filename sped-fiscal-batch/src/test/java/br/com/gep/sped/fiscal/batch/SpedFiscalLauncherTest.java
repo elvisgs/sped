@@ -3,7 +3,6 @@ package br.com.gep.sped.fiscal.batch;
 import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,16 +17,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.File;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
 public class SpedFiscalLauncherTest {
 
-    public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
-    public static final String DIR_RESULTADOS = "target/generated-test-sources";
-    public static final String CNPJ_ESTABELECIMENTO = "10848620000139";
-    public static final String SCHEMA = "sped_fiscal";
+    private static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
+    private static final String DIR_RESULTADOS = "target/generated-test-sources";
+    private static final String CNPJ_ESTABELECIMENTO = "10848620000139";
+    private static final String SCHEMA = "sped_fiscal";
 
     @Autowired
     private TestConfig infraConfig;
@@ -89,7 +89,7 @@ public class SpedFiscalLauncherTest {
             launcher.run(CNPJ_ESTABELECIMENTO);
             fail("Execução deveria falhar, pois schema não existe");
         }
-        catch (Exception ex) {}
+        catch (Exception ignored) {}
 
         launcher.setSchema(SCHEMA);
         SpedExecution execution = launcher.run(CNPJ_ESTABELECIMENTO);

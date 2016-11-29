@@ -24,10 +24,10 @@ import static org.assertj.core.api.Assertions.*;
 @DirtiesContext
 public class SpedFiscalJobParallelTest {
 
-    public static final String CAMINHO_RESULTADO_1 = "target/generated-test-sources/sped_test_result_1.txt";
-    public static final String CAMINHO_RESULTADO_2 = "target/generated-test-sources/sped_test_result_2.txt";
-    public static final String CNPJ_ESTABELECIMENTO = "10848620000139";
-    public static final String SPED_FISCAL = "sped_fiscal";
+    private static final String CAMINHO_RESULTADO_1 = "target/generated-test-sources/sped_test_result_1.txt";
+    private static final String CAMINHO_RESULTADO_2 = "target/generated-test-sources/sped_test_result_2.txt";
+    private static final String CNPJ_ESTABELECIMENTO = "10848620000139";
+    private static final String SPED_FISCAL = "sped_fiscal";
 
     @Autowired
     private JobConfig jobConfig;

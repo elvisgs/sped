@@ -3,7 +3,6 @@ package br.com.gep.sped.contrib.batch;
 import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,19 +13,20 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestInfrastructureConfig.class)
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
 public class SpedContribLauncherTest {
 
-    public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
-    public static final String DIR_RESULTADOS = "target/generated-test-sources";
+    private static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
+    private static final String DIR_RESULTADOS = "target/generated-test-sources";
 
     @Autowired
-    private TestInfrastructureConfig infraConfig;
+    private TestConfig infraConfig;
 
     private SpedContribLauncher launcher;
     private Resource arquivoEsperado, arquivoResultado;
@@ -62,7 +62,7 @@ public class SpedContribLauncherTest {
             launcher.run();
             fail("Execução deveria falhar, pois schema não existe");
         }
-        catch (Exception ex) {}
+        catch (Exception ignored) {}
 
         launcher.setSchema("sped_contrib");
         SpedExecution execution = launcher.run();

@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
-import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.explore.JobExplorer;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +14,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SuppressWarnings("SpringJavaAutowiringInspection")
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AsyncTestInfrastructureConfig.class)
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = AsyncTestConfig.class)
 @DirtiesContext
 public class SpedContribJobParallelTest {
 
-    public static final String CAMINHO_RESULTADO_1 = "target/generated-test-sources/sped_test_result_1.txt";
-    public static final String CAMINHO_RESULTADO_2 = "target/generated-test-sources/sped_test_result_2.txt";
+    private static final String CAMINHO_RESULTADO_1 = "target/generated-test-sources/sped_test_result_1.txt";
+    private static final String CAMINHO_RESULTADO_2 = "target/generated-test-sources/sped_test_result_2.txt";
 
     @Autowired
     private JobConfig jobConfig;

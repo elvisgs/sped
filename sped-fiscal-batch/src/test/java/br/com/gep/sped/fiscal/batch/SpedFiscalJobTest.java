@@ -15,24 +15,23 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.batch.test.AssertFile.assertFileEquals;
 
-@SuppressWarnings("SpringJavaAutowiringInspection")
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class SpedFiscalJobTest {
 
-    public static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
-    public static final String CAMINHO_RESULTADO_VAZIO = "target/generated-test-sources/sped_vazio_result.txt";
-    public static final String CAMINHO_ZIP = "target/generated-test-sources/sped_test_result.zip";
-    public static final String CNPJ_ESTABELECIMENTO = "10848620000139";
-    public static final String SCHEMA = "sped_fiscal";
+    private static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
+    private static final String CAMINHO_RESULTADO_VAZIO = "target/generated-test-sources/sped_vazio_result.txt";
+    private static final String CAMINHO_ZIP = "target/generated-test-sources/sped_test_result.zip";
+    private static final String CNPJ_ESTABELECIMENTO = "10848620000139";
+    private static final String SCHEMA = "sped_fiscal";
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;

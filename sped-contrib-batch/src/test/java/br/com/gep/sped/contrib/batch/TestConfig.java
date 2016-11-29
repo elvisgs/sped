@@ -23,9 +23,8 @@ import java.nio.charset.StandardCharsets;
 
 @Configuration
 @Primary
-@ComponentScan(
-        basePackageClasses = {TestInfrastructureConfig.class, SpedLauncher.class})
-public class TestInfrastructureConfig implements InfrastructureConfig {
+@ComponentScan(basePackageClasses = {TestConfig.class, SpedLauncher.class})
+public class TestConfig implements InfrastructureConfig {
 
     @Value("classpath:/schemas/schema-drop-hsqldb.sql")
     private Resource batchSpedSchemaDrop;
