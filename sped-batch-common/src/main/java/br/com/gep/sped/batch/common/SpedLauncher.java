@@ -6,6 +6,8 @@ import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
 import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
 import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
+import br.com.gep.sped.batch.common.support.DefaultFileNameStrategy;
+import br.com.gep.sped.batch.common.support.FileNameStrategy;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -23,7 +25,6 @@ import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
-import java.text.SimpleDateFormat;
 
 @Slf4j
 @Accessors(chain = true)
@@ -40,6 +41,7 @@ public abstract class SpedLauncher {
     protected @Setter boolean compressFile = true;
     protected @Setter boolean deleteFileAfterCompression = true;
     private @NonNull @Setter String destinationDir = ".";
+    private @Setter FileNameStrategy fileNameStrategy;
 
     protected SpedExecution doRun(String outputFilePath, Estabelecimento estabelecimento, JobParameters jobParameters)
             throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException,
@@ -55,23 +57,13 @@ public abstract class SpedLauncher {
         Assert.state(new File(destinationDir).isDirectory(), "destinationDir não é um diretório válido");
     }
 
-    protected String buildOutputFilePath(Estabelecimento estabelecimento, String suffix) {
+    protected String buildOutputFilePath(Estabelecimento estabelecimento) {
         validateDestinationDir();
 
-        String fileName = buildFileName(estabelecimento, suffix);
+        String fileName = fileNameStrategy.build(estabelecimento);
         String outputFilePath = new File(destinationDir, fileName).getAbsolutePath();
 
         log.info("Caminho do arquivo de saída gerado automaticamente [{}]", outputFilePath);
-
-        return outputFilePath;
-    }
-
-    private String buildFileName(Estabelecimento estabelecimento, String suffix) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM");
-        String outputFilePath = String.format("%s_%s_%s.txt",
-            estabelecimento.getCnpj(),
-            sdf.format(estabelecimento.getDtIni()),
-            suffix);
 
         return outputFilePath;
     }
@@ -107,6 +99,9 @@ public abstract class SpedLauncher {
         jobLauncher = context.getBean(JobLauncher.class);
         estabelecimentoDao = context.getBean(EstabelecimentoDao.class);
         spedExecutionDao = context.getBean(SpedExecutionDao.class);
+
+        if (fileNameStrategy == null)
+            fileNameStrategy = new DefaultFileNameStrategy();
 
         initialized = true;
     }

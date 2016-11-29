@@ -5,12 +5,17 @@ import br.com.gep.sped.batch.common.SpedLauncher;
 import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
 import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
+import br.com.gep.sped.batch.common.support.DefaultFileNameStrategy;
 import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 
 public class SpedContribLauncher extends SpedLauncher {
+
+    public SpedContribLauncher() {
+        setFileNameStrategy(new DefaultFileNameStrategy("PIS"));
+    }
 
     /**
      * Executa o job assincronamente
@@ -25,7 +30,7 @@ public class SpedContribLauncher extends SpedLauncher {
         Estabelecimento estabelecimento = estabelecimentoDao.obterUnico();
 
         if (outputFilePath == null || "".equals(outputFilePath.trim())) {
-            outputFilePath = buildOutputFilePath(estabelecimento, "PIS");
+            outputFilePath = buildOutputFilePath(estabelecimento);
         }
 
         SpedJobParameterBuilder parametersBuilder = new SpedJobParameterBuilder()

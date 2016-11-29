@@ -5,6 +5,7 @@ import br.com.gep.sped.batch.common.SpedLauncher;
 import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
 import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
+import br.com.gep.sped.batch.common.support.DefaultFileNameStrategy;
 import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
@@ -14,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpedFiscalLauncher extends SpedLauncher {
+
+    public SpedFiscalLauncher() {
+        setFileNameStrategy(new DefaultFileNameStrategy("FISCAL"));
+    }
 
     /**
      * Executa o job do SPED Fiscal para um estabelecimento.
@@ -35,7 +40,7 @@ public class SpedFiscalLauncher extends SpedLauncher {
             throws JobExecutionAlreadyRunningException, JobRestartException,
             JobInstanceAlreadyCompleteException, JobParametersInvalidException {
         if (outputFilePath == null || "".equals(outputFilePath.trim())) {
-            outputFilePath = buildOutputFilePath(estabelecimento, "FISCAL");
+            outputFilePath = buildOutputFilePath(estabelecimento);
         }
 
         SpedJobParameterBuilder parametersBuilder = new SpedJobParameterBuilder()
