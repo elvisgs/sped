@@ -8,6 +8,7 @@ import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import lombok.NonNull;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
@@ -25,6 +26,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 
 @Slf4j
+@Accessors(chain = true)
 public abstract class SpedLauncher {
 
     protected AnnotationConfigApplicationContext context;

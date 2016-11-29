@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
 public class SpedFiscalLauncherTest {
 
@@ -43,8 +43,7 @@ public class SpedFiscalLauncherTest {
     @Before
     public void before() throws Exception {
         launcher = new SpedFiscalLauncher();
-        launcher.setInfrastructureConfig(infraConfig);
-        launcher.initialize();
+        launcher.setInfrastructureConfig(infraConfig).initialize();
     }
 
     @After
@@ -54,8 +53,8 @@ public class SpedFiscalLauncherTest {
 
     @Test
     public void escreveArquivoParaUmEstabelecimento() throws Exception {
-        launcher.setSchema(SCHEMA);
-        launcher.setDeleteFileAfterCompression(false);
+        launcher.setSchema(SCHEMA)
+            .setDeleteFileAfterCompression(false);
 
         SpedExecution execution = launcher.run(CNPJ_ESTABELECIMENTO, CAMINHO_RESULTADO);
 
@@ -66,9 +65,9 @@ public class SpedFiscalLauncherTest {
 
     @Test
     public void escreveArquivosParaTodosEstabelecimentos() throws Exception {
-        launcher.setSchema(SCHEMA);
-        launcher.setDestinationDir(DIR_RESULTADOS);
-        launcher.setDeleteFileAfterCompression(false);
+        launcher.setSchema(SCHEMA)
+            .setDestinationDir(DIR_RESULTADOS)
+            .setDeleteFileAfterCompression(false);
 
         List<SpedExecution> executions = launcher.run();
 
