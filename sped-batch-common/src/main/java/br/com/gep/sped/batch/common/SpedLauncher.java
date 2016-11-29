@@ -23,11 +23,10 @@ import org.springframework.util.Assert;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
 
 @Slf4j
 public abstract class SpedLauncher {
+
     protected AnnotationConfigApplicationContext context;
     protected EstabelecimentoDao estabelecimentoDao;
     protected SpedExecutionDao spedExecutionDao;
@@ -71,23 +70,17 @@ public abstract class SpedLauncher {
             estabelecimento.getCnpj(),
             sdf.format(estabelecimento.getDtIni()),
             suffix);
+
         return outputFilePath;
     }
 
     private SpedExecution createSpedExecution(String outputFilePath, Estabelecimento estabelecimento,
                                               JobExecution jobExecution) {
 
-        SpedExecution spedExecution = new SpedExecution();
-        spedExecution.setCnpj(estabelecimento.getCnpj());
-        spedExecution.setNome(estabelecimento.getNome());
-
-        LocalDate dtIni = estabelecimento.getDtIni().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        spedExecution.setAno(dtIni.getYear());
-        spedExecution.setMes(dtIni.getMonthValue());
-
-        spedExecution.setArquivo(outputFilePath);
-        spedExecution.setLayout(getLayout());
-        spedExecution.setJobExecution(jobExecution);
+        SpedExecution spedExecution = SpedExecution.from(estabelecimento)
+            .setArquivo(outputFilePath)
+            .setLayout(getLayout())
+            .setJobExecution(jobExecution);
 
         spedExecutionDao.create(spedExecution);
 
