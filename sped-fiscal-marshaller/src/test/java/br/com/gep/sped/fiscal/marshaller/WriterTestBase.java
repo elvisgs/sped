@@ -7,18 +7,19 @@ import org.junit.Before;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 
 public class WriterTestBase {
 
     protected SpedWriter writer;
-    protected ByteArrayOutputStream resultStream;
+    protected StringWriter result;
     protected String lineSeparator = System.getProperty("line.separator");
 
     @Before
     public void initWriter() throws UnsupportedEncodingException {
-        resultStream = new ByteArrayOutputStream();
-        writer = new SpedFiscalWriter(new OutputStreamWriter(resultStream, "ISO-8859-1"));
+        result = new StringWriter();
+        writer = new SpedFiscalWriter(result);
     }
 
     @After

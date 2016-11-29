@@ -17,7 +17,7 @@ public class SpedFiscalWriterTest extends WriterTestBase {
 
         writer.writeAndFlush(reg);
 
-        String linha = resultStream.toString();
+        String linha = result.toString();
         assertThat(linha).endsWith("|" + lineSeparator);
     }
 
@@ -28,7 +28,7 @@ public class SpedFiscalWriterTest extends WriterTestBase {
 
         writer.writeAndFlush(reg);
 
-        String linha = resultStream.toString();
+        String linha = result.toString();
         assertThat(linha).startsWith("|");
     }
 }

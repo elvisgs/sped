@@ -14,7 +14,7 @@ public class Reg0200Test extends WriterTestBase {
 
         writer.writeAndFlush(reg);
 
-        String[] campos = resultStream.toString().split("\\|");
+        String[] campos = result.toString().split("\\|");
         assertThat(campos[8]).isEqualTo("00000001");
     }
 
@@ -25,7 +25,7 @@ public class Reg0200Test extends WriterTestBase {
 
         writer.writeAndFlush(reg);
 
-        String[] campos = resultStream.toString().split("\\|");
+        String[] campos = result.toString().split("\\|");
         assertThat(campos[8]).isEmpty();
     }
 }

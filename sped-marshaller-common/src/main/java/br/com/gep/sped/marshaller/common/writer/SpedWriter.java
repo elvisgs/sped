@@ -4,7 +4,7 @@ import org.beanio.BeanWriter;
 
 import java.io.*;
 
-public abstract class SpedWriter {
+public abstract class SpedWriter implements AutoCloseable {
 
     protected BeanWriter beanWriter;
 
@@ -38,6 +38,7 @@ public abstract class SpedWriter {
         beanWriter.flush();
     }
 
+    @Override
     public void close() {
         beanWriter.close();
     }

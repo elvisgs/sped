@@ -4,9 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.StringWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,13 +13,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SpedWriterTest {
 
-    protected SpedWriter writer;
-    protected ByteArrayOutputStream stream;
+    private SpedWriter writer;
+    private StringWriter result;
 
     @Before
-    public void initWriter() throws UnsupportedEncodingException {
-        stream = new ByteArrayOutputStream();
-        writer = new TestWriter(new OutputStreamWriter(stream, "ISO-8859-1"));
+    public void initWriter() {
+        result = new StringWriter();
+        writer = new TestWriter(result);
     }
 
     @After
@@ -42,7 +40,7 @@ public class SpedWriterTest {
 
         writer.writeAndFlush(record);
 
-        String[] campos = stream.toString().replaceAll("^\\||\\|$", "").split("\\|", 0);
+        String[] campos = result.toString().replaceAll("^\\||\\|$", "").split("\\|", 0);
         assertThat(campos.length).isEqualTo(4);
     }
 
@@ -53,7 +51,7 @@ public class SpedWriterTest {
 
         writer.writeAndFlush(record);
 
-        String[] campos = stream.toString().split("\\|");
+        String[] campos = result.toString().split("\\|");
         assertThat(campos[2]).isEqualTo("01012014");
     }
 
@@ -64,7 +62,7 @@ public class SpedWriterTest {
 
         writer.writeAndFlush(record);
 
-        String[] campos = stream.toString().split("\\|");
+        String[] campos = result.toString().split("\\|");
         assertThat(campos[3]).isEqualTo("99,99");
     }
 }

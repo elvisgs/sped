@@ -1,11 +1,13 @@
 package br.com.gep.sped.marshaller.common.writer;
 
+import lombok.Data;
 import org.beanio.annotation.Field;
 import org.beanio.annotation.Record;
 
 import java.util.Date;
 
 @Record
+@Data
 public class TestRecord {
 
     @Field(at = 1)
@@ -19,36 +21,4 @@ public class TestRecord {
 
     @Field(at = 4)
     private Integer intField;
-
-    public String getStringField() {
-        return stringField;
-    }
-
-    public void setStringField(String stringField) {
-        this.stringField = stringField;
-    }
-
-    public Date getDateField() {
-        return dateField;
-    }
-
-    public void setDateField(Date dateField) {
-        this.dateField = dateField;
-    }
-
-    public Double getDoubleField() {
-        return doubleField;
-    }
-
-    public void setDoubleField(Double doubleField) {
-        this.doubleField = doubleField;
-    }
-
-    public Integer getIntField() {
-        return intField;
-    }
-
-    public void setIntField(Integer intField) {
-        this.intField = intField;
-    }
 }
