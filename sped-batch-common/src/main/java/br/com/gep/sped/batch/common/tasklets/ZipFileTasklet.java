@@ -1,7 +1,7 @@
 package br.com.gep.sped.batch.common.tasklets;
 
 import br.com.gep.sped.batch.common.jdbc.dao.SpedExecutionDao;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -19,7 +19,7 @@ import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.*;
 
 @Component
 @StepScope
-@Slf4j
+@CommonsLog
 public class ZipFileTasklet implements Tasklet {
 
     @Value(OUTPUT_FILE_NAME_EL)

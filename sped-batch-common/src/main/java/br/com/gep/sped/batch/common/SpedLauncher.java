@@ -11,7 +11,7 @@ import br.com.gep.sped.batch.common.support.FileNameStrategy;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
@@ -26,7 +26,7 @@ import org.springframework.util.Assert;
 import javax.annotation.PostConstruct;
 import java.io.File;
 
-@Slf4j
+@CommonsLog
 @Accessors(chain = true)
 public abstract class SpedLauncher {
 
@@ -63,7 +63,7 @@ public abstract class SpedLauncher {
         String fileName = fileNameStrategy.build(estabelecimento);
         String outputFilePath = new File(destinationDir, fileName).getAbsolutePath();
 
-        log.info("Caminho do arquivo de saída gerado automaticamente [{}]", outputFilePath);
+        log.info("Caminho do arquivo de saída gerado automaticamente [" + outputFilePath + "]");
 
         return outputFilePath;
     }
