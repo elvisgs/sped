@@ -24,7 +24,7 @@ public class EmptyTableCheckerTest extends AbstractIntegrationTest {
     @Before
     public void before() {
         emptyTableChecker = new EmptyTableChecker(
-            infraConfig.getDataSource(),
+            infraConfig,
             queryPartsProvider,
             new SchemaInjector()
         );
