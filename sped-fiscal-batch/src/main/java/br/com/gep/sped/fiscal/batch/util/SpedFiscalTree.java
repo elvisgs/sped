@@ -140,7 +140,7 @@ public class SpedFiscalTree extends SpedTree {
         addNode(RegNode.of(RegC860.class).withParent(RegC001.class).withChildren(
             RegNode.of(RegC890.class)
         ));
-        addNode(RegNode.of(RegC990.class));
+        addNode(RegNode.of(RegC990.class).withParent(Reg0000.class));
     }
 
     private void addBranchesBlocoD() {
@@ -196,7 +196,7 @@ public class SpedFiscalTree extends SpedTree {
                 RegNode.of(RegD697.class)
             )
         ));
-        addNode(RegNode.of(RegD990.class));
+        addNode(RegNode.of(RegD990.class).withParent(Reg0000.class));
     }
 
     private void addBranchesBlocoE() {
@@ -226,7 +226,7 @@ public class SpedFiscalTree extends SpedTree {
                 RegNode.of(RegE530.class)
             )
         ));
-        addNode(RegNode.of(RegE990.class));
+        addNode(RegNode.of(RegE990.class).withParent(Reg0000.class));
     }
 
     private void addBranchesBlocoG() {
@@ -239,7 +239,7 @@ public class SpedFiscalTree extends SpedTree {
                 )
             )
         ));
-        addNode(RegNode.of(RegG990.class));
+        addNode(RegNode.of(RegG990.class).withParent(Reg0000.class));
     }
 
     private void addBranchesBlocoH() {
@@ -249,7 +249,7 @@ public class SpedFiscalTree extends SpedTree {
                 RegNode.of(RegH020.class)
             )
         ));
-        addNode(RegNode.of(RegH990.class));
+        addNode(RegNode.of(RegH990.class).withParent(Reg0000.class));
     }
 
     private void addBranchesBlocoK() {
@@ -264,7 +264,7 @@ public class SpedFiscalTree extends SpedTree {
                 RegNode.of(RegK255.class)
             )
         ));
-        addNode(RegNode.of(RegK990.class));
+        addNode(RegNode.of(RegK990.class).withParent(Reg0000.class));
     }
 
     private void addBranchesBloco1() {
@@ -311,13 +311,13 @@ public class SpedFiscalTree extends SpedTree {
                 )
             )
         ));
-        addNode(RegNode.of(Reg1990.class));
+        addNode(RegNode.of(Reg1990.class).withParent(Reg0000.class));
     }
 
     private void addBranchesBloco9() {
         addNode(RegNode.of(Reg9001.class).withParent(Reg0000.class));
         addNode(RegNode.of(Reg9900.class).withParent(Reg9001.class));
-        addNode(RegNode.of(Reg9990.class));
+        addNode(RegNode.of(Reg9990.class).withParent(Reg0000.class));
         addNode(RegNode.of(Reg9999.class));
     }
 }
