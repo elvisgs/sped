@@ -4,6 +4,7 @@ import br.com.gep.sped.batch.common.factory.JdbcItemReaderFactory;
 import br.com.gep.sped.fiscal.marshaller.registros.bloco0.Reg0000;
 import br.com.gep.sped.fiscal.marshaller.registros.bloco0.Reg0190;
 import br.com.gep.sped.fiscal.marshaller.registros.bloco0.Reg0200;
+import br.com.gep.sped.fiscal.marshaller.registros.bloco0.Reg0400;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
@@ -38,6 +39,19 @@ public class ItemReadersConfig {
     @Bean
     @StepScope
     @Value(CNPJ_ESTABELECIMENTO_EL)
+    public ItemStreamReader<Reg0190> reg0190ItemReader(String cnpjEstabelecimento) throws Exception {
+        JdbcPagingItemReader<Reg0190> reader = itemReaderFactory.createPagingItemReader(Reg0190.class, null);
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("cnpj_pai", cnpjEstabelecimento);
+        reader.setParameterValues(params);
+
+        return reader;
+    }
+
+    @Bean
+    @StepScope
+    @Value(CNPJ_ESTABELECIMENTO_EL)
     public ItemStreamReader<Reg0200> reg0200ItemReader(String cnpjEstabelecimento) throws Exception {
         JdbcPagingItemReader<Reg0200> reader = itemReaderFactory.createPagingItemReader(Reg0200.class, null);
 
@@ -51,8 +65,8 @@ public class ItemReadersConfig {
     @Bean
     @StepScope
     @Value(CNPJ_ESTABELECIMENTO_EL)
-    public ItemStreamReader<Reg0190> reg0190ItemReader(String cnpjEstabelecimento) throws Exception {
-        JdbcPagingItemReader<Reg0190> reader = itemReaderFactory.createPagingItemReader(Reg0190.class, null);
+    public ItemStreamReader<Reg0400> reg0400ItemReader(String cnpjEstabelecimento) throws Exception {
+        JdbcPagingItemReader<Reg0400> reader = itemReaderFactory.createPagingItemReader(Reg0400.class, null);
 
         Map<String, Object> params = new HashMap<>();
         params.put("cnpj_pai", cnpjEstabelecimento);

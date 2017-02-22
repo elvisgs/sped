@@ -3,21 +3,31 @@ package br.com.gep.sped.batch.common.jdbc;
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
 import br.com.gep.sped.marshaller.common.Registro;
 import lombok.RequiredArgsConstructor;
-import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static br.com.gep.sped.batch.common.SpedJobParameterBuilder.CNPJ_ESTABELECIMENTO_EL;
+
 @Component
-@StepScope
+@JobScope
 @RequiredArgsConstructor
 public class EmptyTableChecker {
 
     private final InfrastructureConfig infraConfig;
     private final QueryPartsProvider queryPartsProvider;
     private final SchemaInjector schemaInjector;
+
+    @Value(CNPJ_ESTABELECIMENTO_EL)
+    private String cnpj;
 
     public boolean isEmpty(Class<? extends Registro> regClass) {
         QueryParts queryParts = queryPartsProvider.getQueryParts(regClass);
@@ -39,7 +49,13 @@ public class EmptyTableChecker {
         sql = schemaInjector.injectSchema(sql);
 
         try {
-            jdbcTemplate().queryForObject(sql, Integer.class);
+            if (provider.isUsingNamedParameters()) {
+                Map<String, String> params = new HashMap<>();
+                params.put("cnpj_pai", cnpj);
+                namedParameterJdbcTemplate().queryForObject(sql, params, Integer.class);
+            } else {
+                jdbcTemplate().queryForObject(sql, Integer.class);
+            }
         } catch (EmptyResultDataAccessException e) {
             return true;
         }
@@ -49,5 +65,9 @@ public class EmptyTableChecker {
 
     private JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(infraConfig.getDataSource());
+    }
+
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
+        return new NamedParameterJdbcTemplate(jdbcTemplate());
     }
 }

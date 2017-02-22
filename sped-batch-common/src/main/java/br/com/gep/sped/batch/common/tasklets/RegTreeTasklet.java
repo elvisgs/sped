@@ -2,7 +2,6 @@ package br.com.gep.sped.batch.common.tasklets;
 
 import br.com.gep.sped.batch.common.factory.ItemReaderFactory;
 import br.com.gep.sped.batch.common.factory.ItemWriterFactory;
-import br.com.gep.sped.batch.common.jdbc.EmptyTableChecker;
 import br.com.gep.sped.batch.common.support.RegInfoUpdater;
 import br.com.gep.sped.batch.common.support.RegNode;
 import br.com.gep.sped.marshaller.common.Registro;
@@ -17,10 +16,8 @@ import org.springframework.batch.item.ItemStreamWriter;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.util.Assert;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class RegTreeTasklet implements Tasklet {
 
@@ -28,11 +25,9 @@ public class RegTreeTasklet implements Tasklet {
     private @NonNull @Setter ItemWriterFactory itemWriterFactory;
     private @NonNull @Setter ItemReaderFactory itemReaderFactory;
     private @NonNull @Setter RegInfoUpdater regInfoUpdater;
-    private @NonNull @Setter EmptyTableChecker emptyTableChecker; // TODO: transformar em read filter
     private ItemStreamWriter writer;
     private int chunkSize = 1;
     private List chunk = new LinkedList();
-    private Set<Class<?>> skipRegs = new HashSet<>();
 
     public RegTreeTasklet(RegNode root) {
         this.root = root;
@@ -47,8 +42,6 @@ public class RegTreeTasklet implements Tasklet {
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         ExecutionContext executionContext = chunkContext.getStepContext().getStepExecution().getExecutionContext();
 
-        checkRegsToSkip(root);
-
         writer = itemWriterFactory.create(Registro.class);
         writer.open(executionContext);
 
@@ -59,22 +52,8 @@ public class RegTreeTasklet implements Tasklet {
         return RepeatStatus.FINISHED;
     }
 
-    private void checkRegsToSkip(RegNode root) throws Exception {
-        for (RegNode child : root.getChildren()) {
-            boolean shouldSkip = emptyTableChecker.isEmpty(child.getRegClass());
-
-            if (shouldSkip) {
-                skipRegs.add(child.getRegClass());
-            } else if (child.hasChildren()) {
-                checkRegsToSkip(child);
-            }
-        }
-    }
-
     @SuppressWarnings("unchecked")
     private void processNode(RegNode node, StepContribution contribution, ExecutionContext executionContext) throws Exception {
-        if (skipRegs.contains(node.getRegClass())) return;
-
         ItemStreamReader<? extends Registro> reader;
         Class<? extends Registro> regClass = node.getRegClass();
         Class<? extends Registro> parentRegClass = null;

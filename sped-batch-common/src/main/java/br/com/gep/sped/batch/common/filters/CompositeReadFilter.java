@@ -14,11 +14,6 @@ public class CompositeReadFilter implements ReadFilter {
 
     @Override
     public boolean shouldRead(Class<? extends Registro> reg) {
-        boolean shouldRead = true;
-
-        for (ReadFilter filter : readFilters)
-            shouldRead = filter.shouldRead(reg);
-
-        return shouldRead;
+        return readFilters.stream().allMatch(filter -> filter.shouldRead(reg));
     }
 }

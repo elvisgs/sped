@@ -1,7 +1,6 @@
 package br.com.gep.sped.batch.common.factory;
 
 import br.com.gep.sped.batch.common.config.SpedProperties;
-import br.com.gep.sped.batch.common.jdbc.EmptyTableChecker;
 import br.com.gep.sped.batch.common.support.RegCounter;
 import br.com.gep.sped.batch.common.support.RegInfoUpdater;
 import br.com.gep.sped.batch.common.support.RegNode;
@@ -26,7 +25,6 @@ public class TaskletFactory {
     private final SpedTree spedTree;
     private final RegInfoUpdater regInfoUpdater;
     private final SpedProperties spedProperties;
-    private final EmptyTableChecker emptyTableChecker;
 
     @SuppressWarnings("unchecked")
     public Tasklet create(Class<? extends Registro> regClass) {
@@ -45,7 +43,6 @@ public class TaskletFactory {
         tasklet.setItemReaderFactory(itemReaderFactory);
         tasklet.setItemWriterFactory(itemWriterFactory);
         tasklet.setRegInfoUpdater(regInfoUpdater);
-        tasklet.setEmptyTableChecker(emptyTableChecker);
         tasklet.setChunkSize(spedProperties.getChunkSize());
 
         return tasklet;

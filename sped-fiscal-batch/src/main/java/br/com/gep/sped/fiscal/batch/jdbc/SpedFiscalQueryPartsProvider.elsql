@@ -194,7 +194,7 @@
     SELECT r400.id, r400.cod_nat, descr_nat
     FROM @schema@reg_0400 r400
       JOIN @schema@reg_C170 c170 ON r400.cod_nat = c170.cod_nat AND r400.cnpj_pai = c170.cnpj_pai
-    WHERE r400.id_pai = ? AND arquivo_sped = 'S'
+    WHERE r400.cnpj_pai = :cnpj_pai AND arquivo_sped = 'S'
   ) AS X
 
 --@NAME(Reg0400_where)
