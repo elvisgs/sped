@@ -1,10 +1,10 @@
 package br.com.gep.sped.batch.common.tasklets;
 
-import br.com.gep.sped.batch.common.support.RegNode;
 import br.com.gep.sped.batch.common.factory.ItemReaderFactory;
 import br.com.gep.sped.batch.common.factory.ItemWriterFactory;
-import br.com.gep.sped.batch.common.support.RegInfoUpdater;
 import br.com.gep.sped.batch.common.jdbc.EmptyTableChecker;
+import br.com.gep.sped.batch.common.support.RegInfoUpdater;
+import br.com.gep.sped.batch.common.support.RegNode;
 import br.com.gep.sped.marshaller.common.Registro;
 import lombok.NonNull;
 import lombok.Setter;
@@ -28,7 +28,7 @@ public class RegTreeTasklet implements Tasklet {
     private @NonNull @Setter ItemWriterFactory itemWriterFactory;
     private @NonNull @Setter ItemReaderFactory itemReaderFactory;
     private @NonNull @Setter RegInfoUpdater regInfoUpdater;
-    private @NonNull @Setter EmptyTableChecker emptyTableChecker;
+    private @NonNull @Setter EmptyTableChecker emptyTableChecker; // TODO: transformar em read filter
     private ItemStreamWriter writer;
     private int chunkSize = 1;
     private List chunk = new LinkedList();
@@ -62,11 +62,10 @@ public class RegTreeTasklet implements Tasklet {
     private void checkRegsToSkip(RegNode root) throws Exception {
         for (RegNode child : root.getChildren()) {
             boolean shouldSkip = emptyTableChecker.isEmpty(child.getRegClass());
+
             if (shouldSkip) {
                 skipRegs.add(child.getRegClass());
-            }
-
-            if (!shouldSkip && child.hasChildren()) {
+            } else if (child.hasChildren()) {
                 checkRegsToSkip(child);
             }
         }

@@ -1,11 +1,11 @@
 package br.com.gep.sped.batch.common.factory;
 
-import br.com.gep.sped.batch.common.support.RegNode;
-import br.com.gep.sped.batch.common.support.SpedTree;
 import br.com.gep.sped.batch.common.config.SpedProperties;
 import br.com.gep.sped.batch.common.jdbc.EmptyTableChecker;
 import br.com.gep.sped.batch.common.support.RegCounter;
 import br.com.gep.sped.batch.common.support.RegInfoUpdater;
+import br.com.gep.sped.batch.common.support.RegNode;
+import br.com.gep.sped.batch.common.support.SpedTree;
 import br.com.gep.sped.batch.common.tasklets.Bloc9Tasklet;
 import br.com.gep.sped.batch.common.tasklets.ClosingBlocRegTasklet;
 import br.com.gep.sped.batch.common.tasklets.RegTreeTasklet;

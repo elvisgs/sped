@@ -1,11 +1,10 @@
 package br.com.gep.sped.batch.common.factory;
 
+import br.com.gep.sped.batch.common.filters.CompositeReadFilter;
+import br.com.gep.sped.batch.common.jdbc.*;
 import br.com.gep.sped.batch.common.support.RegIdHolder;
 import br.com.gep.sped.batch.common.config.SpedProperties;
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
-import br.com.gep.sped.batch.common.jdbc.QueryParts;
-import br.com.gep.sped.batch.common.jdbc.QueryPartsProvider;
-import br.com.gep.sped.batch.common.jdbc.SchemaInjector;
 import br.com.gep.sped.marshaller.common.Registro;
 import lombok.RequiredArgsConstructor;
 import org.aopalliance.intercept.MethodInterceptor;
@@ -36,6 +35,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
     private final SchemaInjector schemaInjector;
     private final SpedProperties spedProperties;
     private final IRowMapperFactory IRowMapperFactory;
+    private final CompositeReadFilter readFilter;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -81,7 +81,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
     public <R extends Registro, P extends Registro> JdbcCursorItemReader<R> createCursorItemReader(
         Class<R> regClass, Class<P> parentRegClass) throws Exception {
 
-        JdbcCursorItemReader<R> reader = new JdbcCursorItemReader<>();
+        JdbcCursorItemReader<R> reader = new FilteredJdbcCursorItemReader<>(regClass, readFilter);
         reader.setDataSource(infraConfig.getDataSource());
 
         String sql = queryPartsProvider.getQueryParts(regClass).toString();
@@ -103,7 +103,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
     public <R extends Registro, P extends Registro> JdbcPagingItemReader<R> createPagingItemReader(
         Class<R> regClass, Class<P> parentRegClass) throws Exception {
 
-        JdbcPagingItemReader<R> reader = new JdbcPagingItemReader<>();
+        JdbcPagingItemReader<R> reader = new FilteredJdbcPagingItemReader<>(regClass, readFilter);
         reader.setDataSource(infraConfig.getDataSource());
 
         QueryParts queryParts = queryPartsProvider.getQueryParts(regClass);

@@ -44,10 +44,11 @@ public class SpedFiscalLauncher extends SpedLauncher {
         }
 
         SpedJobParameterBuilder parametersBuilder = new SpedJobParameterBuilder()
-                .setCnpjEstabelecimento(estabelecimento.getCnpj())
-                .setOutputFileName(outputFilePath)
-                .setCompressFile(compressFile)
-                .setDeleteFileAfterCompression(deleteFileAfterCompression);
+            .setCnpjEstabelecimento(estabelecimento.getCnpj())
+            .setPerfilEstabelecimento(estabelecimento.getIndPerfil())
+            .setOutputFileName(outputFilePath)
+            .setCompressFile(compressFile)
+            .setDeleteFileAfterCompression(deleteFileAfterCompression);
 
         if (schema != null && !"".equals(schema))
             parametersBuilder.setCurrentSchema(schema);

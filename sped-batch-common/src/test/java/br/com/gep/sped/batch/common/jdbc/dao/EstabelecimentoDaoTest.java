@@ -24,6 +24,7 @@ public class EstabelecimentoDaoTest extends AbstractIntegrationTest {
         assertThat(estabelecimento.getCnpj()).isEqualTo("99999999000191");
         assertThat(estabelecimento.getNome()).isEqualTo("Empresa Teste");
         assertThat(estabelecimento.getDtIni()).isEqualToIgnoringHours("2014-01-01");
+        assertThat(estabelecimento.getIndPerfil()).isEqualTo("A");
     }
 
     @Test

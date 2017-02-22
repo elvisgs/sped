@@ -28,10 +28,12 @@ import static org.springframework.batch.test.AssertFile.assertFileEquals;
 public class SpedFiscalJobTest {
 
     private static final String CAMINHO_RESULTADO = "target/generated-test-sources/sped_test_result.txt";
+    private static final String CAMINHO_RESULTADO_PERFIL_C = "target/generated-test-sources/sped_test_result_perfil_c.txt";
     private static final String CAMINHO_RESULTADO_VAZIO = "target/generated-test-sources/sped_vazio_result.txt";
     private static final String CAMINHO_ZIP = "target/generated-test-sources/sped_test_result.zip";
     private static final String CNPJ_ESTABELECIMENTO = "10848620000139";
     private static final String SCHEMA = "sped_fiscal";
+    public static final String PERFIL_C = "C";
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
@@ -41,6 +43,9 @@ public class SpedFiscalJobTest {
 
     @Value("classpath:sped_test_expected.txt")
     private Resource esperado;
+
+    @Value("classpath:sped_test_expected_perfil_c.txt")
+    private Resource esperadoPerfilC;
 
     @Value("classpath:sped_vazio.txt")
     private Resource spedVazio;
@@ -74,10 +79,27 @@ public class SpedFiscalJobTest {
                 .setCurrentSchema(SCHEMA)
                 .setCompressFile(false)
                 .toJobParameters();
+
         jobLauncherTestUtils.launchJob(jobParameters);
 
         Resource resultado = new FileSystemResource(CAMINHO_RESULTADO_VAZIO);
         assertFileEquals(spedVazio, resultado);
+    }
+
+    @Test
+    public void geraArquivoEstabelecimentoPerfilC() throws Exception {
+        JobParameters jobParameters = new SpedJobParameterBuilder()
+            .setCnpjEstabelecimento("10848620000339")
+            .setPerfilEstabelecimento(PERFIL_C)
+            .setOutputFileName(CAMINHO_RESULTADO_PERFIL_C)
+            .setCurrentSchema(SCHEMA)
+            .setCompressFile(false)
+            .toJobParameters();
+
+        jobLauncherTestUtils.launchJob(jobParameters);
+
+        Resource resultado = new FileSystemResource(CAMINHO_RESULTADO_PERFIL_C);
+        assertFileEquals(esperadoPerfilC, resultado);
     }
 
     @Test

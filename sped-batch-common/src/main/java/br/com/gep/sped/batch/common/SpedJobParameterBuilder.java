@@ -12,12 +12,14 @@ public class SpedJobParameterBuilder extends JobParametersBuilder {
     public static final String COMPRESS_FILE = "compress.file";
     public static final String DELETE_FILE_AFTER_COMPRESSION = "delete.file.after.compression";
     public static final String CNPJ_ESTABELECIMENTO = "cnpj.estabelecimento";
+    public static final String PERFIL_ESTABELECIMENTO = "perfil.estabelecimento";
 
     public static final String OUTPUT_FILE_NAME_EL = "#{jobParameters['" + OUTPUT_FILE_NAME + "']}";
     public static final String CURRENT_SCHEMA_EL = "#{jobParameters['" + CURRENT_SCHEMA + "']}";
     public static final String COMPRESS_FILE_EL = "#{jobParameters['" + COMPRESS_FILE + "']}";
     public static final String DELETE_FILE_AFTER_COMPRESSION_EL = "#{jobParameters['" + DELETE_FILE_AFTER_COMPRESSION + "']}";
     public static final String CNPJ_ESTABELECIMENTO_EL = "#{jobParameters['" + CNPJ_ESTABELECIMENTO + "']}";
+    public static final String PERFIL_ESTABELECIMENTO_EL = "#{jobParameters['" + PERFIL_ESTABELECIMENTO + "']}";
 
     public SpedJobParameterBuilder setOutputFileName(String outputFileName) {
         super.addString(OUTPUT_FILE_NAME, outputFileName);
@@ -44,6 +46,10 @@ public class SpedJobParameterBuilder extends JobParametersBuilder {
         return this;
     }
 
+    public SpedJobParameterBuilder setPerfilEstabelecimento(String perfil) {
+        super.addString(PERFIL_ESTABELECIMENTO, perfil);
+        return this;
+    }
     @Override
     public JobParameters toJobParameters() {
         // para permitir múltiplas execuções para os mesmos parâmetros

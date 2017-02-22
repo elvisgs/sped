@@ -19,7 +19,7 @@ public class EmptyTableChecker {
     private final QueryPartsProvider queryPartsProvider;
     private final SchemaInjector schemaInjector;
 
-    public boolean isEmpty(Class<? extends Registro> regClass) throws Exception {
+    public boolean isEmpty(Class<? extends Registro> regClass) {
         QueryParts queryParts = queryPartsProvider.getQueryParts(regClass);
 
         SqlPagingQueryProviderFactoryBean factory = new SqlPagingQueryProviderFactoryBean();
@@ -27,7 +27,14 @@ public class EmptyTableChecker {
         factory.setSelectClause("SELECT 1");
         factory.setFromClause(queryParts.getFrom());
         factory.setSortKey("1");
-        PagingQueryProvider provider = factory.getObject();
+        PagingQueryProvider provider;
+
+        try {
+            provider = factory.getObject();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         String sql = provider.generateFirstPageQuery(1);
         sql = schemaInjector.injectSchema(sql);
 

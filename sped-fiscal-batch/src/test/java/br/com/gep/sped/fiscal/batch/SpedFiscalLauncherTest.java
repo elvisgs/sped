@@ -71,12 +71,14 @@ public class SpedFiscalLauncherTest {
 
         List<SpedExecution> executions = launcher.run();
 
-        assertThat(executions).hasSize(2);
+        assertThat(executions).hasSize(3);
 
         File arquivo1 = new File(DIR_RESULTADOS, "10848620000139_2009_01_FISCAL.txt");
         File arquivo2 = new File(DIR_RESULTADOS, "10848620000239_2009_01_FISCAL.txt");
+        File arquivo3 = new File(DIR_RESULTADOS, "10848620000339_2009_01_FISCAL.txt");
         assertThat(arquivo1).exists();
         assertThat(arquivo2).exists();
+        assertThat(arquivo3).exists();
     }
 
     @Test
