@@ -6,7 +6,7 @@
 
     <groupId>br.com.gep.sped</groupId>
     <artifactId>sped-parent</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <packaging>pom</packaging>
     <name>SPED Project</name>
     <description>
