@@ -88,6 +88,11 @@
     FROM @schema@reg_0190 r190
       JOIN @schema@reg_c470 c470 ON r190.unid = c470.unid AND r190.cnpj_pai = c470.cnpj_pai
     WHERE c470.cnpj_pai = :cnpj_pai
+    UNION
+    SELECT DISTINCT @INCLUDE(Reg0190_columns)
+    FROM @schema@reg_0190 r190
+      JOIN @schema@reg_h010 h010 ON r190.unid = h010.unid AND r190.cnpj_pai = h010.cnpj_pai
+    WHERE h010.cnpj_pai = :cnpj_pai
   ) AS r190
 
 --@NAME(Reg0190_where)
@@ -116,6 +121,11 @@
     FROM @schema@reg_0200 r200
       JOIN @schema@reg_c470 c470 ON r200.cod_item = c470.cod_item AND r200.cnpj_pai = c470.cnpj_pai
     WHERE c470.cnpj_pai = :cnpj_pai
+    UNION
+    SELECT DISTINCT @INCLUDE(Reg0200_columns)
+    FROM @schema@reg_0200 r200
+      JOIN @schema@reg_h010 h010 ON r200.cod_item = h010.cod_item AND r200.cnpj_pai = h010.cnpj_pai
+    WHERE h010.cnpj_pai = :cnpj_pai
   ) AS r200
 
 --@NAME(Reg0200_where)
