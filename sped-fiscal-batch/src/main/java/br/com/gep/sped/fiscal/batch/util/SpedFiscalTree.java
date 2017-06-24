@@ -16,6 +16,9 @@ import br.com.gep.sped.marshaller.common.bloco9.Reg9990;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Representa a árvore de registros do SPED Fiscal.
  */
@@ -319,5 +322,10 @@ public class SpedFiscalTree extends SpedTree {
         addNode(RegNode.of(Reg9900.class).withParent(Reg9001.class));
         addNode(RegNode.of(Reg9990.class).withParent(Reg0000.class));
         addNode(RegNode.of(Reg9999.class));
+    }
+
+    @Override
+    public List<Character> getBlocs() {
+        return Arrays.asList('0', 'C', 'D', 'E', 'G', 'H', 'K', '1', '9');
     }
 }

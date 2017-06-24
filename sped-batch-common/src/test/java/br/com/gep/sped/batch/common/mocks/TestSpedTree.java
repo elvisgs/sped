@@ -8,6 +8,9 @@ import br.com.gep.sped.marshaller.common.bloco9.Reg9990;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class TestSpedTree extends SpedTree {
 
@@ -17,5 +20,10 @@ public class TestSpedTree extends SpedTree {
         addNode(RegNode.of(Reg9900.class).withParent(Reg9001.class));
         addNode(RegNode.of(Reg9990.class));
         addNode(RegNode.of(Reg9999.class));
+    }
+
+    @Override
+    public List<Character> getBlocs() {
+        return Arrays.asList('9');
     }
 }

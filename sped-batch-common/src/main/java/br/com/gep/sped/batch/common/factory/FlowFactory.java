@@ -20,7 +20,7 @@ public class FlowFactory {
     private final SpedTree spedTree;
     private final StepFactory stepFactory;
 
-    public Flow create(char bloc) throws Exception {
+    public Flow create(char bloc) {
         FlowBuilder<SimpleFlow> builder = new FlowBuilder<>("flowBloco" + bloc);
 
         if (bloc == '9') {

@@ -17,6 +17,8 @@ public abstract class SpedTree {
 
     protected abstract void addBranches();
 
+    public abstract List<Character> getBlocs();
+
     protected SpedTree addNode(RegNode node) {
         nodes.put(node.getRegClass(), node);
         return this;

@@ -17,6 +17,9 @@ import br.com.gep.sped.marshaller.common.bloco9.Reg9990;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Representa a árvore de registros do SPED Contribuições.
  */
@@ -302,5 +305,10 @@ public class SpedContribTree extends SpedTree {
         addNode(RegNode.of(Reg9900.class).withParent(Reg9001.class));
         addNode(RegNode.of(Reg9990.class));
         addNode(RegNode.of(Reg9999.class));
+    }
+
+    @Override
+    public List<Character> getBlocs() {
+        return Arrays.asList('0', 'A', 'C', 'D', 'F', 'I', 'M', 'P', '1', '9');
     }
 }
