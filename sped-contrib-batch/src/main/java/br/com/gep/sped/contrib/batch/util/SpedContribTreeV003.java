@@ -21,10 +21,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Representa a árvore de registros do SPED Contribuições.
+ * Representa a árvore de registros do SPED Contrib v003.
  */
 @Component
-public class SpedContribTree extends SpedTree {
+public class SpedContribTreeV003 extends SpedTree {
 
     @Override
     protected void addBranches() {
@@ -213,13 +213,13 @@ public class SpedContribTree extends SpedTree {
         addNode(RegNode.of(RegI001.class));
         addNode(RegNode.of(RegI010.class).withParent(RegI001.class).withChildren(
             RegNode.of(RegI100.class).withChildren(
+                RegNode.of(RegI199.class),
                 RegNode.of(RegI200.class).withChildren(
+                    RegNode.of(RegI299.class),
                     RegNode.of(RegI300.class).withChildren(
                         RegNode.of(RegI399.class)
-                    ),
-                    RegNode.of(RegI299.class)
-                ),
-                RegNode.of(RegI199.class)
+                    )
+                )
             )
         ));
         addNode(RegNode.of(RegI990.class));
@@ -296,7 +296,7 @@ public class SpedContribTree extends SpedTree {
         addNode(RegNode.of(Reg1800.class).withParent(Reg1001.class).withChildren(
             RegNode.of(Reg1809.class)
         ));
-        addNode(RegNode.of(Reg1900.class));
+        addNode(RegNode.of(Reg1900.class).withParent(Reg1001.class));
         addNode(RegNode.of(Reg1990.class));
     }
 
