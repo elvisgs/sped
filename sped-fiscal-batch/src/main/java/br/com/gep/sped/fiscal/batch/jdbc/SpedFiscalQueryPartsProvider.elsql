@@ -582,6 +582,16 @@
   WHERE id_pai = ?
 
 --=================================================================================================
+@NAME(RegC101_select)
+  SELECT id, vl_fcp_uf_dest, vl_icms_uf_dest, vl_icms_uf_rem
+
+@NAME(RegC101_from)
+  FROM @schema@reg_c101
+
+@NAME(RegC101_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
 @NAME(RegC105_select)
   SELECT id, oper, cod_uf
 
@@ -1185,6 +1195,16 @@
   WHERE id_pai = ?
 
 --=================================================================================================
+@NAME(RegD101_select)
+  SELECT id, vl_fcp_uf_dest, vl_icms_uf_dest, vl_icms_uf_rem
+
+@NAME(RegD101_from)
+  FROM @schema@reg_d101
+
+@NAME(RegD101_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
 @NAME(RegD110_select)
   SELECT id, num_item, cod_item, vl_serv, vl_out
 
@@ -1699,6 +1719,66 @@
   FROM @schema@reg_e250
 
 @NAME(RegE250_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegE300_select)
+  SELECT id, uf, dt_ini, dt_fin
+
+@NAME(RegE300_from)
+  FROM @schema@reg_e300
+
+@NAME(RegE300_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegE310_select)
+  SELECT id, ind_mov_difal, vl_sld_cred_ant_difal, vl_tot_debitos_difal, vl_out_deb_difal, vl_tot_deb_fcp, vl_tot_creditos_difal, vl_tot_cred_fcp, vl_out_cred_difal, vl_sld_dev_ant_difal, vl_deducoes_difal, vl_recol, vl_sld_cred_transportar, deb_esp_difal
+
+@NAME(RegE310_from)
+  FROM @schema@reg_e310
+
+@NAME(RegE310_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegE311_select)
+  SELECT id, cod_aj_apur, descr_compl_aj, vl_aj_apur
+
+@NAME(RegE311_from)
+  FROM @schema@reg_e311
+
+@NAME(RegE311_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegE312_select)
+  SELECT id, num_da, num_proc, ind_proc, proc, txt_compl
+
+@NAME(RegE312_from)
+  FROM @schema@reg_e312
+
+@NAME(RegE312_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegE313_select)
+  SELECT id, cod_part, cod_mod, ser, sub, num_doc, chv_doce, dt_doc, cod_item, vl_aj_item
+
+@NAME(RegE313_from)
+  FROM @schema@reg_e313
+
+@NAME(RegE313_where)
+  WHERE id_pai = ?
+
+--=================================================================================================
+@NAME(RegE316_select)
+  SELECT id, cod_or, vl_or, dt_vcto, cod_rec, num_proc, ind_proc, proc, txt_compl, mes_ref
+
+@NAME(RegE316_from)
+  FROM @schema@reg_e316
+
+@NAME(RegE316_where)
   WHERE id_pai = ?
 
 --=================================================================================================

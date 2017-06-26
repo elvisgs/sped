@@ -3,13 +3,13 @@ package br.com.gep.sped.fiscal.batch.util;
 import br.com.gep.sped.batch.common.support.RegNode;
 import br.com.gep.sped.batch.common.support.SpedTree;
 import br.com.gep.sped.fiscal.marshaller.registros.bloco0.*;
-import br.com.gep.sped.fiscal.marshaller.registros.bloco1.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoC.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoD.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoE.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoG.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoH.*;
 import br.com.gep.sped.fiscal.marshaller.registros.blocoK.*;
+import br.com.gep.sped.fiscal.marshaller.registros.bloco1.*;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9001;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9900;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9990;
@@ -20,10 +20,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Representa a árvore de registros do SPED Fiscal.
+ * Representa a árvore de registros do SPED Fiscal v010.
  */
 @Component
-public class SpedFiscalTree extends SpedTree {
+public class SpedFiscalTreeV010 extends SpedTree {
 
     @Override
     protected void addBranches() {
@@ -68,6 +68,7 @@ public class SpedFiscalTree extends SpedTree {
     private void addBranchesBlocoC() {
         addNode(RegNode.of(RegC001.class).withParent(Reg0000.class));
         addNode(RegNode.of(RegC100.class).withParent(RegC001.class).withChildren(
+            RegNode.of(RegC101.class),
             RegNode.of(RegC105.class),
             RegNode.of(RegC110.class).withChildren(
                 RegNode.of(RegC111.class),
@@ -149,6 +150,7 @@ public class SpedFiscalTree extends SpedTree {
     private void addBranchesBlocoD() {
         addNode(RegNode.of(RegD001.class).withParent(Reg0000.class));
         addNode(RegNode.of(RegD100.class).withParent(RegD001.class).withChildren(
+            RegNode.of(RegD101.class),
             RegNode.of(RegD110.class).withChildren(
                 RegNode.of(RegD120.class)
             ),
@@ -221,6 +223,15 @@ public class SpedFiscalTree extends SpedTree {
                     RegNode.of(RegE240.class)
                 ),
                 RegNode.of(RegE250.class)
+            )
+        ));
+        addNode(RegNode.of(RegE300.class).withParent(RegE001.class).withChildren(
+            RegNode.of(RegE310.class).withChildren(
+                RegNode.of(RegE311.class).withChildren(
+                    RegNode.of(RegE312.class),
+                    RegNode.of(RegE313.class)
+                ),
+                RegNode.of(RegE316.class)
             )
         ));
         addNode(RegNode.of(RegE500.class).withParent(RegE001.class).withChildren(
