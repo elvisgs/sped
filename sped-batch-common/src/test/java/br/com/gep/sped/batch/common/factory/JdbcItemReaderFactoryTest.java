@@ -7,9 +7,11 @@ import br.com.gep.sped.marshaller.common.bloco9.Reg9900;
 import org.junit.Test;
 import org.springframework.aop.framework.Advised;
 import org.springframework.aop.support.AopUtils;
+import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.item.ItemStreamReader;
-import org.springframework.batch.item.database.JdbcCursorItemReader;
+import org.springframework.batch.item.database.JdbcPagingItemReader;
+import org.springframework.batch.test.JobScopeTestUtils;
 import org.springframework.batch.test.MetaDataInstanceFactory;
 import org.springframework.batch.test.StepScopeTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +25,16 @@ public class JdbcItemReaderFactoryTest extends AbstractIntegrationTest {
 
     @Test
     public void criaItemReaderGenerico() throws Exception {
+        JobExecution jobExecution = MetaDataInstanceFactory.createJobExecution();
         StepExecution stepExecution = MetaDataInstanceFactory.createStepExecution();
-        StepScopeTestUtils.doInStepScope(stepExecution, () -> {
-            ItemStreamReader<Reg9001> reader = factory.create(Reg9001.class);
+        JobScopeTestUtils.doInJobScope(jobExecution, () -> {
+            StepScopeTestUtils.doInStepScope(stepExecution, () -> {
+                ItemStreamReader<Reg9001> reader = factory.create(Reg9001.class);
 
-            assertThat(unwrapProxy(reader)).isInstanceOf(JdbcCursorItemReader.class);
+                assertThat(unwrapProxy(reader)).isInstanceOf(JdbcPagingItemReader.class);
+
+                return null;
+            });
 
             return null;
         });

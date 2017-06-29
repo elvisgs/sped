@@ -6,7 +6,7 @@
   FROM @schema@reg_0000
 
 @NAME(Reg0000_where)
-  WHERE cnpj = ?
+  WHERE cnpj = :cnpj
 
 --=================================================================================================
 @NAME(Reg0001_select)
@@ -16,7 +16,7 @@
   FROM @schema@reg_0001
 
 @NAME(Reg0001_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0005_select)
@@ -26,7 +26,7 @@
   FROM @schema@reg_0005
 
 @NAME(Reg0005_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0015_select)
@@ -36,7 +36,7 @@
   FROM @schema@reg_0015
 
 @NAME(Reg0015_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0100_select)
@@ -46,7 +46,7 @@
   FROM @schema@reg_0100
 
 @NAME(Reg0100_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0150_select)
@@ -56,7 +56,7 @@
   FROM @schema@reg_0150
 
 @NAME(Reg0150_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0175_select)
@@ -66,7 +66,7 @@
   FROM @schema@reg_0175
 
 @NAME(Reg0175_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0190_select)
@@ -143,7 +143,7 @@
   FROM @schema@reg_0205
 
 @NAME(Reg0205_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0206_select)
@@ -153,7 +153,7 @@
   FROM @schema@reg_0206
 
 @NAME(Reg0206_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0210_select)
@@ -163,7 +163,7 @@
   FROM @schema@reg_0210
 
 @NAME(Reg0210_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0220_select)
@@ -173,7 +173,7 @@
   FROM @schema@reg_0220
 
 @NAME(Reg0220_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0300_select)
@@ -183,7 +183,7 @@
   FROM @schema@reg_0300
 
 @NAME(Reg0300_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0305_select)
@@ -193,7 +193,7 @@
   FROM @schema@reg_0305
 
 @NAME(Reg0305_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0400_select)
@@ -208,7 +208,7 @@
   ) AS X
 
 --@NAME(Reg0400_where)
---  WHERE r400.id_pai = ? AND arquivo_sped = 'S'
+--  WHERE r400.id_pai = :id_pai AND arquivo_sped = 'S'
 
 --=================================================================================================
 @NAME(Reg0450_select)
@@ -218,7 +218,7 @@
   FROM @schema@reg_0450
 
 @NAME(Reg0450_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0460_select)
@@ -228,7 +228,7 @@
   FROM @schema@reg_0460
 
 @NAME(Reg0460_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0500_select)
@@ -238,7 +238,7 @@
   FROM @schema@reg_0500
 
 @NAME(Reg0500_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg0600_select)
@@ -248,7 +248,7 @@
   FROM @schema@reg_0600
 
 @NAME(Reg0600_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1001_select)
@@ -258,7 +258,7 @@
   FROM @schema@reg_1001
 
 @NAME(Reg1001_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1010_select)
@@ -268,7 +268,7 @@
   FROM @schema@reg_1010
 
 @NAME(Reg1010_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1100_select)
@@ -278,7 +278,7 @@
   FROM @schema@reg_1100
 
 @NAME(Reg1100_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1105_select)
@@ -288,7 +288,7 @@
   FROM @schema@reg_1105
 
 @NAME(Reg1105_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1110_select)
@@ -298,7 +298,7 @@
   FROM @schema@reg_1110
 
 @NAME(Reg1110_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1200_select)
@@ -308,7 +308,7 @@
   FROM @schema@reg_1200
 
 @NAME(Reg1200_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1210_select)
@@ -318,7 +318,7 @@
   FROM @schema@reg_1210
 
 @NAME(Reg1210_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1300_select)
@@ -329,7 +329,7 @@
   FROM @schema@reg_1300
 
 @NAME(Reg1300_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1310_select)
@@ -340,7 +340,7 @@
   FROM @schema@reg_1310
 
 @NAME(Reg1310_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1320_select)
@@ -351,7 +351,7 @@
   FROM @schema@reg_1320
 
 @NAME(Reg1320_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1350_select)
@@ -361,7 +361,7 @@
   FROM @schema@reg_1350
 
 @NAME(Reg1350_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1360_select)
@@ -371,7 +371,7 @@
   FROM @schema@reg_1360
 
 @NAME(Reg1360_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1370_select)
@@ -381,7 +381,7 @@
   FROM @schema@reg_1370
 
 @NAME(Reg1370_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1390_select)
@@ -391,7 +391,7 @@
   FROM @schema@reg_1390
 
 @NAME(Reg1390_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1391_select)
@@ -402,7 +402,7 @@
   FROM @schema@reg_1391
 
 @NAME(Reg1391_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1400_select)
@@ -412,7 +412,7 @@
   FROM @schema@reg_1400
 
 @NAME(Reg1400_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1500_select)
@@ -424,7 +424,7 @@
   FROM @schema@reg_1500
 
 @NAME(Reg1500_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1510_select)
@@ -435,7 +435,7 @@
   FROM @schema@reg_1510
 
 @NAME(Reg1510_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1600_select)
@@ -445,7 +445,7 @@
   FROM @schema@reg_1600
 
 @NAME(Reg1600_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1700_select)
@@ -455,7 +455,7 @@
   FROM @schema@reg_1700
 
 @NAME(Reg1700_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1710_select)
@@ -465,7 +465,7 @@
   FROM @schema@reg_1710
 
 @NAME(Reg1710_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1800_select)
@@ -475,7 +475,7 @@
   FROM @schema@reg_1800
 
 @NAME(Reg1800_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1900_select)
@@ -485,7 +485,7 @@
   FROM @schema@reg_1900
 
 @NAME(Reg1900_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1910_select)
@@ -495,7 +495,7 @@
   FROM @schema@reg_1910
 
 @NAME(Reg1910_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1920_select)
@@ -507,7 +507,7 @@
   FROM @schema@reg_1920
 
 @NAME(Reg1920_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1921_select)
@@ -517,7 +517,7 @@
   FROM @schema@reg_1921
 
 @NAME(Reg1921_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1922_select)
@@ -527,7 +527,7 @@
   FROM @schema@reg_1922
 
 @NAME(Reg1922_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1923_select)
@@ -537,7 +537,7 @@
   FROM @schema@reg_1923
 
 @NAME(Reg1923_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1925_select)
@@ -547,7 +547,7 @@
   FROM @schema@reg_1925
 
 @NAME(Reg1925_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(Reg1926_select)
@@ -557,7 +557,7 @@
   FROM @schema@reg_1926
 
 @NAME(Reg1926_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC001_select)
@@ -567,7 +567,7 @@
   FROM @schema@reg_c001
 
 @NAME(RegC001_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC100_select)
@@ -579,7 +579,7 @@
   FROM @schema@reg_c100
 
 @NAME(RegC100_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC101_select)
@@ -589,7 +589,7 @@
   FROM @schema@reg_c101
 
 @NAME(RegC101_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC105_select)
@@ -599,7 +599,7 @@
   FROM @schema@reg_c105
 
 @NAME(RegC105_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC110_select)
@@ -609,7 +609,7 @@
   FROM @schema@reg_c110
 
 @NAME(RegC110_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC111_select)
@@ -619,7 +619,7 @@
   FROM @schema@reg_c111
 
 @NAME(RegC111_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC112_select)
@@ -629,7 +629,7 @@
   FROM @schema@reg_c112
 
 @NAME(RegC112_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC113_select)
@@ -639,7 +639,7 @@
   FROM @schema@reg_c113
 
 @NAME(RegC113_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC114_select)
@@ -649,7 +649,7 @@
   FROM @schema@reg_c114
 
 @NAME(RegC114_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC115_select)
@@ -659,7 +659,7 @@
   FROM @schema@reg_c115
 
 @NAME(RegC115_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC116_select)
@@ -669,7 +669,7 @@
   FROM @schema@reg_c116
 
 @NAME(RegC116_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC120_select)
@@ -679,7 +679,7 @@
   FROM @schema@reg_c120
 
 @NAME(RegC120_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC130_select)
@@ -689,7 +689,7 @@
   FROM @schema@reg_c130
 
 @NAME(RegC130_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC140_select)
@@ -699,7 +699,7 @@
   FROM @schema@reg_c140
 
 @NAME(RegC140_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC141_select)
@@ -709,7 +709,7 @@
   FROM @schema@reg_c141
 
 @NAME(RegC141_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC160_select)
@@ -719,7 +719,7 @@
   FROM @schema@reg_c160
 
 @NAME(RegC160_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC165_select)
@@ -730,7 +730,7 @@
   FROM @schema@reg_c165
 
 @NAME(RegC165_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC170_select)
@@ -743,7 +743,7 @@
   FROM @schema@reg_c170
 
 @NAME(RegC170_where)
-  WHERE id_pai = ? AND arquivo_sped = 'S'
+  WHERE id_pai = :id_pai AND arquivo_sped = 'S'
 
 --=================================================================================================
 @NAME(RegC171_select)
@@ -753,7 +753,7 @@
   FROM @schema@reg_c171
 
 @NAME(RegC171_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC172_select)
@@ -763,7 +763,7 @@
   FROM @schema@reg_c172
 
 @NAME(RegC172_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC173_select)
@@ -773,7 +773,7 @@
   FROM @schema@reg_c173
 
 @NAME(RegC173_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC174_select)
@@ -783,7 +783,7 @@
   FROM @schema@reg_c174
 
 @NAME(RegC174_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC175_select)
@@ -793,7 +793,7 @@
   FROM @schema@reg_c175
 
 @NAME(RegC175_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC176_select)
@@ -804,7 +804,7 @@
   FROM @schema@reg_c176
 
 @NAME(RegC176_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC177_select)
@@ -814,7 +814,7 @@
   FROM @schema@reg_c177
 
 @NAME(RegC177_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC178_select)
@@ -824,7 +824,7 @@
   FROM @schema@reg_c178
 
 @NAME(RegC178_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC179_select)
@@ -834,7 +834,7 @@
   FROM @schema@reg_c179
 
 @NAME(RegC179_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC190_select)
@@ -845,7 +845,7 @@
   FROM @schema@reg_c190
 
 @NAME(RegC190_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC195_select)
@@ -855,7 +855,7 @@
   FROM @schema@reg_c195
 
 @NAME(RegC195_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC197_select)
@@ -865,7 +865,7 @@
   FROM @schema@reg_c197
 
 @NAME(RegC197_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC300_select)
@@ -875,7 +875,7 @@
   FROM @schema@reg_c300
 
 @NAME(RegC300_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC310_select)
@@ -885,7 +885,7 @@
   FROM @schema@reg_c310
 
 @NAME(RegC310_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC320_select)
@@ -895,7 +895,7 @@
   FROM @schema@reg_c320
 
 @NAME(RegC320_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC321_select)
@@ -905,7 +905,7 @@
   FROM @schema@reg_c321
 
 @NAME(RegC321_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC350_select)
@@ -915,7 +915,7 @@
   FROM @schema@reg_c350
 
 @NAME(RegC350_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC370_select)
@@ -925,7 +925,7 @@
   FROM @schema@reg_c370
 
 @NAME(RegC370_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC390_select)
@@ -935,7 +935,7 @@
   FROM @schema@reg_c390
 
 @NAME(RegC390_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC400_select)
@@ -945,7 +945,7 @@
   FROM @schema@reg_c400
 
 @NAME(RegC400_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC405_select)
@@ -955,7 +955,7 @@
   FROM @schema@reg_c405
 
 @NAME(RegC405_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC410_select)
@@ -965,7 +965,7 @@
   FROM @schema@reg_c410
 
 @NAME(RegC410_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC420_select)
@@ -975,7 +975,7 @@
   FROM @schema@reg_c420
 
 @NAME(RegC420_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC425_select)
@@ -985,7 +985,7 @@
   FROM @schema@reg_c425
 
 @NAME(RegC425_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC460_select)
@@ -995,7 +995,7 @@
   FROM @schema@reg_c460
 
 @NAME(RegC460_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC465_select)
@@ -1005,7 +1005,7 @@
   FROM @schema@reg_c465
 
 @NAME(RegC465_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC470_select)
@@ -1015,7 +1015,7 @@
   FROM @schema@reg_c470
 
 @NAME(RegC470_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC490_select)
@@ -1025,7 +1025,7 @@
   FROM @schema@reg_c490
 
 @NAME(RegC490_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC500_select)
@@ -1037,7 +1037,7 @@
   FROM @schema@reg_c500
 
 @NAME(RegC500_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC510_select)
@@ -1048,7 +1048,7 @@
   FROM @schema@reg_c510
 
 @NAME(RegC510_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC590_select)
@@ -1058,7 +1058,7 @@
   FROM @schema@reg_c590
 
 @NAME(RegC590_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC600_select)
@@ -1069,7 +1069,7 @@
   FROM @schema@reg_c600
 
 @NAME(RegC600_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC601_select)
@@ -1079,7 +1079,7 @@
   FROM @schema@reg_c601
 
 @NAME(RegC601_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC610_select)
@@ -1090,7 +1090,7 @@
   FROM @schema@reg_c610
 
 @NAME(RegC610_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC690_select)
@@ -1100,7 +1100,7 @@
   FROM @schema@reg_c690
 
 @NAME(RegC690_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC700_select)
@@ -1110,7 +1110,7 @@
   FROM @schema@reg_c700
 
 @NAME(RegC700_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC790_select)
@@ -1120,7 +1120,7 @@
   FROM @schema@reg_c790
 
 @NAME(RegC790_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC791_select)
@@ -1130,7 +1130,7 @@
   FROM @schema@reg_c791
 
 @NAME(RegC791_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC800_select)
@@ -1141,7 +1141,7 @@
   FROM @schema@reg_c800
 
 @NAME(RegC800_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC850_select)
@@ -1151,7 +1151,7 @@
   FROM @schema@reg_c850
 
 @NAME(RegC850_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC860_select)
@@ -1161,7 +1161,7 @@
   FROM @schema@reg_c860
 
 @NAME(RegC860_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegC890_select)
@@ -1171,7 +1171,7 @@
   FROM @schema@reg_c890
 
 @NAME(RegC890_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD001_select)
@@ -1181,7 +1181,7 @@
   FROM @schema@reg_d001
 
 @NAME(RegD001_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD100_select)
@@ -1192,7 +1192,7 @@
   FROM @schema@reg_d100
 
 @NAME(RegD100_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD101_select)
@@ -1202,7 +1202,7 @@
   FROM @schema@reg_d101
 
 @NAME(RegD101_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD110_select)
@@ -1212,7 +1212,7 @@
   FROM @schema@reg_d110
 
 @NAME(RegD110_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD120_select)
@@ -1222,7 +1222,7 @@
   FROM @schema@reg_d120
 
 @NAME(RegD120_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD130_select)
@@ -1233,7 +1233,7 @@
   FROM @schema@reg_d130
 
 @NAME(RegD130_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD140_select)
@@ -1244,7 +1244,7 @@
   FROM @schema@reg_d140
 
 @NAME(RegD140_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD150_select)
@@ -1255,7 +1255,7 @@
   FROM @schema@reg_d150
 
 @NAME(RegD150_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD160_select)
@@ -1265,7 +1265,7 @@
   FROM @schema@reg_d160
 
 @NAME(RegD160_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD161_select)
@@ -1275,7 +1275,7 @@
   FROM @schema@reg_d161
 
 @NAME(RegD161_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD162_select)
@@ -1285,7 +1285,7 @@
   FROM @schema@reg_d162
 
 @NAME(RegD162_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD170_select)
@@ -1296,7 +1296,7 @@
   FROM @schema@reg_d170
 
 @NAME(RegD170_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD180_select)
@@ -1307,7 +1307,7 @@
   FROM @schema@reg_d180
 
 @NAME(RegD180_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD190_select)
@@ -1317,7 +1317,7 @@
   FROM @schema@reg_d190
 
 @NAME(RegD190_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD195_select)
@@ -1327,7 +1327,7 @@
   FROM @schema@reg_d195
 
 @NAME(RegD195_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD197_select)
@@ -1337,7 +1337,7 @@
   FROM @schema@reg_d197
 
 @NAME(RegD197_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD300_select)
@@ -1348,7 +1348,7 @@
   FROM @schema@reg_d300
 
 @NAME(RegD300_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD301_select)
@@ -1358,7 +1358,7 @@
   FROM @schema@reg_d301
 
 @NAME(RegD301_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD310_select)
@@ -1368,7 +1368,7 @@
   FROM @schema@reg_d310
 
 @NAME(RegD310_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD350_select)
@@ -1378,7 +1378,7 @@
   FROM @schema@reg_d350
 
 @NAME(RegD350_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD355_select)
@@ -1388,7 +1388,7 @@
   FROM @schema@reg_d355
 
 @NAME(RegD355_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD360_select)
@@ -1398,7 +1398,7 @@
   FROM @schema@reg_d360
 
 @NAME(RegD360_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD365_select)
@@ -1408,7 +1408,7 @@
   FROM @schema@reg_d365
 
 @NAME(RegD365_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD370_select)
@@ -1418,7 +1418,7 @@
   FROM @schema@reg_d370
 
 @NAME(RegD370_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD390_select)
@@ -1428,7 +1428,7 @@
   FROM @schema@reg_d390
 
 @NAME(RegD390_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD400_select)
@@ -1439,7 +1439,7 @@
   FROM @schema@reg_d400
 
 @NAME(RegD400_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD410_select)
@@ -1450,7 +1450,7 @@
   FROM @schema@reg_d410
 
 @NAME(RegD410_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD411_select)
@@ -1460,7 +1460,7 @@
   FROM @schema@reg_d411
 
 @NAME(RegD411_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD420_select)
@@ -1470,7 +1470,7 @@
   FROM @schema@reg_d420
 
 @NAME(RegD420_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD500_select)
@@ -1482,7 +1482,7 @@
   FROM @schema@reg_d500
 
 @NAME(RegD500_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD510_select)
@@ -1493,7 +1493,7 @@
   FROM @schema@reg_d510
 
 @NAME(RegD510_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD530_select)
@@ -1503,7 +1503,7 @@
   FROM @schema@reg_d530
 
 @NAME(RegD530_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD590_select)
@@ -1513,7 +1513,7 @@
   FROM @schema@reg_d590
 
 @NAME(RegD590_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD600_select)
@@ -1524,7 +1524,7 @@
   FROM @schema@reg_d600
 
 @NAME(RegD600_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD610_select)
@@ -1535,7 +1535,7 @@
   FROM @schema@reg_d610
 
 @NAME(RegD610_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD690_select)
@@ -1545,7 +1545,7 @@
   FROM @schema@reg_d690
 
 @NAME(RegD690_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD695_select)
@@ -1555,7 +1555,7 @@
   FROM @schema@reg_d695
 
 @NAME(RegD695_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD696_select)
@@ -1565,7 +1565,7 @@
   FROM @schema@reg_d696
 
 @NAME(RegD696_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegD697_select)
@@ -1575,7 +1575,7 @@
   FROM @schema@reg_d697
 
 @NAME(RegD697_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE001_select)
@@ -1585,7 +1585,7 @@
   FROM @schema@reg_e001
 
 @NAME(RegE001_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE100_select)
@@ -1595,7 +1595,7 @@
   FROM @schema@reg_e100
 
 @NAME(RegE100_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE110_select)
@@ -1607,7 +1607,7 @@
   FROM @schema@reg_e110
 
 @NAME(RegE110_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE111_select)
@@ -1617,7 +1617,7 @@
   FROM @schema@reg_e111
 
 @NAME(RegE111_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE112_select)
@@ -1627,7 +1627,7 @@
   FROM @schema@reg_e112
 
 @NAME(RegE112_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE113_select)
@@ -1637,7 +1637,7 @@
   FROM @schema@reg_e113
 
 @NAME(RegE113_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE115_select)
@@ -1647,7 +1647,7 @@
   FROM @schema@reg_e115
 
 @NAME(RegE115_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE116_select)
@@ -1657,7 +1657,7 @@
   FROM @schema@reg_e116
 
 @NAME(RegE116_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE200_select)
@@ -1667,7 +1667,7 @@
   FROM @schema@reg_e200
 
 @NAME(RegE200_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE210_select)
@@ -1679,7 +1679,7 @@
   FROM @schema@reg_e210
 
 @NAME(RegE210_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE220_select)
@@ -1689,7 +1689,7 @@
   FROM @schema@reg_e220
 
 @NAME(RegE220_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE230_select)
@@ -1699,7 +1699,7 @@
   FROM @schema@reg_e230
 
 @NAME(RegE230_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE240_select)
@@ -1709,7 +1709,7 @@
   FROM @schema@reg_e240
 
 @NAME(RegE240_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE250_select)
@@ -1719,7 +1719,7 @@
   FROM @schema@reg_e250
 
 @NAME(RegE250_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE300_select)
@@ -1729,7 +1729,7 @@
   FROM @schema@reg_e300
 
 @NAME(RegE300_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE310_select)
@@ -1739,7 +1739,7 @@
   FROM @schema@reg_e310
 
 @NAME(RegE310_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE311_select)
@@ -1749,7 +1749,7 @@
   FROM @schema@reg_e311
 
 @NAME(RegE311_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE312_select)
@@ -1759,7 +1759,7 @@
   FROM @schema@reg_e312
 
 @NAME(RegE312_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE313_select)
@@ -1769,7 +1769,7 @@
   FROM @schema@reg_e313
 
 @NAME(RegE313_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE316_select)
@@ -1779,7 +1779,7 @@
   FROM @schema@reg_e316
 
 @NAME(RegE316_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE500_select)
@@ -1789,7 +1789,7 @@
   FROM @schema@reg_e500
 
 @NAME(RegE500_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE510_select)
@@ -1799,7 +1799,7 @@
   FROM @schema@reg_e510
 
 @NAME(RegE510_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE520_select)
@@ -1809,7 +1809,7 @@
   FROM @schema@reg_e520
 
 @NAME(RegE520_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegE530_select)
@@ -1819,7 +1819,7 @@
   FROM @schema@reg_e530
 
 @NAME(RegE530_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegG001_select)
@@ -1829,7 +1829,7 @@
   FROM @schema@reg_g001
 
 @NAME(RegG001_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegG110_select)
@@ -1839,7 +1839,7 @@
   FROM @schema@reg_g110
 
 @NAME(RegG110_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegG125_select)
@@ -1850,7 +1850,7 @@
   FROM @schema@reg_g125
 
 @NAME(RegG125_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegG126_select)
@@ -1860,7 +1860,7 @@
   FROM @schema@reg_g126
 
 @NAME(RegG126_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegG130_select)
@@ -1870,7 +1870,7 @@
   FROM @schema@reg_g130
 
 @NAME(RegG130_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegG140_select)
@@ -1880,7 +1880,7 @@
   FROM @schema@reg_g140
 
 @NAME(RegG140_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegH001_select)
@@ -1890,7 +1890,7 @@
   FROM @schema@reg_h001
 
 @NAME(RegH001_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegH005_select)
@@ -1900,7 +1900,7 @@
   FROM @schema@reg_h005
 
 @NAME(RegH005_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegH010_select)
@@ -1910,7 +1910,7 @@
   FROM @schema@reg_h010
 
 @NAME(RegH010_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegH020_select)
@@ -1920,7 +1920,7 @@
   FROM @schema@reg_h020
 
 @NAME(RegH020_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegK001_select)
@@ -1930,7 +1930,7 @@
   FROM @schema@reg_k001
 
 @NAME(RegK001_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegK100_select)
@@ -1940,7 +1940,7 @@
   FROM @schema@reg_k100
 
 @NAME(RegK100_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegK200_select)
@@ -1950,7 +1950,7 @@
   FROM @schema@reg_k200
 
 @NAME(RegK200_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegK220_select)
@@ -1960,7 +1960,7 @@
   FROM @schema@reg_k220
 
 @NAME(RegK220_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegK230_select)
@@ -1970,7 +1970,7 @@
   FROM @schema@reg_k230
 
 @NAME(RegK230_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegK235_select)
@@ -1980,7 +1980,7 @@
   FROM @schema@reg_k235
 
 @NAME(RegK235_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegK250_select)
@@ -1990,7 +1990,7 @@
   FROM @schema@reg_k250
 
 @NAME(RegK250_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
 --=================================================================================================
 @NAME(RegK255_select)
@@ -2000,5 +2000,5 @@
   FROM @schema@reg_k255
 
 @NAME(RegK255_where)
-  WHERE id_pai = ?
+  WHERE id_pai = :id_pai
 
