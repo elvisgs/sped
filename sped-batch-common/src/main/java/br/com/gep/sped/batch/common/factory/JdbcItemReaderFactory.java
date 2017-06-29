@@ -34,7 +34,7 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
     private final QueryPartsProvider queryPartsProvider;
     private final SchemaInjector schemaInjector;
     private final SpedProperties spedProperties;
-    private final IRowMapperFactory IRowMapperFactory;
+    private final IRowMapperFactory rowMapperFactory;
     private final CompositeReadFilter readFilter;
 
     @SuppressWarnings("unchecked")
@@ -140,12 +140,16 @@ public class JdbcItemReaderFactory implements ItemReaderFactory {
         return reader;
     }
 
-    private <R extends Registro> RowMapper<R> createRowMapper(Class<R> regClass) {
+    private <R extends Registro> RowMapper<R> createRowMapper(Class<R> regClass) throws Exception {
         try {
-            return IRowMapperFactory.create(regClass);
+            return rowMapperFactory.create(regClass);
         }
-        catch (ClassNotFoundException e) {
-            return new BeanPropertyRowMapper<>(regClass);
+        catch (Exception e) {
+            if (e instanceof ClassNotFoundException) {
+                return new BeanPropertyRowMapper<>(regClass);
+            }
+
+            throw e;
         }
     }
 

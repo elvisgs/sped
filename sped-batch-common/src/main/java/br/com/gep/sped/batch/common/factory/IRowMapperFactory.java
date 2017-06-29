@@ -5,5 +5,5 @@ import org.springframework.jdbc.core.RowMapper;
 
 public interface IRowMapperFactory {
 
-    <T extends Registro> RowMapper<T> create(Class<T> regClass) throws ClassNotFoundException;
+    <T extends Registro> RowMapper<T> create(Class<T> regClass) throws Exception;
 }

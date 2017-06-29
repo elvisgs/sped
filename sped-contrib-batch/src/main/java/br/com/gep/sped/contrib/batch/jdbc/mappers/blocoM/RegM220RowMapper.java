@@ -1,11 +1,15 @@
 package br.com.gep.sped.contrib.batch.jdbc.mappers.blocoM;
 
 import br.com.gep.sped.contrib.marshaller.registros.blocoM.RegM220;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
+@Lazy
 public class RegM220RowMapper implements RowMapper<RegM220> {
 
     @Override

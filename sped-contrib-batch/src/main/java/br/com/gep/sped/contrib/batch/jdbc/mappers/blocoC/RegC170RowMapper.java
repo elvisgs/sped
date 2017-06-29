@@ -1,11 +1,15 @@
 package br.com.gep.sped.contrib.batch.jdbc.mappers.blocoC;
 
 import br.com.gep.sped.contrib.marshaller.registros.blocoC.RegC170;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
+@Lazy
 public class RegC170RowMapper implements RowMapper<RegC170> {
 
     @Override

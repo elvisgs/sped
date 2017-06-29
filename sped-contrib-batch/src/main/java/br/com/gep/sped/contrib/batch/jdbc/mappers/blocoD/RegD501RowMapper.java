@@ -1,11 +1,15 @@
 package br.com.gep.sped.contrib.batch.jdbc.mappers.blocoD;
 
 import br.com.gep.sped.contrib.marshaller.registros.blocoD.RegD501;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
+@Lazy
 public class RegD501RowMapper implements RowMapper<RegD501> {
 
     @Override

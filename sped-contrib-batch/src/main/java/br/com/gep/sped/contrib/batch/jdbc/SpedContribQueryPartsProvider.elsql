@@ -34,7 +34,7 @@
 
 --=================================================================================================
 @NAME(Reg0110_select)
-  SELECT id, cod_inc_trib, ind_apro_cred, cod_tipo_cont
+  SELECT id, cod_inc_trib, ind_apro_cred, cod_tipo_cont, ind_reg_cum
 
 @NAME(Reg0110_from)
   FROM @schema@pis_0110

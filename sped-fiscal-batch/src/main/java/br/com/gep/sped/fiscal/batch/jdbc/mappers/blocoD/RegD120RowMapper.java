@@ -1,11 +1,15 @@
 package br.com.gep.sped.fiscal.batch.jdbc.mappers.blocoD;
 
 import br.com.gep.sped.fiscal.marshaller.registros.blocoD.RegD120;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
+@Lazy
 public class RegD120RowMapper implements RowMapper<RegD120> {
 
     @Override

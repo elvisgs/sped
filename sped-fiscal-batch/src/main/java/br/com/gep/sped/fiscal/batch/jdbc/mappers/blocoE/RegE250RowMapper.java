@@ -1,11 +1,15 @@
 package br.com.gep.sped.fiscal.batch.jdbc.mappers.blocoE;
 
 import br.com.gep.sped.fiscal.marshaller.registros.blocoE.RegE250;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
+@Lazy
 public class RegE250RowMapper implements RowMapper<RegE250> {
 
     @Override

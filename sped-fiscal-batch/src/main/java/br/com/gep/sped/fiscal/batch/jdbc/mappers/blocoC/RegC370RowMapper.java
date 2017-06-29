@@ -1,11 +1,15 @@
 package br.com.gep.sped.fiscal.batch.jdbc.mappers.blocoC;
 
 import br.com.gep.sped.fiscal.marshaller.registros.blocoC.RegC370;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
+@Lazy
 public class RegC370RowMapper implements RowMapper<RegC370> {
 
     @Override

@@ -74,7 +74,8 @@ CREATE TABLE pis_0110 (
   reg varchar(4),
   cod_inc_trib varchar(1),
   ind_apro_cred varchar(1),
-  cod_tipo_cont varchar(1)
+  cod_tipo_cont varchar(1),
+  ind_reg_cum varchar(1)
 );
 
 
@@ -2848,7 +2849,7 @@ INSERT INTO pis_0001 VALUES (1, 0, 2, '0001', 0);
 
 
 
-INSERT INTO pis_0110 VALUES (1, 1, 3, '0110', '3', '2', '2');
+INSERT INTO pis_0110 VALUES (1, 1, 3, '0110', '3', '2', '2', '');
 
 
 INSERT INTO pis_0111 VALUES (1, 1, 4, '0111', 11200000.00, 6000000.00, 1000000.00, 1800000.00, 20000000.00);

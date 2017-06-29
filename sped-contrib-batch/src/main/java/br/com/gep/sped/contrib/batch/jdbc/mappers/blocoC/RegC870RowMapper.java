@@ -1,17 +1,22 @@
 package br.com.gep.sped.contrib.batch.jdbc.mappers.blocoC;
 
 import br.com.gep.sped.contrib.marshaller.registros.blocoC.RegC870;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
+@Lazy
 public class RegC870RowMapper implements RowMapper<RegC870> {
 
     @Override
     public RegC870 mapRow(ResultSet rs, int rowNum) throws SQLException {
         RegC870 reg = new RegC870();
         reg.setId(rs.getInt("id"));
+        reg.setCodItem(rs.getString("cod_item"));
         reg.setCfop(rs.getString("cfop"));
         reg.setVlItem(rs.getObject("vl_item") == null ? null : rs.getDouble("vl_item"));
         reg.setVlDesc(rs.getObject("vl_desc") == null ? null : rs.getDouble("vl_desc"));

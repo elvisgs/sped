@@ -1,11 +1,15 @@
 package br.com.gep.sped.fiscal.batch.jdbc.mappers.blocoH;
 
 import br.com.gep.sped.fiscal.marshaller.registros.blocoH.RegH010;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
+@Lazy
 public class RegH010RowMapper implements RowMapper<RegH010> {
 
     @Override
