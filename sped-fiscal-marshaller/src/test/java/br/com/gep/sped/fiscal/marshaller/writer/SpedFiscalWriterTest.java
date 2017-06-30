@@ -1,7 +1,7 @@
 package br.com.gep.sped.fiscal.marshaller.writer;
 
 import br.com.gep.sped.fiscal.marshaller.WriterTestBase;
-import br.com.gep.sped.fiscal.marshaller.registros.bloco0.Reg0001;
+import br.com.gep.sped.fiscal.marshaller.registros.v010.bloco0.Reg0001;
 import org.junit.Test;
 
 import java.io.IOException;
