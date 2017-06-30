@@ -2,18 +2,23 @@ package br.com.gep.sped.batch.common.jdbc;
 
 import com.opengamma.elsql.ElSqlBundle;
 import com.opengamma.elsql.ElSqlConfig;
+import org.springframework.core.io.Resource;
 
 import java.util.Optional;
 
 /**
  * Provê as cláusulas das consultas SQL dos registros
  */
-public abstract class QueryPartsProvider {
+public class QueryPartsProvider {
 
     private final ElSqlBundle elSqlBundle;
 
     public QueryPartsProvider() {
         elSqlBundle = ElSqlBundle.of(ElSqlConfig.DEFAULT, getClass());
+    }
+
+    public QueryPartsProvider(Resource... queriesFiles) {
+        elSqlBundle = ElSqlBundle.parse(ElSqlConfig.DEFAULT, queriesFiles);
     }
 
     public QueryParts getQueryParts(String regName) {
