@@ -5,10 +5,12 @@ import br.com.gep.sped.batch.common.tasklets.CleanupTasklet;
 import br.com.gep.sped.batch.common.tasklets.ZipFileTasklet;
 import org.springframework.batch.core.Step;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Component
+@Lazy
 public class MiscStepsConfig {
 
     @Autowired

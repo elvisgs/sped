@@ -13,9 +13,11 @@ import br.com.gep.sped.marshaller.common.RegistroEncerramentoBloco;
 import br.com.gep.sped.marshaller.common.bloco9.Reg9999;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
+@Lazy
 @RequiredArgsConstructor
 public class TaskletFactory {
 

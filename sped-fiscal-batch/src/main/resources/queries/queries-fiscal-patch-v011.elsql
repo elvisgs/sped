@@ -1,0 +1,147 @@
+-- colunas adicionadas: cest
+@NAME(Reg0200_columns)
+  r200.id, r200.cod_item, descr_item, cod_barra, cod_ant_item, unid_inv, tipo_item, cod_ncm, ex_ipi,
+  cod_gen, cod_lst, r200.aliq_icms, cest, r200.id_pai
+
+--=================================================================================================
+-- colunas adicionadas: chv_doce
+@NAME(Reg1210_columns)
+  id, tipo_util, nr_doc, vl_cred_util, chv_doce
+
+--=================================================================================================
+-- colunas adicionadas: chv_doce
+@NAME(Reg1923_columns)
+  id, cod_part, cod_mod, ser, sub, num_doc, dt_doc, cod_item, vl_aj_item, chv_doce
+
+--=================================================================================================
+-- colunas adicionadas: chv_doce
+@NAME(RegC113_columns)
+  id, ind_oper, ind_emit, cod_part, cod_mod, ser, sub, num_doc, dt_doc, chv_doce
+
+--=================================================================================================
+-- colunas adicionadas: chave_nfe_ult_e, num_item_ult_e, vl_unit_bc_icms_ult_e, aliq_icms_ult_e,
+--   vl_unit_limite_bc_icms_ult_e, vl_unit_icms_ult_e, aliq_st_ult_e, vl_unit_res, cod_resp_ret, cod_mot_res,
+--   chave_nfe_ret, cod_part_nfe_ret, ser_nfe_ret, num_nfe_ret, item_nfe_ret, cod_da, num_da
+@NAME(RegC176_columns)
+  id, cod_mod_ult_e, num_doc_ult_e, ser_ult_e, dt_ult_e, cod_part_ult_e, quant_ult_e, vl_unit_ult_e, vl_unit_bc_st,
+  chave_nfe_ult_e, num_item_ult_e, vl_unit_bc_icms_ult_e, aliq_icms_ult_e, vl_unit_limite_bc_icms_ult_e,
+  vl_unit_icms_ult_e, aliq_st_ult_e, vl_unit_res, cod_resp_ret, cod_mot_res, chave_nfe_ret, cod_part_nfe_ret,
+  ser_nfe_ret, num_nfe_ret, item_nfe_ret, cod_da, num_da
+
+--=================================================================================================
+-- colunas adicionadas: chv_doce
+@NAME(RegE113_columns)
+  id, cod_part, cod_mod, ser, sub, num_doc, dt_doc, cod_item, vl_aj_item, chv_doce
+
+--=================================================================================================
+-- colunas adicionadas: chv_doce
+@NAME(RegE240_columns)
+  id, cod_part, cod_mod, ser, sub, num_doc, dt_doc, cod_item, vl_aj_item, chv_doce
+
+--=================================================================================================
+-- colunas adicionadas: deb_esp_fcp, vl_deducoes_fcp, vl_out_cred_fcp, vl_out_deb_fcp, vl_recol_fcp, vl_sld_cred_ant_fcp,
+--   vl_sld_cred_transportar_fcp, vl_sld_dev_ant_fcp
+@NAME(RegE310_columns)
+  id, ind_mov_difal, vl_sld_cred_ant_difal, vl_tot_debitos_difal, vl_out_deb_difal, vl_tot_creditos_difal,
+  vl_out_cred_difal, vl_sld_dev_ant_difal, vl_deducoes_difal, vl_recol, vl_sld_cred_transportar, deb_esp_difal,
+  vl_sld_cred_ant_fcp, vl_tot_deb_fcp, vl_out_deb_fcp, vl_tot_cred_fcp, vl_out_cred_fcp, vl_sld_dev_ant_fcp,
+  vl_deducoes_fcp, vl_recol_fcp, vl_sld_cred_transportar_fcp, deb_esp_fcp
+
+--=================================================================================================
+-- registro novo
+@NAME(RegK210_select)
+  SELECT @INCLUDE(RegK210_columns)
+
+@NAME(RegK210_columns)
+  id, dt_ini_os, dt_fin_os, cod_doc_os, cod_item_ori, qtd_ori
+
+@NAME(RegK210_from)
+  FROM @schema@reg_k210
+
+@NAME(RegK210_where)
+  WHERE id_pai = :id_pai
+
+--=================================================================================================
+-- registro novo
+@NAME(RegK215_select)
+  SELECT @INCLUDE(RegK215_columns)
+
+@NAME(RegK215_columns)
+  id, cod_item_dest, qtd_des
+
+@NAME(RegK215_from)
+  FROM @schema@reg_k215
+
+@NAME(RegK215_where)
+  WHERE id_pai = :id_pai
+
+--=================================================================================================
+-- registro novo
+@NAME(RegK260_select)
+  SELECT @INCLUDE(RegK260_columns)
+
+@NAME(RegK260_columns)
+  id, cod_op_os, cod_item, dt_saida, qtd_saida, dt_ret, qtd_ret
+
+@NAME(RegK260_from)
+  FROM @schema@reg_k260
+
+@NAME(RegK260_where)
+  WHERE id_pai = :id_pai
+
+--=================================================================================================
+-- registro novo
+@NAME(RegK265_select)
+  SELECT @INCLUDE(RegK265_columns)
+
+@NAME(RegK265_columns)
+  id, cod_item, qtd_cons, qtd_ret
+
+@NAME(RegK265_from)
+  FROM @schema@reg_k265
+
+@NAME(RegK265_where)
+  WHERE id_pai = :id_pai
+
+--=================================================================================================
+-- registro novo
+@NAME(RegK270_select)
+  SELECT @INCLUDE(RegK270_columns)
+
+@NAME(RegK270_columns)
+  id, dt_ini_ap, dt_fin_ap, cod_op_os, cod_item, qtd_cor_pos, qtd_cor_neg, origem
+
+@NAME(RegK270_from)
+  FROM @schema@reg_k270
+
+@NAME(RegK270_where)
+  WHERE id_pai = :id_pai
+
+--=================================================================================================
+-- registro novo
+@NAME(RegK275_select)
+  SELECT @INCLUDE(RegK275_columns)
+
+@NAME(RegK275_columns)
+  id, cod_item, qtd_cor_pos, qtd_cor_neg, cod_ins_subst
+
+@NAME(RegK275_from)
+  FROM @schema@reg_k275
+
+@NAME(RegK275_where)
+  WHERE id_pai = :id_pai
+
+--=================================================================================================
+-- registro novo
+@NAME(RegK280_select)
+  SELECT @INCLUDE(RegK280_columns)
+
+@NAME(RegK280_columns)
+  id, dt_est, cod_item, qtd_cor_pos, qtd_cor_neg, ind_est, cod_part
+
+@NAME(RegK280_from)
+  FROM @schema@reg_k280
+
+@NAME(RegK280_where)
+  WHERE id_pai = :id_pai
+

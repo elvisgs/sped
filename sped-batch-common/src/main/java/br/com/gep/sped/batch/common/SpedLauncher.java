@@ -8,6 +8,7 @@ import br.com.gep.sped.batch.common.jdbc.entity.Layout;
 import br.com.gep.sped.batch.common.jdbc.entity.SpedExecution;
 import br.com.gep.sped.batch.common.support.DefaultFileNameStrategy;
 import br.com.gep.sped.batch.common.support.FileNameStrategy;
+import br.com.gep.sped.batch.common.support.BeansByLayoutVersionConfigurer;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -46,6 +47,8 @@ public abstract class SpedLauncher {
     protected SpedExecution doRun(String outputFilePath, Estabelecimento estabelecimento, JobParameters jobParameters)
             throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException,
             JobParametersInvalidException {
+
+        context.getBean(BeansByLayoutVersionConfigurer.class).configure(estabelecimento.getCodVer());
 
         Job spedJob = context.getBean(Job.class);
         JobExecution jobExecution = jobLauncher.run(spedJob, jobParameters);

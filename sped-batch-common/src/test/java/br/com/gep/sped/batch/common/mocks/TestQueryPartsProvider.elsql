@@ -5,7 +5,7 @@
   from reg_0000
 
 @NAME(Reg0000_where)
-  where cnpj = coalesce(?, cnpj)
+  where cnpj = coalesce(:cnpj, cnpj)
 
 --=============================================================================
 @NAME(Reg9001_select)

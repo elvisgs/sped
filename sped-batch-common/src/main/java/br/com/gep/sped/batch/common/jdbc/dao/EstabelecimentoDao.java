@@ -5,7 +5,9 @@ import br.com.gep.sped.batch.common.jdbc.entity.Estabelecimento;
 import lombok.Setter;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.EmptySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.util.Assert;
 
 import javax.sql.DataSource;
@@ -16,14 +18,14 @@ public class EstabelecimentoDao implements InitializingBean {
     private @Setter DataSource dataSource;
     private @Setter String selectQuery;
     private @Setter String schema;
-    private JdbcTemplate jdbcTemplate;
+    private NamedParameterJdbcTemplate jdbcTemplate;
 
     public Estabelecimento obterUnico() {
         String sql = new SchemaInjector(schema).injectSchema(selectQuery);
         sql = removerClausulaWhere(sql);
 
-        return jdbcTemplate.queryForObject(sql,
-                BeanPropertyRowMapper.newInstance(Estabelecimento.class));
+        return jdbcTemplate.queryForObject(sql, new EmptySqlParameterSource(),
+            BeanPropertyRowMapper.newInstance(Estabelecimento.class));
     }
 
     public Estabelecimento obterUnico(String cnpj) {
@@ -32,8 +34,8 @@ public class EstabelecimentoDao implements InitializingBean {
         String sql = new SchemaInjector(schema).injectSchema(selectQuery);
 
         return jdbcTemplate.queryForObject(sql,
-                BeanPropertyRowMapper.newInstance(Estabelecimento.class),
-                cnpj);
+            new MapSqlParameterSource("cnpj", cnpj),
+            BeanPropertyRowMapper.newInstance(Estabelecimento.class));
     }
 
     public List<Estabelecimento> obterTodos() {
@@ -57,6 +59,6 @@ public class EstabelecimentoDao implements InitializingBean {
         Assert.notNull(dataSource, "dataSource não deve ser nulo");
         Assert.hasText(selectQuery, "selectQuery não deve ser nula ou vazia");
 
-        jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 }

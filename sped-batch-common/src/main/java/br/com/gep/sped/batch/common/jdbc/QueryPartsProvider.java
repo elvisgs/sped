@@ -2,23 +2,39 @@ package br.com.gep.sped.batch.common.jdbc;
 
 import com.opengamma.elsql.ElSqlBundle;
 import com.opengamma.elsql.ElSqlConfig;
+import lombok.NonNull;
 import org.springframework.core.io.Resource;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
+import java.util.stream.Stream;
+
+import static java.util.Arrays.asList;
 
 /**
  * Provê as cláusulas das consultas SQL dos registros
  */
 public class QueryPartsProvider {
 
-    private final ElSqlBundle elSqlBundle;
+    private Resource[] queries;
+    private ElSqlBundle elSqlBundle;
 
     public QueryPartsProvider() {
         elSqlBundle = ElSqlBundle.of(ElSqlConfig.DEFAULT, getClass());
     }
 
-    public QueryPartsProvider(Resource... queriesFiles) {
-        elSqlBundle = ElSqlBundle.parse(ElSqlConfig.DEFAULT, queriesFiles);
+    public QueryPartsProvider(@NonNull Resource... queries) {
+        this.queries = queries;
+        elSqlBundle = ElSqlBundle.parse(ElSqlConfig.DEFAULT, queries);
+    }
+
+    public void patch(@NonNull Resource... patches) {
+        ArrayList<Resource> patchedQueries = new ArrayList<>(asList(queries));
+        patchedQueries.addAll(asList(patches));
+        int len = patchedQueries.size();
+        elSqlBundle = ElSqlBundle.parse(ElSqlConfig.DEFAULT, patchedQueries.toArray(new Resource[len]));
     }
 
     public QueryParts getQueryParts(String regName) {

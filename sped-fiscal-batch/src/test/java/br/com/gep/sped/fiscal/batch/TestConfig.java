@@ -2,12 +2,11 @@ package br.com.gep.sped.fiscal.batch;
 
 import br.com.gep.sped.batch.common.SpedLauncher;
 import br.com.gep.sped.batch.common.config.InfrastructureConfig;
+import br.com.gep.sped.batch.common.support.BeansByLayoutVersionConfigurer;
 import org.springframework.batch.test.JobLauncherTestUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.*;
 import org.springframework.core.io.Resource;
 import org.springframework.core.task.SyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
@@ -23,8 +22,13 @@ import java.nio.charset.StandardCharsets;
 
 @Configuration
 @Primary
-@ComponentScan(basePackageClasses = {TestConfig.class, SpedLauncher.class})
+@ComponentScan(
+    basePackageClasses = {TestConfig.class, SpedLauncher.class}
+)
 public class TestConfig implements InfrastructureConfig {
+
+    @Autowired
+    protected BeansByLayoutVersionConfigurer versionConfigurer;
 
     @Value("classpath:/schemas/schema-drop-hsqldb.sql")
     private Resource batchSpedSchemaDrop;
@@ -55,6 +59,12 @@ public class TestConfig implements InfrastructureConfig {
             setUsername("sa");
             setPassword("");
         }};
+
+        configureLayoutVersion();
+    }
+
+    protected void configureLayoutVersion() {
+        versionConfigurer.configure("010");
     }
 
     @Bean
@@ -66,7 +76,7 @@ public class TestConfig implements InfrastructureConfig {
         return initializer;
     }
 
-    private DatabasePopulator getDatabasePopulator() {
+    protected DatabasePopulator getDatabasePopulator() {
         ResourceDatabasePopulator populator = new ResourceDatabasePopulator(
             batchSpedSchemaDrop, batchSchemaDrop, batchSchema,
             batchSpedSchema, spedSchema, spedData);
@@ -82,6 +92,7 @@ public class TestConfig implements InfrastructureConfig {
     }
 
     @Bean
+    @Lazy
     public JobLauncherTestUtils jobLauncherTestUtils() {
         return new JobLauncherTestUtils();
     }

@@ -312,13 +312,16 @@
 
 --=================================================================================================
 @NAME(Reg1210_select)
-  SELECT id, tipo_util, nr_doc, vl_cred_util
+  SELECT @INCLUDE(Reg1210_columns)
 
 @NAME(Reg1210_from)
   FROM @schema@reg_1210
 
 @NAME(Reg1210_where)
   WHERE id_pai = :id_pai
+
+@NAME(Reg1210_columns)
+  id, tipo_util, nr_doc, vl_cred_util
 
 --=================================================================================================
 @NAME(Reg1300_select)
@@ -531,13 +534,16 @@
 
 --=================================================================================================
 @NAME(Reg1923_select)
-  SELECT id, cod_part, cod_mod, ser, sub, num_doc, dt_doc, cod_item, vl_aj_item
+  SELECT @INCLUDE(Reg1923_columns)
 
 @NAME(Reg1923_from)
   FROM @schema@reg_1923
 
 @NAME(Reg1923_where)
   WHERE id_pai = :id_pai
+
+@NAME(Reg1923_columns)
+  id, cod_part, cod_mod, ser, sub, num_doc, dt_doc, cod_item, vl_aj_item
 
 --=================================================================================================
 @NAME(Reg1925_select)
@@ -633,13 +639,16 @@
 
 --=================================================================================================
 @NAME(RegC113_select)
-  SELECT id, ind_oper, ind_emit, cod_part, cod_mod, ser, sub, num_doc, dt_doc
+  SELECT @INCLUDE(RegC113_columns)
 
 @NAME(RegC113_from)
   FROM @schema@reg_c113
 
 @NAME(RegC113_where)
   WHERE id_pai = :id_pai
+
+@NAME(RegC113_columns)
+  id, ind_oper, ind_emit, cod_part, cod_mod, ser, sub, num_doc, dt_doc
 
 --=================================================================================================
 @NAME(RegC114_select)
@@ -797,14 +806,16 @@
 
 --=================================================================================================
 @NAME(RegC176_select)
-  SELECT id, cod_mod_ult_e, num_doc_ult_e, ser_ult_e, dt_ult_e, cod_part_ult_e, quant_ult_e, vl_unit_ult_e,
-    vl_unit_bc_st
+  SELECT @INCLUDE(RegC176_columns)
 
 @NAME(RegC176_from)
   FROM @schema@reg_c176
 
 @NAME(RegC176_where)
   WHERE id_pai = :id_pai
+
+@NAME(RegC176_columns)
+  id, cod_mod_ult_e, num_doc_ult_e, ser_ult_e, dt_ult_e, cod_part_ult_e, quant_ult_e, vl_unit_ult_e, vl_unit_bc_st
 
 --=================================================================================================
 @NAME(RegC177_select)
@@ -1631,13 +1642,16 @@
 
 --=================================================================================================
 @NAME(RegE113_select)
-  SELECT id, cod_part, cod_mod, ser, sub, num_doc, dt_doc, cod_item, vl_aj_item
+  SELECT @INCLUDE(RegE113_columns)
 
 @NAME(RegE113_from)
   FROM @schema@reg_e113
 
 @NAME(RegE113_where)
   WHERE id_pai = :id_pai
+
+@NAME(RegE113_columns)
+  id, cod_part, cod_mod, ser, sub, num_doc, dt_doc, cod_item, vl_aj_item
 
 --=================================================================================================
 @NAME(RegE115_select)
@@ -1703,13 +1717,16 @@
 
 --=================================================================================================
 @NAME(RegE240_select)
-  SELECT id, cod_part, cod_mod, ser, sub, num_doc, dt_doc, cod_item, vl_aj_item
+  SELECT @INCLUDE(RegE240_columns)
 
 @NAME(RegE240_from)
   FROM @schema@reg_e240
 
 @NAME(RegE240_where)
   WHERE id_pai = :id_pai
+
+@NAME(RegE240_columns)
+  id, cod_part, cod_mod, ser, sub, num_doc, dt_doc, cod_item, vl_aj_item
 
 --=================================================================================================
 @NAME(RegE250_select)
@@ -1733,13 +1750,17 @@
 
 --=================================================================================================
 @NAME(RegE310_select)
-  SELECT id, ind_mov_difal, vl_sld_cred_ant_difal, vl_tot_debitos_difal, vl_out_deb_difal, vl_tot_deb_fcp, vl_tot_creditos_difal, vl_tot_cred_fcp, vl_out_cred_difal, vl_sld_dev_ant_difal, vl_deducoes_difal, vl_recol, vl_sld_cred_transportar, deb_esp_difal
+  SELECT @INCLUDE(RegE310_columns)
 
 @NAME(RegE310_from)
   FROM @schema@reg_e310
 
 @NAME(RegE310_where)
   WHERE id_pai = :id_pai
+
+@NAME(RegE310_columns)
+  id, ind_mov_difal, vl_sld_cred_ant_difal, vl_tot_debitos_difal, vl_out_deb_difal, vl_tot_deb_fcp, vl_tot_creditos_difal,
+  vl_tot_cred_fcp, vl_out_cred_difal, vl_sld_dev_ant_difal, vl_deducoes_difal, vl_recol, vl_sld_cred_transportar, deb_esp_difal
 
 --=================================================================================================
 @NAME(RegE311_select)

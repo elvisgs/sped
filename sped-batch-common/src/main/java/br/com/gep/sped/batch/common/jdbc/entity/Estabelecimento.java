@@ -8,6 +8,6 @@ import java.util.Date;
 public class Estabelecimento {
 
     private long id;
-    private String nome, cnpj, indPerfil;
+    private String nome, cnpj, indPerfil, codVer;
     private Date dtIni;
 }

@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.*;
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AsyncTestConfig.class)
-@DirtiesContext
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class SpedFiscalJobParallelTest {
 
     private static final String CAMINHO_RESULTADO_1 = "target/generated-test-sources/sped_test_result_1.txt";

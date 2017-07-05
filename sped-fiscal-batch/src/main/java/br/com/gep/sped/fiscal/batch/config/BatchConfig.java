@@ -11,16 +11,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class BatchConfig {
 
-    @Value("classpath*:queries/fiscal-batch-*.elsql")
-    private Resource[] queries;
-
     @Bean
     public BatchConfigurer batchConfigurer() {
         return new SpedBatchConfigurer();
     }
 
     @Bean
-    public QueryPartsProvider queryPartsProvider() {
+    @Value("classpath:queries/queries-fiscal-base-v010.elsql")
+    public QueryPartsProvider queryPartsProvider(Resource queries) {
         return new QueryPartsProvider(queries);
     }
 }

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 import static java.util.Comparator.comparing;
 
 @Component
+@Lazy
 @RequiredArgsConstructor
 public class FlowFactory {
 
