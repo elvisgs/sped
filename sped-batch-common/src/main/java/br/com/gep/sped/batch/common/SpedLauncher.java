@@ -79,7 +79,8 @@ public abstract class SpedLauncher {
             .setLayout(getLayout())
             .setJobExecution(jobExecution);
 
-        spedExecutionDao.create(spedExecution);
+        if (spedExecutionDao != null)
+            spedExecutionDao.create(spedExecution);
 
         return spedExecution;
     }
@@ -101,7 +102,9 @@ public abstract class SpedLauncher {
 
         jobLauncher = context.getBean(JobLauncher.class);
         estabelecimentoDao = context.getBean(EstabelecimentoDao.class);
-        spedExecutionDao = context.getBean(SpedExecutionDao.class);
+
+        if (context.containsBean("spedExecutionDao"))
+            spedExecutionDao = context.getBean(SpedExecutionDao.class);
 
         if (fileNameStrategy == null)
             fileNameStrategy = new DefaultFileNameStrategy();
