@@ -45,12 +45,16 @@ public abstract class SpedWriterFactory {
                 .addTypeHandler(Date.class, new DateTypeHandler("ddMMyyyy"))
                 .addTypeHandler(Double.class, new DoubleTypeHandler());
 
+        customizeBuilder(builder);
         addRecords(builder);
         addGroups(builder);
 
         streamFactory.define(builder);
 
         return this;
+    }
+
+    protected void customizeBuilder(StreamBuilder builder) {
     }
 
     protected abstract void addRecords(StreamBuilder builder);
