@@ -1,14 +1,17 @@
 package br.com.gep.sped.marshaller.common.writer;
 
-import br.com.gep.sped.marshaller.common.handlers.DoubleTypeHandler;
 import org.beanio.BeanWriter;
 import org.beanio.StreamFactory;
 import org.beanio.builder.DelimitedParserBuilder;
 import org.beanio.builder.StreamBuilder;
+import org.beanio.types.BigDecimalTypeHandler;
 import org.beanio.types.DateTypeHandler;
+import org.beanio.types.DoubleTypeHandler;
 
 import java.io.Writer;
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Locale;
 
 public abstract class SpedWriterFactory {
 
@@ -37,13 +40,25 @@ public abstract class SpedWriterFactory {
     protected SpedWriterFactory initializeFactory() {
         streamFactory = StreamFactory.newInstance();
 
-        StreamBuilder builder = new StreamBuilder(streamName)
-                .writeOnly()
-                .format("delimited")
-                .parser(new DelimitedParserBuilder('|'))
+        String locale = new Locale("pt", "BR").toString();
+        String decimalPattern = "#0.#####";
 
-                .addTypeHandler(Date.class, new DateTypeHandler("ddMMyyyy"))
-                .addTypeHandler(Double.class, new DoubleTypeHandler());
+        BigDecimalTypeHandler decimalHandler = new BigDecimalTypeHandler();
+        decimalHandler.setLocale(locale);
+        decimalHandler.setPattern(decimalPattern);
+
+        DoubleTypeHandler doubleHandler = new DoubleTypeHandler();
+        doubleHandler.setLocale(locale);
+        doubleHandler.setPattern(decimalPattern);
+
+        StreamBuilder builder = new StreamBuilder(streamName)
+            .writeOnly()
+            .format("delimited")
+            .parser(new DelimitedParserBuilder('|'))
+
+            .addTypeHandler(Date.class, new DateTypeHandler("ddMMyyyy"))
+            .addTypeHandler(Double.class, doubleHandler)
+            .addTypeHandler(BigDecimal.class, decimalHandler);
 
         customizeBuilder(builder);
         addRecords(builder);
