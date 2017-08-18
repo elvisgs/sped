@@ -1,8 +1,8 @@
 package br.com.gep.sped.batch.common.factory;
 
+import br.com.gep.sped.batch.common.config.SpedProperties;
 import br.com.gep.sped.batch.common.support.RegInfoUpdater;
 import br.com.gep.sped.batch.common.support.RegNode;
-import br.com.gep.sped.batch.common.config.SpedProperties;
 import br.com.gep.sped.batch.common.support.SpedTree;
 import br.com.gep.sped.marshaller.common.Registro;
 import br.com.gep.sped.marshaller.common.RegistroEncerramentoBloco;
@@ -11,10 +11,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.core.step.tasklet.TaskletStep;
-import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemStreamReader;
-import org.springframework.batch.item.ItemStreamWriter;
-import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.*;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +23,7 @@ public class StepFactory {
     private final StepBuilderFactory stepBuilder;
     private final ItemReaderFactory itemReaderFactory;
     private final ItemWriterFactory itemWriterFactory;
+    private final ItemProcessorLocator itemProcessorLocator;
     private final TaskletFactory taskletFactory;
     private final RegInfoUpdater regInfoUpdater;
     private final SpedProperties spedProperties;
@@ -57,10 +55,13 @@ public class StepFactory {
             .build();
     }
 
-    public <R extends Registro> TaskletStep create(String name, ItemReader<R> reader, ItemWriter<R> writer) {
+    public <R extends Registro> TaskletStep create(String name, ItemReader<R> reader, ItemProcessor<R, R> processor,
+                                                   ItemWriter<R> writer) {
+
         return stepBuilder.get(name)
             .<R, R>chunk(spedProperties.getChunkSize())
             .reader(reader)
+            .processor(processor)
             .writer(writer)
             .allowStartIfComplete(true)
             .listener(regInfoUpdater)
@@ -71,9 +72,10 @@ public class StepFactory {
                                                                        Class<P> parentRegClass) {
 
         ItemStreamReader<R> reader = itemReaderFactory.create(regClass, parentRegClass);
+        ItemProcessor<R, R> processor = itemProcessorLocator.find(regClass).orElse(null);
         ItemStreamWriter<R> writer = itemWriterFactory.create(regClass, parentRegClass);
 
-        return create(name, reader, writer);
+        return create(name, reader, processor, writer);
     }
 
     public <R extends Registro> TaskletStep create(String name, Class<R> regClass) throws Exception {

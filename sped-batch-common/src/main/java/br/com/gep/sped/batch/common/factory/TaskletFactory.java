@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 public class TaskletFactory {
 
     private final ItemReaderFactory itemReaderFactory;
+    private final ItemProcessorLocator itemProcessorLocator;
     private final ItemWriterFactory itemWriterFactory;
     private final RegCounter regCounter;
     private final SpedTree spedTree;
@@ -41,13 +42,13 @@ public class TaskletFactory {
 
     private RegTreeTasklet createRegTreeTasklet(Class<? extends Registro> regClass) {
         RegNode rootNode = spedTree.getNode(regClass);
-        RegTreeTasklet tasklet = new RegTreeTasklet(rootNode);
-        tasklet.setItemReaderFactory(itemReaderFactory);
-        tasklet.setItemWriterFactory(itemWriterFactory);
-        tasklet.setRegInfoUpdater(regInfoUpdater);
-        tasklet.setChunkSize(spedProperties.getChunkSize());
 
-        return tasklet;
+        return new RegTreeTasklet(rootNode)
+            .setItemReaderFactory(itemReaderFactory)
+            .setItemProcessorLocator(itemProcessorLocator)
+            .setItemWriterFactory(itemWriterFactory)
+            .setRegInfoUpdater(regInfoUpdater)
+            .setChunkSize(spedProperties.getChunkSize());
     }
 
     private ClosingBlocRegTasklet createClosingBlocRegTasklet(Class<? extends RegistroEncerramentoBloco> regClass) {
